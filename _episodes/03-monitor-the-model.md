@@ -89,6 +89,7 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > * How many data points do we have?
 > * How many features does the data have (don't count month and date as a feature)?
 > * What are the different measured variable types in the data and how many are there (humidity etc.) ?
+> * * (Optional) Plot the distributions of the different features in the dataset. What can you learn from this?
 >
 > > ## Solution
 > > ~~~
@@ -113,7 +114,7 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > > feature_names = set()
 > > for col in data.columns:
 > >     feature_names.update(re.findall('[^A-Z]{2,}', col))
-> >     
+> >
 > > feature_names
 > > ~~~
 > > In total there are 9 different measured variables.
@@ -174,14 +175,15 @@ Now we want to work on a *regression task*, thus not predicting a class label (o
 > As we want to design a neural network architecture for a regression task,
 > see if you can first come up with the answers to the following questions:
 > 1. What must be the dimension of our input layer?
-> 2. We want to to output the prediction of a single number. The output layer of the NN hence cannot be the same as for the classification task earlier. This is because the `softmax` activation being used had a concrete meaning with respect to the class labels which is not needed here. What output layer design would you choose for regression?  
+> 2. We want to output the prediction of a single number. The output layer of the NN hence cannot be the same as for the classification task earlier. This is because the `softmax` activation being used had a concrete meaning with respect to the class labels which is not needed here. What output layer design would you choose for regression?
 Hint: A layer with `relu` activation, with `sigmoid` activation or no activation at all?
+> 3. * (Optional) If next to the number of sunshine hours, we would also like to predict the precipitation. How would you go about this?
 >
 > > ## Solution
-> >  
+> >
 > > 1. The shape of the input layer has to correspond to the number of features in our data: 89
 > > 2. The output is a single value per prediction, so the output layer can consist of a dense layer with only one node. The *softmax* activiation function works well for a classification task, but here we do not want to restrict the possible outcomes to the range of zero and one. In fact, we can omit the activation in the output layer.
-> >
+> > 3. The output layer should have 2 neurons, one for each number that we try to predict. Our y_train (and val and test) then becomes a (n_samples, 2) matrix.
 > {:.solution}
 {:.challenge}
 
@@ -226,15 +228,15 @@ model.summary()
 ~~~
 Model: "weather_prediction_model"
 _________________________________________________________________
-Layer (type)                 Output Shape              Param #   
+Layer (type)                 Output Shape              Param #
 =================================================================
-input (InputLayer)           [(None, 89)]              0         
+input (InputLayer)           [(None, 89)]              0
 _________________________________________________________________
-dense (Dense)                (None, 100)               9000      
+dense (Dense)                (None, 100)               9000
 _________________________________________________________________
-dense_1 (Dense)              (None, 50)                5050      
+dense_1 (Dense)              (None, 50)                5050
 _________________________________________________________________
-dense_2 (Dense)              (None, 1)                 51        
+dense_2 (Dense)              (None, 1)                 51
 =================================================================
 Total params: 14,101
 Trainable params: 14,101
@@ -291,8 +293,9 @@ With this, we complete the compilation of our network and are ready to start tra
 
 > ## Challenge: Metrics
 >
-> Look into the [Keras documentation on metrics](https://keras.io/api/metrics/).
+> 1. Look into the [Keras documentation on metrics](https://keras.io/api/metrics/).
 > Choose an additional metric that you would like to track, and compile the model again with this metric added.
+> 2. (Optional) Look into the [documentation on Model.compile]. Try to understand what else you can configure when compiling your model.
 >
 > > ## Solution
 > > As we are facing a regression task, we should pick one of the metrics under [Regression metrics](https://keras.io/api/metrics/regression_metrics/).
@@ -374,7 +377,9 @@ axes[1].set_ylabel("true sunshine hours")
 > ## Exercise: Reflecting on our results
 > 1. Is the performance of the model as you expected (or better/worse)?
 > 2. Is there a noteable difference between training set and test set? And if so, any idea why?
->
+> 3. (Optional) Read part 8 'Establish a single-number evaluation metric for your team to optimize' of
+>     [Machine learning yearning](http://nessie.ilab.sztaki.hu/~kornai/2020/AdvancedMachineLearning/Ng_MachineLearningYearning.pdf).
+>     What single-number evaluation metric would you choose here and why?
 > > ## Solution
 > > 
 > > While the performance on the train set seems reasonable, the performance on the test set is much worse.
@@ -450,10 +455,11 @@ NN RMSE: 4.05, baseline RMSE: 3.88
 Judging from the numbers alone, our neural network prediction would be performing worse than the baseline.
 
 > ## Exercise: Baseline
-> Looking at this baseline: Would you consider this a simple or a hard problem to solve?
+> 1. Looking at this baseline: Would you consider this a simple or a hard problem to solve?
+> 2. (optional) Can you think of other baselines? You could think of a slightly more complex, rule-based baseline.
 >
 > > ## Solution
-> > 
+> >
 > > This really depends on your definition of hard! The baseline gives a more accurate prediction than just
 > > randomly predicting a number, so the problem is not impossible to solve with machine learning. However, given the structure of the data and our expectations with respect to quality of prediction, it may remain hard to find a good algorithm which exceeds our baseline by orders of magnitude.
 > >
@@ -464,13 +470,13 @@ Judging from the numbers alone, our neural network prediction would be performin
 
 As we saw when comparing the predictions for the training and the test set, deep learning models are prone to overfitting. Instead of iterating through countless cycles of model trainings and subsequent evaluations with a reserved test set, it is common practice to work with a second split off dataset to monitor the model during training.
 This is the *validation set* which can be regarded as a second test set. As with the test set, the datapoints of the *validation set* are not used for the actual model training itself. Instead, we evaluate the model with the *validation set* after every epoch during training, for instance to stop if we see signs of clear overfitting.
-Since we are adapting our model (tuning our hyperparameters) based on this validation set, it is *very* important that it is kept separate from the test set. If we used the same set, we wouldn't know whether our model truly generalizes or is only overfitting.   
+Since we are adapting our model (tuning our hyperparameters) based on this validation set, it is *very* important that it is kept separate from the test set. If we used the same set, we wouldn't know whether our model truly generalizes or is only overfitting.
 
 > ## Test vs. validation set
 > Not everybody agrees on the terminology of test set versus validation set. You might find 
 > examples in literature where these terms are used the other way around.
-> 
-> We are sticking to the definition that is consistent with the Keras API. In there, the validation 
+>
+> We are sticking to the definition that is consistent with the Keras API. In there, the validation
 > set can be used during training, and the test set is reserved for afterwards.
 {: .callout }
 
@@ -507,7 +513,9 @@ plt.ylabel("RMSE")
 ![Output of plotting sample](../fig/03_training_history_2_rmse.png){: width="500px"}
 > ## Exercise: plot the training progress.
 >
-> Is there a difference between the training and validation data? And if so, what would this imply?
+> 1. Is there a difference between the training and validation data? And if so, what would this imply?
+> 2. (Optional) Take a pen and paper, draw the perfect training curve.
+>    (This may seem trivial, but it will trigger you to think about what you actually would like to see)
 >
 > > ## Solution
 > > The difference between training and validation data shows that something is not completely right here.
@@ -580,7 +588,7 @@ Most similar to classical machine learning might to **reduce the number of param
 > >                     batch_size = 32,
 > >                     epochs = 200,
 > >                     validation_data=(X_val, y_val), verbose = 2)
-> > 
+> >
 > > history_df = pd.DataFrame.from_dict(history.history)
 > > sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
 > > plt.xlabel("epochs")
@@ -798,9 +806,11 @@ But let's better compare it to the naive baseline we created in the beginning. W
 >    the network should still train quickly because we reduce the number of
 >    features (columns).
 >    Is the prediction better compared to what we had before?
+> 4. (Optional) Try to train a model on all years that are available,
+>    and all features from all cities. How does it perform?
 >
 > > ## Solution
-> > 
+> >
 > > Use 9 years out of the total dataset. This means 3 times as many
 > > rows as we used previously, but by removing columns not containing
 > > "BASEL" we reduce the number of columns from 89 to 11.
