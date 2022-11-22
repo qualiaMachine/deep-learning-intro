@@ -193,24 +193,22 @@ print(dim)
 > > ~~~
 > > {: .language-python}
 > > ~~~
-> >     Model: "model"
-    _________________________________________________________________
-    Layer (type)                 Output Shape              Param #
-    =================================================================
-    input_1 (InputLayer)         [(None, 3072)]            0
-    _________________________________________________________________
-    dense (Dense)                (None, 100)               307300
-    =================================================================
-    Total params: 307,300
-    Trainable params: 307,300
-    Non-trainable params: 0
-    _________________________________________________________________
+> > Model: "model"
+> > _________________________________________________________________
+> > Layer (type)                 Output Shape              Param #
+> > =================================================================
+> > input_1 (InputLayer)         [(None, 3072)]            0
+> > _________________________________________________________________
+> > dense (Dense)                (None, 100)               307300
+> > =================================================================
+> > Total params: 307,300
+> > Trainable params: 307,300
+> > Non-trainable params: 0
+> > _________________________________________________________________
 > > ~~~
 > > {: .output}
 > {: .solution}
 {: .challenge}
-
-
 
 We can decrease the number of units in our hidden layer, but this also decreases the number of patterns our network can remember. Moreover, if we increase the image size, the number of weights will 'explode', even though the task of recognizing large images is not necessarily more difficult than the task of recognizing small images.
 
@@ -305,35 +303,35 @@ model.summary()
 ~~~
 {: .language-python}
 ~~~
-     Model: "cifar_model"
-    _________________________________________________________________
-     Layer (type)                Output Shape              Param #
-    =================================================================
-     input_6 (InputLayer)        [(None, 32, 32, 3)]       0
+Model: "cifar_model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ input_6 (InputLayer)        [(None, 32, 32, 3)]       0
 
-     conv2d_13 (Conv2D)          (None, 30, 30, 50)        1400
+ conv2d_13 (Conv2D)          (None, 30, 30, 50)        1400
 
-     max_pooling2d_8 (MaxPooling  (None, 15, 15, 50)       0
-     2D)
+ max_pooling2d_8 (MaxPooling  (None, 15, 15, 50)       0
+ 2D)
 
-     conv2d_14 (Conv2D)          (None, 13, 13, 50)        22550
+ conv2d_14 (Conv2D)          (None, 13, 13, 50)        22550
 
-     max_pooling2d_9 (MaxPooling  (None, 6, 6, 50)         0
-     2D)
+ max_pooling2d_9 (MaxPooling  (None, 6, 6, 50)         0
+ 2D)
 
-     conv2d_15 (Conv2D)          (None, 4, 4, 50)          22550
+ conv2d_15 (Conv2D)          (None, 4, 4, 50)          22550
 
-     flatten_5 (Flatten)         (None, 800)               0
+ flatten_5 (Flatten)         (None, 800)               0
 
-     dense_9 (Dense)             (None, 50)                40050
+ dense_9 (Dense)             (None, 50)                40050
 
-     dense_10 (Dense)            (None, 10)                510
+ dense_10 (Dense)            (None, 10)                510
 
-    =================================================================
-    Total params: 87,060
-    Trainable params: 87,060
-    Non-trainable params: 0
-    _________________________________________________________________
+=================================================================
+Total params: 87,060
+Trainable params: 87,060
+Non-trainable params: 0
+_________________________________________________________________
 ~~~
 {: .output}
 
@@ -420,34 +418,34 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 > > {: .language-python}
 > > ~~~
 > > Model: "cifar_model"
-    _________________________________________________________________
-     Layer (type)                Output Shape              Param #
-    =================================================================
-     input_7 (InputLayer)        [(None, 32, 32, 3)]       0
-
-     conv2d_16 (Conv2D)          (None, 30, 30, 50)        1400
-
-     max_pooling2d_10 (MaxPoolin  (None, 15, 15, 50)       0
-     g2D)
-
-     conv2d_17 (Conv2D)          (None, 13, 13, 50)        22550
-
-     max_pooling2d_11 (MaxPoolin  (None, 6, 6, 50)         0
-     g2D)
-
-     conv2d_18 (Conv2D)          (None, 4, 4, 50)          22550
-
-     flatten_6 (Flatten)         (None, 800)               0
-
-     dense_11 (Dense)            (None, 50)                40050
-
-     dense_12 (Dense)            (None, 10)                510
-
-    =================================================================
-    Total params: 87,060
-    Trainable params: 87,060
-    Non-trainable params: 0
-    _________________________________________________________________
+> > _________________________________________________________________
+> >  Layer (type)                Output Shape              Param #
+> > =================================================================
+> >  input_7 (InputLayer)        [(None, 32, 32, 3)]       0
+> > 
+> >  conv2d_16 (Conv2D)          (None, 30, 30, 50)        1400
+> > 
+> >  max_pooling2d_10 (MaxPoolin  (None, 15, 15, 50)       0
+> >  g2D)
+> > 
+> >  conv2d_17 (Conv2D)          (None, 13, 13, 50)        22550
+> > 
+> >  max_pooling2d_11 (MaxPoolin  (None, 6, 6, 50)         0
+> >  g2D)
+> > 
+> >  conv2d_18 (Conv2D)          (None, 4, 4, 50)          22550
+> > 
+> >  flatten_6 (Flatten)         (None, 800)               0
+> > 
+> >  dense_11 (Dense)            (None, 50)                40050
+> > 
+> >  dense_12 (Dense)            (None, 10)                510
+> > 
+> > =================================================================
+> > Total params: 87,060
+> > Trainable params: 87,060
+> > Non-trainable params: 0
+> > _________________________________________________________________
 > > ~~~
 > > {: .output}
 > > The number of parameters has decreased by adding this layer.
@@ -465,7 +463,6 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 > >
 > > history_df = pd.DataFrame.from_dict(history.history)
 > > sns.lineplot(data=history_df[['accuracy', 'val_accuracy']])
-> >
 > > ~~~
 > > {: .language-python}
 > > ![Output of training](../fig/04_training_history_2.png)
@@ -484,7 +481,6 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 > and *translation invariant* features are expected to be useful, convolutions
 > can be used. Think for example of time series data from an accelerometer,
 > audio data for speech recognition, or 3d structures of chemical compounds.
->
 {: .callout}
 
 ## Dropout
@@ -502,7 +498,6 @@ In practice, however, dropout is computationally a very elegant solution which d
 **Important to note:** Dropout layers will only randomly silence nodes during training! During a predictions step, all nodes remain active (dropout is off). During training, the sample of nodes that are silenced are different for each training instance, to give all nodes a chance to observe enough training data to learn its weights.
 
 Let's add one dropout layer towards the end of the network, that randomly drops 20% of the input units.
-
 
 ~~~
 inputs = keras.Input(shape=train_images.shape[1:])
@@ -522,38 +517,37 @@ model_dropout.summary()
 ~~~
 {: .language-python}
 ~~~
-    Model: "cifar_model"
-    _________________________________________________________________
-     Layer (type)                Output Shape              Param #
-    =================================================================
-     input_8 (InputLayer)        [(None, 32, 32, 3)]       0
+Model: "cifar_model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ input_8 (InputLayer)        [(None, 32, 32, 3)]       0
 
-     conv2d_19 (Conv2D)          (None, 30, 30, 50)        1400
+ conv2d_19 (Conv2D)          (None, 30, 30, 50)        1400
 
-     max_pooling2d_12 (MaxPoolin  (None, 15, 15, 50)       0
-     g2D)
+ max_pooling2d_12 (MaxPoolin  (None, 15, 15, 50)       0
+ g2D)
 
-     conv2d_20 (Conv2D)          (None, 13, 13, 50)        22550
+ conv2d_20 (Conv2D)          (None, 13, 13, 50)        22550
 
-     max_pooling2d_13 (MaxPoolin  (None, 6, 6, 50)         0
-     g2D)
+ max_pooling2d_13 (MaxPoolin  (None, 6, 6, 50)         0
+ g2D)
 
-     conv2d_21 (Conv2D)          (None, 4, 4, 50)          22550
+ conv2d_21 (Conv2D)          (None, 4, 4, 50)          22550
 
-     dropout_2 (Dropout)         (None, 4, 4, 50)          0
+ dropout_2 (Dropout)         (None, 4, 4, 50)          0
 
-     flatten_7 (Flatten)         (None, 800)               0
+ flatten_7 (Flatten)         (None, 800)               0
 
-     dense_13 (Dense)            (None, 50)                40050
+ dense_13 (Dense)            (None, 50)                40050
 
-     dense_14 (Dense)            (None, 10)                510
+ dense_14 (Dense)            (None, 10)                510
 
-    =================================================================
-    Total params: 87,060
-    Trainable params: 87,060
-    Non-trainable params: 0
-    _________________________________________________________________
-
+=================================================================
+Total params: 87,060
+Trainable params: 87,060
+Non-trainable params: 0
+_________________________________________________________________
 ~~~
 {: .output}
 We can see that the dropout does not alter the dimensions of the image, and has zero parameters.
@@ -580,7 +574,7 @@ test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels, verbose=
 ~~~
 {: .language-python}
 ~~~
-    313/313 - 2s - loss: 1.4683 - accuracy: 0.5307
+313/313 - 2s - loss: 1.4683 - accuracy: 0.5307
 ~~~
 {: .output}
 ![Output of training](../fig/04_training_history_3.png)
@@ -592,6 +586,5 @@ sns.lineplot(data=history_df[['loss', 'val_loss']])
 
 Now we see that the gap between the training accuracy and validation accuracy is much smaller, and that the final accuracy on the validation set is higher than without dropout.
 Nevertheless, there is still some difference between the training loss and validation loss, so we could experiment with regularization even more.
-
 
 {% include links.md %}

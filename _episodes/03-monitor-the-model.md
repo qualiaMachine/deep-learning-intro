@@ -371,7 +371,7 @@ axes[1].set_ylabel("true sunshine hours")
 > 2. Is there a noteable difference between training set and test set? And if so, any idea why?
 >
 > > ## Solution
-> >  
+> > 
 > > While the performance on the train set seems reasonable, the performance on the test set is much worse.
 > > This is a common problem called **overfitting**, which we will discuss in more detail later.
 > >
@@ -447,7 +447,7 @@ Judging from the numbers alone, our neural network preduction would be performin
 > Looking at this baseline: Would you consider this a simple or a hard problem to solve?
 >
 > > ## Solution
-> >  
+> > 
 > > This really depends on your definition of hard! The baseline gives a more accurate prediction than just
 > > randomly predicting a number, so the problem is not impossible to solve with machine learning. However, given the structure of the data and our expectations with respect to quality of prediction, it may remain hard to find a good algorithm which exceeds our baseline by orders of magnitude.
 > >
@@ -549,15 +549,15 @@ Most similar to classical machine learning might to **reduce the number of param
 > > ~~~
 > > Model: "model_small"
 > > _________________________________________________________________
-> > Layer (type)                 Output Shape              Param #   
+> > Layer (type)                 Output Shape              Param #
 > > =================================================================
-> > input (InputLayer)           [(None, 89)]              0         
+> > input (InputLayer)           [(None, 89)]              0
 > > _________________________________________________________________
-> > dense_9 (Dense)              (None, 10)                900       
+> > dense_9 (Dense)              (None, 10)                900
 > > _________________________________________________________________
-> > dense_10 (Dense)             (None, 5)                 55        
+> > dense_10 (Dense)             (None, 5)                 55
 > > _________________________________________________________________
-> > dense_11 (Dense)             (None, 1)                 6         
+> > dense_11 (Dense)             (None, 1)                 6
 > > =================================================================
 > > Total params: 961
 > > Trainable params: 961
@@ -574,7 +574,7 @@ Most similar to classical machine learning might to **reduce the number of param
 > >                     batch_size = 32,
 > >                     epochs = 200,
 > >                     validation_data=(X_val, y_val), verbose = 2)
-> >                     
+> > 
 > > history_df = pd.DataFrame.from_dict(history.history)
 > > sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
 > > plt.xlabel("epochs")
@@ -733,7 +733,7 @@ sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_
 plt.xlabel("epochs")
 plt.ylabel("RMSE")
 ~~~
-{: .language-python}      
+{: .language-python}
 
 ![Output of plotting sample](../fig/03_training_history_5_rmse_batchnorm.png){: width="500px"}
 
@@ -794,95 +794,95 @@ But let's better compare it to the naive baseline we created in the beginning. W
 >    Is the prediction better compared to what we had before?
 >
 > > ## Solution
-> >    
+> > 
 > > Use 9 years out of the total dataset. This means 3 times as many
 > > rows as we used previously, but by removing columns not containing
 > > "BASEL" we reduce the number of columns from 89 to 11.
-> >    ~~~
-> >    nr_rows = 365*9
-> >    # data
-> >    X_data = data.loc[:nr_rows].drop(columns=['DATE', 'MONTH'])
-> >    # labels (sunshine hours the next day)
-> >    y_data = data.loc[1:(nr_rows + 1)]["BASEL_sunshine"]
-> >    # only use columns with 'BASEL'
-> >    cols = [c for c in X_data.columns if c[:5] == 'BASEL']
-> >    X_data = X_data[cols]
-> >    ~~~
-> >    {: .language-python}
+> > ~~~
+> > nr_rows = 365*9
+> > # data
+> > X_data = data.loc[:nr_rows].drop(columns=['DATE', 'MONTH'])
+> > # labels (sunshine hours the next day)
+> > y_data = data.loc[1:(nr_rows + 1)]["BASEL_sunshine"]
+> > # only use columns with 'BASEL'
+> > cols = [c for c in X_data.columns if c[:5] == 'BASEL']
+> > X_data = X_data[cols]
+> > ~~~
+> > {: .language-python}
 > >
 > > Do the train-test-validation split:
 > >
-> >    ~~~
-> >    X_train, X_holdout, y_train, y_holdout = train_test_split(X_data, y_data, test_size=0.3, random_state=0)
-> >    X_val, X_test, y_val, y_test = train_test_split(X_holdout, y_holdout, test_size=0.5, random_state=0)
-> >    ~~~
-> >    {: .language-python}
+> > ~~~
+> > X_train, X_holdout, y_train, y_holdout = train_test_split(X_data, y_data, test_size=0.3, random_state=0)
+> > X_val, X_test, y_val, y_test = train_test_split(X_holdout, y_holdout, test_size=0.5, random_state=0)
+> > ~~~
+> > {: .language-python}
 > >
 > > Function to create a network including the BatchNorm layer:   
-> >    ~~~
-> >    def create_nn():
-> >        # Input layer
-> >        inputs = keras.layers.Input(shape=(X_data.shape[1],), name='input')
-> >    
-> >        # Dense layers
-> >        layers_dense = keras.layers.BatchNormalization()(inputs)
-> >        layers_dense = keras.layers.Dense(100, 'relu')(layers_dense)
-> >        layers_dense = keras.layers.Dense(50, 'relu')(layers_dense)
-> >    
-> >        # Output layer
-> >        outputs = keras.layers.Dense(1)(layers_dense)
-> >    
-> >        # Defining the model and compiling it
-> >        return keras.Model(inputs=inputs, outputs=outputs, name="model_batchnorm")
-> >    ~~~
-> >    {: .language-python}
+> > ~~~
+> > def create_nn():
+> >     # Input layer
+> >     inputs = keras.layers.Input(shape=(X_data.shape[1],), name='input')
+> > 
+> >     # Dense layers
+> >     layers_dense = keras.layers.BatchNormalization()(inputs)
+> >     layers_dense = keras.layers.Dense(100, 'relu')(layers_dense)
+> >     layers_dense = keras.layers.Dense(50, 'relu')(layers_dense)
+> > 
+> >     # Output layer
+> >     outputs = keras.layers.Dense(1)(layers_dense)
+> > 
+> >     # Defining the model and compiling it
+> >     return keras.Model(inputs=inputs, outputs=outputs, name="model_batchnorm")
+> > ~~~
+> > {: .language-python}
 > >
 > > Create the network. Because we have reduced the number of input features
 > > the number of parameters in the network goes down from 14457 to 6137.
-> >    ~~~
-> >    # create the network and view its summary
-> >    model = create_nn()
-> >    model.compile(loss='mse', optimizer='adam', metrics=[keras.metrics.RootMeanSquaredError()])
-> >    model.summary()
-> >    ~~~
-> >    {: .language-python}
+> > ~~~
+> > # create the network and view its summary
+> > model = create_nn()
+> > model.compile(loss='mse', optimizer='adam', metrics=[keras.metrics.RootMeanSquaredError()])
+> > model.summary()
+> > ~~~
+> > {: .language-python}
 > >
 > > Fit with early stopping and output showing performance on validation set:
-> >    ~~~
-> >    history = model.fit(X_train, y_train,
-> >                        batch_size = 32,
-> >                        epochs = 1000,
-> >                        validation_data=(X_val, y_val),
-> >                        callbacks=[earlystopper],
-> >                        verbose = 2)
+> > ~~~
+> > history = model.fit(X_train, y_train,
+> >                     batch_size = 32,
+> >                     epochs = 1000,
+> >                     validation_data=(X_val, y_val),
+> >                     callbacks=[earlystopper],
+> >                     verbose = 2)
 > >
-> >    # plot RMSE
-> >    history_df = pd.DataFrame.from_dict(history.history)
-> >    sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-> >    plt.xlabel("epochs")
-> >    ~~~
-> >    {: .language-python}
+> > # plot RMSE
+> > history_df = pd.DataFrame.from_dict(history.history)
+> > sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
+> > plt.xlabel("epochs")
+> > ~~~
+> > {: .language-python}
 > >
 > > Create a scatter plot to compare with true observations:
-> >    ~~~
-> >    y_test_predicted = model.predict(X_test)
-> >    plt.figure(figsize=(5, 5), dpi=100)
-> >    plt.scatter(y_test_predicted, y_test, s=10, alpha=0.5)
-> >    plt.xlabel("predicted sunshine hours")
-> >    plt.ylabel("true sunshine hours")
-> >    ~~~
-> >    {: .language-python}
+> > ~~~
+> > y_test_predicted = model.predict(X_test)
+> > plt.figure(figsize=(5, 5), dpi=100)
+> > plt.scatter(y_test_predicted, y_test, s=10, alpha=0.5)
+> > plt.xlabel("predicted sunshine hours")
+> > plt.ylabel("true sunshine hours")
+> > ~~~
+> > {: .language-python}
 > >
 > > Compare the mean squared error with baseline prediction. It should be
 > > similar or even a little better than what we saw with the larger model!
-> >    ~~~
-> >    from sklearn.metrics import mean_squared_error
-> >    y_baseline_prediction = X_test['BASEL_sunshine']
-> >    rmse_nn = mean_squared_error(y_test, y_test_predicted, squared=False)
-> >    rmse_baseline = mean_squared_error(y_test, y_baseline_prediction, squared=False)
-> >    print('NN RMSE: {:.2f}, baseline RMSE: {:.2f}'.format(rmse_nn, rmse_baseline))
-> >    ~~~
-> >    {: .language-python}
+> > ~~~
+> > from sklearn.metrics import mean_squared_error
+> > y_baseline_prediction = X_test['BASEL_sunshine']
+> > rmse_nn = mean_squared_error(y_test, y_test_predicted, squared=False)
+> > rmse_baseline = mean_squared_error(y_test, y_baseline_prediction, squared=False)
+> > print('NN RMSE: {:.2f}, baseline RMSE: {:.2f}'.format(rmse_nn, rmse_baseline))
+> > ~~~
+> > {: .language-python}
 > {:.solution}
 {:.challenge}
 
@@ -915,7 +915,6 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > Which will show an interface that looks something like this:
 > ![Screenshot of tensorboard](../fig/03_tensorboard.png)
 > {: .language-python}
->
 {: .callout}
 
 # Outlook
