@@ -27,13 +27,14 @@ Here we want to work with the *weather prediction dataset* (the light version) w
 [downloaded from Zenodo](https://doi.org/10.5281/zenodo.5071376).
 It contains daily weather observations from 11 different European cities or places through the
 years 2000 to 2010. For all locations the data contains the variables ‘mean temperature’, ‘max temperature’, and ‘min temperature’. In addition, for multiple locations, the following variables are provided: 'cloud_cover', 'wind_speed', 'wind_gust', 'humidity', 'pressure', 'global_radiation', 'precipitation', 'sunshine', but not all of them are provided for every location. A more extensive description of the dataset including the different physical units is given in accompanying metadata file. The full dataset comprises of 10 years (3654 days) of collected weather data across Europe.
+
 ![18 locations in the weather prediction dataset](../fig/03_weather_prediction_dataset_map.png)
 
- A very common task with weather data is to make a prediction about the weather sometime in the future, say the next day. In this episode, we will try to predict tomorrow's sunshine hours, a challenging feature-to-predict, using a neural network with the available weather data for one location: BASEL.  
+ A very common task with weather data is to make a prediction about the weather sometime in the future, say the next day. In this episode, we will try to predict tomorrow's sunshine hours, a challenging-to-predict feature, using a neural network with the available weather data for one location: BASEL.  
 
 ## 2. Identify inputs and outputs
 
-## Import Dataset
+### Import Dataset
 We will now import and explore the weather data-set:
 
 ~~~
@@ -446,7 +447,7 @@ NN RMSE: 4.05, baseline RMSE: 3.88
 ~~~
 {:.output}
 
-Judging from the numbers alone, our neural network preduction would be performing worse than the baseline.
+Judging from the numbers alone, our neural network prediction would be performing worse than the baseline.
 
 > ## Exercise: Baseline
 > Looking at this baseline: Would you consider this a simple or a hard problem to solve?
