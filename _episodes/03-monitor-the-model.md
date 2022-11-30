@@ -417,16 +417,20 @@ axes[1].set_ylabel("true sunshine hours")
 ![Scatter plot to evaluate training and test set](../fig/03_regression_training_test_comparison.png)
 
 > ## Exercise: Reflecting on our results
-> 1. Is the performance of the model as you expected (or better/worse)?
-> 2. Is there a noteable difference between training set and test set? And if so, any idea why?
-> 3. (Optional) Read part 8 'Establish a single-number evaluation metric for your team to optimize' of
->     [Machine learning yearning](http://nessie.ilab.sztaki.hu/~kornai/2020/AdvancedMachineLearning/Ng_MachineLearningYearning.pdf).
->     What single-number evaluation metric would you choose here and why?
+> * Is the performance of the model as you expected (or better/worse)?
+> * Is there a noteable difference between training set and test set? And if so, any idea why?
+> * (Optional) When developing a model, you will often vary different aspects of you model like 
+>   which features you use, model parameters and architecture. It is important to settle on a 
+>   single-number evaluation metric* to compare your models.
+>     * What single-number evaluation metric would you choose here and why?
+> 
 > > ## Solution
 > > 
 > > While the performance on the train set seems reasonable, the performance on the test set is much worse.
 > > This is a common problem called **overfitting**, which we will discuss in more detail later.
 > >
+> > Optional answer:
+> > Mean accuracy would be a single-value metric that you can use in this case.
 > {:.solution}
 {:.challenge}
 
@@ -498,13 +502,13 @@ Judging from the numbers alone, our neural network prediction would be performin
 
 > ## Exercise: Baseline
 > 1. Looking at this baseline: Would you consider this a simple or a hard problem to solve?
-> 2. (optional) Can you think of other baselines? You could think of a slightly more complex, rule-based baseline.
+> 2. (Optional) Can you think of other baselines?
 >
 > > ## Solution
 > >
-> > This really depends on your definition of hard! The baseline gives a more accurate prediction than just
+> > 1. This really depends on your definition of hard! The baseline gives a more accurate prediction than just
 > > randomly predicting a number, so the problem is not impossible to solve with machine learning. However, given the structure of the data and our expectations with respect to quality of prediction, it may remain hard to find a good algorithm which exceeds our baseline by orders of magnitude.
-> >
+> > 2. There are a lot of possible answers. A slighly more complicated baseline would be to take the average over the last couple of days.
 > {:.solution}
 {:.challenge}
 
@@ -556,13 +560,16 @@ plt.ylabel("RMSE")
 > ## Exercise: plot the training progress.
 >
 > 1. Is there a difference between the training and validation data? And if so, what would this imply?
-> 2. (Optional) Take a pen and paper, draw the perfect training curve.
+> 2. (Optional) Take a pen and paper, draw the perfect training and validation curves.
 >    (This may seem trivial, but it will trigger you to think about what you actually would like to see)
 >
 > > ## Solution
 > > The difference between training and validation data shows that something is not completely right here.
 > > The model predictions on the validation set quickly seem to reach a plateau while the performance on the training set keeps improving.
 > > That is a common signature of *overfitting*.
+> > Optional:
+> > Ideally you would like the training and validation curves to be identical and slope down steeply
+> > to 0. After that the curves will just consistently stay at 0.
 > {:.solution}
 {:.challenge}
 
