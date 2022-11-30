@@ -336,7 +336,7 @@ With this, we complete the compilation of our network and are ready to start tra
 
 > ## Challenge: Metrics
 >
-> 1. Look into the [Keras documentation on metrics](https://keras.io/api/metrics/).
+> Look into the [Keras documentation on metrics](https://keras.io/api/metrics/).
 > Choose an additional metric that you would like to track, and compile the model again with this metric added.
 >
 > > ## Solution
