@@ -98,6 +98,16 @@ pip install tensorflow>=2.5 seaborn scikit-learn pandas
 [pip](https://pip.pypa.io/en/stable/) is the package management system for Python software packages.
 It is integrated into your local Python installation and runs regardless of your operating system too.
 
+### Troubleshooting for Macs with Apple silicon chip
+Newer Macs (from 2020 onwards) often have a different kind of chip, manufactured by Apple instead of Intel.
+This can lead to problems installing Tensorflow .
+If you get errors running the installation command or conda hangs endlessly,
+you can try installing Tensorflow for Mac with pip:
+
+~~~
+pip install tensorflow-macos
+~~~
+
 ## Starting a Jupyter Notebook
 
 We will teach using Python in a [Jupyter notebook][jupyter], a
