@@ -113,7 +113,7 @@ Make sure your name and email adress are in the AUTHORS file in your pull reques
 Once the pull request is approved it will be merged by one of the maintainers.
 
 ### Merge conflicts
-Sometimes your contributions can give rise to [merge conflicts](https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts)
+Sometimes your contributions can give rise to [merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts)
 The author of the PR is responsible to resolve merge conflicts.
 In case, the author is incapable to do so, a short discussion should be conducted on who is responsible.
 
