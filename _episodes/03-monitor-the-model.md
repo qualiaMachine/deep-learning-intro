@@ -358,21 +358,25 @@ For the present *regression task*, it makes more sense to compare true and predi
 So, let's look at how the predicted sunshine hour have developed with reference to their ground truth values.
 
 ~~~
-fig, axes = plt.subplots(1, 2, figsize=(12, 6))
-plt.style.use('ggplot')  # optional, that's only to define a visual style
-axes[0].scatter(y_train_predicted, y_train, s=10, alpha=0.5, color="teal")
-axes[0].set_title("training set")
-axes[0].set_xlabel("predicted sunshine hours")
-axes[0].set_ylabel("true sunshine hours")
+# We define a function that we will reuse in this lesson
+def plot_predictions(y_pred, y_true, title):
+    plt.style.use('ggplot')  # optional, that's only to define a visual style
+    plt.scatter(y_pred, y_true, s=10, alpha=0.5)
+    plt.xlabel("predicted sunshine hours")
+    plt.ylabel("true sunshine hours")
+    plt.title(title)
 
-axes[1].scatter(y_test_predicted, y_test, s=10, alpha=0.5, color="teal")
-axes[1].set_title("test set")
-axes[1].set_xlabel("predicted sunshine hours")
-axes[1].set_ylabel("true sunshine hours")
+plot_predictions(y_train_predicted, y_train, title='Predictions on the training set')
 ~~~
 {: .language-python}
-![Scatter plot to evaluate training and test set](../fig/03_regression_training_test_comparison.png)
+![Scatter plot between predictions and true values on the train set](../fig/03_regression_predictions_trainset.png)
 
+~~~
+plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
+~~~
+![Scatter plot between predictions and true values on the test set](../fig/03_regression_predictions_testset.png)
+
+{: .language-python}
 > ## Exercise: Reflecting on our results
 > 1. Is the performance of the model as you expected (or better/worse)?
 > 2. Is there a noteable difference between training set and test set? And if so, any idea why?
@@ -425,11 +429,7 @@ Maybe the simplest sunshine hour prediction we can easily do is: Tomorrow we wil
 We can take the `BASEL_sunshine` column of our data, because this contains the sunshine hours from one day before what we have as a label.
 ~~~
 y_baseline_prediction = X_test['BASEL_sunshine']
-
-plt.figure(figsize=(5, 5), dpi=100)
-plt.scatter(y_baseline_prediction, y_test, s=10, alpha=0.5)
-plt.xlabel("sunshine hours yesterday")
-plt.ylabel("true sunshine hours")
+plot_predictions(y_baseline_prediction, y_test, title='Baseline predictions on the test set')
 ~~~
 {: .language-python}
 
@@ -498,7 +498,7 @@ history = model.fit(X_train, y_train,
 With this we can plot both the performance on the training data and on the validation data!
 
 ~~~
-plot_history(['root_mean_squared_error', val_root_mean_squared_error])
+plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ~~~
 {: .language-python}
 ![Output of plotting sample](../fig/03_training_history_2_rmse.png){: width="500px"}
@@ -742,11 +742,7 @@ It seems that no matter what we add, the overall loss does not decrease much fur
 Let's again plot the results on the test set:
 ~~~
 y_test_predicted = model.predict(X_test)
-
-plt.figure(figsize=(5, 5), dpi=100)
-plt.scatter(y_test_predicted, y_test, s=10, alpha=0.5)
-plt.xlabel("predicted sunshine hours")
-plt.ylabel("true sunshine hours")
+plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 ~~~
 {: .language-python}
 
@@ -850,10 +846,7 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > > Create a scatter plot to compare with true observations:
 > > ~~~
 > > y_test_predicted = model.predict(X_test)
-> > plt.figure(figsize=(5, 5), dpi=100)
-> > plt.scatter(y_test_predicted, y_test, s=10, alpha=0.5)
-> > plt.xlabel("predicted sunshine hours")
-> > plt.ylabel("true sunshine hours")
+> > plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 > > ~~~
 > > {: .language-python}
 > >
