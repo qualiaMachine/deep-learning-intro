@@ -19,15 +19,22 @@ keypoints:
 - "Separate training, validation, and test sets allows monitoring and evaluating your model."
 - "Batchnormalization scales the data as part of the model."
 ---
+In this episode we will explore the concept of hyperparameter tuning using a more complicated weather data-set.
 
-# Import & explore the data
+## 1. Formulate / Outline the problem: weather prediction
 
-### Import dataset
 Here we want to work with the *weather prediction dataset* (the light version) which can be
 [downloaded from Zenodo](https://doi.org/10.5281/zenodo.5071376).
 It contains daily weather observations from 11 different European cities or places through the
-years 2000 to 2010. For all locations the data contains the variables ‘mean temperature’, ‘max temperature’, and ‘min temperature’. In addition, for multiple of the following variables are provided: 'cloud_cover', 'wind_speed', 'wind_gust', 'humidity', 'pressure', 'global_radiation', 'precipitation', 'sunshine', but not all of them are provided for all locations. A more extensive description of the dataset including the different physical units is given in accompanying metadata file.
+years 2000 to 2010. For all locations the data contains the variables ‘mean temperature’, ‘max temperature’, and ‘min temperature’. In addition, for multiple locations, the following variables are provided: 'cloud_cover', 'wind_speed', 'wind_gust', 'humidity', 'pressure', 'global_radiation', 'precipitation', 'sunshine', but not all of them are provided for every location. A more extensive description of the dataset including the different physical units is given in accompanying metadata file. The full dataset comprises of 10 years (3654 days) of collected weather data across Europe.
 ![18 locations in the weather prediction dataset](../fig/03_weather_prediction_dataset_map.png)
+
+ A very common task with weather data is to make a prediction about the weather sometime in the future, say the next day. In this episode, we will try to predict tomorrow's sunshine hours, a challenging feature-to-predict, using a neural network with the available weather data for one location: BASEL.  
+
+## 2. Identify inputs and outputs
+
+## Import Dataset
+We will now import and explore the weather data-set:
 
 ~~~
 import pandas as pd
@@ -112,13 +119,10 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > {:.solution}
 {:.challenge}
 
-
-# Define the problem: Predict tomorrow's sunshine hours
+## 3. Prepare data
 
 ### Select a subset and split into data (X) and labels (y)
-The full dataset comprises 10 years (3654 days) from which we here will only select the first 3 years.
-We will then define what exactly we want to predict from this data. A very common task with weather data is to make a prediction about the weather sometime in the future, say the next day. The present dataset is sorted by "DATE", so for each row `i` in the table we can pick a corresponding feature and location from row `i+1` that we later want to predict with our model.
-Here we will pick a rather difficult-to-predict feature, sunshine hours, which we want to predict for the location: BASEL.
+The full dataset comprises of 10 years (3654 days) from which we will select only the first 3 years. The present dataset is sorted by "DATE", so for each row `i` in the table we can pick a corresponding feature and location from row `i+1` that we later want to predict with our model. As outlined in step 1, we would like to predict the sunshine hours for the location: BASEL.
 
 ~~~
 nr_rows = 365*3
@@ -130,8 +134,6 @@ y_data = data.loc[1:(nr_rows + 1)]["BASEL_sunshine"]
 ~~~
 {:.language-python}
 
-
-# Prepare the data for machine learning
 In general, it is important to check if the data contains any unexpected values such as `9999` or `NaN` or `NoneType`. You can use the pandas `data.describe()` function for this. If so, such values must be removed or replaced.
 In the present case the data is luckily well prepared and shouldn't contain such values, so that this step can be omitted.
 
@@ -159,7 +161,7 @@ X_val, X_test, y_val, y_test = train_test_split(X_holdout, y_holdout, test_size=
 
 Setting the `random_state` to `0` is a short-hand at this point. Note however, that changing this seed of the pseudo-random number generator will also change the composition of your data sets. For the sake of reproducibility, this is one example of a parameters that should not change at all.
 
-## Build a dense neural network
+## 4. Choose a pretrained model or start building architecture from scratch
 
 ### Regression and classification - how to set a training goal
 
@@ -242,6 +244,7 @@ Non-trainable params: 0
 
 When compiling the model we can define a few very important aspects. We will discuss them now in more detail.
 
+## 5. Choose a loss function and optimizer
 ### Loss function
 The loss is what the neural network will be optimized on during training, so choosing a suitable loss function is crucial for training neural networks.
 In the given case we want to stimulate that the predicted values are as close as possible to the true values. This is commonly done by using the *mean squared error* (mse) or the *mean absolute error* (mae), both of which should work OK in this case. Often, mse is preferred over mae because it "punishes" large prediction errors more severely.
@@ -303,7 +306,7 @@ With this, we complete the compilation of our network and are ready to start tra
 > {:.solution}
 {:.challenge}
 
-## Train a dense neural network
+## 6. Train the model
 
 Now that we created and compiled our dense neural network, we can start training it.
 One additional concept we need to introduce though, is the `batch_size`.
@@ -334,19 +337,20 @@ plt.ylabel("RMSE")
 This looks very promising! Our metric ("RMSE") is dropping nicely and while it maybe keeps fluctuating a bit it does end up at fairly low *RMSE* values.
 But the *RMSE* is just the root *mean* squared error, so we might want to look a bit more in detail how well our just trained model does in predicting the sunshine hours.
 
-## Evaluate our model
-
-There is not a single way to evaluate how a model performs. But there are at least two very common approaches. For a *classification task* that is to compute a *confusion matrix* for the test set which shows how often particular classes were predicted correctly or incorrectly.
-
-For the present *regression task*, it makes more sense to compare true and predicted values in a scatter plot.
-
-First, we will do the actual prediction step.
+## 7. Perform a Prediction/Classification
+Now that we have our model trained, we can make a prediction with the model before measuring the performance of our neural network.
 
 ~~~
 y_train_predicted = model.predict(X_train)
 y_test_predicted = model.predict(X_test)
 ~~~
 {: .language-python}
+
+## 8. Measure performance
+
+There is not a single way to evaluate how a model performs. But there are at least two very common approaches. For a *classification task* that is to compute a *confusion matrix* for the test set which shows how often particular classes were predicted correctly or incorrectly.
+
+For the present *regression task*, it makes more sense to compare true and predicted values in a scatter plot.
 
 So, let's look at how the predicted sunshine hour have developed with reference to their ground truth values.
 
@@ -404,7 +408,8 @@ As a result, it makes much more accurate predictions on the training data than o
 Overfitting also happens in classical machine learning, but there it is usually interpreted as the model having more parameters than the training data would justify (say, a decision tree with too many branches for the number of training instances). As a consequence one would reduce the number of parameters to avoid overfitting.
 In deep learning the situation is slightly different. It can - as for classical machine learning - also be a sign of having a *too big* model, meaning a model with too many parameters (layers and/or nodes). However, in deep learning higher number of model parameters are often still considered acceptable and models often perform best (in terms of prediction accuracy) when they are at the verge of overfitting. So, in a way, training deep learning models is always a bit like playing with fire...
 
-## Set expectations: How difficult is the defined problem?
+## 9. Tune hyperparameters
+### Set expectations: How difficult is the defined problem?
 
 Before we dive deeper into handling overfitting and (trying to) improving the model performance, let's ask the question: How well must a model perform before we consider it a good model?
 
@@ -454,14 +459,14 @@ Judging from the numbers alone, our neural network preduction would be performin
 > {:.solution}
 {:.challenge}
 
-## Watch your model training closely
+### Watch your model training closely
 
 As we saw when comparing the predictions for the training and the test set, deep learning models are prone to overfitting. Instead of iterating through countless cycles of model trainings and subsequent evaluations with a reserved test set, it is common practice to work with a second split off dataset to monitor the model during training.
 This is the *validation set* which can be regarded as a second test set. As with the test set, the datapoints of the *validation set* are not used for the actual model training itself. Instead, we evaluate the model with the *validation set* after every epoch during training, for instance to stop if we see signs of clear overfitting.
 Since we are adapting our model (tuning our hyperparameters) based on this validation set, it is *very* important that it is kept separate from the test set. If we used the same set, we wouldn't know whether our model truly generalizes or is only overfitting.   
 
-> ## Training vs. validation set
-> Not everybody agrees on the terminology of training set versus validation set. You might find 
+> ## Test vs. validation set
+> Not everybody agrees on the terminology of test set versus validation set. You might find 
 > examples in literature where these terms are used the other way around.
 > 
 > We are sticking to the definition that is consistent with the Keras API. In there, the validation 
@@ -511,12 +516,12 @@ plt.ylabel("RMSE")
 {:.challenge}
 
 
-## Counteract model overfitting
+### Counteract model overfitting
 
 Overfitting is a very common issue and there are many strategies to handle it.
 Most similar to classical machine learning might to **reduce the number of parameters**.
 
-> ## Try to reduce the degree of overfitting by lowering the number of parameters
+> ## Exercise: Try to reduce the degree of overfitting by lowering the number of parameters
 >
 > We can keep the network architecture unchanged (2 dense layers + a one-node output layer) and only play with the number of nodes per layer.
 > Try to lower the number of nodes in one or both of the two dense layers and observe the changes to the training and validation losses.
@@ -595,13 +600,13 @@ We saw that reducing the number of parameters can be a strategy to avoid overfit
 In practice, however, this is usually not the (main) way to go when it comes to deep learning.
 One reason is, that finding the sweet spot can be really hard and time consuming. And it has to be repeated every time the model is adapted, e.g. when more training data becomes available.
 
-> ## Sweet Spots
+> ### Sweet Spots
 > Note: There is no single correct solution here. But you will have noticed that the number of nodes can be reduced quite a bit!
 > In general, it quickly becomes a very complicated search for the right "sweet spot", i.e. the settings for which overfitting will be (nearly) avoided but which still performes equally well.
 {: .callout }
 
 
-## Early stopping: stop when things are looking best
+### Early stopping: stop when things are looking best
 Arguable **the** most common technique to avoid (severe) overfitting in deep learning is called **early stopping**.
 As the name suggests, this technique just means that you stop the model training if things do not seem to improve anymore.
 More specifically, this usually means that the training is stopped if the validation loss does not (notably) improve anymore.
@@ -659,7 +664,7 @@ Overfitting means that a model (seemingly) performs better on seen data compared
 Techniques to avoid overfitting, or to improve model generalization, are termed **regularization techniques** and we will come back to this in **episode 4**.
 
 
-## BatchNorm: the "standard scaler" for deep learning
+### BatchNorm: the "standard scaler" for deep learning
 
 A very common step in classical machine learning pipelines is to scale the features, for instance by using sckit-learn's `StandardScaler`.
 This can in principle also be done for deep learning.
@@ -737,7 +742,7 @@ plt.ylabel("RMSE")
 
 ![Output of plotting sample](../fig/03_training_history_5_rmse_batchnorm.png){: width="500px"}
 
-> ## Batchnorm parameters
+> ### Batchnorm parameters
 >
 > You may have noticed that the number of parameters of the Batchnorm layers corresponds to
 > 4 parameters per input node.
@@ -749,7 +754,7 @@ plt.ylabel("RMSE")
 >
 {: .callout}
 
-## Run on test set and compare to naive baseline
+### Run on test set and compare to naive baseline
 
 It seems that no matter what we add, the overall loss does not decrease much further (we at least avoided overfitting though!).
 Let's again plot the results on the test set:
@@ -916,6 +921,15 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > ![Screenshot of tensorboard](../fig/03_tensorboard.png)
 > {: .language-python}
 {: .callout}
+
+## 10. Save model
+
+Now that we have a somewhat acceptable model, let's not forget to save it for future users to benefit from our explorative efforts!
+
+~~~
+model.save('my_tuned_weather_model')
+~~~
+{: .language-python}
 
 # Outlook
 Correctly predicting tomorrow's sunshine hours is apparently not that simple.
