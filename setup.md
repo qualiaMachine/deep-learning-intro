@@ -72,22 +72,22 @@ If you run into any difficulties, please request help before the workshop begins
 
 ## Installing the required packages
 
-[Conda](https://docs.conda.io/projects/conda/en/latest/) is the package management system associated with [Anaconda](https://anaconda.org) and runs on Windows, macOS and Linux. 
+[Conda](https://docs.conda.io/projects/conda/en/latest/) is the package management system associated with [Anaconda](https://anaconda.org) and runs on Windows, macOS and Linux.
 Conda should already be available in your system once you installed Anaconda successfully. Conda thus works regardless of the operating system.
 Make sure you have an up-to-date version of Conda running.
-See [these instructions](https://docs.anaconda.com/anaconda/install/update-version/) for updating Conda if required. 
+See [these instructions](https://docs.anaconda.com/anaconda/install/update-version/) for updating Conda if required.
 {: .callout}
 
 Open a terminal and type the command:
 ~~~
 conda install tensorflow seaborn scikit-learn pandas
 ~~~
-{: .source}  
+{: .source}
 Note that modern versions of Tensorflow make Keras available as a module.
 
 
 ### Troubleshooting for Windows
-It is possible that Windows users will run into version conflicts. If you are on Windows and get 
+It is possible that Windows users will run into version conflicts. If you are on Windows and get
 errors running the command, you can try installing the packages using pip:
 
 ~~~
@@ -97,6 +97,16 @@ pip install tensorflow>=2.5 seaborn scikit-learn pandas
 
 [pip](https://pip.pypa.io/en/stable/) is the package management system for Python software packages.
 It is integrated into your local Python installation and runs regardless of your operating system too.
+
+### Troubleshooting for Macs with Apple M1 chip
+Newer Macs (from 2020 onwards) often have an Apple M1 chip instead of Intel.
+This can lead to problems installing Tensorflow .
+If you get errors running the installation command or conda hangs endlessly,
+you can try installing Tensorflow for Mac with pip:
+
+~~~
+pip install tensorflow-macos
+~~~
 
 ## Starting a Jupyter Notebook
 
