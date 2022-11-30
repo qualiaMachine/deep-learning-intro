@@ -19,7 +19,7 @@ keypoints:
 - "Separate training, validation, and test sets allows monitoring and evaluating your model."
 - "Batchnormalization scales the data as part of the model."
 ---
-In this episode we will explore the concept of hyperparameter tuning using a more complicated weather data-set.
+In this episode we will explore how to monitor the training progress, evaluate our the model predictions and finetune the model to avoid over-fitting. For that we will use a more complicated weather data-set.
 
 ## 1. Formulate / Outline the problem: weather prediction
 
