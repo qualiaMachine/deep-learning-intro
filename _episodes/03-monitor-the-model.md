@@ -287,6 +287,15 @@ model.compile(optimizer='adam',
 ~~~
 {: .language-python}
 
+Let's create a `compile_model` function to easily compile the model throughout this lesson:
+~~~
+def compile_model(model):
+    model.compile(optimizer='adam',
+                  loss='mse',
+                  metrics=[keras.metrics.RootMeanSquaredError()])
+~~~
+{: .language-python}
+
 With this, we complete the compilation of our network and are ready to start training.
 
 ## 6. Train the model
@@ -304,15 +313,25 @@ history = model.fit(X_train, y_train,
 ~~~
 {: .language-python}
 
-We can plot the training process using the `history` object returned from the model training:
+We can plot the training process using the `history` object returned from the model training.
+We will create a function for it, because we will make use of this more often in this lesson!
 ~~~
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df['root_mean_squared_error'])
-plt.xlabel("epochs")
-plt.ylabel("RMSE")
+def plot_history(metrics):
+    """
+    Plot the training history
+
+    Args:
+        metrics: A list of metrics to plot
+    """
+    history_df = pd.DataFrame.from_dict(history.history)
+    sns.lineplot(data=history_df[metrics])
+    plt.xlabel("epochs")
+    plt.ylabel("RMSE")
+
+plot_history(['root_mean_squared_error'])
 ~~~
 {: .language-python}
 ![Output of plotting sample](../fig/03_training_history_1_rmse.png){: width="500px"}
@@ -462,9 +481,7 @@ Let's give this a try!
 We need to initiate a new model -- otherwise Keras will simply assume that we want to continue training the model we already trained above.
 ~~~
 model = create_nn()
-model.compile(optimizer='adam',
-              loss='mse',
-              metrics=[keras.metrics.RootMeanSquaredError()])
+compile_model(model)
 ~~~
 {: .language-python}
 
@@ -480,10 +497,7 @@ history = model.fit(X_train, y_train,
 With this we can plot both the performance on the training data and on the validation data!
 
 ~~~
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-plt.xlabel("epochs")
-plt.ylabel("RMSE")
+plot_history(['root_mean_squared_error', val_root_mean_squared_error])
 ~~~
 {: .language-python}
 ![Output of plotting sample](../fig/03_training_history_2_rmse.png){: width="500px"}
@@ -555,18 +569,13 @@ Most similar to classical machine learning might to **reduce the number of param
 > > {:.output}
 > >
 > > ~~~
-> > model.compile(optimizer='adam',
-> >               loss='mse',
-> >               metrics=[keras.metrics.RootMeanSquaredError()])
+> > compile_model(model)
 > > history = model.fit(X_train, y_train,
 > >                     batch_size = 32,
 > >                     epochs = 200,
 > >                     validation_data=(X_val, y_val))
 > >
-> > history_df = pd.DataFrame.from_dict(history.history)
-> > sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-> > plt.xlabel("epochs")
-> > plt.ylabel("RMSE")
+> > plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 > > ~~~
 > > {:.language-python}
 > >
@@ -598,9 +607,7 @@ Early stopping is both intuitive and effective to use, so it has become a standa
 To better study the effect, we can now safely go back to models with many (too many?) parameters:
 ~~~
 model = create_nn()
-model.compile(optimizer='adam',
-              loss='mse',
-              metrics=[keras.metrics.RootMeanSquaredError()])
+compile_model(model)
 ~~~
 {: .language-python}
 
@@ -625,10 +632,7 @@ history = model.fit(X_train, y_train,
 
 As before, we can plot the losses during training:
 ~~~
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-plt.xlabel("epochs")
-plt.ylabel("RMSE")
+plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ~~~
 {: .language-python}
 
@@ -677,7 +681,7 @@ def create_nn():
     return keras.Model(inputs=inputs, outputs=outputs, name="model_batchnorm")
 
 model = create_nn()
-model.compile(loss='mse', optimizer='adam', metrics=[keras.metrics.RootMeanSquaredError()])
+compile_model(model)
 model.summary()
 ~~~
 {: .language-python}
@@ -713,10 +717,7 @@ history = model.fit(X_train, y_train,
                     validation_data=(X_val, y_val),
                     callbacks=[earlystopper])
 
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-plt.xlabel("epochs")
-plt.ylabel("RMSE")
+plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ~~~
 {: .language-python}
 
@@ -827,7 +828,7 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > > ~~~
 > > # create the network and view its summary
 > > model = create_nn()
-> > model.compile(loss='mse', optimizer='adam', metrics=[keras.metrics.RootMeanSquaredError()])
+> > compile_model(model)
 > > model.summary()
 > > ~~~
 > > {: .language-python}
@@ -841,10 +842,7 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > >                     callbacks=[earlystopper],
 > >                     verbose = 2)
 > >
-> > # plot RMSE
-> > history_df = pd.DataFrame.from_dict(history.history)
-> > sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-> > plt.xlabel("epochs")
+> > plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 > > ~~~
 > > {: .language-python}
 > >
