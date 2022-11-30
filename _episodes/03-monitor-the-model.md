@@ -293,6 +293,7 @@ def compile_model(model):
     model.compile(optimizer='adam',
                   loss='mse',
                   metrics=[keras.metrics.RootMeanSquaredError()])
+compile_model(model)
 ~~~
 {: .language-python}
 
