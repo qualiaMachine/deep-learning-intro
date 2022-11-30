@@ -89,7 +89,7 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > * How many data points do we have?
 > * How many features does the data have (don't count month and date as a feature)?
 > * What are the different measured variable types in the data and how many are there (humidity etc.) ?
-> * * (Optional) Plot the distributions of the different features in the dataset. What can you learn from this?
+> * * (Optional) Plot the amount of sunshine hours in Basel over the course of a year. Are there any interesting properties that you notice? 
 >
 > > ## Solution
 > > ~~~
@@ -118,6 +118,49 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > > feature_names
 > > ~~~
 > > In total there are 9 different measured variables.
+> >
+> > To see the datatypes we can use:
+> > ~~~
+> > data.dtypes
+> > ~~~
+> > {:.language-python}
+> > ~~~
+> > DATE                        int64
+> > MONTH                       int64
+> > BASEL_cloud_cover           int64
+> > BASEL_humidity            float64
+> > BASEL_pressure            float64
+> >                            ...   
+> > TOURS_global_radiation    float64
+> > TOURS_precipitation       float64
+> > TOURS_temp_mean           float64
+> > TOURS_temp_min            float64
+> > TOURS_temp_max            float64
+> > Length: 91, dtype: object
+> > ~~~
+> > {:.output}
+> > We can inspect all the elements or we can check which unique datatypes are there:
+> > ~~~
+> > data.dtypes.unique()
+> > ~~~
+> > {:.language-python}
+> > ~~~
+> > array([dtype('int64'), dtype('float64')], dtype=object)
+> > ~~~
+> > {:.output}
+> > It looks like the dataset consists of integers and floats.
+> >
+> > 
+> > ### Optional exercise
+> > You can plot the sunshine hours in Basel as follows:
+> > ~~~
+> > data.iloc[:365]['BASEL_sunshine'].plot()
+> > ~~~
+> > {:.language-python}
+> > ![Plot of Basel sunshine hours in one year](../fig/03_exploration_basel_sunshine_graph.png){: width="500px"}
+> > There are a couple of things that might stand out to you. For example, it looks like the sunshine
+> > hours are fluctuating a lot per day. There also seems to be seasonal fluctuation, with the peaks
+> > becoming higher around the middle of the year.
 > {:.solution}
 {:.challenge}
 
