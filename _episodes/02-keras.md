@@ -191,8 +191,8 @@ sns.pairplot(penguins, hue="species")
 >
 > > ## Solution
 > > The plots show that the green class, Gentoo is somewhat more easily distinguishable from the other two.
-> > The other two seem to be most easily separated by a combination of bill length and bill
-> > depth.
+> > The other two seem to be separable by a combination of bill length and bill
+> > depth (other combinations are also possible such as bill length and flipper length).
 > {:.solution}
 {:.challenge}
 
