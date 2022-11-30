@@ -112,6 +112,11 @@ These should result in no errors.
 Make sure your name and email adress are in the AUTHORS file in your pull request.
 Once the pull request is approved it will be merged by one of the maintainers.
 
+### Merge conflicts
+Sometimes your contributions can give rise to [merge conflicts](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/about-merge-conflicts)
+The author of the PR is responsible to resolve merge conflicts.
+In case, the author is incapable to do so, a short discussion should be conducted on who is responsible.
+
 ## What *Not* to Contribute
 
 Our lessons already contain more material than we can cover in a typical workshop,
