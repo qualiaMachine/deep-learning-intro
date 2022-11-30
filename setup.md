@@ -72,22 +72,22 @@ If you run into any difficulties, please request help before the workshop begins
 
 ## Installing the required packages
 
-[Conda](https://docs.conda.io/projects/conda/en/latest/) is the package management system associated with [Anaconda](https://anaconda.org) and runs on Windows, macOS and Linux. 
+[Conda](https://docs.conda.io/projects/conda/en/latest/) is the package management system associated with [Anaconda](https://anaconda.org) and runs on Windows, macOS and Linux.
 Conda should already be available in your system once you installed Anaconda successfully. Conda thus works regardless of the operating system.
 Make sure you have an up-to-date version of Conda running.
-See [these instructions](https://docs.anaconda.com/anaconda/install/update-version/) for updating Conda if required. 
+See [these instructions](https://docs.anaconda.com/anaconda/install/update-version/) for updating Conda if required.
 {: .callout}
 
 Open a terminal and type the command:
 ~~~
 conda install tensorflow seaborn scikit-learn pandas
 ~~~
-{: .source}  
+{: .source}
 Note that modern versions of Tensorflow make Keras available as a module.
 
 
 ### Troubleshooting for Windows
-It is possible that Windows users will run into version conflicts. If you are on Windows and get 
+It is possible that Windows users will run into version conflicts. If you are on Windows and get
 errors running the command, you can try installing the packages using pip:
 
 ~~~
@@ -138,11 +138,16 @@ print('pandas version: ', pandas.__version__)
 
 from tensorflow import keras
 print('Keras version: ', keras.__version__)
+
+import tensorflow
+print('Tensorflow version: ', tensorflow.__version__)
 ~~~
 {:.language-python}
 
 This should output the versions of all required packages without giving errors.
-Most versions will work fine with this lesson, but for Keras, the minimum version is 2.2.4, and for sklearn the minimum version is 0.22.
+Most versions will work fine with this lesson, but:
+- For Keras and Tensorflow, the minimum version is 2.2.4
+- For sklearn, the minimum version is 0.22.
 
 ## Fallback option: cloud environment
 If a local installation does not work for you, it is also possible to run this lesson in [Google colab](https://colab.research.google.com/). If you open a notebook here, the required packages are already pre-installed.
