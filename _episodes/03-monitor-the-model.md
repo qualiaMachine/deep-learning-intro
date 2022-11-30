@@ -338,7 +338,6 @@ With this, we complete the compilation of our network and are ready to start tra
 >
 > 1. Look into the [Keras documentation on metrics](https://keras.io/api/metrics/).
 > Choose an additional metric that you would like to track, and compile the model again with this metric added.
-> 2. (Optional) Look into the [documentation on Model.compile]. Try to understand what else you can configure when compiling your model.
 >
 > > ## Solution
 > > As we are facing a regression task, we should pick one of the metrics under [Regression metrics](https://keras.io/api/metrics/regression_metrics/).
