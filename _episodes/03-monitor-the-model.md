@@ -160,7 +160,7 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > > ![Plot of Basel sunshine hours in one year](../fig/03_exploration_basel_sunshine_graph.png){: width="500px"}
 > > There are a couple of things that might stand out to you. For example, it looks like the sunshine
 > > hours are fluctuating a lot per day. There also seems to be seasonal fluctuation, with the peaks
-> > becoming higher around the middle of the year.
+> > becoming higher around the middle of the year. 
 > {:.solution}
 {:.challenge}
 
@@ -220,7 +220,7 @@ Now we want to work on a *regression task*, thus not predicting a class label (o
 > 1. What must be the dimension of our input layer?
 > 2. We want to output the prediction of a single number. The output layer of the NN hence cannot be the same as for the classification task earlier. This is because the `softmax` activation being used had a concrete meaning with respect to the class labels which is not needed here. What output layer design would you choose for regression?
 Hint: A layer with `relu` activation, with `sigmoid` activation or no activation at all?
-> 3. * (Optional) If next to the number of sunshine hours, we would also like to predict the precipitation. How would you go about this?
+> 3. * (Optional) How would we change the model if we would like to output a prediction of the precipitation in Basel in *addition* to the sunshine hours?
 >
 > > ## Solution
 > >
