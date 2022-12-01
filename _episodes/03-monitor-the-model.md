@@ -155,7 +155,7 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > > ### Optional exercise
 > > You can plot the sunshine hours in Basel as follows:
 > > ~~~
-> > data.iloc[:365]['BASEL_sunshine'].plot()
+> > data.iloc[:365]['BASEL_sunshine'].plot(xlabel="Day",ylabel="Basel sunchine hours")
 > > ~~~
 > > {:.language-python}
 > > ![Plot of Basel sunshine hours in one year](../fig/03_exploration_basel_sunshine_graph.png){: width="500px"}
