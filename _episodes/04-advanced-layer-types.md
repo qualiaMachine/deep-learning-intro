@@ -62,9 +62,8 @@ train_labels = train_labels[:n]
 > 1. What is the dimension of a single data point? What do you think the dimensions mean?
 > 2. What is the range of values that your input data takes?
 > 3. What is the shape of the labels, and how many labels do we have?
-> 4. (Optional) Pre-trained models Step 4 of our 'deep learning workflow' is:
->    'Choose a pre-trained model or build a new architecture from scratch'.
->    We are going to build a new architecture from scratch to get you familiar with the convolutional neural network basics.
+> 4. (Optional) We are going to build a new architecture from scratch to get you
+>    familiar with the convolutional neural network basics.
 >    But in the real world you wouldn't do that.
 >    So the challenge is: Browse the web for (more) existing architectures or pre-trained models that are likely to work
 >    well on this type of data. Try to understand why they work well for this type of data.
