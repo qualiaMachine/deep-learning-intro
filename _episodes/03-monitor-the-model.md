@@ -399,7 +399,7 @@ axes[1].set_ylabel("true sunshine hours")
 > > While the performance on the train set seems reasonable, the performance on the test set is much worse.
 > > This is a common problem called **overfitting**, which we will discuss in more detail later.
 > >
-> > Optional exersise:
+> > Optional exercise:
 > > Mean accuracy would be a single-value metric that you can use in this case.
 > {:.solution}
 {:.challenge}
