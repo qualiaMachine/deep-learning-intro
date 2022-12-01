@@ -221,7 +221,7 @@ Now we want to work on a *regression task*, thus not predicting a class label (o
 > 1. What must be the dimension of our input layer?
 > 2. We want to output the prediction of a single number. The output layer of the NN hence cannot be the same as for the classification task earlier. This is because the `softmax` activation being used had a concrete meaning with respect to the class labels which is not needed here. What output layer design would you choose for regression?
 Hint: A layer with `relu` activation, with `sigmoid` activation or no activation at all?
-> 3. * (Optional) How would we change the model if we would like to output a prediction of the precipitation in Basel in *addition* to the sunshine hours?
+> 3. (Optional) How would we change the model if we would like to output a prediction of the precipitation in Basel in *addition* to the sunshine hours?
 >
 > > ## Solution
 > >
