@@ -883,26 +883,7 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > > ~~~
 > > {: .language-python}
 > >
-> > Function to create a network including the BatchNorm layer:   
-> > ~~~
-> > def create_nn():
-> >     # Input layer
-> >     inputs = keras.layers.Input(shape=(X_data.shape[1],), name='input')
-> > 
-> >     # Dense layers
-> >     layers_dense = keras.layers.BatchNormalization()(inputs)
-> >     layers_dense = keras.layers.Dense(100, 'relu')(layers_dense)
-> >     layers_dense = keras.layers.Dense(50, 'relu')(layers_dense)
-> > 
-> >     # Output layer
-> >     outputs = keras.layers.Dense(1)(layers_dense)
-> > 
-> >     # Defining the model and compiling it
-> >     return keras.Model(inputs=inputs, outputs=outputs, name="model_batchnorm")
-> > ~~~
-> > {: .language-python}
-> >
-> > Create the network. Because we have reduced the number of input features
+> > Create the network. We can re-use the `create_nn` that we already have. Because we have reduced the number of input features
 > > the number of parameters in the network goes down from 14457 to 6137.
 > > ~~~
 > > # create the network and view its summary
