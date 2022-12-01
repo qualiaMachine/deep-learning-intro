@@ -89,7 +89,7 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > * How many data points do we have?
 > * How many features does the data have (don't count month and date as a feature)?
 > * What are the different measured variable types in the data and how many are there (humidity etc.) ?
-> * * (Optional) Plot the amount of sunshine hours in Basel over the course of a year. Are there any interesting properties that you notice? 
+> * (Optional) Plot the amount of sunshine hours in Basel over the course of a year. Are there any interesting properties that you notice?
 >
 > > ## Solution
 > > ~~~
