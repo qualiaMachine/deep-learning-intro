@@ -30,7 +30,7 @@ years 2000 to 2010. For all locations the data contains the variables ‘mean te
 
 ![18 locations in the weather prediction dataset](../fig/03_weather_prediction_dataset_map.png)
 
- A very common task with weather data is to make a prediction about the weather sometime in the future, say the next day. In this episode, we will try to predict tomorrow's sunshine hours, a challenging-to-predict feature, using a neural network with the available weather data for one location: BASEL.  
+ A very common task with weather data is to make a prediction about the weather sometime in the future, say the next day. In this episode, we will try to predict tomorrow's sunshine hours, a challenging-to-predict feature, using a neural network with the available weather data for one location: BASEL.
 
 ## 2. Identify inputs and outputs
 
@@ -101,11 +101,12 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > >
 > > To see what type of features the data contains we could run something like:
 > > ~~~
-> > print({x.split("_")[-1] for x in data.columns if x not in ["MONTH", "DATE"]})
+> > import string
+> > print({x.lstrip(string.ascii_uppercase + "_") for x in data.columns if x not in ["MONTH", "DATE"]})
 > > ~~~
 > > {:.language-python}
 > > ~~~
-> > {'precipitation', 'max', 'radiation', 'humidity', 'sunshine', 'min', 'pressure', 'mean', 'cover'}
+> > {'cloud_cover', 'precipitation', 'sunshine', 'global_radiation', 'temp_mean', 'humidity', 'pressure', 'temp_min', 'temp_max'}
 > > ~~~
 > > {:.output}
 > > An alternative way which is slightly more complicated but gives better results is using regex.
@@ -425,7 +426,7 @@ axes[1].set_ylabel("true sunshine hours")
 >     * What single-number evaluation metric would you choose here and why?
 > 
 > > ## Solution
-> > 
+> >
 > > While the performance on the train set seems reasonable, the performance on the test set is much worse.
 > > This is a common problem called **overfitting**, which we will discuss in more detail later.
 > >
@@ -519,7 +520,7 @@ This is the *validation set* which can be regarded as a second test set. As with
 Since we are adapting our model (tuning our hyperparameters) based on this validation set, it is *very* important that it is kept separate from the test set. If we used the same set, we wouldn't know whether our model truly generalizes or is only overfitting.
 
 > ## Test vs. validation set
-> Not everybody agrees on the terminology of test set versus validation set. You might find 
+> Not everybody agrees on the terminology of test set versus validation set. You might find
 > examples in literature where these terms are used the other way around.
 >
 > We are sticking to the definition that is consistent with the Keras API. In there, the validation
@@ -764,17 +765,17 @@ This new layer appears in the model summary as well.
 ~~~
 Model: "model_batchnorm"
 _________________________________________________________________
-Layer (type)                 Output Shape              Param #   
+Layer (type)                 Output Shape              Param #
 =================================================================
-input_1 (InputLayer)         [(None, 89)]              0         
+input_1 (InputLayer)         [(None, 89)]              0
 _________________________________________________________________
-batch_normalization (BatchNo (None, 89)                356       
+batch_normalization (BatchNo (None, 89)                356
 _________________________________________________________________
-dense (Dense)             (None, 100)               9000      
+dense (Dense)             (None, 100)               9000
 _________________________________________________________________
-dense_1 (Dense)             (None, 50)                5050      
+dense_1 (Dense)             (None, 50)                5050
 _________________________________________________________________
-dense_2 (Dense)             (None, 1)                 51        
+dense_2 (Dense)             (None, 1)                 51
 =================================================================
 Total params: 14,457
 Trainable params: 14,279
