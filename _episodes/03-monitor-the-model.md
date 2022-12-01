@@ -420,17 +420,17 @@ axes[1].set_ylabel("true sunshine hours")
 > ## Exercise: Reflecting on our results
 > * Is the performance of the model as you expected (or better/worse)?
 > * Is there a noteable difference between training set and test set? And if so, any idea why?
-> * (Optional) When developing a model, you will often vary different aspects of you model like 
->   which features you use, model parameters and architecture. It is important to settle on a 
->   single-number evaluation metric* to compare your models.
+> * (Optional) When developing a model, you will often vary different aspects of your model like
+>   which features you use, model parameters and architecture. It is important to settle on a
+>   single-number evaluation metric to compare your models.
 >     * What single-number evaluation metric would you choose here and why?
-> 
+>
 > > ## Solution
 > >
 > > While the performance on the train set seems reasonable, the performance on the test set is much worse.
 > > This is a common problem called **overfitting**, which we will discuss in more detail later.
 > >
-> > Optional answer:
+> > Optional exersise:
 > > Mean accuracy would be a single-value metric that you can use in this case.
 > {:.solution}
 {:.challenge}
