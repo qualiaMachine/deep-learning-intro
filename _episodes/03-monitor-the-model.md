@@ -568,6 +568,7 @@ plt.ylabel("RMSE")
 > > The difference between training and validation data shows that something is not completely right here.
 > > The model predictions on the validation set quickly seem to reach a plateau while the performance on the training set keeps improving.
 > > That is a common signature of *overfitting*.
+> >
 > > Optional:
 > > Ideally you would like the training and validation curves to be identical and slope down steeply
 > > to 0. After that the curves will just consistently stay at 0.
