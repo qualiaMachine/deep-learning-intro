@@ -88,7 +88,8 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 >
 > * How many data points do we have?
 > * How many features does the data have (don't count month and date as a feature)?
-> * What are the different measured variable types in the data and how many are there (humidity etc.) ?
+> * What are the different types of measurements (humidity etc.) in the data and how many are there?
+> * (Optional) Plot the amount of sunshine hours in Basel over the course of a year. Are there any interesting properties that you notice?
 >
 > > ## Solution
 > > ~~~
@@ -100,11 +101,12 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > >
 > > To see what type of features the data contains we could run something like:
 > > ~~~
-> > print({x.split("_")[-1] for x in data.columns if x not in ["MONTH", "DATE"]})
+> > import string
+> > print({x.lstrip(string.ascii_uppercase + "_") for x in data.columns if x not in ["MONTH", "DATE"]})
 > > ~~~
 > > {:.language-python}
 > > ~~~
-> > {'precipitation', 'max', 'radiation', 'humidity', 'sunshine', 'min', 'pressure', 'mean', 'cover'}
+> > {'cloud_cover', 'precipitation', 'sunshine', 'global_radiation', 'temp_mean', 'humidity', 'pressure', 'temp_min', 'temp_max'}
 > > ~~~
 > > {:.output}
 > > An alternative way which is slightly more complicated but gives better results is using regex.
@@ -117,6 +119,18 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > > feature_names
 > > ~~~
 > > In total there are 9 different measured variables.
+> >
+> >
+> > ### Optional exercise
+> > You can plot the sunshine hours in Basel as follows:
+> > ~~~
+> > data.iloc[:365]['BASEL_sunshine'].plot(xlabel="Day",ylabel="Basel sunchine hours")
+> > ~~~
+> > {:.language-python}
+> > ![Plot of Basel sunshine hours in one year](../fig/03_exploration_basel_sunshine_graph.png){: width="500px"}
+> > There are a couple of things that might stand out to you. For example, it looks like the sunshine
+> > hours are fluctuating a lot per day. There also seems to be seasonal fluctuation, with the peaks
+> > becoming higher around the middle of the year. 
 > {:.solution}
 {:.challenge}
 
@@ -135,7 +149,7 @@ y_data = data.loc[1:(nr_rows + 1)]["BASEL_sunshine"]
 ~~~
 {:.language-python}
 
-In general, it is important to check if the data contains any unexpected values such as `9999` or `NaN` or `NoneType`. You can use the pandas `data.describe()` function for this. If so, such values must be removed or replaced.
+In general, it is important to check if the data contains any unexpected values such as `9999` or `NaN` or `NoneType`. You can use the pandas `data.describe()` or `data.isnull()` function for this. If so, such values must be removed or replaced.
 In the present case the data is luckily well prepared and shouldn't contain such values, so that this step can be omitted.
 
 ### Split data and labels into training, validation, and test set
@@ -174,14 +188,15 @@ Now we want to work on a *regression task*, thus not predicting a class label (o
 > As we want to design a neural network architecture for a regression task,
 > see if you can first come up with the answers to the following questions:
 > 1. What must be the dimension of our input layer?
-> 2. We want to to output the prediction of a single number. The output layer of the NN hence cannot be the same as for the classification task earlier. This is because the `softmax` activation being used had a concrete meaning with respect to the class labels which is not needed here. What output layer design would you choose for regression?
+> 2. We want to output the prediction of a single number. The output layer of the NN hence cannot be the same as for the classification task earlier. This is because the `softmax` activation being used had a concrete meaning with respect to the class labels which is not needed here. What output layer design would you choose for regression?
 Hint: A layer with `relu` activation, with `sigmoid` activation or no activation at all?
+> 3. (Optional) How would we change the model if we would like to output a prediction of the precipitation in Basel in *addition* to the sunshine hours?
 >
 > > ## Solution
 > >
 > > 1. The shape of the input layer has to correspond to the number of features in our data: 89
 > > 2. The output is a single value per prediction, so the output layer can consist of a dense layer with only one node. The *softmax* activiation function works well for a classification task, but here we do not want to restrict the possible outcomes to the range of zero and one. In fact, we can omit the activation in the output layer.
-> >
+> > 3. The output layer should have 2 neurons, one for each number that we try to predict. Our y_train (and val and test) then becomes a (n_samples, 2) matrix.
 > {:.solution}
 {:.challenge}
 
@@ -378,14 +393,20 @@ plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 
 {: .language-python}
 > ## Exercise: Reflecting on our results
-> 1. Is the performance of the model as you expected (or better/worse)?
-> 2. Is there a noteable difference between training set and test set? And if so, any idea why?
+> * Is the performance of the model as you expected (or better/worse)?
+> * Is there a noteable difference between training set and test set? And if so, any idea why?
+> * (Optional) When developing a model, you will often vary different aspects of your model like
+>   which features you use, model parameters and architecture. It is important to settle on a
+>   single-number evaluation metric to compare your models.
+>     * What single-number evaluation metric would you choose here and why?
 >
 > > ## Solution
 > >
 > > While the performance on the train set seems reasonable, the performance on the test set is much worse.
 > > This is a common problem called **overfitting**, which we will discuss in more detail later.
 > >
+> > Optional exercise:
+> > Mean accuracy would be a single-value metric that you can use in this case.
 > {:.solution}
 {:.challenge}
 
@@ -453,13 +474,14 @@ Neural network:  4.077792167663574
 Judging from the numbers alone, our neural network prediction would be performing worse than the baseline.
 
 > ## Exercise: Baseline
-> Looking at this baseline: Would you consider this a simple or a hard problem to solve?
+> 1. Looking at this baseline: Would you consider this a simple or a hard problem to solve?
+> 2. (Optional) Can you think of other baselines?
 >
 > > ## Solution
 > >
-> > This really depends on your definition of hard! The baseline gives a more accurate prediction than just
+> > 1. This really depends on your definition of hard! The baseline gives a more accurate prediction than just
 > > randomly predicting a number, so the problem is not impossible to solve with machine learning. However, given the structure of the data and our expectations with respect to quality of prediction, it may remain hard to find a good algorithm which exceeds our baseline by orders of magnitude.
-> >
+> > 2. There are a lot of possible answers. A slighly more complicated baseline would be to take the average over the last couple of days.
 > {:.solution}
 {:.challenge}
 
@@ -504,12 +526,18 @@ plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ![Output of plotting sample](../fig/03_training_history_2_rmse.png){: width="500px"}
 > ## Exercise: plot the training progress.
 >
-> Is there a difference between the training and validation data? And if so, what would this imply?
+> 1. Is there a difference between the training and validation data? And if so, what would this imply?
+> 2. (Optional) Take a pen and paper, draw the perfect training and validation curves.
+>    (This may seem trivial, but it will trigger you to think about what you actually would like to see)
 >
 > > ## Solution
 > > The difference between training and validation data shows that something is not completely right here.
 > > The model predictions on the validation set quickly seem to reach a plateau while the performance on the training set keeps improving.
 > > That is a common signature of *overfitting*.
+> >
+> > Optional:
+> > Ideally you would like the training and validation curves to be identical and slope down steeply
+> > to 0. After that the curves will just consistently stay at 0.
 > {:.solution}
 {:.challenge}
 
@@ -775,6 +803,8 @@ But let's better compare it to the naive baseline we created in the beginning. W
 >    the network should still train quickly because we reduce the number of
 >    features (columns).
 >    Is the prediction better compared to what we had before?
+> 4. (Optional) Try to train a model on all years that are available,
+>    and all features from all cities. How does it perform?
 >
 > > ## Solution
 > >
@@ -801,26 +831,8 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > > ~~~
 > > {: .language-python}
 > >
-> > Function to create a network including the BatchNorm layer:
-> > ~~~
-> > def create_nn():
-> >     # Input layer
-> >     inputs = keras.layers.Input(shape=(X_data.shape[1],), name='input')
-> >
-> >     # Dense layers
-> >     layers_dense = keras.layers.BatchNormalization()(inputs)
-> >     layers_dense = keras.layers.Dense(100, 'relu')(layers_dense)
-> >     layers_dense = keras.layers.Dense(50, 'relu')(layers_dense)
-> >
-> >     # Output layer
-> >     outputs = keras.layers.Dense(1)(layers_dense)
-> >
-> >     # Defining the model and compiling it
-> >     return keras.Model(inputs=inputs, outputs=outputs, name="model_batchnorm")
-> > ~~~
-> > {: .language-python}
-> >
-> > Create the network. Because we have reduced the number of input features
+
+> > Create the network. We can re-use the `create_nn` that we already have. Because we have reduced the number of input features
 > > the number of parameters in the network goes down from 14457 to 6137.
 > > ~~~
 > > # create the network and view its summary
