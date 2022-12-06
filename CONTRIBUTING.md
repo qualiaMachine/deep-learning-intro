@@ -189,7 +189,13 @@ You can also [reach us by email][email].
 
 We below list conventions that we kindly ask all contributors to follow when helping with the content, making fixes or adding/editing lessons. Please consider these hints while you are preparing your pull-requests.
 
-## terminology
+## Terminology
 
 We consistently like to use:
 - Deep Learning (both capitalized)
+
+### Validation set vs. test set
+Not everybody agrees on the terminology of test set versus validation set. We are sticking to the 
+definition that is consistent with the Keras API. According to their definition, a validation set
+can be used during training for hyperparameter optimization. Test set should always be kept separate
+to do the final evaluation of the model.
