@@ -325,7 +325,7 @@ def plot_history(metrics):
     Plot the training history
 
     Args:
-        metrics: A list of metrics to plot
+        metrics(str, list): Metric or a list of metrics to plot
     """
     history_df = pd.DataFrame.from_dict(history.history)
     sns.lineplot(data=history_df[metrics])
