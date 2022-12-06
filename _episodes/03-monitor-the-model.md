@@ -302,25 +302,17 @@ model.compile(optimizer='adam',
 ~~~
 {: .language-python}
 
-With this, we complete the compilation of our network and are ready to start training.
+Let's create a `compile_model` function to easily compile the model throughout this lesson:
+~~~
+def compile_model(model):
+    model.compile(optimizer='adam',
+                  loss='mse',
+                  metrics=[keras.metrics.RootMeanSquaredError()])
+compile_model(model)
+~~~
+{: .language-python}
 
-> ## Challenge: Metrics
->
-> Look into the [Keras documentation on metrics](https://keras.io/api/metrics/).
-> Choose an additional metric that you would like to track, and compile the model again with this metric added.
->
-> > ## Solution
-> > As we are facing a regression task, we should pick one of the metrics under [Regression metrics](https://keras.io/api/metrics/regression_metrics/).
-> > For example, if we choose Mean Absolute Error, we can compile the model as follows:
-> > ~~~
-> > model.compile(optimizer='adam',
-> >               loss='mse',
-> >               metrics=[keras.metrics.RootMeanSquaredError(), keras.metrics.MeanAbsoluteError()])
-> > ~~~
-> > {: .language-python}
-> >
-> {:.solution}
-{:.challenge}
+With this, we complete the compilation of our network and are ready to start training.
 
 ## 6. Train the model
 
@@ -337,15 +329,25 @@ history = model.fit(X_train, y_train,
 ~~~
 {: .language-python}
 
-We can plot the training process using the `history` object returned from the model training:
+We can plot the training process using the `history` object returned from the model training.
+We will create a function for it, because we will make use of this more often in this lesson!
 ~~~
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df['root_mean_squared_error'])
-plt.xlabel("epochs")
-plt.ylabel("RMSE")
+def plot_history(metrics):
+    """
+    Plot the training history
+
+    Args:
+        metrics(str, list): Metric or a list of metrics to plot
+    """
+    history_df = pd.DataFrame.from_dict(history.history)
+    sns.lineplot(data=history_df[metrics])
+    plt.xlabel("epochs")
+    plt.ylabel("RMSE")
+
+plot_history('root_mean_squared_error')
 ~~~
 {: .language-python}
 ![Output of plotting sample](../fig/03_training_history_1_rmse.png){: width="500px"}
@@ -371,21 +373,25 @@ For the present *regression task*, it makes more sense to compare true and predi
 So, let's look at how the predicted sunshine hour have developed with reference to their ground truth values.
 
 ~~~
-fig, axes = plt.subplots(1, 2, figsize=(12, 6))
-plt.style.use('ggplot')  # optional, that's only to define a visual style
-axes[0].scatter(y_train_predicted, y_train, s=10, alpha=0.5, color="teal")
-axes[0].set_title("training set")
-axes[0].set_xlabel("predicted sunshine hours")
-axes[0].set_ylabel("true sunshine hours")
+# We define a function that we will reuse in this lesson
+def plot_predictions(y_pred, y_true, title):
+    plt.style.use('ggplot')  # optional, that's only to define a visual style
+    plt.scatter(y_pred, y_true, s=10, alpha=0.5)
+    plt.xlabel("predicted sunshine hours")
+    plt.ylabel("true sunshine hours")
+    plt.title(title)
 
-axes[1].scatter(y_test_predicted, y_test, s=10, alpha=0.5, color="teal")
-axes[1].set_title("test set")
-axes[1].set_xlabel("predicted sunshine hours")
-axes[1].set_ylabel("true sunshine hours")
+plot_predictions(y_train_predicted, y_train, title='Predictions on the training set')
 ~~~
 {: .language-python}
-![Scatter plot to evaluate training and test set](../fig/03_regression_training_test_comparison.png)
+![Scatter plot between predictions and true values on the train set](../fig/03_regression_predictions_trainset.png)
 
+~~~
+plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
+~~~
+![Scatter plot between predictions and true values on the test set](../fig/03_regression_predictions_testset.png)
+
+{: .language-python}
 > ## Exercise: Reflecting on our results
 > * Is the performance of the model as you expected (or better/worse)?
 > * Is there a noteable difference between training set and test set? And if so, any idea why?
@@ -444,11 +450,7 @@ Maybe the simplest sunshine hour prediction we can easily do is: Tomorrow we wil
 We can take the `BASEL_sunshine` column of our data, because this contains the sunshine hours from one day before what we have as a label.
 ~~~
 y_baseline_prediction = X_test['BASEL_sunshine']
-
-plt.figure(figsize=(5, 5), dpi=100)
-plt.scatter(y_baseline_prediction, y_test, s=10, alpha=0.5)
-plt.xlabel("sunshine hours yesterday")
-plt.ylabel("true sunshine hours")
+plot_predictions(y_baseline_prediction, y_test, title='Baseline predictions on the test set')
 ~~~
 {: .language-python}
 
@@ -458,13 +460,14 @@ It is difficult to interpret from this plot whether our model is doing better th
 We can also have a look at the RMSE:
 ~~~
 from sklearn.metrics import mean_squared_error
-rmse_nn = mean_squared_error(y_test, y_test_predicted, squared=False)
 rmse_baseline = mean_squared_error(y_test, y_baseline_prediction, squared=False)
-print('NN RMSE: {:.2f}, baseline RMSE: {:.2f}'.format(rmse_nn, rmse_baseline))
+print('Baseline:', rmse_baseline)
+print('Neural network: ', test_metrics['root_mean_squared_error'])
 ~~~
 {: .language-python}
 ~~~
-NN RMSE: 4.05, baseline RMSE: 3.88
+Baseline: 3.877323350410224
+Neural network:  4.077792167663574
 ~~~
 {:.output}
 
@@ -501,9 +504,7 @@ Let's give this a try!
 We need to initiate a new model -- otherwise Keras will simply assume that we want to continue training the model we already trained above.
 ~~~
 model = create_nn()
-model.compile(optimizer='adam',
-              loss='mse',
-              metrics=[keras.metrics.RootMeanSquaredError()])
+compile_model(model)
 ~~~
 {: .language-python}
 
@@ -512,18 +513,14 @@ But now we train it with the small addition of also passing it our validation se
 history = model.fit(X_train, y_train,
                     batch_size=32,
                     epochs=200,
-                    validation_data=(X_val, y_val),
-                    verbose=2)
+                    validation_data=(X_val, y_val))
 ~~~
 {: .language-python}
 
 With this we can plot both the performance on the training data and on the validation data!
 
 ~~~
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-plt.xlabel("epochs")
-plt.ylabel("RMSE")
+plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ~~~
 {: .language-python}
 ![Output of plotting sample](../fig/03_training_history_2_rmse.png){: width="500px"}
@@ -601,18 +598,13 @@ Most similar to classical machine learning might to **reduce the number of param
 > > {:.output}
 > >
 > > ~~~
-> > model.compile(optimizer='adam',
-> >               loss='mse',
-> >               metrics=[keras.metrics.RootMeanSquaredError()])
+> > compile_model(model)
 > > history = model.fit(X_train, y_train,
 > >                     batch_size = 32,
 > >                     epochs = 200,
-> >                     validation_data=(X_val, y_val), verbose = 2)
+> >                     validation_data=(X_val, y_val))
 > >
-> > history_df = pd.DataFrame.from_dict(history.history)
-> > sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-> > plt.xlabel("epochs")
-> > plt.ylabel("RMSE")
+> > plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 > > ~~~
 > > {:.language-python}
 > >
@@ -644,9 +636,7 @@ Early stopping is both intuitive and effective to use, so it has become a standa
 To better study the effect, we can now safely go back to models with many (too many?) parameters:
 ~~~
 model = create_nn()
-model.compile(optimizer='adam',
-              loss='mse',
-              metrics=[keras.metrics.RootMeanSquaredError()])
+compile_model(model)
 ~~~
 {: .language-python}
 
@@ -658,25 +648,20 @@ from tensorflow.keras.callbacks import EarlyStopping
 
 earlystopper = EarlyStopping(
     monitor='val_loss',
-    patience=10,
-    verbose=1
+    patience=10
     )
 
 history = model.fit(X_train, y_train,
                     batch_size = 32,
                     epochs = 200,
                     validation_data=(X_val, y_val),
-                    callbacks=[earlystopper],
-                    verbose = 2)
+                    callbacks=[earlystopper])
 ~~~
 {: .language-python}
 
 As before, we can plot the losses during training:
 ~~~
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-plt.xlabel("epochs")
-plt.ylabel("RMSE")
+plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ~~~
 {: .language-python}
 
@@ -725,7 +710,7 @@ def create_nn():
     return keras.Model(inputs=inputs, outputs=outputs, name="model_batchnorm")
 
 model = create_nn()
-model.compile(loss='mse', optimizer='adam', metrics=[keras.metrics.RootMeanSquaredError()])
+compile_model(model)
 model.summary()
 ~~~
 {: .language-python}
@@ -759,13 +744,9 @@ history = model.fit(X_train, y_train,
                     batch_size = 32,
                     epochs = 1000,
                     validation_data=(X_val, y_val),
-                    callbacks=[earlystopper],
-                    verbose = 2)
+                    callbacks=[earlystopper])
 
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-plt.xlabel("epochs")
-plt.ylabel("RMSE")
+plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ~~~
 {: .language-python}
 
@@ -789,11 +770,7 @@ It seems that no matter what we add, the overall loss does not decrease much fur
 Let's again plot the results on the test set:
 ~~~
 y_test_predicted = model.predict(X_test)
-
-plt.figure(figsize=(5, 5), dpi=100)
-plt.scatter(y_test_predicted, y_test, s=10, alpha=0.5)
-plt.xlabel("predicted sunshine hours")
-plt.ylabel("true sunshine hours")
+plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 ~~~
 {: .language-python}
 
@@ -854,12 +831,13 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > > ~~~
 > > {: .language-python}
 > >
+
 > > Create the network. We can re-use the `create_nn` that we already have. Because we have reduced the number of input features
 > > the number of parameters in the network goes down from 14457 to 6137.
 > > ~~~
 > > # create the network and view its summary
 > > model = create_nn()
-> > model.compile(loss='mse', optimizer='adam', metrics=[keras.metrics.RootMeanSquaredError()])
+> > compile_model(model)
 > > model.summary()
 > > ~~~
 > > {: .language-python}
@@ -873,20 +851,14 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > >                     callbacks=[earlystopper],
 > >                     verbose = 2)
 > >
-> > # plot RMSE
-> > history_df = pd.DataFrame.from_dict(history.history)
-> > sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
-> > plt.xlabel("epochs")
+> > plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 > > ~~~
 > > {: .language-python}
 > >
 > > Create a scatter plot to compare with true observations:
 > > ~~~
 > > y_test_predicted = model.predict(X_test)
-> > plt.figure(figsize=(5, 5), dpi=100)
-> > plt.scatter(y_test_predicted, y_test, s=10, alpha=0.5)
-> > plt.xlabel("predicted sunshine hours")
-> > plt.ylabel("true sunshine hours")
+> > plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 > > ~~~
 > > {: .language-python}
 > >
