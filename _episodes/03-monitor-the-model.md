@@ -332,7 +332,7 @@ def plot_history(metrics):
     plt.xlabel("epochs")
     plt.ylabel("RMSE")
 
-plot_history(['root_mean_squared_error'])
+plot_history('root_mean_squared_error')
 ~~~
 {: .language-python}
 ![Output of plotting sample](../fig/03_training_history_1_rmse.png){: width="500px"}
