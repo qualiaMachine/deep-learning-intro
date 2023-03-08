@@ -153,7 +153,7 @@ plt.show()
 {: .language-python}
 
 
-![A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for exmaple: 'frog' or 'horse'.](../fig/04_cifar10.png)
+![A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for example: 'frog' or 'horse'.](../fig/04_cifar10.png)
 
 ## Convolutional layers
 In the previous episodes, we used 'fully connected layers' , that connected all input values of a layer to all outputs of a layer. This results in many connections, and thus weights to be learned, in the network. Note that our input dimension is now quite high (even with small pictures of `32x32` pixels), we have:
