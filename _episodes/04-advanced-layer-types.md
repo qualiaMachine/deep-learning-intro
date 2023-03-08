@@ -36,7 +36,7 @@ which is a widely known dataset for image classification.
 from tensorflow import keras
 (train_images, train_labels), (test_images, test_labels) = keras.datasets.cifar10.load_data()
 ~~~
-{: .source}
+{: .language-python}
 
 > ## CIFAR-10
 >
@@ -54,7 +54,7 @@ from tensorflow import keras
 > ~~~
 > [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1125)
 > ~~~
-> {: .language-python}
+> {: .source}
 > You can solve this error by adding this to your notebook:
 > ~~~
 > import ssl
