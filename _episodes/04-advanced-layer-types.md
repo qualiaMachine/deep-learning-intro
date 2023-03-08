@@ -36,7 +36,7 @@ which is a widely known dataset for image classification.
 from tensorflow import keras
 (train_images, train_labels), (test_images, test_labels) = keras.datasets.cifar10.load_data()
 ~~~
-{: .language-python}
+{: .source}
 
 > ## CIFAR-10
 >
