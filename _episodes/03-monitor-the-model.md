@@ -8,7 +8,7 @@ questions:
 - "How do I detect (and avoid) overfitting?"
 - "What are common options to improve the model performance?"
 objectives:
-- "Explain the importance of splitting the training data"
+- "Explain the importance of splitting the data in a train and test set"
 - "Use the data splits to plot the training process"
 - "Design a neural network for a regression task"
 - "Measure the performance of your deep neural network"
@@ -131,7 +131,7 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > > ![Plot of Basel sunshine hours in one year](../fig/03_exploration_basel_sunshine_graph.png){: width="500px"}
 > > There are a couple of things that might stand out to you. For example, it looks like the sunshine
 > > hours are fluctuating a lot per day. There also seems to be seasonal fluctuation, with the peaks
-> > becoming higher around the middle of the year. 
+> > becoming higher around the middle of the year.
 > {:.solution}
 {:.challenge}
 

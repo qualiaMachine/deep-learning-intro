@@ -6,7 +6,7 @@ questions:
 - "What is a neural network?"
 - "How do I compose a Neural Network using Keras?"
 - "How do I train this network on a dataset"
-- "How do I get insight into learning process"
+- "How do I get insight into the learning process"
 - "How do I measure the performance of the network"
 objectives:
 - "Use the deep learning workflow to structure the notebook"
@@ -450,9 +450,9 @@ The model summary here can show you some information about the neural network we
 > > The model has 83 trainable parameters.
 > > If you increase the number of neurons in the hidden layer the number of
 > > trainable parameters in both the hidden and output layer increases or
-> > decreases accordingly of neurons.  
-> > The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.  
-> {:.solution}  
+> > decreases accordingly of neurons.
+> > The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.
+> {:.solution}
 {:.challenge}
 
 > ## How to choose an architecture?
