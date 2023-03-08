@@ -232,6 +232,16 @@ In the following image, we see the effect of such a kernel on the values of a si
 
 In our **convolutional layer** our hidden units are a number of convolutional matrices (or kernels), where the values of the matrices are the weights that we learn in the training process. The output of a convolutional layer is an 'image' for each of the kernels, that gives the output of the kernel applied to each pixel.
 
+> ## Playing with convolutions
+> Convolutions applied to images can be hard to grasp at first. Fortunately there are resources out
+> there that enable users to interactively play around with images and convolutions:
+> - [Image kernels explained](https://setosa.io/ev/image-kernels/) shows how different convolutions can achieve certain effects on an image, like sharpening and blurring.
+> - [The convolutional neural network cheat sheet](https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#)
+>     shows animated examples of the different components of convolutional neural nets 
+> 
+{: .callout}
+
+
 > ## Border pixels
 >
 > What, do you think, happens to the border pixels when applying a convolution?
