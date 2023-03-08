@@ -9,7 +9,7 @@ layout: reference
 * [deep learning](https://glosario.carpentries.org/en/#deep_learning)
 * [neural network](https://glosario.carpentries.org/en/#neural_network)
 * convolutional neural network (CNN)
-* Recurrent neural network (RNN)
+* recurrent neural network (RNN)
 * [accuracy](https://glosario.carpentries.org/en/#accuracy)
 * epoch
 * learning rate
