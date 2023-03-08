@@ -3,14 +3,14 @@ title: "Monitor the training process"
 teaching: 135
 exercises: 80
 questions:
-- "How do I set the training goal?"
+- "How do I create a neural network for a regression task?"
 - "How do I monitor the training process?"
 - "How do I detect (and avoid) overfitting?"
 - "What are common options to improve the model performance?"
 objectives:
 - "Explain the importance of splitting the training data"
 - "Use the data splits to plot the training process"
-- "Set the training goal for your deep neural network"
+- "Design a neural network for a regression task"
 - "Measure the performance of your deep neural network"
 - "Interpret the training plots to recognize overfitting"
 - "Implement basic strategies to prevent overfitting"
@@ -178,7 +178,7 @@ Setting the `random_state` to `0` is a short-hand at this point. Note however, t
 
 ## 4. Choose a pretrained model or start building architecture from scratch
 
-### Regression and classification - how to set a training goal
+### Regression and classification
 
 In episode 2 we trained a dense neural network on a *classification task*. For this one hot encoding was used together with a `Categorical Crossentropy` loss function.
 This measured how close the distribution of the neural network outputs corresponds to the distribution of the three values in the one hot encoding.
