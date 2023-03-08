@@ -8,7 +8,7 @@ questions:
 - "How do I detect (and avoid) overfitting?"
 - "What are common options to improve the model performance?"
 objectives:
-- "Explain the importance of splitting the data in a train and test set"
+- "Explain the importance of keeping your test set clean, by validating on the validation set instead of the test set"
 - "Use the data splits to plot the training process"
 - "Design a neural network for a regression task"
 - "Measure the performance of your deep neural network"
