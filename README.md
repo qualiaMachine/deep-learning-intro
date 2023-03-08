@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/carpentries-incubator/deep-learning-intro/scaffolds)
+
 # Introduction to deep learning
 This lesson gives an introduction to deep learning.
 
