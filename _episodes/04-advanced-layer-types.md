@@ -502,6 +502,31 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 > audio data for speech recognition, or 3d structures of chemical compounds.
 {: .callout}
 
+> ## Why and when to use convolutional neural networks
+>
+> 1. Would it make sense to train a convolutional neural network (CNN) on the penguins dataset and why?
+> 2. Would it make sense to train a CNN on the weather dataset and why?
+> 3. (Optional) Can you think of a different machine learning task that would benefit from a
+>    CNN architecture?
+>
+> >
+> > ## Solution
+> > 1. No that would not make sense. Convolutions only work when the data is ordered
+> >    in a spatial dimension. The features of the penguins dataset have no spatial relations with each other.
+> >    If we would have pictures or audio recordings of the penguins as input data
+> >    it would make sense to use a CNN architecture.
+> > 2. It would make sense, but only if we approach the problem from a different angle then we did before.
+> >    Namely, 1D convolutions work quite well on sequential data such as timeseries. If we have as our input a matrix
+> >    of the different weather conditions over time in the past x days, a CNN would be suited to quickly grasp
+> >    the temporal relationship over days.
+> > 3. Some example domains in which CNNs are applied:
+> >    - Text data
+> >    - Timeseries, specifically audio
+> >    - Molecular structures
+> >
+> {: .solution}
+{: .challenge}
+
 ## Dropout
 
 Note that the training loss continues to decrease, while the validation loss stagnates, and even starts to increase over the course of the epochs. Similarly, the accuracy for the validation set does not improve anymore after some epochs. This means we are overfitting on our training data set.
