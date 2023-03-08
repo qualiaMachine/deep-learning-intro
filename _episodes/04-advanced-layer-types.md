@@ -9,12 +9,9 @@ questions:
 - "How can we use different types of layers to prevent overfitting?"
 objectives:
 - "Understand why convolutional and pooling layers are useful for image data"
-- "Use normalization as preparation step for Deep Learning"
 - "Implement a convolutional neural network on an image dataset"
-- "Plot and interpret the training process"
-- "Do a visual inspection of the results of your neural network"
-- "Understand strategies to improve your model based on the plots"
 - "Use a drop-out layer to prevent overfitting"
+
 keypoints:
 - "Convolutional layers make efficient reuse of model parameters."
 - "Pooling layers decrease the resolution of your input"
