@@ -45,6 +45,22 @@ from tensorflow import keras
 >
 {: .callout}
 
+> ## CERTIFICATE_VERIFY_FAILED error when downloading CIFAR-10 dataset
+>
+> When loading the CIFAR-10 dataset, you might get the following error:
+> ~~~
+> [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1125)
+> ~~~
+> {: .source}
+> You can solve this error by adding this to your notebook:
+> ~~~
+> import ssl
+> ssl._create_default_https_context = ssl._create_unverified_context
+> ~~~
+> {: .language-python}
+>
+{: .callout}
+
 We take a small sample of the data as training set for demonstration purposes.
 ~~~
 n = 5000
