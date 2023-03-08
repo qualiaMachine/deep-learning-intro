@@ -34,7 +34,7 @@ keypoints:
 Deep Learning (DL) is just one of many techniques collectively known as machine learning. Machine learning (ML) refers to techniques where a computer can "learn" patterns in data, usually by being shown numerous examples to train it. People often talk about machine learning being a form of artificial intelligence (AI). Definitions of artificial intelligence vary, but usually involve having computers mimic the behaviour of intelligent biological systems. Since the 1950s many works of science fiction have dealt with the idea of an artificial intelligence which matches (or exceeds) human intelligence in all areas. Although there have been great advances in AI and ML research recently we can only come close to human like intelligence in a few specialist areas and are still a long way from a general purpose AI.
 The image below shows some differences between artificial intelligence, Machine Learning and Deep Learning.
 
-![An infographics showing the relation of AI, ML, NN and DL](../fig/01_AI_ML_DL_differences.png){: width="750px" }
+![An infographics showing the relation of AI, ML, NN and DL. NN are methods in DL which is a subset of ML algorithms that falls within the umbrella of AI](../fig/01_AI_ML_DL_differences.png){: width="750px" }
 The image above is by Tukijaaliwa, CC BY-SA 4.0, via Wikimedia Commons, [original source]( https://en.wikipedia.org/wiki/File:AI-ML-DL.svg)
 
 
@@ -49,12 +49,12 @@ A neural network is an artificial intelligence technique loosely based on the wa
   + apply a non-linear function to the output so far (using a predefined activation function)
 - return one output value, again a floating point number
 
-![A diagram of a single artificial neuron](../fig/01_neuron.png){: width="600px"}
+![A diagram of a single artificial neuron combining inputs and weights using an activation function](../fig/01_neuron.png){: width="600px"}
 
 Multiple neurons can be joined together by connecting the output of one to the input of another. These connections are associated with weights that determine the 'strength' of the connection, the weights are adjusted during training. In this way, the combination of neurons and connections describe a computational graph, an example can be seen in the image below. In most neural networks neurons are aggregated into layers. Signals travel from the input layer to the output layer, possibly through one or more intermediate layers called hidden layers.
 The image below shows an example of a neural network with three layers, each circle is a neuron, each line is an edge and the arrows indicate the direction data moves in.
 
-![A diagram of a three layer neural network.](../fig/01_neural_net.png){: width="400px"}
+![A diagram of a three layer neural network with an input layer, one hidden layer, and an output layer.](../fig/01_neural_net.png){: width="400px"}
 The image above is by Glosser.ca, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons, [original source](https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg)
 
 
@@ -195,7 +195,7 @@ The optimizer is responsible for taking the output of the loss function and then
 
 We can now go ahead and start training our neural network. We'll probably keep doing this for a given number of iterations through our training dataset (referred to as _epochs_) or until the loss function gives a value under a certain threshold. The graph below show the loss against the number of _epochs_, generally the loss will go down with each _epoch_, but occasionally it will see a small rise.
 
-![A graph showing loss over the first 1500 epochs of training an example network.](../fig/training-0_to_1500.svg)
+![A graph showing an exponentially decreasing loss over the first 1500 epochs of training an example network.](../fig/training-0_to_1500.svg)
 
 ### 7. Perform a Prediction/Classification
 
