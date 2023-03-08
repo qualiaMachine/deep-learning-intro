@@ -5,9 +5,9 @@ exercises: 40-45
 questions:
 - "What is a neural network?"
 - "How do I compose a Neural Network using Keras?"
-- "How do I train this network on a dataset"
-- "How do I get insight into learning process"
-- "How do I measure the performance of the network"
+- "How do I train this network on a dataset?"
+- "How do I get insight into learning process?"
+- "How do I measure the performance of the network?"
 objectives:
 - "Use the deep learning workflow to structure the notebook"
 - "Explore the dataset using pandas and seaborn"
@@ -373,7 +373,7 @@ hidden_layer = keras.layers.Dense(10, activation="relu")(inputs)
 {:.language-python}
 
 The instantiation here has 2 parameters and a seemingly strange combination of parentheses, so
-let's take a closer look.
+let us take a closer look.
 The first parameter `10` is the number of neurons we want in this layer, this is one of the
 hyperparameters of our system and needs to be chosen carefully. We will get back to this in the section
 on hyperparameter tuning.
