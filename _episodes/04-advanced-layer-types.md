@@ -6,7 +6,7 @@ questions:
 - "Why do we need different types of layers?"
 - "What are good network designs for image data?"
 - "What is a convolutional layer?"
-- "How can we avoid overfitting?"
+- "How can we use different types of layers to prevent overfitting?"
 objectives:
 - "Understand why convolutional and pooling layers are useful for image data"
 - "Use normalization as preparation step for Deep Learning"
@@ -14,7 +14,7 @@ objectives:
 - "Plot and interpret the training process"
 - "Do a visual inspection of the results of your neural network"
 - "Understand strategies to improve your model based on the plots"
-- "Use drop-out layer to prevent overfitting"
+- "Use a drop-out layer to prevent overfitting"
 keypoints:
 - "Convolutional layers make efficient reuse of model parameters."
 - "Pooling layers decrease the resolution of your input"
@@ -428,25 +428,25 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 > >  Layer (type)                Output Shape              Param #
 > > =================================================================
 > >  input_7 (InputLayer)        [(None, 32, 32, 3)]       0
-> > 
+> >
 > >  conv2d_16 (Conv2D)          (None, 30, 30, 50)        1400
-> > 
+> >
 > >  max_pooling2d_10 (MaxPoolin  (None, 15, 15, 50)       0
 > >  g2D)
-> > 
+> >
 > >  conv2d_17 (Conv2D)          (None, 13, 13, 50)        22550
-> > 
+> >
 > >  max_pooling2d_11 (MaxPoolin  (None, 6, 6, 50)         0
 > >  g2D)
-> > 
+> >
 > >  conv2d_18 (Conv2D)          (None, 4, 4, 50)          22550
-> > 
+> >
 > >  flatten_6 (Flatten)         (None, 800)               0
-> > 
+> >
 > >  dense_11 (Dense)            (None, 50)                40050
-> > 
+> >
 > >  dense_12 (Dense)            (None, 10)                510
-> > 
+> >
 > > =================================================================
 > > Total params: 87,060
 > > Trainable params: 87,060
