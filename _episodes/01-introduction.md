@@ -15,7 +15,7 @@ objectives:
 - "Recall the steps of a Deep Learning workflow"
 - "Identify the inputs and outputs of a deep neural network."
 - "Explain the operations performed in a single neuron"
-- "Test that you have successfully installed Deep Learning libraries"
+- "Test that you have correctly installed the Keras, Seaborn and Sklearn libraries"
 
 keypoints:
 - "Machine learning is the process where computers learn to recognise patterns of data."
