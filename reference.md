@@ -15,9 +15,6 @@ layout: reference
 * learning rate
 * [confusion matrix](https://glosario.carpentries.org/en/#confusion_matrix)
 * class imbalance
-* Sampling
-    * Over
-    * Under
 * [overfitting](https://glosario.carpentries.org/en/#overfitting)
 * transfer learning
 * hidden layers
