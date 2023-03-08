@@ -226,7 +226,7 @@ A **convolution matrix**, or **kernel**, is a matrix transformation that we 'sli
  [1, 1, 1]]
 ~~~
 {: .output}
-This kernel will give a high value to a pixel if it's on a horizontal border between dark and light areas.
+This kernel will give a high value to a pixel if it is on a horizontal border between dark and light areas.
 Note that for RGB images, the kernel should also have a depth of 3.
 
 In the following image, we see the effect of such a kernel on the values of a single-channel image. The red cell in the output matrix is the result of multiplying and summing the values of the red square in the input, and the kernel. Applying this kernel to a real image shows that it indeed detects horizontal edges.
@@ -258,7 +258,7 @@ In our **convolutional layer** our hidden units are a number of convolutional ma
 > {: .solution}
 {: .challenge}
 
-So let's look at a network with a few convolutional layers. We need to finish with a Dense layer to connect the output cells of the convolutional layer to the outputs for our classes.
+So let us look at a network with a few convolutional layers. We need to finish with a Dense layer to connect the output cells of the convolutional layer to the outputs for our classes.
 
 ~~~
 inputs = keras.Input(shape=train_images.shape[1:])
@@ -503,7 +503,7 @@ In practice, however, dropout is computationally a very elegant solution which d
 
 **Important to note:** Dropout layers will only randomly silence nodes during training! During a predictions step, all nodes remain active (dropout is off). During training, the sample of nodes that are silenced are different for each training instance, to give all nodes a chance to observe enough training data to learn its weights.
 
-Let's add one dropout layer towards the end of the network, that randomly drops 20% of the input units.
+Let us add one dropout layer towards the end of the network, that randomly drops 20% of the input units.
 
 ~~~
 inputs = keras.Input(shape=train_images.shape[1:])

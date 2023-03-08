@@ -232,7 +232,7 @@ While we might use *softmax* for a classification task, here we do not want to r
 
 In addition, we have here chosen to write the network creation as a function so that we can use it later again to initiate new models.
 
-Let's check how our model looks like by calling the `summary` method.
+Let us check how our model looks like by calling the `summary` method.
 
 ~~~
 model.summary()
@@ -439,7 +439,7 @@ In deep learning the situation is slightly different. It can - as for classical 
 ## 9. Tune hyperparameters
 ### Set expectations: How difficult is the defined problem?
 
-Before we dive deeper into handling overfitting and (trying to) improving the model performance, let's ask the question: How well must a model perform before we consider it a good model?
+Before we dive deeper into handling overfitting and (trying to) improving the model performance, let us ask the question: How well must a model perform before we consider it a good model?
 
 Now that we defined a problem (predict tomorrow's sunshine hours), it makes sense to develop an intuition for how difficult the posed problem is. Frequently, models will be evaluated against a so called **baseline**. A baseline can be the current standard in the field or if such a thing does not exist it could also be an intuitive first guess or toy model. The latter is exactly what we would use for our case.
 
@@ -489,7 +489,7 @@ Judging from the numbers alone, our neural network prediction would be performin
 
 As we saw when comparing the predictions for the training and the test set, deep learning models are prone to overfitting. Instead of iterating through countless cycles of model trainings and subsequent evaluations with a reserved test set, it is common practice to work with a second split off dataset to monitor the model during training.
 This is the *validation set* which can be regarded as a second test set. As with the test set, the datapoints of the *validation set* are not used for the actual model training itself. Instead, we evaluate the model with the *validation set* after every epoch during training, for instance to stop if we see signs of clear overfitting.
-Since we are adapting our model (tuning our hyperparameters) based on this validation set, it is *very* important that it is kept separate from the test set. If we used the same set, we wouldn't know whether our model truly generalizes or is only overfitting.
+Since we are adapting our model (tuning our hyperparameters) based on this validation set, it is *very* important that it is kept separate from the test set. If we used the same set, we would not know whether our model truly generalizes or is only overfitting.
 
 > ## Test vs. validation set
 > Not everybody agrees on the terminology of test set versus validation set. You might find
@@ -767,7 +767,7 @@ plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ### Run on test set and compare to naive baseline
 
 It seems that no matter what we add, the overall loss does not decrease much further (we at least avoided overfitting though!).
-Let's again plot the results on the test set:
+Let us again plot the results on the test set:
 ~~~
 y_test_predicted = model.predict(X_test)
 plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
@@ -908,7 +908,7 @@ But let's better compare it to the naive baseline we created in the beginning. W
 
 ## 10. Save model
 
-Now that we have a somewhat acceptable model, let's not forget to save it for future users to benefit from our explorative efforts!
+Now that we have a somewhat acceptable model, let us not forget to save it for future users to benefit from our explorative efforts!
 
 ~~~
 model.save('my_tuned_weather_model')
