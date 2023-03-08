@@ -13,6 +13,7 @@ objectives:
 - "Design a neural network for a regression task"
 - "Measure the performance of your deep neural network"
 - "Interpret the training plots to recognize overfitting"
+- "Use normalization as preparation step for Deep Learning"
 - "Implement basic strategies to prevent overfitting"
 
 keypoints:

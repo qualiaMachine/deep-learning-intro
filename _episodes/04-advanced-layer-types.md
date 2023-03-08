@@ -12,8 +12,6 @@ objectives:
 - "Use normalization as preparation step for Deep Learning"
 - "Implement a convolutional neural network on an image dataset"
 - "Plot and interpret the training process"
-- "Do a visual inspection of the results of your neural network"
-- "Understand strategies to improve your model based on the plots"
 - "Use drop-out layer to prevent overfitting"
 keypoints:
 - "Convolutional layers make efficient reuse of model parameters."
