@@ -153,7 +153,7 @@ plt.show()
 {: .language-python}
 
 
-![Output of plotting sample](../fig/04_cifar10.png)
+![A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set](../fig/04_cifar10.png)
 
 ## Convolutional layers
 In the previous episodes, we used 'fully connected layers' , that connected all input values of a layer to all outputs of a layer. This results in many connections, and thus weights to be learned, in the network. Note that our input dimension is now quite high (even with small pictures of `32x32` pixels), we have:
@@ -230,8 +230,8 @@ This kernel will give a high value to a pixel if it's on a horizontal border bet
 Note that for RGB images, the kernel should also have a depth of 3.
 
 In the following image, we see the effect of such a kernel on the values of a single-channel image. The red cell in the output matrix is the result of multiplying and summing the values of the red square in the input, and the kernel. Applying this kernel to a real image shows that it indeed detects horizontal edges.
-![Convolution on matrix](../fig/04_conv_matrix.png)
-![Convolution on image](../fig/04_conv_image.png)
+![Example of a convolution matrix calculation](../fig/04_conv_matrix.png)
+![Convolution example on an image of a cat to extract features](../fig/04_conv_image.png)
 
 In our **convolutional layer** our hidden units are a number of convolutional matrices (or kernels), where the values of the matrices are the weights that we learn in the training process. The output of a convolutional layer is an 'image' for each of the kernels, that gives the output of the kernel applied to each pixel.
 
@@ -372,12 +372,12 @@ history_df = pd.DataFrame.from_dict(history.history)
 sns.lineplot(data=history_df[['accuracy', 'val_accuracy']])
 ~~~
 {: .language-python}
-![Output of plotting sample](../fig/04_training_history_1.png)
+![Plot of training accuracy and validation accuracy vs epochs for the trained model](../fig/04_training_history_1.png)
 ~~~
 sns.lineplot(data=history_df[['loss', 'val_loss']])
 ~~~
 {: .language-python}
-![Output of plotting sample](../fig/04_training_history_loss_1.png)
+![OPlot of training loss and validation loss vs epochs for the trained model](../fig/04_training_history_loss_1.png)
 
 It seems that the model is overfitting somewhat, because the validation accuracy and loss stagnates.
 
@@ -471,12 +471,12 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 > > sns.lineplot(data=history_df[['accuracy', 'val_accuracy']])
 > > ~~~
 > > {: .language-python}
-> > ![Output of training](../fig/04_training_history_2.png)
+> > ![Plot of training accuracy and validation accuracy vs epochs for the trained model](../fig/04_training_history_2.png)
 > > ~~~
 > > sns.lineplot(data=history_df[['loss', 'val_loss']])
 > > ~~~
 > > {: .language-python}
-> > ![Output of plotting sample](../fig/04_training_history_loss_2.png)
+> > ![Plot of training loss and validation loss vs epochs for the trained model](../fig/04_training_history_loss_2.png)
 > {: .solution}
 {: .challenge}
 
@@ -496,7 +496,7 @@ Note that the training loss continues to decrease, while the validation loss sta
 Techniques to avoid overfitting, or to improve model generalization, are termed **regularization techniques**.
 One of the most versatile regularization technique is **dropout** ([Srivastava et al., 2014](https://jmlr.org/papers/v15/srivastava14a.html)).
 Dropout essentially means that during each training cycle a random fraction of the dense layer nodes are turned off. This is described with the dropout rate between 0 and 1 which determines the fraction of nodes to silence at a time.
-![Dropout sketch](../fig/neural_network_sketch_dropout.png)
+![A sketch of NN with and without dropout](../fig/neural_network_sketch_dropout.png)
 The intuition behind dropout is that it enforces redundancies in the network by constantly removing different elements of a network. The model can no longer rely on individual nodes and instead must create multiple "paths". In addition, the model has to make predictions with much fewer nodes and weights (connections between the nodes).
 As a result, it becomes much harder for a network to memorize particular features. At first this might appear a quiet drastic approach which affects the network architecture strongly.
 In practice, however, dropout is computationally a very elegant solution which does not affect training speed. And it frequently works very well.
@@ -583,12 +583,12 @@ test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels, verbose=
 313/313 - 2s - loss: 1.4683 - accuracy: 0.5307
 ~~~
 {: .output}
-![Output of training](../fig/04_training_history_3.png)
+![Plot of training accuracy and validation accuracy vs epochs for the trained model](../fig/04_training_history_3.png)
 ~~~
 sns.lineplot(data=history_df[['loss', 'val_loss']])
 ~~~
 {: .language-python}
-![Output of plotting sample](../fig/04_training_history_loss_3.png)
+![Plot of training loss and validation loss vs epochs for the trained model](../fig/04_training_history_loss_3.png)
 
 Now we see that the gap between the training accuracy and validation accuracy is much smaller, and that the final accuracy on the validation set is higher than without dropout.
 Nevertheless, there is still some difference between the training loss and validation loss, so we could experiment with regularization even more.
