@@ -255,6 +255,32 @@ target.head() # print out the top 5 to see what it looks like.
 ~~~
 {:.language-python}
 
+> ## One-hot encoding vs ordinal encoding
+>
+> 1. How many output neurons will our network have now that we
+>    one-hot encoded the target class?
+> 2. Another encoding method is 'ordinal encoding'.
+>    Here the variable is represented by a single column,
+>    where each category is represented by a different integer
+>    (0, 1, 2 in the case of the 3 penguin species).
+>    How many output neurons will a network have when ordinal encoding is used?
+> 3. (Optional) What would be the advantage of using one-hot versus ordinal encoding
+>    for the task of classifying penguin species?
+>
+> > ## Solution
+> > 1. 3, one for each output variable class
+> > 2. 1, the 3 classes are represented in a single variable
+> > 3. In this case there is no ordinal relationship between the different penguin species,
+> >    so it does not make sense to use ordinal encoding.
+> >    To give an intuition of how a machine learning model deals with ordinal encoding:
+> >    Let us say that the model predicted 0 (Gentoo) instead of the true value 2 (Adélie),
+> >    the error would in this case be 2 (2-0). But if the prediction would be 1 (Chinstrap),
+> >    the error would be 1 (2-1). A missclassification between Gentoo and Adélie would then
+> >    thus contribute more to the overall error than missclassificaiton between Chinstrap and Adélie!
+> >
+> {:.solution}
+{:.challenge}
+
 ### Split data into training and test set
 Finally, we will split the dataset into a training set and a test set.
 As the names imply we will use the training set to train the neural network,
