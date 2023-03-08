@@ -606,4 +606,62 @@ sns.lineplot(data=history_df[['loss', 'val_loss']])
 Now we see that the gap between the training accuracy and validation accuracy is much smaller, and that the final accuracy on the validation set is higher than without dropout.
 Nevertheless, there is still some difference between the training loss and validation loss, so we could experiment with regularization even more.
 
+> ## Vary dropout rate
+>
+> 1. What do you think would happen if you lower the dropout rate? Try it out, and
+>    see how it affects the model training.
+> 2. You are varying the dropout rate and checking its effect on the model performance,
+>    what is the term associated to this procedure?
+>
+>
+> >
+> > ## Solution
+> > ### 1. Varying the dropout rate
+> > The code below instantiates and trains a model with varying dropout rates.
+> > You can see from the resulting plot that the ideal dropout rate in this case is around 0.45.
+> > This is where the test loss is lowest.
+> >
+> > - NB1: It takes a while to train these 5 networks.
+> > - NB2: In the real world you should do this with a validation set and not with the test set!
+> >
+> > ~~~
+> > dropout_rates = [0.15, 0.3, 0.45, 0.6, 0.75]
+> > test_losses = []
+> >    for dropout_rate in dropout_rates:
+> >        inputs = keras.Input(shape=train_images.shape[1:])
+> >        x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+> >        x = keras.layers.MaxPooling2D((2, 2))(x)
+> >        x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+> >        x = keras.layers.MaxPooling2D((2, 2))(x)
+> >        x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+> >        x = keras.layers.Dropout(dropout_rate)(x)
+> >        x = keras.layers.Flatten()(x)
+> >        x = keras.layers.Dense(50, activation='relu')(x)
+> >        outputs = keras.layers.Dense(10)(x)
+> >
+> >        model_dropout = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+> >
+> >        model_dropout.compile(optimizer='adam',
+> >                  loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+> >                  metrics=['accuracy'])
+> >
+> >        model_dropout.fit(train_images, train_labels, epochs=20,
+> >                        validation_data=(test_images, test_labels))
+> >
+> >        test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels)
+> >        test_losses.append(test_loss)
+> >
+> >    loss_df = pd.DataFrame({'dropout_rate': dropout_rates, 'test_loss': test_losses})
+> >
+> >    sns.lineplot(data=loss_df, x='dropout_rate', y='test_loss')
+> > ~~~
+> > {: .language-python}
+> > ![Plot of test loss vs dropout rate used in the model. The test loss varies between 1.26 and 1.40 and is lowest with a dropout_rate around 0.45.](../fig/04_vary_dropout_rate.png)
+> >
+> > ### 2. Term associated to this procedure
+> > This is called hyperparameter tuning.
+> {: .solution}
+{: .challenge}
+
+
 {% include links.md %}
