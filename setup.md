@@ -78,9 +78,21 @@ Make sure you have an up-to-date version of Conda running.
 See [these instructions](https://docs.anaconda.com/anaconda/install/update-version/) for updating Conda if required.
 {: .callout}
 
-Open a terminal and type the command:
+To create a conda environment called `dl_workshop` with the required packages, open a terminal and type the command:
 ~~~
-conda install tensorflow seaborn scikit-learn pandas
+conda create --name dl_workshop python jupyter seaborn scikit-learn pandas
+~~~
+{: .source}
+
+Activate the newly created environment:
+~~~
+conda activate dl_workshop
+~~~
+{: .source}
+
+Install tensorflow using pip (python's package manager):
+~~~
+pip install tensorflow
 ~~~
 {: .source}
 Note that modern versions of Tensorflow make Keras available as a module.
@@ -88,9 +100,11 @@ Note that modern versions of Tensorflow make Keras available as a module.
 
 ### Troubleshooting for Windows
 It is possible that Windows users will run into version conflicts. If you are on Windows and get
-errors running the command, you can try installing the packages using pip:
+errors running the command, you can try installing the packages using pip within a conda environment:
 
 ~~~
+conda create -n dl_workshop python jupyter
+conda activate dl_workshop
 pip install tensorflow>=2.5 seaborn scikit-learn pandas
 ~~~
 {: .source}
