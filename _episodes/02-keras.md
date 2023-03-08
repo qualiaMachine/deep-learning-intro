@@ -180,7 +180,7 @@ By using the `hue='species'` setting for the pairplot the graphs on the diagonal
 sns.pairplot(penguins, hue="species")
 ~~~
 {:.language-python}
-![Pair plot showing the separability of the three species of penguin][pairplot]
+![Pair plot showing the separability of the three species of penguin for combinations of dataset attributes][pairplot]
 
 > ## Pairplot
 >
@@ -530,7 +530,7 @@ Using seaborn we can do this as follow:
 sns.lineplot(x=history.epoch, y=history.history['loss'])
 ~~~
 {:.language-python}
-![Training loss curve of the neural network training][training_curve]
+![Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs][training_curve]
 
 This plot can be used to identify whether the training is well configured or whether there
 are problems that need to be addressed.
@@ -672,7 +672,7 @@ the heatmap.
 sns.heatmap(confusion_df, annot=True)
 ~~~
 {:.language-python}
-![Confusion matrix of the test set][confusion_matrix]
+![Confusion matrix of the test set with high accuracy for Adelie and Gentoo classification and no correctly predicted Chinstrap][confusion_matrix]
 
 > ## Confusion Matrix
 >
