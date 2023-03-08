@@ -16,7 +16,6 @@ layout: reference
 * [confusion matrix](https://glosario.carpentries.org/en/#confusion_matrix)
 * class imbalance
 * [overfitting](https://glosario.carpentries.org/en/#overfitting)
-* transfer learning
 * hidden layers
 
 ## Troubleshooting
