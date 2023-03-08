@@ -78,15 +78,15 @@ Make sure you have an up-to-date version of Conda running.
 See [these instructions](https://docs.anaconda.com/anaconda/install/update-version/) for updating Conda if required.
 {: .callout}
 
-To create a conda environment called `dl_wkshop` with the required packages, open a terminal and type the command:
+To create a conda environment called `dl_workshop` with the required packages, open a terminal and type the command:
 ~~~
-conda create --name dl_wkshop python jupyter seaborn scikit-learn pandas
+conda create --name dl_workshop python jupyter seaborn scikit-learn pandas
 ~~~
 {: .source}
 
 Activate the newly created environment:
 ~~~
-conda activate dl_wkshop
+conda activate dl_workshop
 ~~~
 {: .source}
 
@@ -103,8 +103,8 @@ It is possible that Windows users will run into version conflicts. If you are on
 errors running the command, you can try installing the packages using pip within a conda environment:
 
 ~~~
-conda create -n dl_wkshop python jupyter
-conda activate dl_wkshop
+conda create -n dl_workshop python jupyter
+conda activate dl_workshop
 pip install tensorflow>=2.5 seaborn scikit-learn pandas
 ~~~
 {: .source}
