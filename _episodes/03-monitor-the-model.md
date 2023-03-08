@@ -3,16 +3,17 @@ title: "Monitor the training process"
 teaching: 135
 exercises: 80
 questions:
-- "How do I set the training goal?"
+- "How do I create a neural network for a regression task?"
 - "How do I monitor the training process?"
 - "How do I detect (and avoid) overfitting?"
 - "What are common options to improve the model performance?"
 objectives:
-- "Explain the importance of splitting the training data"
+- "Explain the importance of splitting the data in a train and test set"
 - "Use the data splits to plot the training process"
-- "Set the training goal for your deep neural network"
+- "Design a neural network for a regression task"
 - "Measure the performance of your deep neural network"
 - "Interpret the training plots to recognize overfitting"
+- "Use normalization as preparation step for Deep Learning"
 - "Implement basic strategies to prevent overfitting"
 
 keypoints:
@@ -130,7 +131,7 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
 > > ![Plot of Basel sunshine hours in one year](../fig/03_exploration_basel_sunshine_graph.png){: width="500px"}
 > > There are a couple of things that might stand out to you. For example, it looks like the sunshine
 > > hours are fluctuating a lot per day. There also seems to be seasonal fluctuation, with the peaks
-> > becoming higher around the middle of the year. 
+> > becoming higher around the middle of the year.
 > {:.solution}
 {:.challenge}
 
@@ -178,7 +179,7 @@ Setting the `random_state` to `0` is a short-hand at this point. Note however, t
 
 ## 4. Choose a pretrained model or start building architecture from scratch
 
-### Regression and classification - how to set a training goal
+### Regression and classification
 
 In episode 2 we trained a dense neural network on a *classification task*. For this one hot encoding was used together with a `Categorical Crossentropy` loss function.
 This measured how close the distribution of the neural network outputs corresponds to the distribution of the three values in the one hot encoding.

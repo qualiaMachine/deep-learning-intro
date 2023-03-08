@@ -15,7 +15,9 @@ objectives:
 - "Recall the steps of a Deep Learning workflow"
 - "Explain why it is important to test the accuracy of Deep Learning system."
 - "Identify the inputs and outputs of a Deep Learning system."
+- "Explain the operations performed in a single neuron"
 - "Test that we have correctly installed the Keras, Seaborn and Sklearn libraries"
+
 keypoints:
 - "Machine learning is the process where computers learn to recognise patterns of data."
 - "Artificial neural networks are a machine learning technique based on a model inspired by groups of neurons in the brain."
