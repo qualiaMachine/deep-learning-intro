@@ -9,9 +9,7 @@ questions:
 - "How can we avoid overfitting?"
 objectives:
 - "Understand why convolutional and pooling layers are useful for image data"
-- "Use normalization as preparation step for Deep Learning"
 - "Implement a convolutional neural network on an image dataset"
-- "Plot and interpret the training process"
 - "Use drop-out layer to prevent overfitting"
 keypoints:
 - "Convolutional layers make efficient reuse of model parameters."
