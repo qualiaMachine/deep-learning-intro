@@ -4,23 +4,23 @@ layout: reference
 
 ## Glossary
 
-* Artificial Intelligence
-* Machine Learning
-* Deep Learning
-* CNN
-* RNN
-* Accuracy measure
-* Epoch
-* Learning rate
-* Confusion/Error Matrix
+* artificial intelligence
+* [machine learning](https://glosario.carpentries.org/en/#machine_learning)
+* [deep learning](https://glosario.carpentries.org/en/#deep_learning)
+* [neural network](https://glosario.carpentries.org/en/#neural_network)
+* convolutional neural network (CNN)
+* Recurrent neural network (RNN)
+* [accuracy](https://glosario.carpentries.org/en/#accuracy)
+* epoch
+* learning rate
+* [confusion matrix](https://glosario.carpentries.org/en/#confusion_matrix)
 * class imbalance
 * Sampling
     * Over
     * Under
-* overfitting
+* [overfitting](https://glosario.carpentries.org/en/#overfitting)
 * transfer learning
 * hidden layers
-* ...
 
 ## Troubleshooting
 * For installation issues with Apple M1, have a look at [these instructions](https://developer.apple.com/metal/tensorflow-plugin/) or [these](https://betterdatascience.com/install-tensorflow-2-7-on-macbook-pro-m1-pro/).
