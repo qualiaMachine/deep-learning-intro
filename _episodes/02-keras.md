@@ -5,9 +5,10 @@ exercises: 40-45
 questions:
 - "What is a neural network?"
 - "How do I compose a Neural Network using Keras?"
-- "How do I train this network on a dataset"
-- "How do I get insight into the learning process"
-- "How do I measure the performance of the network"
+- "How do I train this network on a dataset?"
+- "How do I get insight into learning process?"
+- "How do I measure the performance of the network?"
+
 objectives:
 - "Use the deep learning workflow to structure the notebook"
 - "Explore the dataset using pandas and seaborn"
@@ -180,7 +181,7 @@ By using the `hue='species'` setting for the pairplot the graphs on the diagonal
 sns.pairplot(penguins, hue="species")
 ~~~
 {:.language-python}
-![Pair plot showing the separability of the three species of penguin][pairplot]
+![Pair plot showing the separability of the three species of penguin for combinations of dataset attributes][pairplot]
 
 > ## Pairplot
 >
@@ -373,7 +374,7 @@ hidden_layer = keras.layers.Dense(10, activation="relu")(inputs)
 {:.language-python}
 
 The instantiation here has 2 parameters and a seemingly strange combination of parentheses, so
-let's take a closer look.
+let us take a closer look.
 The first parameter `10` is the number of neurons we want in this layer, this is one of the
 hyperparameters of our system and needs to be chosen carefully. We will get back to this in the section
 on hyperparameter tuning.
@@ -530,7 +531,7 @@ Using seaborn we can do this as follow:
 sns.lineplot(x=history.epoch, y=history.history['loss'])
 ~~~
 {:.language-python}
-![Training loss curve of the neural network training][training_curve]
+![Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs][training_curve]
 
 This plot can be used to identify whether the training is well configured or whether there
 are problems that need to be addressed.
@@ -672,7 +673,7 @@ the heatmap.
 sns.heatmap(confusion_df, annot=True)
 ~~~
 {:.language-python}
-![Confusion matrix of the test set][confusion_matrix]
+![Confusion matrix of the test set with high accuracy for Adelie and Gentoo classification and no correctly predicted Chinstrap][confusion_matrix]
 
 > ## Confusion Matrix
 >

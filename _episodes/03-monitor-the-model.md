@@ -29,7 +29,7 @@ Here we want to work with the *weather prediction dataset* (the light version) w
 It contains daily weather observations from 11 different European cities or places through the
 years 2000 to 2010. For all locations the data contains the variables ‘mean temperature’, ‘max temperature’, and ‘min temperature’. In addition, for multiple locations, the following variables are provided: 'cloud_cover', 'wind_speed', 'wind_gust', 'humidity', 'pressure', 'global_radiation', 'precipitation', 'sunshine', but not all of them are provided for every location. A more extensive description of the dataset including the different physical units is given in accompanying metadata file. The full dataset comprises of 10 years (3654 days) of collected weather data across Europe.
 
-![18 locations in the weather prediction dataset](../fig/03_weather_prediction_dataset_map.png)
+![18 European locations in the weather prediction dataset](../fig/03_weather_prediction_dataset_map.png)
 
  A very common task with weather data is to make a prediction about the weather sometime in the future, say the next day. In this episode, we will try to predict tomorrow's sunshine hours, a challenging-to-predict feature, using a neural network with the available weather data for one location: BASEL.
 
@@ -233,7 +233,7 @@ While we might use *softmax* for a classification task, here we do not want to r
 
 In addition, we have here chosen to write the network creation as a function so that we can use it later again to initiate new models.
 
-Let's check how our model looks like by calling the `summary` method.
+Let us check how our model looks like by calling the `summary` method.
 
 ~~~
 model.summary()
@@ -351,7 +351,7 @@ def plot_history(metrics):
 plot_history('root_mean_squared_error')
 ~~~
 {: .language-python}
-![Output of plotting sample](../fig/03_training_history_1_rmse.png){: width="500px"}
+![Plot of the RMSE over epochs for the trained model that shows a decreasing error metric](../fig/03_training_history_1_rmse.png){: width="500px"}
 
 This looks very promising! Our metric ("RMSE") is dropping nicely and while it maybe keeps fluctuating a bit it does end up at fairly low *RMSE* values.
 But the *RMSE* is just the root *mean* squared error, so we might want to look a bit more in detail how well our just trained model does in predicting the sunshine hours.
@@ -385,12 +385,12 @@ def plot_predictions(y_pred, y_true, title):
 plot_predictions(y_train_predicted, y_train, title='Predictions on the training set')
 ~~~
 {: .language-python}
-![Scatter plot between predictions and true values on the train set](../fig/03_regression_predictions_trainset.png)
+![Scatter plot between predictions and true sunshine hours in Basel on the train set showing a concise spread](../fig/03_regression_predictions_trainset.png)
 
 ~~~
 plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 ~~~
-![Scatter plot between predictions and true values on the test set](../fig/03_regression_predictions_testset.png)
+![Scatter plot between predictions and true sunshine hours in Basel on the test set showing a wide spread](../fig/03_regression_predictions_testset.png)
 
 {: .language-python}
 > ## Exercise: Reflecting on our results
@@ -440,7 +440,7 @@ In deep learning the situation is slightly different. It can - as for classical 
 ## 9. Tune hyperparameters
 ### Set expectations: How difficult is the defined problem?
 
-Before we dive deeper into handling overfitting and (trying to) improving the model performance, let's ask the question: How well must a model perform before we consider it a good model?
+Before we dive deeper into handling overfitting and (trying to) improving the model performance, let us ask the question: How well must a model perform before we consider it a good model?
 
 Now that we defined a problem (predict tomorrow's sunshine hours), it makes sense to develop an intuition for how difficult the posed problem is. Frequently, models will be evaluated against a so called **baseline**. A baseline can be the current standard in the field or if such a thing does not exist it could also be an intuitive first guess or toy model. The latter is exactly what we would use for our case.
 
@@ -455,7 +455,7 @@ plot_predictions(y_baseline_prediction, y_test, title='Baseline predictions on t
 ~~~
 {: .language-python}
 
-![Output of plotting sample](../fig/03_regression_test_5_naive_baseline.png){: width="500px"}
+![Scatter plot of predicted vs true sunshine hours in Basel for the test set where today's sunshine hours is considered as the true sunshine hours for tomorrow](../fig/03_regression_test_5_naive_baseline.png){: width="500px"}
 
 It is difficult to interpret from this plot whether our model is doing better than the baseline.
 We can also have a look at the RMSE:
@@ -490,7 +490,7 @@ Judging from the numbers alone, our neural network prediction would be performin
 
 As we saw when comparing the predictions for the training and the test set, deep learning models are prone to overfitting. Instead of iterating through countless cycles of model trainings and subsequent evaluations with a reserved test set, it is common practice to work with a second split off dataset to monitor the model during training.
 This is the *validation set* which can be regarded as a second test set. As with the test set, the datapoints of the *validation set* are not used for the actual model training itself. Instead, we evaluate the model with the *validation set* after every epoch during training, for instance to stop if we see signs of clear overfitting.
-Since we are adapting our model (tuning our hyperparameters) based on this validation set, it is *very* important that it is kept separate from the test set. If we used the same set, we wouldn't know whether our model truly generalizes or is only overfitting.
+Since we are adapting our model (tuning our hyperparameters) based on this validation set, it is *very* important that it is kept separate from the test set. If we used the same set, we would not know whether our model truly generalizes or is only overfitting.
 
 > ## Test vs. validation set
 > Not everybody agrees on the terminology of test set versus validation set. You might find
@@ -524,7 +524,7 @@ With this we can plot both the performance on the training data and on the valid
 plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ~~~
 {: .language-python}
-![Output of plotting sample](../fig/03_training_history_2_rmse.png){: width="500px"}
+![Plot of RMSE vs epochs for the training set and the validation set which depicts a divergence between the two around 10 epochs.](../fig/03_training_history_2_rmse.png){: width="500px"}
 > ## Exercise: plot the training progress.
 >
 > 1. Is there a difference between the training and validation data? And if so, what would this imply?
@@ -609,7 +609,7 @@ Most similar to classical machine learning might to **reduce the number of param
 > > ~~~
 > > {:.language-python}
 > >
-> > ![Output of plotting sample](../fig/03_training_history_3_rmse_smaller_model.png)
+> > ![Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets.](../fig/03_training_history_3_rmse_smaller_model.png)
 > >
 > > There is no single correct solution here. But you will have noticed that the number of nodes can be reduced quite a bit!
 > >
@@ -666,7 +666,7 @@ plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ~~~
 {: .language-python}
 
-![Output of plotting sample](../fig/03_training_history_3_rmse_early_stopping.png){: width="500px"}
+![Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets.](../fig/03_training_history_3_rmse_early_stopping.png){: width="500px"}
 
 This still seems to reveal the onset of overfitting, but the training stops before the discrepancy between training and validation loss can grow further.
 Despite avoiding severe cases of overfitting, early stopping has the additional advantage that the number of training epochs will be regulated automatically.
@@ -768,14 +768,14 @@ plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ### Run on test set and compare to naive baseline
 
 It seems that no matter what we add, the overall loss does not decrease much further (we at least avoided overfitting though!).
-Let's again plot the results on the test set:
+Let us again plot the results on the test set:
 ~~~
 y_test_predicted = model.predict(X_test)
 plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 ~~~
 {: .language-python}
 
-![Output of plotting sample](../fig/03_regression_test_5_dropout_batchnorm.png){: width="500px"}
+![Scatter plot between predictions and true sunshine hours for Basel on the test set](../fig/03_regression_test_5_dropout_batchnorm.png){: width="500px"}
 
 Well, the above is certainly not perfect. But how good or bad is this? Maybe not good enough to plan your picnic for tomorrow.
 But let's better compare it to the naive baseline we created in the beginning. What would you say, did we improve on that?
@@ -909,7 +909,7 @@ But let's better compare it to the naive baseline we created in the beginning. W
 
 ## 10. Save model
 
-Now that we have a somewhat acceptable model, let's not forget to save it for future users to benefit from our explorative efforts!
+Now that we have a somewhat acceptable model, let us not forget to save it for future users to benefit from our explorative efforts!
 
 ~~~
 model.save('my_tuned_weather_model')
