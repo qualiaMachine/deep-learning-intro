@@ -454,7 +454,7 @@ plot_predictions(y_baseline_prediction, y_test, title='Baseline predictions on t
 ~~~
 {: .language-python}
 
-![Scatter plot of predicted vs true sunshine hours in Basel for the test set where the today's sunshine hours is considered as the true sunshine hours for tomorrow](../fig/03_regression_test_5_naive_baseline.png){: width="500px"}
+![Scatter plot of predicted vs true sunshine hours in Basel for the test set where today's sunshine hours is considered as the true sunshine hours for tomorrow](../fig/03_regression_test_5_naive_baseline.png){: width="500px"}
 
 It is difficult to interpret from this plot whether our model is doing better than the baseline.
 We can also have a look at the RMSE:

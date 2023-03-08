@@ -153,7 +153,7 @@ plt.show()
 {: .language-python}
 
 
-![A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set](../fig/04_cifar10.png)
+![A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for exmaple: 'frog' or 'horse'.](../fig/04_cifar10.png)
 
 ## Convolutional layers
 In the previous episodes, we used 'fully connected layers' , that connected all input values of a layer to all outputs of a layer. This results in many connections, and thus weights to be learned, in the network. Note that our input dimension is now quite high (even with small pictures of `32x32` pixels), we have:
@@ -496,7 +496,7 @@ Note that the training loss continues to decrease, while the validation loss sta
 Techniques to avoid overfitting, or to improve model generalization, are termed **regularization techniques**.
 One of the most versatile regularization technique is **dropout** ([Srivastava et al., 2014](https://jmlr.org/papers/v15/srivastava14a.html)).
 Dropout essentially means that during each training cycle a random fraction of the dense layer nodes are turned off. This is described with the dropout rate between 0 and 1 which determines the fraction of nodes to silence at a time.
-![A sketch of NN with and without dropout](../fig/neural_network_sketch_dropout.png)
+![A sketch of a neural network with and without dropout](../fig/neural_network_sketch_dropout.png)
 The intuition behind dropout is that it enforces redundancies in the network by constantly removing different elements of a network. The model can no longer rely on individual nodes and instead must create multiple "paths". In addition, the model has to make predictions with much fewer nodes and weights (connections between the nodes).
 As a result, it becomes much harder for a network to memorize particular features. At first this might appear a quiet drastic approach which affects the network architecture strongly.
 In practice, however, dropout is computationally a very elegant solution which does not affect training speed. And it frequently works very well.
