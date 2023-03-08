@@ -48,6 +48,22 @@ from tensorflow import keras
 >
 {: .callout}
 
+> ## CERTIFICATE_VERIFY_FAILED error when downloading CIFAR-10 dataset
+>
+> When loading the CIFAR-10 dataset, you might get the following error:
+> ~~~
+> [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1125)
+> ~~~
+> {: .language-python}
+> You can solve this error by adding this to your notebook:
+> ~~~
+> import ssl
+> ssl._create_default_https_context = ssl._create_unverified_context
+> ~~~
+> {: .language-python}
+>
+{: .callout}
+
 We take a small sample of the data as training set for demonstration purposes.
 ~~~
 n = 5000
@@ -428,25 +444,25 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 > >  Layer (type)                Output Shape              Param #
 > > =================================================================
 > >  input_7 (InputLayer)        [(None, 32, 32, 3)]       0
-> > 
+> >
 > >  conv2d_16 (Conv2D)          (None, 30, 30, 50)        1400
-> > 
+> >
 > >  max_pooling2d_10 (MaxPoolin  (None, 15, 15, 50)       0
 > >  g2D)
-> > 
+> >
 > >  conv2d_17 (Conv2D)          (None, 13, 13, 50)        22550
-> > 
+> >
 > >  max_pooling2d_11 (MaxPoolin  (None, 6, 6, 50)         0
 > >  g2D)
-> > 
+> >
 > >  conv2d_18 (Conv2D)          (None, 4, 4, 50)          22550
-> > 
+> >
 > >  flatten_6 (Flatten)         (None, 800)               0
-> > 
+> >
 > >  dense_11 (Dense)            (None, 50)                40050
-> > 
+> >
 > >  dense_12 (Dense)            (None, 10)                510
-> > 
+> >
 > > =================================================================
 > > Total params: 87,060
 > > Trainable params: 87,060
