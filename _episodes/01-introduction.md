@@ -13,10 +13,9 @@ objectives:
 - "Recall the sort of problems for which Deep Learning is a useful tool"
 - "List some of the available tools for Deep Learning"
 - "Recall the steps of a Deep Learning workflow"
-- "Explain why it is important to test the accuracy of Deep Learning system."
-- "Identify the inputs and outputs of a Deep Learning system."
+- "Identify the inputs and outputs of a deep neural network."
 - "Explain the operations performed in a single neuron"
-- "Test that we have correctly installed the Keras, Seaborn and Sklearn libraries"
+- "Test that you have correctly installed the Keras, Seaborn and Sklearn libraries"
 
 keypoints:
 - "Machine learning is the process where computers learn to recognise patterns of data."
