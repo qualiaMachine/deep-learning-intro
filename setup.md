@@ -108,9 +108,9 @@ you can try installing Tensorflow for Mac with pip:
 pip install tensorflow-macos
 ~~~
 
-## Starting a Jupyter Notebook
+## Starting Jupyter Lab
 
-We will teach using Python in a [Jupyter notebook][jupyter], a
+We will teach using Python in [Jupyter lab][jupyter], a
 programming environment that runs in a web browser. Jupyter requires a reasonably
 up-to-date browser, preferably a current version of Chrome, Safari, or Firefox
 (note that Internet Explorer version 9 and below are *not* supported). If you
@@ -118,14 +118,14 @@ installed Python using Anaconda, Jupyter should already be on your system. If
 you did not use Anaconda, use the Python package manager pip
 (see the [Jupyter website][jupyter-install] for details.)
 
-To start the notebook, open a terminal and type the command:
+To start jupyter lab, open a terminal and type the command:
 
 ~~~
-$ jupyter notebook
+$ jupyter lab
 ~~~
 {: .source}
 
-To start the Python interpreter without the notebook, open a terminal
+To start the Python interpreter without jupyter lab, open a terminal
 or git bash and type the command:
 
 ~~~
@@ -134,7 +134,7 @@ $ python
 {: .source}
 
 ## Check your setup
-To check whether all packages installed correctly, start a jupyter notebook as
+To check whether all packages installed correctly, start a jupyter notebook in jupyter lab as
 explained above. Run the following lines of code:
 ~~~
 import sklearn
@@ -160,7 +160,7 @@ Most versions will work fine with this lesson, but:
 - For sklearn, the minimum version is 0.22.
 
 ## Fallback option: cloud environment
-If a local installation does not work for you, it is also possible to run this lesson in [Google colab](https://colab.research.google.com/). If you open a notebook here, the required packages are already pre-installed.
+If a local installation does not work for you, it is also possible to run this lesson in [Google colab](https://colab.research.google.com/). If you open a jupyter notebook here, the required packages are already pre-installed. Note that google colab uses jupyter notebook instead of jupyter lab.
 
 ## Downloading the required datasets
 
