@@ -15,7 +15,7 @@ objectives:
 - "Recall the steps of a Deep Learning workflow"
 - "Explain why it is important to test the accuracy of Deep Learning system."
 - "Identify the inputs and outputs of a Deep Learning system."
-- "Test that we've correctly installed the Keras, Seaborn and Sklearn libraries"
+- "Test that we have correctly installed the Keras, Seaborn and Sklearn libraries"
 keypoints:
 - "Machine learning is the process where computers learn to recognise patterns of data."
 - "Artificial neural networks are a machine learning technique based on a model inspired by groups of neurons in the brain."
@@ -86,7 +86,7 @@ Deep Learning requires extensive training using example data which shows the net
 
 While traditional "shallow" networks might have had between three and five layers, deep networks often have tens or even hundreds of layers. This leads to them having millions of individual weights.
 The image below shows a diagram of all the layers (there are too many neurons to draw them all) on a Deep Learning network designed to detect pedestrians in images.
-The input (left most) layer of the network is an image and the final (right most) layer of the network outputs a zero or one to determine if the input data belongs to the class of data we're interested in.
+The input (left most) layer of the network is an image and the final (right most) layer of the network outputs a zero or one to determine if the input data belongs to the class of data we are interested in.
 This image is from the paper ["An Efficient Pedestrian Detection Method Based on YOLOv2" by Zhongmin Liu, Zhicai Chen, Zhanming Li, and Wenjin Hu published in Mathematical Problems in Engineering, Volume 2018](https://doi.org/10.1155/2018/3518959)
 
 ![An example of a deep neural network](../fig/01_deep_network.png){: width="600px" }
@@ -111,13 +111,13 @@ Here are just a few examples of how Deep Learning has been applied to some resea
 * [Help to restore ancient murals](https://heritagesciencejournal.springeropen.com/articles/10.1186/s40494-020-0355-x)
 
 
-### What sort of problems can't Deep Learning solve?
+### What sort of problems can Deep Learning not solve?
 
 * Any case where only a small amount of training data is available.
 * Tasks requiring an explanation of how the answer was arrived at.
 * Classifying things which are nothing like their training data.
 
-### What sort of problems can Deep Learning solve, but shouldn't be used for?
+### What sort of problems can Deep Learning solve, but should not be used for?
 
 Deep Learning needs a lot of computational power, for this reason it often relies on specialised hardware like graphical processing units (GPUs). Many computational problems can be solved using less intensive techniques, but could still technically be solved with Deep Learning.
 
@@ -140,7 +140,7 @@ The following could technically be achieved using Deep Learning, but it would pr
 > >
 > > 1.  and 5 are the sort of tasks often solved with Deep Learning.
 > > 2. is technically possible but solving this with Deep Learning would be extremely wasteful, you could do the same with much less computing power using traditional techniques.
-> > 3. will probably fail because there's not enough training data.
+> > 3. will probably fail because there is not enough training data.
 > > 4. will fail because the Deep Learning system only knows what cats and dogs look like, it might accidentally classify the people as cats or dogs.
 > {: .solution}
 {: .challenge}
@@ -149,7 +149,7 @@ The following could technically be achieved using Deep Learning, but it would pr
 > The rise of Deep Learning is partially due to the increased availability of very large datasets.
 > But how much data do you actually need to train a Deep Learning model?
 > Unfortunately, this question is not easy to answer. It depends, among other things, on the
-> complexity of the task (which you often don't know beforehand), the quality of the available dataset and the complexity of the network. For complex tasks with large neural networks, we often see that adding more data continues to improve performance. However, this is also not a generic truth: if the data you add is too similar to the data you already have, it will not give much new information to the neural network.
+> complexity of the task (which you often do not know beforehand), the quality of the available dataset and the complexity of the network. For complex tasks with large neural networks, we often see that adding more data continues to improve performance. However, this is also not a generic truth: if the data you add is too similar to the data you already have, it will not give much new information to the neural network.
 >
 > In case you have too little data available to train a complex network from scratch, it is sometimes possible to use a pretrained network that was trained on a similar problem. Another trick is data augmentation, where you expand the dataset with artificial data points that could be real. An example of this is mirroring images when trying to classify cats and dogs. An horizontally mirrored animal retains the label, but exposes a different view.
 {: .callout}
@@ -168,32 +168,32 @@ Firstly we must decide what it is we want our Deep Learning system to do. Is it 
 
 Next we need to identify what the inputs and outputs of the neural network will be. This might require looking at our data and deciding what features of the data we can use as inputs. If the data is images then the inputs could be the individual pixels of the images.
 
-For the outputs we'll need to look at what we want to identify from the data. If we are performing a classification problem then typically we will have one output for each potential class.
+For the outputs we will need to look at what we want to identify from the data. If we are performing a classification problem then typically we will have one output for each potential class.
 
 
 ### 3. Prepare data
 
-Many datasets aren't ready for immediate use in a neural network and will require some preparation. Neural networks can only really deal with numerical data, so any non-numerical data (for example words) will have to be somehow converted to numerical data.
+Many datasets are not ready for immediate use in a neural network and will require some preparation. Neural networks can only really deal with numerical data, so any non-numerical data (for example words) will have to be somehow converted to numerical data.
 
-Next we'll need to divide the data into multiple sets. One of these will be used by the training process and we'll call it the training set. Another will be used to evaluate the accuracy of the training and we'll call that one the test set. Sometimes we'll also use a 3rd set known as a validation set to tune hyperparameters.
+Next we will need to divide the data into multiple sets. One of these will be used by the training process and we will call it the training set. Another will be used to evaluate the accuracy of the training and we will call that one the test set. Sometimes we will also use a 3rd set known as a validation set to tune hyperparameters.
 
 ### 4. Choose a pre-trained model or build a new architecture from scratch
 
 Often we can use an existing neural network instead of designing one from scratch. Training a network can take a lot of time and computational resources. There are a number of well publicised networks which have been shown to perform well at certain tasks, if you know of one which already does a similar task well then it makes sense to use one of these.
 
-If instead we decide we do want to design our own network then we need to think about how many input neurons it will have, how many hidden layers and how many outputs, what types of layers we use (we'll explore the different types later on). This will probably need some experimentation and we might have to try tweaking the network design a few times before we see acceptable results.
+If instead we decide we do want to design our own network then we need to think about how many input neurons it will have, how many hidden layers and how many outputs, what types of layers we use (we will explore the different types later on). This will probably need some experimentation and we might have to try tweaking the network design a few times before we see acceptable results.
 
 
 ### 5. Choose a loss function and optimizer
 
-The loss function tells the training algorithm how far away the predicted value was from the true value. We'll look at choosing a loss function in more detail later on.
+The loss function tells the training algorithm how far away the predicted value was from the true value. We will look at choosing a loss function in more detail later on.
 
 The optimizer is responsible for taking the output of the loss function and then applying some changes to the weights within the network. It is through this process that the "learning" (adjustment of the weights) is achieved.
 
 
 ### 6. Train the model
 
-We can now go ahead and start training our neural network. We'll probably keep doing this for a given number of iterations through our training dataset (referred to as _epochs_) or until the loss function gives a value under a certain threshold. The graph below show the loss against the number of _epochs_, generally the loss will go down with each _epoch_, but occasionally it will see a small rise.
+We can now go ahead and start training our neural network. We will probably keep doing this for a given number of iterations through our training dataset (referred to as _epochs_) or until the loss function gives a value under a certain threshold. The graph below show the loss against the number of _epochs_, generally the loss will go down with each _epoch_, but occasionally it will see a small rise.
 
 ![A graph showing an exponentially decreasing loss over the first 1500 epochs of training an example network.](../fig/training-0_to_1500.svg)
 
@@ -206,7 +206,7 @@ of the network.
 
 ### 8. Measure Performance
 
-Once we trained the network we want to measure its performance. To do this we use some additional data that wasn't part of the training, this is known as a test set. There are many different methods available for measuring performance and which one is best depends on the type of task we are attempting. These metrics are often published as an indication of how well our network performs.
+Once we trained the network we want to measure its performance. To do this we use some additional data that was not part of the training, this is known as a test set. There are many different methods available for measuring performance and which one is best depends on the type of task we are attempting. These metrics are often published as an indication of how well our network performs.
 
 ### 9. Tune Hyperparameters
 
@@ -214,16 +214,16 @@ Hyperparameters are all the parameters set by the person configuring the machine
 
 ### 10. Share Model
 
-Now that we have a trained network that performs at a level we are happy with we can go and use it on real data to perform a prediction. At this point we might want to consider publishing a file with both the architecture of our network and the weights which it has learned (assuming we didn't use a pre-trained network). This will allow others to use it as as pre-trained network for their own purposes and for them to (mostly) reproduce our result.
+Now that we have a trained network that performs at a level we are happy with we can go and use it on real data to perform a prediction. At this point we might want to consider publishing a file with both the architecture of our network and the weights which it has learned (assuming we did not use a pre-trained network). This will allow others to use it as as pre-trained network for their own purposes and for them to (mostly) reproduce our result.
 
 
 > ## Deep Learning workflow exercise
 >
-> Think about a problem you'd like to use Deep Learning to solve.
+> Think about a problem you would like to use Deep Learning to solve.
 > 1. What do you want a Deep Learning system to be able to tell you?
 > 2. What data inputs and outputs will you have?
-> 3. Do you think you'll need to train the network or will a pre-trained network be suitable?
-> 4. What data do you have to train with? What preparation will your data need? Consider both the data you are going to predict/classify from and the data you'll use to train the network.
+> 3. Do you think you will need to train the network or will a pre-trained network be suitable?
+> 4. What data do you have to train with? What preparation will your data need? Consider both the data you are going to predict/classify from and the data you will use to train the network.
 >
 > Discuss your answers with the group or the person next to you.
 {: .challenge}
@@ -238,13 +238,13 @@ There are many software libraries available for Deep Learning including:
 
 ### PyTorch
 
-[PyTorch](https://pytorch.org/) was developed by Facebook in 2016 and is a popular choice for Deep Learning applications. It was developed for Python from the start and feels a lot more "pythonic" than TensorFlow. Like TensorFlow it was designed to do more than just Deep Learning and offers some very low level interfaces. [PyTorch Lightning](https://www.pytorchlightning.ai/) offers a higher level interface to PyTorch to set up experiments. Like TensorFlow it's also very easy to integrate PyTorch with a GPU. In many benchmarks it outperforms the other libraries.
+[PyTorch](https://pytorch.org/) was developed by Facebook in 2016 and is a popular choice for Deep Learning applications. It was developed for Python from the start and feels a lot more "pythonic" than TensorFlow. Like TensorFlow it was designed to do more than just Deep Learning and offers some very low level interfaces. [PyTorch Lightning](https://www.pytorchlightning.ai/) offers a higher level interface to PyTorch to set up experiments. Like TensorFlow it is also very easy to integrate PyTorch with a GPU. In many benchmarks it outperforms the other libraries.
 
 ### Keras
 
 [Keras](https://keras.io/) is designed to be easy to use and usually requires fewer lines of code than other libraries. We have chosen it for this workshop for that reason. Keras can actually work on top of TensorFlow (and several other libraries), hiding away the complexities of TensorFlow while still allowing you to make use of their features.
 
-The performance of Keras is sometimes not as good as other libraries and if you are going to move on to create very large networks using very large datasets then you might want to consider one of the other libraries. But for many applications the performance difference will not be enough to worry about and the time you'll save with simpler code will exceed what you'll save by having the code run a little faster.
+The performance of Keras is sometimes not as good as other libraries and if you are going to move on to create very large networks using very large datasets then you might want to consider one of the other libraries. But for many applications the performance difference will not be enough to worry about and the time you will save with simpler code will exceed what you will save by having the code run a little faster.
 
 Keras also benefits from a very good set of [online documentation](https://keras.io/guides/) and a large user community. You will find that most of the concepts from Keras translate very well across to the other libraries if you wish to learn them at a later date.
 
