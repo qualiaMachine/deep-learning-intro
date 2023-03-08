@@ -16,7 +16,7 @@ objectives:
 - "Describe a fully connected layer"
 - "Implement a fully connected layer with Keras"
 - "Use Keras to train a small fully connected network on prepared data"
-- "Plot the loss curve of the training process"
+- "Interpret the loss curve of the training process"
 - "Use a confusion matrix to measure the trained networks' performance on a test set"
 keypoints:
 - The deep learning workflow is a useful tool to structure your approach, it helps to make sure you do not forget any important steps.
