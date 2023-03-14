@@ -1,7 +1,7 @@
 ---
 title: "Advanced layer types"
 teaching: 30
-exercises: 45
+exercises: 50
 questions:
 - "Why do we need different types of layers?"
 - "What are good network designs for image data?"
@@ -511,8 +511,9 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 >
 > >
 > > ## Solution
-> > 1. No that would not make sense. Convolutions only work when the data is ordered
-> >    in a spatial dimension. The features of the penguins dataset have no spatial relations with each other.
+> > 1. No that would not make sense. Convolutions only work when the features of the data can be ordered 
+> >    in a meaningful way. Pixels for exmaple are ordered in a spatial dimension. 
+> >    This kind of order cannot be applied to the features of the penguin dataset.
 > >    If we would have pictures or audio recordings of the penguins as input data
 > >    it would make sense to use a CNN architecture.
 > > 2. It would make sense, but only if we approach the problem from a different angle then we did before.
