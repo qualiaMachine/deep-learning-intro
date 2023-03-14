@@ -1,7 +1,7 @@
 ---
 title: "Advanced layer types"
 teaching: 30
-exercises: 45
+exercises: 65
 questions:
 - "Why do we need different types of layers?"
 - "What are good network designs for image data?"
