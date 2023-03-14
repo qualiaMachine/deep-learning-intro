@@ -1,7 +1,7 @@
 ---
 title: "Advanced layer types"
 teaching: 30
-exercises: 45
+exercises: 50
 questions:
 - "Why do we need different types of layers?"
 - "What are good network designs for image data?"
@@ -511,6 +511,32 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 > can be used. Think for example of time series data from an accelerometer,
 > audio data for speech recognition, or 3d structures of chemical compounds.
 {: .callout}
+
+> ## Why and when to use convolutional neural networks
+>
+> 1. Would it make sense to train a convolutional neural network (CNN) on the penguins dataset and why?
+> 2. Would it make sense to train a CNN on the weather dataset and why?
+> 3. (Optional) Can you think of a different machine learning task that would benefit from a
+>    CNN architecture?
+>
+> >
+> > ## Solution
+> > 1. No that would not make sense. Convolutions only work when the features of the data can be ordered 
+> >    in a meaningful way. Pixels for exmaple are ordered in a spatial dimension. 
+> >    This kind of order cannot be applied to the features of the penguin dataset.
+> >    If we would have pictures or audio recordings of the penguins as input data
+> >    it would make sense to use a CNN architecture.
+> > 2. It would make sense, but only if we approach the problem from a different angle then we did before.
+> >    Namely, 1D convolutions work quite well on sequential data such as timeseries. If we have as our input a matrix
+> >    of the different weather conditions over time in the past x days, a CNN would be suited to quickly grasp
+> >    the temporal relationship over days.
+> > 3. Some example domains in which CNNs are applied:
+> >    - Text data
+> >    - Timeseries, specifically audio
+> >    - Molecular structures
+> >
+> {: .solution}
+{: .challenge}
 
 ## Dropout
 
