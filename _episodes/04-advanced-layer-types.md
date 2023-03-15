@@ -1,7 +1,8 @@
 ---
 title: "Advanced layer types"
 teaching: 30
-exercises: 65
+exercises: 70
+
 questions:
 - "Why do we need different types of layers?"
 - "What are good network designs for image data?"
@@ -247,6 +248,16 @@ In the following image, we see the effect of such a kernel on the values of a si
 ![Convolution example on an image of a cat to extract features](../fig/04_conv_image.png)
 
 In our **convolutional layer** our hidden units are a number of convolutional matrices (or kernels), where the values of the matrices are the weights that we learn in the training process. The output of a convolutional layer is an 'image' for each of the kernels, that gives the output of the kernel applied to each pixel.
+
+> ## Playing with convolutions
+> Convolutions applied to images can be hard to grasp at first. Fortunately there are resources out
+> there that enable users to interactively play around with images and convolutions:
+> - [Image kernels explained](https://setosa.io/ev/image-kernels/) shows how different convolutions can achieve certain effects on an image, like sharpening and blurring.
+> - [The convolutional neural network cheat sheet](https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#)
+>     shows animated examples of the different components of convolutional neural nets 
+> 
+{: .callout}
+
 
 > ## Border pixels
 >
@@ -501,6 +512,32 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 > can be used. Think for example of time series data from an accelerometer,
 > audio data for speech recognition, or 3d structures of chemical compounds.
 {: .callout}
+
+> ## Why and when to use convolutional neural networks
+>
+> 1. Would it make sense to train a convolutional neural network (CNN) on the penguins dataset and why?
+> 2. Would it make sense to train a CNN on the weather dataset and why?
+> 3. (Optional) Can you think of a different machine learning task that would benefit from a
+>    CNN architecture?
+>
+> >
+> > ## Solution
+> > 1. No that would not make sense. Convolutions only work when the features of the data can be ordered 
+> >    in a meaningful way. Pixels for exmaple are ordered in a spatial dimension. 
+> >    This kind of order cannot be applied to the features of the penguin dataset.
+> >    If we would have pictures or audio recordings of the penguins as input data
+> >    it would make sense to use a CNN architecture.
+> > 2. It would make sense, but only if we approach the problem from a different angle then we did before.
+> >    Namely, 1D convolutions work quite well on sequential data such as timeseries. If we have as our input a matrix
+> >    of the different weather conditions over time in the past x days, a CNN would be suited to quickly grasp
+> >    the temporal relationship over days.
+> > 3. Some example domains in which CNNs are applied:
+> >    - Text data
+> >    - Timeseries, specifically audio
+> >    - Molecular structures
+> >
+> {: .solution}
+{: .challenge}
 
 ## Dropout
 
