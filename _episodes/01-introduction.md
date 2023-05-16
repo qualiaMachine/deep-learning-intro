@@ -262,9 +262,9 @@ Follow the instructions in the [setup]({{ page.root }}//setup) document to insta
 > ~~~
 > {:.language-python}
 > > ## Solution
-> > You should get a version number reported. At the time of writing 2.4.0 is the latest version.
+> > You should get a version number reported. At the time of writing 2.12.0 is the latest version.
 > > ~~~
-> > 2.4.0
+> > 2.12.0
 > > ~~~
 > > {:.output}
 > {:.solution}
@@ -279,9 +279,9 @@ Follow the instructions in the [setup]({{ page.root }}//setup) document to insta
 > ~~~
 > {:.language-python}
 > > ## Solution
-> > You should get a version number reported. At the time of writing 0.11.1 is the latest version.
+> > You should get a version number reported. At the time of writing 0.12.2 is the latest version.
 > > ~~~
-> > 0.11.1
+> > 0.12.2
 > > ~~~
 > > {:.output}
 > {:.solution}
@@ -297,9 +297,9 @@ Follow the instructions in the [setup]({{ page.root }}//setup) document to insta
 > ~~~
 > {:.language-python}
 > > ## Solution
-> > You should get a version number reported. At the time of writing 0.24.1 is the latest version.
+> > You should get a version number reported. At the time of writing 1.2.2 is the latest version.
 > > ~~~
-> > 0.24.1
+> > 1.2.2
 > > ~~~
 > > {:.output}
 > {:.solution}

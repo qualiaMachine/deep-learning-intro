@@ -170,8 +170,8 @@ print('Tensorflow version: ', tensorflow.__version__)
 
 This should output the versions of all required packages without giving errors.
 Most versions will work fine with this lesson, but:
-- For Keras and Tensorflow, the minimum version is 2.2.4
-- For sklearn, the minimum version is 0.22.
+- For Keras and Tensorflow, the minimum version is 2.12.0
+- For sklearn, the minimum version is 1.2.2
 
 ## Fallback option: cloud environment
 If a local installation does not work for you, it is also possible to run this lesson in [Google colab](https://colab.research.google.com/). If you open a jupyter notebook here, the required packages are already pre-installed. Note that google colab uses jupyter notebook instead of jupyter lab.
