@@ -523,7 +523,7 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 > >
 > > ## Solution
 > > 1. No that would not make sense. Convolutions only work when the features of the data can be ordered 
-> >    in a meaningful way. Pixels for exmaple are ordered in a spatial dimension. 
+> >    in a meaningful way. Pixels for example are ordered in a spatial dimension. 
 > >    This kind of order cannot be applied to the features of the penguin dataset.
 > >    If we would have pictures or audio recordings of the penguins as input data
 > >    it would make sense to use a CNN architecture.
