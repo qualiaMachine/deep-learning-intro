@@ -923,9 +923,9 @@ Our models get the general trends right, but still predictions vary quite a bit 
 > ## Open question: What could be next steps to further improve the model?
 >
 > With unlimited options to modify the model architecture or to play with the training parameters, deep learning can trigger very extensive hunting for better and better results.
-> Usually models are "well behaving" in the sense that small chances to the architectures also only result in small changes of the performance (if any).
+> Usually models are "well behaving" in the sense that small changes to the architectures also only result in small changes of the performance (if any).
 > It is often tempting to hunt for some magical settings that will lead to much better results. But do those settings exist?
-> Applying common sense is often a good first step to make a guess of how much better *could* results be.
+> Applying common sense is often a good first step to make a guess of how much better results *could* be.
 > In the present case we might certainly not expect to be able to reliably predict sunshine hours for the next day with 5-10 minute precision.
 > But how much better our model could be exactly, often remains difficult to answer.
 >
@@ -933,8 +933,8 @@ Our models get the general trends right, but still predictions vary quite a bit 
 > * Ignoring changes to the model architecture, what might notably improve the prediction quality?
 >
 > > ## Solution
-> > This is on open question. And we don't actually know how far one could push this sunshine hour prediction (try it out yourself if you like! We're curious!).
-> > But there is a few things that might be worth exploring.
+> > This is an open question. And we don't actually know how far one could push this sunshine hour prediction (try it out yourself if you like! We're curious!).
+> > But there are a few things that might be worth exploring.
 > >
 > > Regarding the model architecture:
 > > * In the present case we do not see a magical silver bullet to suddenly boost the performance. But it might be worth testing if *deeper* networks do better (more layers).
@@ -944,7 +944,7 @@ Our models get the general trends right, but still predictions vary quite a bit 
 > > * Related to more data: use data augmentation. By creating realistic variations of the available data, the model might improve as well.
 > > * More data can mean more data points (you can test it yourself by taking more than the 3 years we used here!)
 > > * More data can also mean more features! What about adding the month?
-> > * The labels we used here (sunshine hours) are highly biased, many days with no or nearly no sunshine but few with >10 hours. Techniques such as oversampling or undersampling might handle such biased labels better.
+> > * The labels we used here (sunshine hours) are highly biased, many days with no or nearly no sunshine but a few with >10 hours. Techniques such as oversampling or undersampling might handle such biased labels better.
 > > Another alternative would be to not only look at data from one day, but use the data of a longer period such as a full week.
 > > This will turn the data into time series data which in turn might also make it worth to apply different model architectures...
 > >
