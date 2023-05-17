@@ -567,8 +567,8 @@ are problems that need to be addressed.
 > Looking at the training curve we have just made.
 > 1. How does the training progress?
 >   * Does the training loss increase or decrease?
->   * Does it change fast or slowly?
->   * Is the graph look very jittery?
+>   * Does it change quickly or slowly?
+>   * Does the graph look very jittery?
 > 2. Do you think the resulting trained network will work well on the test set?
 >
 > > ## Solution
