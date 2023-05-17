@@ -48,11 +48,11 @@ In addition, you are very welcome to add issues or pull requests that address mo
 ## Maintainer(s)
 
 Current maintainers of this lesson are
-* Dafne van Kuppevelt
 * Peter Steinbach
 * Colin Sauze
 * Djura Smits
-
+* Sven van der Burg
+* Pranav Chandramouli
 
 ## Authors
 
