@@ -622,7 +622,7 @@ We saw that reducing the number of parameters can be a strategy to avoid overfit
 In practice, however, this is usually not the (main) way to go when it comes to deep learning.
 One reason is, that finding the sweet spot can be really hard and time consuming. And it has to be repeated every time the model is adapted, e.g. when more training data becomes available.
 
-> ### Sweet Spots
+> ## Sweet Spots
 > Note: There is no single correct solution here. But you will have noticed that the number of nodes can be reduced quite a bit!
 > In general, it quickly becomes a very complicated search for the right "sweet spot", i.e. the settings for which overfitting will be (nearly) avoided but which still performes equally well.
 {: .callout }
@@ -753,7 +753,7 @@ plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 
 ![Output of plotting sample](../fig/03_training_history_5_rmse_batchnorm.png){: width="500px"}
 
-> ### Batchnorm parameters
+> ## Batchnorm parameters
 >
 > You may have noticed that the number of parameters of the Batchnorm layers corresponds to
 > 4 parameters per input node.
@@ -832,7 +832,6 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > > ~~~
 > > {: .language-python}
 > >
-
 > > Create the network. We can re-use the `create_nn` that we already have. Because we have reduced the number of input features
 > > the number of parameters in the network goes down from 14457 to 6137.
 > > ~~~
