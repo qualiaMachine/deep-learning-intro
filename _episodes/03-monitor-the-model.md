@@ -832,7 +832,6 @@ But let's better compare it to the naive baseline we created in the beginning. W
 > > ~~~
 > > {: .language-python}
 > >
-
 > > Create the network. We can re-use the `create_nn` that we already have. Because we have reduced the number of input features
 > > the number of parameters in the network goes down from 14457 to 6137.
 > > ~~~
