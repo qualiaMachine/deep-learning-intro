@@ -78,7 +78,7 @@ Make sure you have an up-to-date version of Conda running.
 See [these instructions](https://docs.anaconda.com/anaconda/install/update-version/) for updating Conda if required.
 {: .callout}
 
-To create a conda environment called `dl_workshop` with the required packages, open a terminal and type the command:
+To create a conda environment called `dl_workshop` with the required packages, open a terminal (Mac) or Anaconda prompt (Windows) and type the command:
 ~~~
 conda create --name dl_workshop python jupyter seaborn scikit-learn pandas
 ~~~
