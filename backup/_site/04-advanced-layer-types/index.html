@@ -1,0 +1,1165 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2023-05-17 15:41:55 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/syntax.css" />
+     <link rel="stylesheet" type="text/css" href="../assets/css/fonts.css" />
+    
+    <link rel="license" href="#license-info" />
+
+    
+
+
+
+    <!-- Favicons for everyone -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicons/incubator/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicons/incubator/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/favicons/incubator/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/favicons/incubator/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/favicons/incubator/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/favicons/incubator/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/favicons/incubator/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/favicons/incubator/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../assets/favicons/incubator/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../assets/favicons/incubator/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../assets/favicons/incubator/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicons/incubator/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../assets/favicons/incubator/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="The Carpentries Incubator - Introduction to deep-learning"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="../assets/favicons/incubator/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="../assets/favicons/incubator/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="../assets/favicons/incubator/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="../assets/favicons/incubator/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="../assets/favicons/incubator/mstile-310x310.png" />
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  <title>
+  Advanced layer types &ndash; Introduction to deep-learning
+  </title>
+
+  </head>
+  <body>
+    
+
+
+
+
+
+
+
+<div class="panel panel-default life-cycle">
+  <div id="life-cycle" class="panel-body beta">
+    This lesson is being piloted (Beta version)
+    
+    <br> <strong><a href="/issues">If you teach this lesson, please tell the authors and provide feedback by opening an issue in the source repository</a></strong>
+    
+  </div>
+</div>
+
+
+
+
+    <div class="container">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="../index.html" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/incubator-logo-blue.svg" alt="The Carpentries Incubator logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../index.html">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+
+        
+	
+        <li><a href="../setup/">Setup</a></li>
+
+        
+        
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            
+            <li><a href="../01-introduction/index.html">Introduction</a></li>
+            
+            
+            <li><a href="../02-keras/index.html">Classification by a Neural Network using Keras</a></li>
+            
+            
+            <li><a href="../03-monitor-the-model/index.html">Monitor the training process</a></li>
+            
+            
+            <li><a href="../04-advanced-layer-types/index.html">Advanced layer types</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="../aio/index.html">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+        
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../reference.html">Reference</a></li>
+            
+            
+            
+              <li><a href="../about/index.html">About</a></li>
+            
+            
+            
+            
+              <li><a href="../design/index.html">Lesson Design</a></li>
+            
+            
+            
+            
+              <li><a href="../discuss/index.html">Discussion</a></li>
+            
+            
+            
+            
+              <li><a href="../figures/index.html">Figures</a></li>
+            
+            
+            
+            
+              <li><a href="../guide/index.html">Instructor Notes</a></li>
+            
+            
+            
+            
+              <li><a href="../survey-templates/index.html">Workshop survey templates</a></li>
+            
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../LICENSE.html">License</a></li>
+	
+	<li><a href="/edit//_episodes/04-advanced-layer-types.md" data-checker-ignore>Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+      
+
+
+<div class="alert alert-info text-center" role="alert">
+  This lesson is part of
+  <a href="https://github.com/carpentries-incubator/proposals/#the-carpentries-incubator" data-checker-ignore>
+    The Carpentries Incubator</a>, a place to share and use each other's
+  Carpentries-style lessons. <strong>This lesson has not been reviewed by and is
+  not endorsed by The Carpentries</strong>.
+</div>
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../03-monitor-the-model/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="../">Introduction to deep-learning</a></h3>
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">Advanced layer types</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 30 min
+      <br/>
+      <strong>Exercises:</strong> 70 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>Why do we need different types of layers?</p>
+</li>
+	
+	<li><p>What are good network designs for image data?</p>
+</li>
+	
+	<li><p>What is a convolutional layer?</p>
+</li>
+	
+	<li><p>How can we use different types of layers to prevent overfitting?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Understand why convolutional and pooling layers are useful for image data</p>
+</li>
+	
+	<li><p>Implement a convolutional neural network on an image dataset</p>
+</li>
+	
+	<li><p>Use a drop-out layer to prevent overfitting</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<h2 id="different-types-of-layers">Different types of layers</h2>
+<p>Networks are like onions: a typical neural network consists of many layers. In fact, the word <em>deep</em> in <em>Deep Learning</em>
+refers to the many layers that make the network deep.</p>
+
+<p>So far, we have seen one type of layer, namely the <strong>fully connected</strong>, or <strong>dense</strong> layer. This layer is called fully connected, because all input neurons are taken into account by each output neuron. The number of parameters that need to be learned by the network, is thus in the order of magnitude of the number of input neurons times the number of hidden neurons.</p>
+
+<p>However, there are many different types of layers that perform different calculations and take different inputs. In this episode we will take a look at <strong>convolutional layers</strong> and <strong>dropout layers</strong>, which are useful in the context of image data, but also in many other types of (structured) data.</p>
+
+<h2 id="image-classification">Image classification</h2>
+<p>Keras comes with a few prepared datasets. We have a look at the <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR10 dataset</a>,
+which is a widely known dataset for image classification.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">datasets</span><span class="p">.</span><span class="n">cifar10</span><span class="p">.</span><span class="n">load_data</span><span class="p">()</span>
+</code></pre></div></div>
+
+<blockquote class="callout">
+  <h2 id="cifar-10">CIFAR-10</h2>
+
+  <p>The CIFAR-10 dataset consists of images of 10 different classes: airplanes, cars, birds, cats, deer, dogs, frogs, horses, ships, and trucks.
+It is widely used as a benchmark dataset for image classification. The low resolution of the images in the dataset allows for quick loading and testing models.</p>
+
+  <p>For more information about this dataset and how it was collected you can check out
+<a href="https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf">Learning Multiple Layers of Features from Tiny Images by  Alex Krizhevsky, 2009</a>.</p>
+
+</blockquote>
+
+<blockquote class="callout">
+  <h2 id="certificate_verify_failed-error-when-downloading-cifar-10-dataset">CERTIFICATE_VERIFY_FAILED error when downloading CIFAR-10 dataset</h2>
+
+  <p>When loading the CIFAR-10 dataset, you might get the following error:</p>
+  <div class="language-plaintext source highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1125)
+</code></pre></div>  </div>
+  <p>You can solve this error by adding this to your notebook:</p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">ssl</span>
+<span class="n">ssl</span><span class="p">.</span><span class="n">_create_default_https_context</span> <span class="o">=</span> <span class="n">ssl</span><span class="p">.</span><span class="n">_create_unverified_context</span>
+</code></pre></div>  </div>
+
+</blockquote>
+
+<p>We take a small sample of the data as training set for demonstration purposes.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">n</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+<span class="n">train_labels</span> <span class="o">=</span> <span class="n">train_labels</span><span class="p">[:</span><span class="n">n</span><span class="p">]</span>
+</code></pre></div></div>
+
+<blockquote class="challenge">
+  <h2 id="explore-the-data">Explore the data</h2>
+
+  <p>Familiarize yourself with the CIFAR10 dataset. To start, consider the following questions:</p>
+  <ol>
+    <li>What is the dimension of a single data point? What do you think the dimensions mean?</li>
+    <li>What is the range of values that your input data takes?</li>
+    <li>What is the shape of the labels, and how many labels do we have?</li>
+    <li>(Optional) We are going to build a new architecture from scratch to get you
+familiar with the convolutional neural network basics.
+But in the real world you wouldn’t do that.
+So the challenge is: Browse the web for (more) existing architectures or pre-trained models that are likely to work
+well on this type of data. Try to understand why they work well for this type of data.</li>
+  </ol>
+
+  <blockquote class="solution">
+    <h2 id="solution">Solution</h2>
+
+    <p>To explore the dimensions of the input data:</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_images</span><span class="p">.</span><span class="n">shape</span>
+</code></pre></div>    </div>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(5000, 32, 32, 3)
+</code></pre></div>    </div>
+    <p>The first value, <code class="language-plaintext highlighter-rouge">5000</code>, is the number of training images that we have selected.
+The remainder of the shape, namely <code class="language-plaintext highlighter-rouge">32, 32, 3)</code>, denotes
+the dimension of one image. The last value 3 is typical for color images,
+and stands for the three color channels <strong>R</strong>ed, <strong>G</strong>reen, <strong>B</strong>lue.
+We are left with <code class="language-plaintext highlighter-rouge">32, 32</code>. This denotes the width and height of our input image in number of pixels. By convention, the first entry refers to the height, the second to the width of the image. In this case, we observe a quadratic image where height equals width.</p>
+
+    <p>We can find out the range of values of our input data as follows:</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_images</span><span class="p">.</span><span class="nb">min</span><span class="p">(),</span> <span class="n">train_images</span><span class="p">.</span><span class="nb">max</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(0, 255)
+</code></pre></div>    </div>
+    <p>So the values of the three channels range between <code class="language-plaintext highlighter-rouge">0</code> and <code class="language-plaintext highlighter-rouge">255</code>.</p>
+
+    <p>Lastly, we inspect the dimension of the labels:</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_labels</span><span class="p">.</span><span class="n">shape</span>
+</code></pre></div>    </div>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(5000, 1)
+</code></pre></div>    </div>
+    <p>So we have, for each image, a single value denoting the label.
+To find out what the possible values of these labels are:</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_labels</span><span class="p">.</span><span class="nb">min</span><span class="p">(),</span> <span class="n">train_labels</span><span class="p">.</span><span class="nb">max</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(0, 9)
+</code></pre></div>    </div>
+    <p>The values of the labels range between <code class="language-plaintext highlighter-rouge">0</code> and <code class="language-plaintext highlighter-rouge">9</code>, denoting 10 different classes.</p>
+  </blockquote>
+</blockquote>
+
+<p>The training set consists of 50000 images of <code class="language-plaintext highlighter-rouge">32x32</code> pixels and 3 channels (RGB values). The RGB values are between <code class="language-plaintext highlighter-rouge">0</code> and <code class="language-plaintext highlighter-rouge">255</code>. For input of neural networks, it is better to have small input values. So we normalize our data between <code class="language-plaintext highlighter-rouge">0</code> and <code class="language-plaintext highlighter-rouge">1</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span> <span class="o">/</span> <span class="mf">255.0</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span> <span class="o">/</span> <span class="mf">255.0</span>
+</code></pre></div></div>
+
+<p>The labels are single numbers denoting the class.
+We map the class numbers back to the class names, taken from the documentation:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">class_names</span> <span class="o">=</span> <span class="p">[</span><span class="s">'airplane'</span><span class="p">,</span> <span class="s">'automobile'</span><span class="p">,</span> <span class="s">'bird'</span><span class="p">,</span> <span class="s">'cat'</span><span class="p">,</span> <span class="s">'deer'</span><span class="p">,</span>
+               <span class="s">'dog'</span><span class="p">,</span> <span class="s">'frog'</span><span class="p">,</span> <span class="s">'horse'</span><span class="p">,</span> <span class="s">'ship'</span><span class="p">,</span> <span class="s">'truck'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Now we can plot a sample of the training images, using the <code class="language-plaintext highlighter-rouge">plt.imshow</code> function.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">25</span><span class="p">):</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">train_images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="p">.</span><span class="n">cm</span><span class="p">.</span><span class="n">binary</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="n">class_names</span><span class="p">[</span><span class="n">train_labels</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]])</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="../fig/04_cifar10.png" alt="A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for example: 'frog' or 'horse'." /></p>
+
+<h2 id="convolutional-layers">Convolutional layers</h2>
+<p>In the previous episodes, we used ‘fully connected layers’ , that connected all input values of a layer to all outputs of a layer. This results in many connections, and thus weights to be learned, in the network. Note that our input dimension is now quite high (even with small pictures of <code class="language-plaintext highlighter-rouge">32x32</code> pixels), we have:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dim</span> <span class="o">=</span> <span class="n">train_images</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">train_images</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">train_images</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3072
+</code></pre></div></div>
+
+<blockquote class="challenge">
+  <h2 id="number-of-parameters">Number of parameters</h2>
+
+  <p>Suppose we create a single Dense (fully connected) layer with 100 hidden units that connect to the input pixels, how many parameters does this layer have?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-1">Solution</h2>
+
+    <p>Each entry of the input dimensions, i.e. the <code class="language-plaintext highlighter-rouge">shape</code> of one single data point, is connected with 100 neurons of our hidden layer, and each of these neurons has a bias term associated to it. So we have <code class="language-plaintext highlighter-rouge">307300</code> parameters to learn.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">n_hidden_neurons</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_bias</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_input_items</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="n">n_parameters</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_input_items</span> <span class="o">*</span> <span class="n">n_hidden_neurons</span><span class="p">)</span> <span class="o">+</span> <span class="n">n_bias</span>
+<span class="n">n_parameters</span>
+</code></pre></div>    </div>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>307300
+</code></pre></div>    </div>
+    <p>We can also check this by building the layer in Keras:</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">100</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "model"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         [(None, 3072)]            0
+_________________________________________________________________
+dense (Dense)                (None, 100)               307300
+=================================================================
+Total params: 307,300
+Trainable params: 307,300
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<p>We can decrease the number of units in our hidden layer, but this also decreases the number of patterns our network can remember. Moreover, if we increase the image size, the number of weights will ‘explode’, even though the task of recognizing large images is not necessarily more difficult than the task of recognizing small images.</p>
+
+<p>The solution is that we make the network learn in a ‘smart’ way. The features that we learn should be similar both for small and large images, and similar features (e.g. edges, corners) can appear anywhere in the image (in mathematical terms: <em>translation invariant</em>). We do this by making use of a concepts from image processing that precede Deep Learning.</p>
+
+<p>A <strong>convolution matrix</strong>, or <strong>kernel</strong>, is a matrix transformation that we ‘slide’ over the image to calculate features at each position of the image. For each pixel, we calculate the matrix product between the kernel and the pixel with its surroundings. A kernel is typically small, between 3x3 and 7x7 pixels. We can for example think of the 3x3 kernel:</p>
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[-1, -1, -1],
+ [0, 0, 0]
+ [1, 1, 1]]
+</code></pre></div></div>
+<p>This kernel will give a high value to a pixel if it is on a horizontal border between dark and light areas.
+Note that for RGB images, the kernel should also have a depth of 3.</p>
+
+<p>In the following image, we see the effect of such a kernel on the values of a single-channel image. The red cell in the output matrix is the result of multiplying and summing the values of the red square in the input, and the kernel. Applying this kernel to a real image shows that it indeed detects horizontal edges.
+<img src="../fig/04_conv_matrix.png" alt="Example of a convolution matrix calculation" />
+<img src="../fig/04_conv_image.png" alt="Convolution example on an image of a cat to extract features" /></p>
+
+<p>In our <strong>convolutional layer</strong> our hidden units are a number of convolutional matrices (or kernels), where the values of the matrices are the weights that we learn in the training process. The output of a convolutional layer is an ‘image’ for each of the kernels, that gives the output of the kernel applied to each pixel.</p>
+
+<blockquote class="callout">
+  <h2 id="playing-with-convolutions">Playing with convolutions</h2>
+  <p>Convolutions applied to images can be hard to grasp at first. Fortunately there are resources out
+there that enable users to interactively play around with images and convolutions:</p>
+  <ul>
+    <li><a href="https://setosa.io/ev/image-kernels/">Image kernels explained</a> shows how different convolutions can achieve certain effects on an image, like sharpening and blurring.</li>
+    <li><a href="https://stanford.edu/~shervine/teaching/cs-230/cheatsheet-convolutional-neural-networks#">The convolutional neural network cheat sheet</a>
+  shows animated examples of the different components of convolutional neural nets</li>
+  </ul>
+
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="border-pixels">Border pixels</h2>
+
+  <p>What, do you think, happens to the border pixels when applying a convolution?</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-2">Solution</h2>
+
+    <p>There are different ways of dealing with border pixels.
+You can ignore them, which means that your output image is slightly smaller then your input.
+It is also possible to ‘pad’ the borders, e.g. with the same value or with zeros, so that the convolution can also be applied to the border pixels.
+In that case, the output image will have the same size as the input image.</p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="number-of-model-parameters">Number of model parameters</h2>
+
+  <p>Suppose we apply a convolutional layer with 100 kernels of size 3 * 3 * 3 (the last dimension applies to the rgb channels) to our images of 32 * 32 * 3 pixels. How many parameters do we have? Assume, for simplicity, that the kernels do not use bias terms. Compare this to the answer of the previous exercise</p>
+
+  <blockquote class="solution">
+    <h2 id="solution-3">Solution</h2>
+
+    <p>We have 100 matrices with 3 * 3 * 3 = 27 values each so that gives 27 * 100 = 2700 weights. This is a magnitude of 100 less than the fully connected layer with 100 units! Nevertheless, as we will see, convolutional networks work very well for image data. This illustrates the expressiveness of convolutional layers.</p>
+  </blockquote>
+</blockquote>
+
+<p>So let us look at a network with a few convolutional layers. We need to finish with a Dense layer to connect the output cells of the convolutional layer to the outputs for our classes.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">train_images</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">"cifar_model_small"</span><span class="p">)</span>
+
+<span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div></div>
+
+<blockquote class="challenge">
+  <h2 id="convolutional-neural-network">Convolutional Neural Network</h2>
+
+  <p>Inspect the network above:</p>
+  <ul>
+    <li>What do you think is the function of the <code class="language-plaintext highlighter-rouge">Flatten</code> layer?</li>
+    <li>Which layer has the most parameters? Do you find this intuitive?</li>
+    <li>(optional) Pick a model from https://paperswithcode.com/sota/image-classification-on-cifar-10 . Try to understand how it works.</li>
+  </ul>
+
+  <blockquote class="solution">
+    <h2 id="solution-4">Solution</h2>
+
+    <ul>
+      <li>The Flatten layer converts the 28x28x50 output of the convolutional layer into a single one-dimensional vector, that can be used as input for a dense layer.</li>
+      <li>The last dense layer has the most parameters. This layer connects every single output ‘pixel’ from the convolutional layer to the 10 output classes.
+ That results in a large number of connections, so a large number of parameters. This undermines a bit the expressiveness of the convolutional layers, that have much fewer parameters.</li>
+    </ul>
+  </blockquote>
+</blockquote>
+
+<p>Often in convolutional neural networks, the convolutional layers are intertwined with <strong>Pooling layers</strong>. As opposed to the convolutional layer, the pooling layer actually alters the dimensions of the image and reduces it by a scaling factor. It is basically decreasing the resolution of your picture. The rationale behind this is that higher layers of the network should focus on higher-level features of the image. By introducing a pooling layer, the subsequent convolutional layer has a broader ‘view’ on the original image.</p>
+
+<p>Let’s put it into practice. We compose a Convolutional network with two convolutional layers and two pooling layers.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">train_images</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">"cifar_model_small"</span><span class="p">)</span>
+
+<span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "cifar_model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ input_6 (InputLayer)        [(None, 32, 32, 3)]       0
+
+ conv2d_13 (Conv2D)          (None, 30, 30, 50)        1400
+
+ max_pooling2d_8 (MaxPooling  (None, 15, 15, 50)       0
+ 2D)
+
+ conv2d_14 (Conv2D)          (None, 13, 13, 50)        22550
+
+ max_pooling2d_9 (MaxPooling  (None, 6, 6, 50)         0
+ 2D)
+
+ conv2d_15 (Conv2D)          (None, 4, 4, 50)          22550
+
+ flatten_5 (Flatten)         (None, 800)               0
+
+ dense_9 (Dense)             (None, 50)                40050
+
+ dense_10 (Dense)            (None, 10)                510
+
+=================================================================
+Total params: 87,060
+Trainable params: 87,060
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre></div></div>
+
+<p>We compile the model using the adam optimizer (other optimizers could also be used here!).
+Similar to the penguin classification task, we will use the crossentropy function to calculate the model’s loss.
+This loss function is appropriate to use when the data has two or more label classes.</p>
+
+<p>To calculate crossentropy loss for data that has its classes represented by integers (i.e., not one-hot encoded), we use the SparseCategoricalCrossentropy() function:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'adam'</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="n">keras</span><span class="p">.</span><span class="n">losses</span><span class="p">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>We then train the model for 10 epochs:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>We can plot the training process using the history:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">history_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">history_df</span><span class="p">[[</span><span class="s">'accuracy'</span><span class="p">,</span> <span class="s">'val_accuracy'</span><span class="p">]])</span>
+</code></pre></div></div>
+<p><img src="../fig/04_training_history_1.png" alt="Plot of training accuracy and validation accuracy vs epochs for the trained model" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">history_df</span><span class="p">[[</span><span class="s">'loss'</span><span class="p">,</span> <span class="s">'val_loss'</span><span class="p">]])</span>
+</code></pre></div></div>
+<p><img src="../fig/04_training_history_loss_1.png" alt="OPlot of training loss and validation loss vs epochs for the trained model" /></p>
+
+<p>It seems that the model is overfitting somewhat, because the validation accuracy and loss stagnates.</p>
+
+<blockquote class="challenge">
+  <h2 id="network-depth">Network depth</h2>
+
+  <p>What, do you think, will be the effect of adding a convolutional layer to your model? Will this model have more or fewer parameters?
+Try it out. Create a <code class="language-plaintext highlighter-rouge">model</code> that has an additional <code class="language-plaintext highlighter-rouge">Conv2d</code> layer with 50 filters after the last MaxPooling2D layer. Train it for 20 epochs and plot the results.</p>
+
+  <p><strong>HINT</strong>:
+The model definition that we used previously needs to be adjusted as follows:</p>
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inputs = keras.Input(shape=train_images.shape[1:])
+x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+x = keras.layers.MaxPooling2D((2, 2))(x)
+x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+x = keras.layers.MaxPooling2D((2, 2))(x)
+# Add your extra layer here
+x = keras.layers.Flatten()(x)
+x = keras.layers.Dense(50, activation='relu')(x)
+outputs = keras.layers.Dense(10)(x)
+</code></pre></div>  </div>
+  <blockquote class="solution">
+
+    <h2 id="solution-5">Solution</h2>
+    <p>We add an extra Conv2D layer after the second pooling layer:</p>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>inputs = keras.Input(shape=train_images.shape[1:])
+x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+x = keras.layers.MaxPooling2D((2, 2))(x)
+x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+x = keras.layers.MaxPooling2D((2, 2))(x)
+x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+x = keras.layers.Flatten()(x)
+x = keras.layers.Dense(50, activation='relu')(x)
+outputs = keras.layers.Dense(10)(x)
+
+model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+</code></pre></div>    </div>
+    <p>With the model defined above, we can inspect the number of parameters:</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "cifar_model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ input_7 (InputLayer)        [(None, 32, 32, 3)]       0
+
+ conv2d_16 (Conv2D)          (None, 30, 30, 50)        1400
+
+ max_pooling2d_10 (MaxPoolin  (None, 15, 15, 50)       0
+ g2D)
+
+ conv2d_17 (Conv2D)          (None, 13, 13, 50)        22550
+
+ max_pooling2d_11 (MaxPoolin  (None, 6, 6, 50)         0
+ g2D)
+
+ conv2d_18 (Conv2D)          (None, 4, 4, 50)          22550
+
+ flatten_6 (Flatten)         (None, 800)               0
+
+ dense_11 (Dense)            (None, 50)                40050
+
+ dense_12 (Dense)            (None, 10)                510
+
+=================================================================
+Total params: 87,060
+Trainable params: 87,060
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre></div>    </div>
+    <p>The number of parameters has decreased by adding this layer.
+We can see that the conv layer decreases the resolution from 6x6 to 4x4,
+as a result, the input of the Dense layer is smaller than in the previous network.</p>
+
+    <p>To train the network and plot the results:</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'adam'</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="n">keras</span><span class="p">.</span><span class="n">losses</span><span class="p">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">))</span>
+
+<span class="n">history_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">history_df</span><span class="p">[[</span><span class="s">'accuracy'</span><span class="p">,</span> <span class="s">'val_accuracy'</span><span class="p">]])</span>
+</code></pre></div>    </div>
+    <p><img src="../fig/04_training_history_2.png" alt="Plot of training accuracy and validation accuracy vs epochs for the trained model" /></p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">history_df</span><span class="p">[[</span><span class="s">'loss'</span><span class="p">,</span> <span class="s">'val_loss'</span><span class="p">]])</span>
+</code></pre></div>    </div>
+    <p><img src="../fig/04_training_history_loss_2.png" alt="Plot of training loss and validation loss vs epochs for the trained model" /></p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="callout">
+  <h2 id="other-types-of-data">Other types of data</h2>
+
+  <p>Convolutional and Pooling layers are also applicable to different types of
+data than image data. Whenever the data is ordered in a (spatial) dimension,
+and <em>translation invariant</em> features are expected to be useful, convolutions
+can be used. Think for example of time series data from an accelerometer,
+audio data for speech recognition, or 3d structures of chemical compounds.</p>
+</blockquote>
+
+<blockquote class="challenge">
+  <h2 id="why-and-when-to-use-convolutional-neural-networks">Why and when to use convolutional neural networks</h2>
+
+  <ol>
+    <li>Would it make sense to train a convolutional neural network (CNN) on the penguins dataset and why?</li>
+    <li>Would it make sense to train a CNN on the weather dataset and why?</li>
+    <li>(Optional) Can you think of a different machine learning task that would benefit from a
+CNN architecture?</li>
+  </ol>
+
+  <blockquote class="solution">
+
+    <h2 id="solution-6">Solution</h2>
+    <ol>
+      <li>No that would not make sense. Convolutions only work when the features of the data can be ordered 
+in a meaningful way. Pixels for example are ordered in a spatial dimension. 
+This kind of order cannot be applied to the features of the penguin dataset.
+If we would have pictures or audio recordings of the penguins as input data
+it would make sense to use a CNN architecture.</li>
+      <li>It would make sense, but only if we approach the problem from a different angle then we did before.
+Namely, 1D convolutions work quite well on sequential data such as timeseries. If we have as our input a matrix
+of the different weather conditions over time in the past x days, a CNN would be suited to quickly grasp
+the temporal relationship over days.</li>
+      <li>Some example domains in which CNNs are applied:
+        <ul>
+          <li>Text data</li>
+          <li>Timeseries, specifically audio</li>
+          <li>Molecular structures</li>
+        </ul>
+      </li>
+    </ol>
+
+  </blockquote>
+</blockquote>
+
+<h2 id="dropout">Dropout</h2>
+
+<p>Note that the training loss continues to decrease, while the validation loss stagnates, and even starts to increase over the course of the epochs. Similarly, the accuracy for the validation set does not improve anymore after some epochs. This means we are overfitting on our training data set.</p>
+
+<p>Techniques to avoid overfitting, or to improve model generalization, are termed <strong>regularization techniques</strong>.
+One of the most versatile regularization technique is <strong>dropout</strong> (<a href="https://jmlr.org/papers/v15/srivastava14a.html">Srivastava et al., 2014</a>).
+Dropout essentially means that during each training cycle a random fraction of the dense layer nodes are turned off. This is described with the dropout rate between 0 and 1 which determines the fraction of nodes to silence at a time.
+<img src="../fig/neural_network_sketch_dropout.png" alt="A sketch of a neural network with and without dropout" />
+The intuition behind dropout is that it enforces redundancies in the network by constantly removing different elements of a network. The model can no longer rely on individual nodes and instead must create multiple “paths”. In addition, the model has to make predictions with much fewer nodes and weights (connections between the nodes).
+As a result, it becomes much harder for a network to memorize particular features. At first this might appear a quiet drastic approach which affects the network architecture strongly.
+In practice, however, dropout is computationally a very elegant solution which does not affect training speed. And it frequently works very well.</p>
+
+<p><strong>Important to note:</strong> Dropout layers will only randomly silence nodes during training! During a predictions step, all nodes remain active (dropout is off). During training, the sample of nodes that are silenced are different for each training instance, to give all nodes a chance to observe enough training data to learn its weights.</p>
+
+<p>Let us add one dropout layer towards the end of the network, that randomly drops 20% of the input units.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">train_images</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.8</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># This is new!
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model_dropout</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">"cifar_model"</span><span class="p">)</span>
+
+<span class="n">model_dropout</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div></div>
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "cifar_model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ input_8 (InputLayer)        [(None, 32, 32, 3)]       0
+
+ conv2d_19 (Conv2D)          (None, 30, 30, 50)        1400
+
+ max_pooling2d_12 (MaxPoolin  (None, 15, 15, 50)       0
+ g2D)
+
+ conv2d_20 (Conv2D)          (None, 13, 13, 50)        22550
+
+ max_pooling2d_13 (MaxPoolin  (None, 6, 6, 50)         0
+ g2D)
+
+ conv2d_21 (Conv2D)          (None, 4, 4, 50)          22550
+
+ dropout_2 (Dropout)         (None, 4, 4, 50)          0
+
+ flatten_7 (Flatten)         (None, 800)               0
+
+ dense_13 (Dense)            (None, 50)                40050
+
+ dense_14 (Dense)            (None, 10)                510
+
+=================================================================
+Total params: 87,060
+Trainable params: 87,060
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre></div></div>
+<p>We can see that the dropout does not alter the dimensions of the image, and has zero parameters.</p>
+
+<p>We again compile and train the model.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model_dropout</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'adam'</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="n">keras</span><span class="p">.</span><span class="n">losses</span><span class="p">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+
+<span class="n">history_dropout</span> <span class="o">=</span> <span class="n">model_dropout</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>And inspect the training results:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">history_dropout</span><span class="p">.</span><span class="n">history</span><span class="p">)</span>
+<span class="n">history_df</span><span class="p">[</span><span class="s">'epoch'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">history_df</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">history_df</span> <span class="o">=</span> <span class="n">history_df</span><span class="p">.</span><span class="n">set_index</span><span class="p">(</span><span class="s">'epoch'</span><span class="p">)</span>
+<span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">history_df</span><span class="p">[[</span><span class="s">'accuracy'</span><span class="p">,</span> <span class="s">'val_accuracy'</span><span class="p">]])</span>
+
+<span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model_dropout</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span>  <span class="n">test_labels</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>313/313 - 2s - loss: 1.4683 - accuracy: 0.5307
+</code></pre></div></div>
+<p><img src="../fig/04_training_history_3.png" alt="Plot of training accuracy and validation accuracy vs epochs for the trained model" /></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">history_df</span><span class="p">[[</span><span class="s">'loss'</span><span class="p">,</span> <span class="s">'val_loss'</span><span class="p">]])</span>
+</code></pre></div></div>
+<p><img src="../fig/04_training_history_loss_3.png" alt="Plot of training loss and validation loss vs epochs for the trained model" /></p>
+
+<p>Now we see that the gap between the training accuracy and validation accuracy is much smaller, and that the final accuracy on the validation set is higher than without dropout.
+Nevertheless, there is still some difference between the training loss and validation loss, so we could experiment with regularization even more.</p>
+
+<blockquote class="challenge">
+  <h2 id="vary-dropout-rate">Vary dropout rate</h2>
+
+  <ol>
+    <li>What do you think would happen if you lower the dropout rate? Try it out, and
+see how it affects the model training.</li>
+    <li>You are varying the dropout rate and checking its effect on the model performance,
+what is the term associated to this procedure?</li>
+  </ol>
+
+  <blockquote class="solution">
+
+    <h2 id="solution-7">Solution</h2>
+    <h3 id="1-varying-the-dropout-rate">1. Varying the dropout rate</h3>
+    <p>The code below instantiates and trains a model with varying dropout rates.
+You can see from the resulting plot that the ideal dropout rate in this case is around 0.45.
+This is where the test loss is lowest.</p>
+
+    <ul>
+      <li>NB1: It takes a while to train these 5 networks.</li>
+      <li>NB2: In the real world you should do this with a validation set and not with the test set!</li>
+    </ul>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dropout_rates</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]</span>
+<span class="n">test_losses</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">dropout_rate</span> <span class="ow">in</span> <span class="n">dropout_rates</span><span class="p">:</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">train_images</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout_rate</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Flatten</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">model_dropout</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s">"cifar_model"</span><span class="p">)</span>
+
+    <span class="n">model_dropout</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'adam'</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="n">keras</span><span class="p">.</span><span class="n">losses</span><span class="p">.</span><span class="n">SparseCategoricalCrossentropy</span><span class="p">(</span><span class="n">from_logits</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+
+    <span class="n">model_dropout</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                    <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">))</span>
+
+    <span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model_dropout</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span>  <span class="n">test_labels</span><span class="p">)</span>
+    <span class="n">test_losses</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_loss</span><span class="p">)</span>
+
+<span class="n">loss_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'dropout_rate'</span><span class="p">:</span> <span class="n">dropout_rates</span><span class="p">,</span> <span class="s">'test_loss'</span><span class="p">:</span> <span class="n">test_losses</span><span class="p">})</span>
+
+<span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">loss_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">'dropout_rate'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">'test_loss'</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p><img src="../fig/04_vary_dropout_rate.png" alt="Plot of test loss vs dropout rate used in the model. The test loss varies between 1.26 and 1.40 and is lowest with a dropout_rate around 0.45." /></p>
+
+    <h3 id="2-term-associated-to-this-procedure">2. Term associated to this procedure</h3>
+    <p>This is called hyperparameter tuning.</p>
+  </blockquote>
+</blockquote>
+
+
+
+
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>Convolutional layers make efficient reuse of model parameters.</p>
+</li>
+    
+    <li><p>Pooling layers decrease the resolution of your input</p>
+</li>
+    
+    <li><p>Dropout is a way to prevent overfitting</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../03-monitor-the-model/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span><span class="sr-only">lesson home</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+
+      
+      
+
+
+
+
+
+
+<footer>
+  <hr/>
+  <div class="row">
+    <div class="col-md-6 license" id="license-info" align="left">
+	
+        Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2023 by <a href="../CITATION">the authors</a>.
+	
+    </div>
+    <div class="col-md-6 help-links" align="right">
+	
+	<a href="/edit//_episodes/04-advanced-layer-types.md" data-checker-ignore>Edit on GitHub</a>
+	
+	/
+	<a href="/blob//CONTRIBUTING.md" data-checker-ignore>Contributing</a>
+	/
+	<a href="/">Source</a>
+	/
+	<a href="/blob//CITATION" data-checker-ignore>Cite</a>
+	/
+	<a href="mailto:d.vankuppevelt@esciencecenter.nl">Contact</a>
+    </div>
+  </div>
+  <p class="text-muted text-right">
+    <small><i>Using <a href="https://github.com/carpentries/carpentries-theme/">The Carpentries theme</a> &mdash; Site last built on: 2023-05-17 15:41:55 +0200.</i></small>
+  </p>
+</footer>
+
+      
+    </div>
+    
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setDomains", ["*.lessons.carpentries.org","*.datacarpentry.github.io","*.datacarpentry.org","*.librarycarpentry.github.io","*.librarycarpentry.org","*.swcarpentry.github.io"]]);
+  _paq.push(["setDoNotTrack", true]);
+  _paq.push(["disableCookies"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://carpentries.matomo.cloud/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='//cdn.matomo.cloud/carpentries.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+
+<script src="../assets/js/anchor.min.js"></script>
+<script>
+    anchors.add();
+</script>
+
+  </body>
+</html>

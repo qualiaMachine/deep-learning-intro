@@ -1,0 +1,1474 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="last-modified" content="2023-05-17 15:41:55 +0200">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- meta "search-domain" used for google site search function google_search() -->
+    <meta name="search-domain" value="">
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/lesson.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/syntax.css" />
+     <link rel="stylesheet" type="text/css" href="../assets/css/fonts.css" />
+    
+    <link rel="license" href="#license-info" />
+
+    
+
+
+
+    <!-- Favicons for everyone -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../assets/favicons/incubator/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/favicons/incubator/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/favicons/incubator/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/favicons/incubator/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="../assets/favicons/incubator/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../assets/favicons/incubator/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../assets/favicons/incubator/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../assets/favicons/incubator/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="../assets/favicons/incubator/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="../assets/favicons/incubator/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="../assets/favicons/incubator/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../assets/favicons/incubator/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="../assets/favicons/incubator/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="The Carpentries Incubator - Introduction to deep-learning"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="../assets/favicons/incubator/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="../assets/favicons/incubator/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="../assets/favicons/incubator/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="../assets/favicons/incubator/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="../assets/favicons/incubator/mstile-310x310.png" />
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  <title>
+  Classification by a Neural Network using Keras &ndash; Introduction to deep-learning
+  </title>
+
+  </head>
+  <body>
+    
+
+
+
+
+
+
+
+<div class="panel panel-default life-cycle">
+  <div id="life-cycle" class="panel-body beta">
+    This lesson is being piloted (Beta version)
+    
+    <br> <strong><a href="/issues">If you teach this lesson, please tell the authors and provide feedback by opening an issue in the source repository</a></strong>
+    
+  </div>
+</div>
+
+
+
+
+    <div class="container">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      
+      
+      <a href="../index.html" class="pull-left">
+        <img class="navbar-logo" src="../assets/img/incubator-logo-blue.svg" alt="The Carpentries Incubator logo" />
+      </a>
+      
+
+      
+      <a class="navbar-brand" href="../index.html">Home</a>
+
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+
+	
+        <li><a href="../CODE_OF_CONDUCT.html">Code of Conduct</a></li>
+
+        
+	
+        <li><a href="../setup/">Setup</a></li>
+
+        
+        
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            
+            <li><a href="../01-introduction/index.html">Introduction</a></li>
+            
+            
+            <li><a href="../02-keras/index.html">Classification by a Neural Network using Keras</a></li>
+            
+            
+            <li><a href="../03-monitor-the-model/index.html">Monitor the training process</a></li>
+            
+            
+            <li><a href="../04-advanced-layer-types/index.html">Advanced layer types</a></li>
+            
+	    <li role="separator" class="divider"></li>
+            <li><a href="../aio/index.html">All in one page (Beta)</a></li>
+          </ul>
+        </li>
+        
+	
+
+	
+	
+        <li class="dropdown">
+          <a href="../" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../reference.html">Reference</a></li>
+            
+            
+            
+              <li><a href="../about/index.html">About</a></li>
+            
+            
+            
+            
+              <li><a href="../design/index.html">Lesson Design</a></li>
+            
+            
+            
+            
+              <li><a href="../discuss/index.html">Discussion</a></li>
+            
+            
+            
+            
+              <li><a href="../figures/index.html">Figures</a></li>
+            
+            
+            
+            
+              <li><a href="../guide/index.html">Instructor Notes</a></li>
+            
+            
+            
+            
+              <li><a href="../survey-templates/index.html">Workshop survey templates</a></li>
+            
+            
+          </ul>
+        </li>
+	
+
+	
+        <li><a href="../LICENSE.html">License</a></li>
+	
+	<li><a href="/edit//_episodes/02-keras.md" data-checker-ignore>Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	
+      </ul>
+      <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
+        <div class="form-group">
+          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+      
+
+
+<div class="alert alert-info text-center" role="alert">
+  This lesson is part of
+  <a href="https://github.com/carpentries-incubator/proposals/#the-carpentries-incubator" data-checker-ignore>
+    The Carpentries Incubator</a>, a place to share and use each other's
+  Carpentries-style lessons. <strong>This lesson has not been reviewed by and is
+  not endorsed by The Carpentries</strong>.
+</div>
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../01-introduction/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+    <h3 class="maintitle"><a href="../">Introduction to deep-learning</a></h3>
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../03-monitor-the-model/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+<article>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+    <h1 class="maintitle">Classification by a Neural Network using Keras</h1>
+  </div>
+  <div class="col-md-1">
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<blockquote class="objectives">
+  <h2>Overview</h2>
+
+  <div class="row">
+    <div class="col-md-3">
+      <strong>Teaching:</strong> 30-60 min
+      <br/>
+      <strong>Exercises:</strong> 40-45 min
+    </div>
+    <div class="col-md-9">
+      <strong>Questions</strong>
+      <ul>
+	
+	<li><p>What is a neural network?</p>
+</li>
+	
+	<li><p>How do I compose a Neural Network using Keras?</p>
+</li>
+	
+	<li><p>How do I train this network on a dataset?</p>
+</li>
+	
+	<li><p>How do I get insight into learning process?</p>
+</li>
+	
+	<li><p>How do I measure the performance of the network?</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9">
+      <strong>Objectives</strong>
+      <ul>
+	
+	<li><p>Use the deep learning workflow to structure the notebook</p>
+</li>
+	
+	<li><p>Explore the dataset using pandas and seaborn</p>
+</li>
+	
+	<li><p>Use one-hot encoding to prepare data for classification in Keras</p>
+</li>
+	
+	<li><p>Describe a fully connected layer</p>
+</li>
+	
+	<li><p>Implement a fully connected layer with Keras</p>
+</li>
+	
+	<li><p>Use Keras to train a small fully connected network on prepared data</p>
+</li>
+	
+	<li><p>Interpret the loss curve of the training process</p>
+</li>
+	
+	<li><p>Use a confusion matrix to measure the trained networks’ performance on a test set</p>
+</li>
+	
+      </ul>
+    </div>
+  </div>
+
+</blockquote>
+
+<h2 id="introduction">Introduction</h2>
+<p>In this episode we will learn how to create and train a Neural Network using Keras to solve a simple classification task.</p>
+
+<p>The goal of this episode is to quickly get your hands dirty in actually defining and training a neural network, without going into depth of how neural networks work on a technical or mathematical level.
+We want you to go through the most commonly used deep learning workflow that was covered
+in the introduction.
+As a reminder below are the steps of the deep learning workflow:</p>
+
+<ol>
+  <li>Formulate / Outline the problem</li>
+  <li>Identify inputs and outputs</li>
+  <li>Prepare data</li>
+  <li>Choose a pretrained model or start building architecture from scratch</li>
+  <li>Choose a loss function and optimizer</li>
+  <li>Train the model</li>
+  <li>Perform a Prediction/Classification</li>
+  <li>Measure performance</li>
+  <li>Tune hyperparameters</li>
+  <li>Save model</li>
+</ol>
+
+<p>In this episode we will focus on a minimal example for each of these steps, later episodes will build on this knowledge to go into greater depth for some or all of these steps.</p>
+
+<blockquote class="callout">
+  <h2 id="gpu-usage">GPU usage</h2>
+  <p>For this lesson having a GPU (graphics card) available is not needed.
+We specifically use very small toy problems so that you do not need one.
+However, Keras will use your GPU automatically when it is available.
+Using a GPU becomes necessary when tackling larger datasets or complex problems which
+require a more complex Neural Network.</p>
+</blockquote>
+<h2 id="1-formulateoutline-the-problem-penguin-classification">1. Formulate/outline the problem: penguin classification</h2>
+<p>In this episode we will be using the <a href="https://zenodo.org/record/3960218">penguin dataset</a>, this is a dataset that was published in 2020 by Allison Horst and contains data on three different species of the penguins.</p>
+
+<p>We will use the penguin dataset to train a neural network which can classify which species a
+penguin belongs to, based on their physical characteristics.</p>
+<blockquote class="objectives">
+  <h2 id="goal">Goal</h2>
+  <p>The goal is to predict a penguins’ species using the attributes available in this dataset.</p>
+</blockquote>
+
+<p>The <code class="language-plaintext highlighter-rouge">palmerpenguins</code> data contains size measurements for three penguin species observed on three islands in the Palmer Archipelago, Antarctica.
+The physical attributes measured are flipper length, beak length, beak width, body mass, and sex.</p>
+
+<p><img width="50%" src="../fig/palmer_penguins.png" alt="Illustration of the three species of penguins found in the Palmer Archipelago, Antarctica: Chinstrap, Gentoo and Adele" title="Palmer Penguins" />
+<em>Artwork by @allison_horst</em></p>
+
+<p><img width="50%" src="../fig/culmen_depth.png" alt="Illustration of the beak dimensions called culmen length and culmen depth in the dataset" title="Culmen Depth" />
+<em>Artwork by @allison_horst</em></p>
+
+<p>These data were collected from 2007 - 2009 by Dr. Kristen Gorman with the <a href="https://pal.lternet.edu/">Palmer Station Long Term Ecological Research Program</a>, part of the <a href="https://lternet.edu/">US Long Term Ecological Research Network</a>. The data were imported directly from the <a href="https://environmentaldatainitiative.org/">Environmental Data Initiative</a> (EDI) Data Portal, and are available for use by CC0 license (“No Rights Reserved”) in accordance with the <a href="https://pal.lternet.edu/data/policies">Palmer Station Data Policy</a>.</p>
+
+<h2 id="2-identify-inputs-and-outputs">2. Identify inputs and outputs</h2>
+<p>To identify the inputs and outputs that we will use to design the neural network we need to familiarize
+ourselves with the dataset. This step is sometimes also called data exploration.</p>
+
+<p>We will start by importing the <a href="https://seaborn.pydata.org/">Seaborn</a> library that will help us get the dataset and visualize it.
+Seaborn is a powerful library with many visualizations. Keep in mind it requires the data to be in a
+pandas dataframe, luckily the datasets available in seaborn are already in a pandas dataframe.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+</code></pre></div></div>
+
+<p>We can load the penguin dataset using</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">penguins</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s">'penguins'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This will give you a pandas dataframe which contains the penguin data.</p>
+
+<blockquote class="challenge">
+  <h2 id="penguin-dataset">Penguin Dataset</h2>
+
+  <p>Inspect the penguins dataset.</p>
+  <ol>
+    <li>What are the different features called in the dataframe?</li>
+    <li>Are the target classes of the dataset stored as numbers or strings?</li>
+    <li>How many samples does this dataset have?</li>
+  </ol>
+
+  <blockquote class="solution">
+    <h2 id="solution">Solution</h2>
+    <p><strong>1.</strong> Using the pandas <code class="language-plaintext highlighter-rouge">head</code> function you can see the names of the features.
+Using the <code class="language-plaintext highlighter-rouge">describe</code> function we can also see some statistics for the numeric columns</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">penguins</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right"> </th>
+          <th style="text-align: right">species</th>
+          <th style="text-align: right">island</th>
+          <th style="text-align: right">bill_length_mm</th>
+          <th style="text-align: right">bill_depth_mm</th>
+          <th style="text-align: right">flipper_length_mm</th>
+          <th style="text-align: right">body_mass_g</th>
+          <th style="text-align: right">sex</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">0</td>
+          <td style="text-align: right">Adelie</td>
+          <td style="text-align: right">Torgersen</td>
+          <td style="text-align: right">39.1</td>
+          <td style="text-align: right">18.7</td>
+          <td style="text-align: right">181.0</td>
+          <td style="text-align: right">3750.0</td>
+          <td style="text-align: right">Male</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">1</td>
+          <td style="text-align: right">Adelie</td>
+          <td style="text-align: right">Torgersen</td>
+          <td style="text-align: right">39.5</td>
+          <td style="text-align: right">17.4</td>
+          <td style="text-align: right">186.0</td>
+          <td style="text-align: right">3800.0</td>
+          <td style="text-align: right">Female</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">2</td>
+          <td style="text-align: right">Adelie</td>
+          <td style="text-align: right">Torgersen</td>
+          <td style="text-align: right">40.3</td>
+          <td style="text-align: right">18.0</td>
+          <td style="text-align: right">195.0</td>
+          <td style="text-align: right">3250.0</td>
+          <td style="text-align: right">Female</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">3</td>
+          <td style="text-align: right">Adelie</td>
+          <td style="text-align: right">Torgersen</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">NaN</td>
+          <td style="text-align: right">NaN</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">4</td>
+          <td style="text-align: right">Adelie</td>
+          <td style="text-align: right">Torgersen</td>
+          <td style="text-align: right">36.7</td>
+          <td style="text-align: right">19.3</td>
+          <td style="text-align: right">193.0</td>
+          <td style="text-align: right">3450.0</td>
+          <td style="text-align: right">Female</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">penguins</span><span class="p">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right"> </th>
+          <th style="text-align: right">bill_length_mm</th>
+          <th style="text-align: right">bill_depth_mm</th>
+          <th style="text-align: right">flipper_length_mm</th>
+          <th style="text-align: right">body_mass_g</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">count</td>
+          <td style="text-align: right">342.000000</td>
+          <td style="text-align: right">342.000000</td>
+          <td style="text-align: right">342.000000</td>
+          <td style="text-align: right">342.000000</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">mean</td>
+          <td style="text-align: right">43.921930</td>
+          <td style="text-align: right">17.151170</td>
+          <td style="text-align: right">200.915205</td>
+          <td style="text-align: right">4201.754386</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">std</td>
+          <td style="text-align: right">5.459584</td>
+          <td style="text-align: right">1.974793</td>
+          <td style="text-align: right">14.061714</td>
+          <td style="text-align: right">801.954536</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">min</td>
+          <td style="text-align: right">32.100000</td>
+          <td style="text-align: right">13.100000</td>
+          <td style="text-align: right">172.000000</td>
+          <td style="text-align: right">2700.000000</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">25%</td>
+          <td style="text-align: right">39.225000</td>
+          <td style="text-align: right">15.600000</td>
+          <td style="text-align: right">190.000000</td>
+          <td style="text-align: right">3550.000000</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">50%</td>
+          <td style="text-align: right">44.450000</td>
+          <td style="text-align: right">17.300000</td>
+          <td style="text-align: right">197.000000</td>
+          <td style="text-align: right">4050.000000</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">75%</td>
+          <td style="text-align: right">48.500000</td>
+          <td style="text-align: right">18.700000</td>
+          <td style="text-align: right">213.000000</td>
+          <td style="text-align: right">4750.000000</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">max</td>
+          <td style="text-align: right">59.600000</td>
+          <td style="text-align: right">21.500000</td>
+          <td style="text-align: right">231.000000</td>
+          <td style="text-align: right">6300.000000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>2.</strong> We can get the unique values in the <code class="language-plaintext highlighter-rouge">species</code> column using the <code class="language-plaintext highlighter-rouge">unique</code> function of pandas.
+It shows the target class is stored as a string and has 3 unique values. This type of column is
+usually called a ‘categorical’ column.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">penguins</span><span class="p">[</span><span class="s">"species"</span><span class="p">].</span><span class="n">unique</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>array(['Adelie', 'Chinstrap', 'Gentoo'], dtype=object)
+</code></pre></div>    </div>
+
+    <p><strong>3.</strong> Using <code class="language-plaintext highlighter-rouge">describe</code> function on the species column shows there are 344 samples
+unique species</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">penguins</span><span class="p">[</span><span class="s">"species"</span><span class="p">].</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count        344
+unique         3
+top       Adelie
+freq         152
+Name: species, dtype: object
+</code></pre></div>    </div>
+  </blockquote>
+</blockquote>
+
+<h3 id="visualization">Visualization</h3>
+<p>Looking at numbers like this usually does not give a very good intuition about the data we are
+working with, so let us create a visualization.</p>
+<h4 id="pair-plot">Pair Plot</h4>
+<p>One nice visualization for datasets with relatively few attributes is the Pair Plot.
+This can be created using <code class="language-plaintext highlighter-rouge">sns.pairplot(...)</code>. It shows a scatterplot of each attribute plotted against each of the other attributes.
+By using the <code class="language-plaintext highlighter-rouge">hue='species'</code> setting for the pairplot the graphs on the diagonal are layered kernel density estimate plots for the different values of the <code class="language-plaintext highlighter-rouge">species</code> column.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">penguins</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s">"species"</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img width="66%" src="../fig/pairplot.png" alt="Pair plot showing the separability of the three species of penguin for combinations of dataset attributes" title="Pair Plot" /></p>
+
+<blockquote class="challenge">
+  <h2 id="pairplot">Pairplot</h2>
+
+  <p>Take a look at the pairplot we created. Consider the following questions:</p>
+
+  <ul>
+    <li>Is there any class that is easily distinguishable from the others?</li>
+    <li>Which combination of attributes shows the best separation for all 3 class labels at once?</li>
+  </ul>
+
+  <blockquote class="solution">
+    <h2 id="solution-1">Solution</h2>
+    <p>The plots show that the green class, Gentoo is somewhat more easily distinguishable from the other two.
+The other two seem to be separable by a combination of bill length and bill
+depth (other combinations are also possible such as bill length and flipper length).</p>
+  </blockquote>
+</blockquote>
+
+<h3 id="input-and-output-selection">Input and Output Selection</h3>
+<p>Now that we have familiarized ourselves with the dataset we can select the data attributes to use
+as input for the neural network and the target that we want to predict.</p>
+
+<p>In the rest of this episode we will use the <code class="language-plaintext highlighter-rouge">bill_length_mm</code>, <code class="language-plaintext highlighter-rouge">bill_depth_mm</code>, <code class="language-plaintext highlighter-rouge">flipper_length_mm</code>, <code class="language-plaintext highlighter-rouge">body_mass_g</code> attributes.
+The target for the classification task will be the <code class="language-plaintext highlighter-rouge">species</code>.</p>
+
+<blockquote class="keypoints">
+  <h2 id="data-exploration">Data Exploration</h2>
+  <p>Exploring the data is an important step to familiarize yourself with the problem and to help you
+determine the relevant inputs and outputs.</p>
+</blockquote>
+<h2 id="3-prepare-data">3. Prepare data</h2>
+<p>The input data and target data are not yet in a format that is suitable to use for training a neural network.</p>
+
+<h3 id="change-types-if-needed">Change types if needed</h3>
+<p>First, the species column is our categorical target, however pandas still sees it as the
+generic type <code class="language-plaintext highlighter-rouge">Object</code>. We can convert this to the pandas categorical type:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">penguins</span><span class="p">[</span><span class="s">'species'</span><span class="p">]</span> <span class="o">=</span> <span class="n">penguins</span><span class="p">[</span><span class="s">'species'</span><span class="p">].</span><span class="n">astype</span><span class="p">(</span><span class="s">'category'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>This will make later interaction with this column a little easier.</p>
+
+<h3 id="clean-missing-values">Clean missing values</h3>
+<p>During the exploration phase you may have noticed that some rows in the dataset have missing (NaN)
+values, leaving such values in the input data will ruin the training, so we need to deal with them.
+There are many ways to deal with missing values, but for now we will just remove the offending rows by adding a call to <code class="language-plaintext highlighter-rouge">dropna()</code>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Drop two columns and the rows that have NaN values in them
+</span><span class="n">penguins_filtered</span> <span class="o">=</span> <span class="n">penguins</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'island'</span><span class="p">,</span> <span class="s">'sex'</span><span class="p">]).</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Extract columns corresponding to features
+</span><span class="n">penguins_features</span> <span class="o">=</span> <span class="n">penguins_filtered</span><span class="p">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'species'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="prepare-target-data-for-training">Prepare target data for training</h3>
+<p>Second, the target data is also in a format that cannot be used in training.
+A neural network can only take numerical inputs and outputs, and learns by
+calculating how “far away” the species predicted by the neural network is
+from the true species.
+When the target is a string category column as we have here it is very difficult to determine this “distance” or error.
+Therefore we will transform this column into a more suitable format.
+Again there are many ways to do this, however we will be using the one-hot encoding.
+This encoding creates multiple columns, as many as there are unique values, and
+puts a 1 in the column with the corresponding correct class, and 0’s in
+the other columns.
+For instance, for a penguin of the Adelie species the one-hot encoding would be 1 0 0</p>
+
+<p>Fortunately pandas is able to generate this encoding for us.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="n">target</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">penguins_filtered</span><span class="p">[</span><span class="s">'species'</span><span class="p">])</span>
+<span class="n">target</span><span class="p">.</span><span class="n">head</span><span class="p">()</span> <span class="c1"># print out the top 5 to see what it looks like.
+</span></code></pre></div></div>
+
+<blockquote class="challenge">
+  <h2 id="one-hot-encoding-vs-ordinal-encoding">One-hot encoding vs ordinal encoding</h2>
+
+  <ol>
+    <li>How many output neurons will our network have now that we
+one-hot encoded the target class?</li>
+    <li>Another encoding method is ‘ordinal encoding’.
+Here the variable is represented by a single column,
+where each category is represented by a different integer
+(0, 1, 2 in the case of the 3 penguin species).
+How many output neurons will a network have when ordinal encoding is used?</li>
+    <li>(Optional) What would be the advantage of using one-hot versus ordinal encoding
+for the task of classifying penguin species?</li>
+  </ol>
+
+  <blockquote class="solution">
+    <h2 id="solution-2">Solution</h2>
+    <ol>
+      <li>3, one for each output variable class</li>
+      <li>1, the 3 classes are represented in a single variable</li>
+      <li>In this case there is no ordinal relationship between the different penguin species,
+so it does not make sense to use ordinal encoding.
+To give an intuition of how a machine learning model deals with ordinal encoding:
+Let us say that the model predicted 0 (Gentoo) instead of the true value 2 (Adélie),
+the error would in this case be 2 (2-0). But if the prediction would be 1 (Chinstrap),
+the error would be 1 (2-1). A missclassification between Gentoo and Adélie would then
+thus contribute more to the overall error than missclassificaiton between Chinstrap and Adélie!</li>
+    </ol>
+
+  </blockquote>
+</blockquote>
+
+<h3 id="split-data-into-training-and-test-set">Split data into training and test set</h3>
+<p>Finally, we will split the dataset into a training set and a test set.
+As the names imply we will use the training set to train the neural network,
+while the test set is kept separate.
+We will use the test set to assess the performance of the trained neural network
+on unseen samples.
+In many cases a validation set is also kept separate from the training and test sets (i.e. the dataset is split into 3 parts).
+This validation set is then used to select the values of the parameters of the neural network and the training methods.
+For this episode we will keep it at just a training and test set however.</p>
+
+<p>To split the cleaned dataset into a training and test set we will use a very convenient
+function from sklearn called <code class="language-plaintext highlighter-rouge">train_test_split</code>.
+This function takes a number of parameters:</p>
+<ul>
+  <li>The first two are the dataset and the corresponding targets.</li>
+  <li>Next is the named parameter <code class="language-plaintext highlighter-rouge">test_size</code> this is the fraction of the dataset that is
+used for testing, in this case <code class="language-plaintext highlighter-rouge">0.2</code> means 20% of the data will be used for testing.</li>
+  <li><code class="language-plaintext highlighter-rouge">random_state</code> controls the shuffling of the dataset, setting this value will reproduce
+the same results (assuming you give the same integer) every time it is called.</li>
+  <li><code class="language-plaintext highlighter-rouge">shuffle</code> which can be either <code class="language-plaintext highlighter-rouge">True</code> or <code class="language-plaintext highlighter-rouge">False</code>, it controls whether the order of the rows of the dataset is shuffled before splitting. It defaults to <code class="language-plaintext highlighter-rouge">True</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">stratify</code> is a more advanced parameter that controls how the split is done. By setting it to <code class="language-plaintext highlighter-rouge">target</code> the train and test sets the function will return will have roughly the same proportions (with regards to the number of penguins of a certain species) as the dataset.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">penguins_features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote class="challenge">
+  <h2 id="training-and-test-sets">Training and Test sets</h2>
+
+  <p>Take a look at the training and test set we created.</p>
+  <ul>
+    <li>How many samples do the training and test sets have?</li>
+    <li>Are the classes in the training set well balanced?</li>
+  </ul>
+
+  <blockquote class="solution">
+    <h2 id="solution-3">Solution</h2>
+    <p>Using <code class="language-plaintext highlighter-rouge">y_train.shape</code> and <code class="language-plaintext highlighter-rouge">y_test.shape</code> we can see the training set has 273
+samples and y_test has 69 samples.</p>
+
+    <p>We can check the balance of classes by counting the number of ones for each
+of the columns in the one-hot-encoded target,
+which shows the training set has 121 Adelie, 98 Gentoo and 54 Chinstrap samples.</p>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_train</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Adelie       121
+Chinstrap     54
+Gentoo        98
+dtype: int64
+</code></pre></div>    </div>
+    <p>The dataset is not perfectly balanced, but it is not orders of magnitude out of balance
+either. So we will leave it as it is.</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="4-build-an-architecture-from-scratch-or-choose-a-pretrained-model">4. Build an architecture from scratch or choose a pretrained model</h2>
+
+<h3 id="keras-for-neural-networks">Keras for neural networks</h3>
+<p>For this lesson we will be using <a href="https://keras.io/">Keras</a> to define and train our neural network
+models.
+Keras is a machine learning framework with ease of use as one of its main features.
+It is part of the tensorflow python package and can be imported using <code class="language-plaintext highlighter-rouge">from tensorflow import keras</code>.</p>
+
+<p>Keras includes functions, classes and definitions to define deep learning models, cost functions and optimizers (optimizers are used to train a model).</p>
+
+<p>Before we move on to the next section of the workflow we need to make sure we have Keras imported.
+We do this as follows:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+</code></pre></div></div>
+
+<p>For this class it is useful if everyone gets the same results from their training.
+Keras uses a random number generator at certain points during its execution.
+Therefore we will need to set two random seeds, one for numpy and one for tensorflow:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">seed</span>
+<span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">tensorflow.random</span> <span class="kn">import</span> <span class="n">set_seed</span>
+<span class="n">set_seed</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="build-a-neural-network-from-scratch">Build a neural network from scratch</h3>
+
+<p>Now we will build a neural network from scratch, and although this sounds like
+a daunting task, with Keras it is actually surprisingly straightforward.</p>
+
+<p>With Keras you compose a neural network by creating layers and linking them
+together. For now we will only use one type of layer called a fully connected
+or Dense layer. In Keras this is defined by the <code class="language-plaintext highlighter-rouge">keras.layers.Dense</code> class.</p>
+
+<p>A dense layer has a number of neurons, which is a parameter you can choose when
+you create the layer.
+When connecting the layer to its input and output layers every neuron in the dense
+layer gets an edge (i.e. connection) to <strong><em>all</em></strong> of the input neurons and <strong><em>all</em></strong> of the output neurons.
+The hidden layer in the image in the introduction of this episode is a Dense layer.</p>
+
+<p>The input in Keras also gets special treatment, Keras automatically calculates the number of inputs
+and outputs a layer needs and therefore how many edges need to be created.
+This means we need to let Keras now how big our input is going to be.
+We do this by instantiating a <code class="language-plaintext highlighter-rouge">keras.Input</code> class and tell it how big our input is.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>We store a reference to this input class in a variable so we can pass it to the creation of
+our hidden layer.
+Creating the hidden layer can then be done as follows:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hidden_layer</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The instantiation here has 2 parameters and a seemingly strange combination of parentheses, so
+let us take a closer look.
+The first parameter <code class="language-plaintext highlighter-rouge">10</code> is the number of neurons we want in this layer, this is one of the
+hyperparameters of our system and needs to be chosen carefully. We will get back to this in the section
+on hyperparameter tuning.
+The second parameter is the activation function to use, here we choose relu which is 0
+for inputs that are 0 and below and the identity function (returning the same value)
+for inputs above 0.
+This is a commonly used activation function in deep neural networks that is proven to work well.
+Next we see an extra set of parenthenses with inputs in them, this means that after creating an
+instance of the Dense layer we call it as if it was a function.
+This tells the Dense layer to connect the layer passed as a parameter, in this case the inputs.
+Finally we store a reference so we can pass it to the output layer in a minute.</p>
+
+<p>Now we create another layer that will be our output layer.
+Again we use a Dense layer and so the call is very similar to the previous one.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">output_layer</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"softmax"</span><span class="p">)(</span><span class="n">hidden_layer</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Because we chose the one-hot encoding, we use <code class="language-plaintext highlighter-rouge">3</code> neurons for the output layer.</p>
+
+<p>The softmax activation ensures that the three output neurons produce values in the range
+(0, 1) and they sum to 1.
+We can interpret this as a kind of ‘probability’ that the sample belongs to a certain
+species.</p>
+
+<p>Now that we have defined the layers of our neural network we can combine them into
+a Keras model which facilitates training the network.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">output_layer</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The model summary here can show you some information about the neural network we have defined.</p>
+
+<blockquote class="challenge">
+  <h2 id="create-the-neural-network">Create the neural network</h2>
+
+  <p>With the code snippets above, we defined a Keras model with 1 hidden layer with
+10 neurons and an output layer with 3 neurons.</p>
+
+  <ul>
+    <li>How many parameters does the resulting model have?</li>
+    <li>What happens to the number of parameters if we increase or decrease the number of neurons
+in the hidden layer?</li>
+  </ul>
+
+  <blockquote class="solution">
+    <h2 id="solution-4">Solution</h2>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">inputs</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">hidden_layer</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"relu"</span><span class="p">)(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="n">output_layer</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">"softmax"</span><span class="p">)(</span><span class="n">hidden_layer</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">output_layer</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+</code></pre></div>    </div>
+
+    <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Model: "model_1"
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #
+=================================================================
+input_1 (InputLayer)         [(None, 4)]               0
+_________________________________________________________________
+dense (Dense)                (None, 10)                50
+_________________________________________________________________
+dense_1 (Dense)              (None, 3)                 33
+=================================================================
+Total params: 83
+Trainable params: 83
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre></div>    </div>
+
+    <p>The model has 83 trainable parameters.
+If you increase the number of neurons in the hidden layer the number of
+trainable parameters in both the hidden and output layer increases or
+decreases accordingly of neurons.
+The name in quotes within the string <code class="language-plaintext highlighter-rouge">Model: "model_1"</code> may be different in your view; this detail is not important.</p>
+  </blockquote>
+</blockquote>
+
+<blockquote class="callout">
+  <h2 id="how-to-choose-an-architecture">How to choose an architecture?</h2>
+  <p>Even for this small neural network, we had to make a choice on the number of hidden neurons.
+Other choices to be made are the number of layers and type of layers (as we will see later).
+You might wonder how you should make these architectural choices.
+Unfortunately, there are no clear rules to follow here, and it often boils down to a lot of
+trial and error. However, it is recommended to look what others have done with similar datasets and problems.
+Another best practice is to start with a relatively simple architecture. Once running start to add layers and tweak the network to see if performance increases.</p>
+</blockquote>
+
+<h3 id="choose-a-pretrained-model">Choose a pretrained model</h3>
+<p>If your data and problem is very similar to what others have done, you can often use a <em>pretrained network</em>.
+Even if your problem is different, but the data type is common (for example images), you can use a pretrained network and finetune it for your problem.
+A large number of openly available pretrained networks can be found in the <a href="https://modelzoo.co/">Model Zoo</a>, <a href="https://pytorch.org/hub/">pytorch hub</a> or <a href="https://www.tensorflow.org/hub/">tensorflow hub</a>.</p>
+
+<h2 id="5-choose-a-loss-function-and-optimizer">5. Choose a loss function and optimizer</h2>
+<p>We have now designed a neural network that in theory we should be able to
+train to classify Penguins.
+However, we first need to select an appropriate loss
+function that we will use during training.
+This loss function tells the training algorithm how wrong, or how ‘far away’ from the true
+value the predicted value is.</p>
+
+<p>For the one-hot encoding that we selected before a fitting loss function is the Categorical Crossentropy loss.
+In Keras this is implemented in the <code class="language-plaintext highlighter-rouge">keras.losses.CategoricalCrossentropy</code> class.
+This loss function works well in combination with the <code class="language-plaintext highlighter-rouge">softmax</code> activation function
+we chose earlier.
+The Categorical Crossentropy works by comparing the probabilities that the
+neural network predicts with ‘true’ probabilities that we generated using the one-hot encoding.
+This is a measure for how close the distribution of the three neural network outputs corresponds to the distribution of the three values in the one-hot encoding.
+It is lower if the distributions are more similar.</p>
+
+<p>For more information on the available loss functions in Keras you can check the
+<a href="https://www.tensorflow.org/api_docs/python/tf/keras/losses">documentation</a>.</p>
+
+<p>Next we need to choose which optimizer to use and, if this optimizer has parameters, what values
+to use for those. Furthermore, we need to specify how many times to show the training samples to the optimizer.</p>
+
+<p>Once more, Keras gives us plenty of choices all of which have their own pros and cons,
+but for now let us go with the widely used Adam optimizer.
+Adam has a number of parameters, but the default values work well for most problems.
+So we will use it with its default parameters.</p>
+
+<p>Combining this with the loss function we decided on earlier we can now compile the
+model using <code class="language-plaintext highlighter-rouge">model.compile</code>.
+Compiling the model prepares it to start the training.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'adam'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="n">keras</span><span class="p">.</span><span class="n">losses</span><span class="p">.</span><span class="n">CategoricalCrossentropy</span><span class="p">())</span>
+</code></pre></div></div>
+
+<h2 id="6-train-model">6. Train model</h2>
+<p>We are now ready to train the model.</p>
+
+<p>Training the model is done using the <code class="language-plaintext highlighter-rouge">fit</code> method, it takes the input data and
+target data as inputs and it has several other parameters for certain options
+of the training.
+Here we only set a different number of <code class="language-plaintext highlighter-rouge">epochs</code>.
+One training epoch means that every sample in the training data has been shown
+to the neural network and used to update its parameters.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The fit method returns a history object that has a history attribute with the training loss and
+potentially other metrics per training epoch.
+It can be very insightful to plot the training loss to see how the training progresses.
+Using seaborn we can do this as follow:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">history</span><span class="p">.</span><span class="n">epoch</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'loss'</span><span class="p">])</span>
+</code></pre></div></div>
+<p><img width="50%" src="../fig/training_curve.png" alt="Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs" title="Training Curve" /></p>
+
+<p>This plot can be used to identify whether the training is well configured or whether there
+are problems that need to be addressed.</p>
+
+<blockquote class="challenge">
+  <h2 id="the-training-curve">The Training Curve</h2>
+
+  <p>Looking at the training curve we have just made.</p>
+  <ol>
+    <li>How does the training progress?
+      <ul>
+        <li>Does the training loss increase or decrease?</li>
+        <li>Does it change quickly or slowly?</li>
+        <li>Does the graph look very jittery?</li>
+      </ul>
+    </li>
+    <li>Do you think the resulting trained network will work well on the test set?</li>
+  </ol>
+
+  <blockquote class="solution">
+    <h2 id="solution-5">Solution</h2>
+    <ol>
+      <li>The loss curve should drop quite quickly in a smooth line with little jitter</li>
+      <li>The results of the training give very little information on its performance on a test set.
+You should be careful not to use it as an indication of a well trained network.</li>
+    </ol>
+  </blockquote>
+</blockquote>
+
+<h2 id="7-perform-a-predictionclassification">7. Perform a prediction/classification</h2>
+<p>Now that we have a trained neural network, we can use it to predict new samples
+of penguin using the <code class="language-plaintext highlighter-rouge">predict</code> function.</p>
+
+<p>We will use the neural network to predict the species of the test set
+using the <code class="language-plaintext highlighter-rouge">predict</code> function.
+We will be using this prediction in the next step to measure the performance of our
+trained network.
+This will return a <code class="language-plaintext highlighter-rouge">numpy</code> matrix, which we convert
+to a pandas dataframe to easily see the labels.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">target</span><span class="p">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">prediction</span>
+</code></pre></div></div>
+<blockquote class="solution">
+  <h2 id="output">Output</h2>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>0</td>
+        <td>0.304484</td>
+        <td>0.192893</td>
+        <td>0.502623</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>0.527107</td>
+        <td>0.095888</td>
+        <td>0.377005</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>0.373989</td>
+        <td>0.195604</td>
+        <td>0.430406</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>0.493643</td>
+        <td>0.154104</td>
+        <td>0.352253</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>0.309051</td>
+        <td>0.308646</td>
+        <td>0.382303</td>
+      </tr>
+      <tr>
+        <td>…</td>
+        <td>…</td>
+        <td>…</td>
+        <td>…</td>
+      </tr>
+      <tr>
+        <td>64</td>
+        <td>0.406074</td>
+        <td>0.191430</td>
+        <td>0.402496</td>
+      </tr>
+      <tr>
+        <td>65</td>
+        <td>0.645621</td>
+        <td>0.077174</td>
+        <td>0.277204</td>
+      </tr>
+      <tr>
+        <td>66</td>
+        <td>0.356284</td>
+        <td>0.185958</td>
+        <td>0.457758</td>
+      </tr>
+      <tr>
+        <td>67</td>
+        <td>0.393868</td>
+        <td>0.159575</td>
+        <td>0.446557</td>
+      </tr>
+      <tr>
+        <td>68</td>
+        <td>0.509837</td>
+        <td>0.144219</td>
+        <td>0.345943</td>
+      </tr>
+    </tbody>
+  </table>
+
+</blockquote>
+
+<p>Remember that the output of the network uses the <code class="language-plaintext highlighter-rouge">softmax</code> activation function and has three
+outputs, one for each species. This dataframe shows this nicely.</p>
+
+<p>We now need to transform this output to one penguin species per sample.
+We can do this by looking for the index of highest valued output and converting that
+to the corresponding species.
+Pandas dataframes have the <code class="language-plaintext highlighter-rouge">idxmax</code> function, which will do exactly that.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">predicted_species</span> <span class="o">=</span> <span class="n">prediction</span><span class="p">.</span><span class="n">idxmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">"columns"</span><span class="p">)</span>
+<span class="n">predicted_species</span>
+</code></pre></div></div>
+<blockquote class="solution">
+  <h2 id="output-1">Output</h2>
+  <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     Gentoo
+1     Adelie
+2     Gentoo
+3     Adelie
+4     Gentoo
+       ...
+64    Adelie
+65    Adelie
+66    Gentoo
+67    Gentoo
+68    Adelie
+Length: 69, dtype: object
+</code></pre></div>  </div>
+</blockquote>
+
+<h2 id="8-measuring-performance">8. Measuring performance</h2>
+<p>Now that we have a trained neural network it is important to assess how well it performs.
+We want to know how well it will perform in a realistic prediction scenario, measuring
+performance will also come back when tuning the hyperparameters.</p>
+
+<p>We have created a test set during the data preparation stage which we will use
+now to create a confusion matrix.</p>
+
+<h3 id="confusion-matrix">Confusion matrix</h3>
+<p>With the predicted species we can now create a confusion matrix and display it
+using seaborn.
+To create a confusion matrix we will use another convenient function from sklearn
+called <code class="language-plaintext highlighter-rouge">confusion_matrix</code>.
+This function takes as a first parameter the true labels of the test set.
+We can get these by using the <code class="language-plaintext highlighter-rouge">idxmax</code> method on the y_test dataframe.
+The second parameter is the predicted labels which we did above.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+
+<span class="n">true_species</span> <span class="o">=</span> <span class="n">y_test</span><span class="p">.</span><span class="n">idxmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">"columns"</span><span class="p">)</span>
+
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">true_species</span><span class="p">,</span> <span class="n">predicted_species</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[22  0  8]
+ [ 5  0  9]
+ [ 6  0 19]]
+</code></pre></div></div>
+
+<p>Unfortunately, this matrix is kinda hard to read. Its not clear which column and which row
+corresponds to which species.
+So let’s convert it to a pandas dataframe with its index and columns set to the species
+as follows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Convert to a pandas dataframe
+</span><span class="n">confusion_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">y_test</span><span class="p">.</span><span class="n">columns</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">y_test</span><span class="p">.</span><span class="n">columns</span><span class="p">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># Set the names of the x and y axis, this helps with the readability of the heatmap.
+</span><span class="n">confusion_df</span><span class="p">.</span><span class="n">index</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">'True Label'</span>
+<span class="n">confusion_df</span><span class="p">.</span><span class="n">columns</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">'Predicted Label'</span>
+</code></pre></div></div>
+
+<p>We can then use the <code class="language-plaintext highlighter-rouge">heatmap</code> function from seaborn to create a nice visualization of
+the confusion matrix.
+The <code class="language-plaintext highlighter-rouge">annot=True</code> parameter here will put the numbers from the confusion matrix in
+the heatmap.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_df</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<p><img width="25%" src="../fig/confusion_matrix.png" alt="Confusion matrix of the test set with high accuracy for Adelie and Gentoo classification and no correctly predicted Chinstrap" title="Confusion Matrix" /></p>
+
+<blockquote class="challenge">
+  <h2 id="confusion-matrix-1">Confusion Matrix</h2>
+
+  <p>Measure the performance of the neural network you trained and
+visualize a confusion matrix.</p>
+
+  <ul>
+    <li>Did the neural network perform well on the test set?</li>
+    <li>Did you expect this from the training loss you saw?</li>
+    <li>What could we do to improve the performance?</li>
+  </ul>
+
+  <blockquote class="solution">
+    <h2 id="solution-6">Solution</h2>
+
+    <p>The confusion matrix shows that the predictions for Adelie and Gentoo
+are decent, but could be improved. However, Chinstrap is not predicted
+ever.</p>
+
+    <p>The training loss was very low, so from that perspective this may be
+surprising.
+But this illustrates very well why a test set is important when training
+neural networks.</p>
+
+    <p>We can try many things to improve the performance from here.
+One of the first things we can try is to balance the dataset better.
+Other options include: changing the network architecture or changing the
+training parameters</p>
+  </blockquote>
+</blockquote>
+
+<h2 id="9-tune-hyperparameters">9. Tune hyperparameters</h2>
+<p>As we discussed before the design and training of a neural network comes with
+many hyper parameter choices.
+We will go into more depth of these hyperparameters in later episodes.
+For now it is important to realize that the parameters we chose were
+somewhat arbitrary and more careful consideration needs to be taken to
+pick hyperparameter values.</p>
+
+<h2 id="10-share-model">10. Share model</h2>
+<p>It is very useful to be able to use the trained neural network at a later
+stage without having to retrain it.
+This can be done by using the <code class="language-plaintext highlighter-rouge">save</code> method of the model.
+It takes a string as a parameter which is the path of a directory where the model is stored.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s">'my_first_model'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This saved model can be loaded again by using the <code class="language-plaintext highlighter-rouge">load_model</code> method as follows:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pretrained_model</span> <span class="o">=</span> <span class="n">keras</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">load_model</span><span class="p">(</span><span class="s">'my_first_model'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This loaded model can be used as before to predict.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># use the pretrained model here
+</span><span class="n">y_pretrained_pred</span> <span class="o">=</span> <span class="n">pretrained_model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">pretrained_prediction</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y_pretrained_pred</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">target</span><span class="p">.</span><span class="n">columns</span><span class="p">.</span><span class="n">values</span><span class="p">)</span>
+
+<span class="c1"># idxmax will select the column for each row with the highest value
+</span><span class="n">pretrained_predicted_species</span> <span class="o">=</span> <span class="n">pretrained_prediction</span><span class="p">.</span><span class="n">idxmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s">"columns"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">pretrained_predicted_species</span><span class="p">)</span>
+</code></pre></div></div>
+<blockquote class="solution">
+  <h2 id="output-2">Output</h2>
+
+  <div class="language-plaintext output highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0     Adelie
+1     Gentoo
+2     Adelie
+3     Gentoo
+4     Gentoo
+       ...
+64    Gentoo
+65    Gentoo
+66    Adelie
+67    Adelie
+68    Gentoo
+Length: 69, dtype: object
+</code></pre></div>  </div>
+</blockquote>
+
+
+
+
+
+
+<blockquote class="keypoints">
+  <h2>Key Points</h2>
+  <ul>
+    
+    <li><p>The deep learning workflow is a useful tool to structure your approach, it helps to make sure you do not forget any important steps.</p>
+</li>
+    
+    <li><p>Exploring the data is an important step to familiarize yourself with the problem and to help you determine the relavent inputs and outputs.</p>
+</li>
+    
+    <li><p>One-hot encoding is a preprocessing step to prepare labels for classification in Keras.</p>
+</li>
+    
+    <li><p>A fully connected layer is a layer which has connections to all neurons in the previous and subsequent layers.</p>
+</li>
+    
+    <li><p>keras.layers.Dense is an implementation of a fully connected layer, you can set the number of neurons in the layer and the activation function used.</p>
+</li>
+    
+    <li><p>To train a neural network with Keras we need to first define the network using layers and the Model class. Then we can train it using the model.fit function.</p>
+</li>
+    
+    <li><p>Plotting the loss curve can be used to identify and troubleshoot the training process.</p>
+</li>
+    
+    <li><p>The loss curve on the training set does not provide any information on how well a network performs in a real setting.</p>
+</li>
+    
+    <li><p>Creating a confusion matrix with results from a test set gives better insight into the network’s performance.</p>
+</li>
+    
+  </ul>
+</blockquote>
+
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-xs-1">
+    <h3 class="text-left">
+      
+      <a href="../01-introduction/index.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span><span class="sr-only">previous episode</span></a>
+      
+    </h3>
+  </div>
+  <div class="col-xs-10">
+    
+  </div>
+  <div class="col-xs-1">
+    <h3 class="text-right">
+      
+      <a href="../03-monitor-the-model/index.html"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span><span class="sr-only">next episode</span></a>
+      
+    </h3>
+  </div>
+</div>
+
+
+
+      
+      
+
+
+
+
+
+
+<footer>
+  <hr/>
+  <div class="row">
+    <div class="col-md-6 license" id="license-info" align="left">
+	
+        Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a> 2023 by <a href="../CITATION">the authors</a>.
+	
+    </div>
+    <div class="col-md-6 help-links" align="right">
+	
+	<a href="/edit//_episodes/02-keras.md" data-checker-ignore>Edit on GitHub</a>
+	
+	/
+	<a href="/blob//CONTRIBUTING.md" data-checker-ignore>Contributing</a>
+	/
+	<a href="/">Source</a>
+	/
+	<a href="/blob//CITATION" data-checker-ignore>Cite</a>
+	/
+	<a href="mailto:d.vankuppevelt@esciencecenter.nl">Contact</a>
+    </div>
+  </div>
+  <p class="text-muted text-right">
+    <small><i>Using <a href="https://github.com/carpentries/carpentries-theme/">The Carpentries theme</a> &mdash; Site last built on: 2023-05-17 15:41:55 +0200.</i></small>
+  </p>
+</footer>
+
+      
+    </div>
+    
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/lesson.js"></script>
+
+
+<!-- Matomo -->
+<script>
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(["setDomains", ["*.lessons.carpentries.org","*.datacarpentry.github.io","*.datacarpentry.org","*.librarycarpentry.github.io","*.librarycarpentry.org","*.swcarpentry.github.io"]]);
+  _paq.push(["setDoNotTrack", true]);
+  _paq.push(["disableCookies"]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://carpentries.matomo.cloud/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.async=true; g.src='//cdn.matomo.cloud/carpentries.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+
+
+<script src="../assets/js/anchor.min.js"></script>
+<script>
+    anchors.add();
+</script>
+
+  </body>
+</html>
