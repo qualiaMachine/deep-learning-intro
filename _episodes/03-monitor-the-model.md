@@ -527,13 +527,13 @@ plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 ![Plot of RMSE vs epochs for the training set and the validation set which depicts a divergence between the two around 10 epochs.](../fig/03_training_history_2_rmse.png){: width="500px"}
 > ## Exercise: plot the training progress.
 >
-> 1. Is there a difference between the training and validation data? And if so, what would this imply?
+> 1. Is there a difference between the training curves of training versus validation data? And if so, what would this imply?
 > 2. (Optional) Take a pen and paper, draw the perfect training and validation curves.
 >    (This may seem trivial, but it will trigger you to think about what you actually would like to see)
 >
 > > ## Solution
-> > The difference between training and validation data shows that something is not completely right here.
-> > The model predictions on the validation set quickly seem to reach a plateau while the performance on the training set keeps improving.
+> > The difference in the two curves shows that something is not completely right here.
+> > The error for the model predictions on the validation set quickly seem to reach a plateau while the error on the training set keeps decreasing.
 > > That is a common signature of *overfitting*.
 > >
 > > Optional:
