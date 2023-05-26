@@ -532,7 +532,7 @@ plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 >    (This may seem trivial, but it will trigger you to think about what you actually would like to see)
 >
 > > ## Solution
-> > The difference in the two cureves shows that something is not completely right here.
+> > The difference in the two curves shows that something is not completely right here.
 > > The error for the model predictions on the validation set quickly seem to reach a plateau while the error on the training set keeps decreasing.
 > > That is a common signature of *overfitting*.
 > >
