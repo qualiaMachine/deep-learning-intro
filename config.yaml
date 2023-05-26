@@ -62,6 +62,7 @@ episodes:
 - 1-introduction.Rmd
 - 2-keras.Rmd
 - 3-monitor-the-model.Rmd
+- 4-advanced-layer-types.Rmd
 
 
 # Information for Learners
