@@ -1,7 +1,7 @@
 ---
 title: "Classification by a Neural Network using Keras"
 teaching: 30-60
-exercises: 40-45
+exercises: 45-50
 questions:
 - "What is a neural network?"
 - "How do I compose a Neural Network using Keras?"
