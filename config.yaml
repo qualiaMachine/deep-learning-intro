@@ -59,8 +59,10 @@ contact: 'team@carpentries.org'
 
 # Order of episodes in your lesson
 episodes:
-- introduction.Rmd
+- 1-introduction.Rmd
 - 2-keras.Rmd
+- 3-monitor-the-model.Rmd
+
 
 # Information for Learners
 learners:
