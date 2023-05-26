@@ -60,7 +60,7 @@ contact: 'team@carpentries.org'
 # Order of episodes in your lesson
 episodes:
 - introduction.Rmd
-- introduction-demo.Rmd
+- 2-keras.Rmd
 
 # Information for Learners
 learners:
