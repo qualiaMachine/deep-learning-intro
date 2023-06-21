@@ -1,5 +1,5 @@
 ---
-title: "Classification by a Neural Network using Keras"
+title: "Classification by a neural network using Keras"
 teaching: 30-60
 exercises: 45-50
 questions:
