@@ -26,7 +26,7 @@ So far, we have seen one type of layer, namely the **fully connected**, or **den
 
 However, there are many different types of layers that perform different calculations and take different inputs. In this episode we will take a look at **convolutional layers** and **dropout layers**, which are useful in the context of image data, but also in many other types of (structured) data.
 
-## Image classification
+## 1. Formulate / Outline the problem: Image classification
 Keras comes with a few prepared datasets. We have a look at the [CIFAR10 dataset](https://www.cs.toronto.edu/~kriz/cifar.html),
 which is a widely known dataset for image classification.
 ```python
@@ -64,6 +64,8 @@ n = 5000
 train_images = train_images[:n]
 train_labels = train_labels[:n]
 ```
+
+## 2. Identify inputs and outputs
 
 ::: challenge
 ## Explore the data
@@ -124,6 +126,7 @@ The values of the labels range between `0` and `9`, denoting 10 different classe
 ::::
 :::
 
+## 3. Prepare data
 
 The training set consists of 50000 images of `32x32` pixels and 3 channels (RGB values). The RGB values are between `0` and `255`. For input of neural networks, it is better to have small input values. So we normalize our data between `0` and `1`:
 
@@ -267,6 +270,8 @@ We have 100 matrices with 3 * 3 * 3 = 27 values each so that gives 27 * 100 = 27
 ::::
 :::
 
+## 4. Choose a pretrained model or start building architecture from scratch
+
 So let us look at a network with a few convolutional layers. We need to finish with a Dense layer to connect the output cells of the convolutional layer to the outputs for our classes.
 
 ```python
@@ -348,6 +353,7 @@ Trainable params: 87,060
 Non-trainable params: 0
 _________________________________________________________________
 ```
+## 5. Choose a loss function and optimizer
 
 We compile the model using the adam optimizer (other optimizers could also be used here!).
 Similar to the penguin classification task, we will use the crossentropy function to calculate the model's loss.
@@ -360,6 +366,8 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 ```
 
+## 6. Train the model
+
 We then train the model for 10 epochs:
 
 ```python
@@ -367,6 +375,7 @@ history = model.fit(train_images, train_labels, epochs=10,
                     validation_data=(test_images, test_labels))
 ```
 
+## 7. Perform a Prediction/Classification and 8. Measure performance
 
 We can plot the training process using the history:
 
@@ -386,6 +395,8 @@ sns.lineplot(data=history_df[['loss', 'val_loss']])
 ![](../fig/04_training_history_loss_1.png){alt='Plot of training loss and validation loss vs epochs for the trained model'}
 
 It seems that the model is overfitting somewhat, because the validation accuracy and loss stagnates.
+
+## 9. Tune hyperparameters
 
 ::: challenge
 ## Network depth
