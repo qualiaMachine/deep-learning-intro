@@ -6,7 +6,7 @@ title: Bonus material
 
 To apply Deep Learning to a problem there are several steps we need to go through:
 
-![A visualisation of the Machine Learning Pipeline](../fig/graphviz/pipeline.png){: width="800px" }
+![A visualisation of the Machine Learning Pipeline](../fig/graphviz/pipeline.png)
 
 Feel free to use this figure as [png](../fig/graphviz/pipeline.png). The figure is contained in `fig/graphviz/` of this repository. Use the `Makefile` there in order to reproduce it in different output formats.
 
@@ -16,7 +16,7 @@ In both cases, however, it often is highly relevant to not get model predictions
 The last years, this has been a very dynamic, rapidly growing area and there are many different ways to do uncertainty evaluation in deep learning.
 Here we want to present a very versatile and easy-to-implement method: **Monte-Carlo Dropout** (original reference: https://arxiv.org/abs/1506.02142).
 
-The name of the technique referes to a very common regularization technique: **Dropout**. So let's first introduce this:
+The name of the technique refers to a very common regularization technique: **Dropout**. So let's first introduce this:
 
 ## Dropout: make it harder to memorize things
  
@@ -31,7 +31,7 @@ In practice, however, dropout is computationally a very elegant solution which d
 
 Let's add dropout to our neural network which we will do by using keras `Dropout` layer (documentation & reference: https://keras.io/api/layers/regularization_layers/dropout/).
 One additional change that we will make here is to lower the learning rate because in the last training example the losses seemed to fluctuate a lot.
-~~~
+```python
 def create_nn(n_features, n_predictions):
     # Input layer
     layers_input = keras.layers.Input(shape=(n_features,), name='input')
@@ -51,10 +51,9 @@ def create_nn(n_features, n_predictions):
 model = create_nn(X_data.shape[1], 1)
 model.compile(loss='mse', optimizer=keras.optimizers.Adam(1e-4), metrics=[keras.metrics.RootMeanSquaredError()])
 model.summary()
-~~~
-{: .language-python}
+```
 
-~~~
+```output
 Model: "model_dropout"
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
@@ -75,15 +74,14 @@ Total params: 21,501
 Trainable params: 21,501
 Non-trainable params: 0
 _________________________________________________________________
-~~~
-{: .output}
+```
 
 Compared to the models above, this required little changes. We add two `Dropout` layers, one after each dense layer and specify the dropout rate.
 Here we use `rate=0.2` which means that at any training step 20% of all nodes will be turned off.
 You can also see that Dropout layers do not add additional parameters.
 Now, let's train our new model and plot the losses:
 
-~~~
+```python
 history = model.fit(X_train, y_train,
                     batch_size = 32,
                     epochs = 1000,
@@ -95,8 +93,7 @@ history_df = pd.DataFrame.from_dict(history.history)
 sns.lineplot(data=history_df[['root_mean_squared_error', 'val_root_mean_squared_error']])
 plt.xlabel("epochs")
 plt.ylabel("RMSE")
-~~~
-{: .language-python}                  
+```              
 
 ![Output of plotting sample](../fig/03_training_history_4_rmse_dropout.png)
 
@@ -113,7 +110,7 @@ At the end this collection of predictions can be combined to a mean (or a median
 And the variation of all predictions can tell something about the model's uncertainty.
 
 A simple (and a bit hacky) way to enforce dropout layers to remain active is to add `training=True` to the model:
-~~~
+```python
 def create_nn(n_features, n_predictions):
     # Input layer
     layers_input = keras.layers.Input(shape=(n_features,), name='input')
@@ -133,35 +130,32 @@ def create_nn(n_features, n_predictions):
 
 model = create_nn(X_data.shape[1], 1)
 model.compile(loss='mse', optimizer=Adam(1e-4), metrics=[keras.metrics.RootMeanSquaredError()])
-~~~
-{: .language-python} 
+```
 
 Model training remains entirely unchanged:
-~~~
+```python
 history = model.fit(X_train, y_train,
                     batch_size = 32,
                     epochs = 1000,
                     validation_data=(X_val, y_val),
                     callbacks=[earlystopper],
                     verbose = 2)
-~~~
-{: .language-python} 
+```
 
 But when now doing predictions, things will look different.
 Let us do two predictions an compare the results.
 
-~~~
+```python
 y_test_predicted1 = model.predict(X_test)
 y_test_predicted2 = model.predict(X_test)
 
 y_test_predicted1[:10], y_test_predicted2[:10]
-~~~
-{: .language-python} 
+```
 
 This should give two arrays with different float numbers.
 
 We can now compute predictions for a larger ensemble, say 100 random variations of the same model:
-~~~
+```
 from tqdm.notebook import tqdm  # optional: to add progress bar
 
 n_ensemble = 100
@@ -169,34 +163,30 @@ y_test_predicted_ensemble = np.zeros((X_test.shape[0], n_ensemble))
 
 for i in tqdm(range(n_ensemble)):  # or: for i in range(n_ensemble):
     y_test_predicted_ensemble[:, i] = model.predict(X_test)[:,0]
-~~~
-{: .language-python} 
+```
 
 This will give an array of predictions, 100 different predictions for each datapoint in `X_test`.
 We can inspect an example distribution, for instance by plotting a histrogram:
 
-~~~
+```python
 plt.hist(y_test_predicted_ensemble[0,:], rwidth=0.9)
 plt.xlabel("predicted sunshine hours")
-~~~
-{: .language-python} 
+``` 
 
 ![Output of plotting sample](../fig/03_monte_carlo_dropout_distribution_example.png)
 
 Instead of full distributions for every datapoint we might also just want to extract the mean and standard deviation.
-~~~
+```
 y_test_predicted_mean = np.mean(y_test_predicted_ensemble, axis=1)
 y_test_predicted_std = np.std(y_test_predicted_ensemble, axis=1)
-~~~
-{: .language-python} 
+```
 
 This can then be plotted again as a scatter plot, but now with added information on the model uncertainty.
-~~~
+```python
 plt.figure(figsize=(5, 5), dpi=100)
 plt.scatter(y_test_predicted_mean, y_test, s=40*y_test_predicted_std, 
             c=y_test_predicted_std, alpha=0.5)
 plt.xlabel("predicted")
 plt.ylabel("true values")
-~~~
-{: .language-python} 
+```
 ![Output of plotting sample](../fig/03_scatter_plot_model_uncertainty.png)

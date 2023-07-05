@@ -13,10 +13,9 @@ Installations on learners' devices have the advantage of lowering the threshold 
 When episode 3 is taught on a different day then episode 2, it is very useful to start with a recap of episode 2. The Key Points of episode 2 can be iterated, and you can go through the code of the previous session (without actually running it). This will help learners in the big exercise on creating a neural network.
 
 If learners did not download the data yet, they can also load the data directly from zenodo (instead of first downloading and saving):
-~~~
+```python
 data = pd.read_csv("https://zenodo.org/record/5071376/files/weather_prediction_dataset_light.csv?download=1")
-~~~
-{: .language-python}
+```
 
 The following exercises work well to do in groups / break-out rooms:
 - Split data into training, validation, and test set
