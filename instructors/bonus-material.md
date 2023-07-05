@@ -1,3 +1,7 @@
+---
+title: Bonus material
+---
+
 ## ML Pipeline Visualisation
 
 To apply Deep Learning to a problem there are several steps we need to go through:

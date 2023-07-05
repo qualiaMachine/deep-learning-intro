@@ -862,7 +862,7 @@ Now that we have a somewhat acceptable model, let us not forget to save it for f
 model.save('my_tuned_weather_model')
 ```
 
-# Outlook
+## Outlook
 Correctly predicting tomorrow's sunshine hours is apparently not that simple.
 Our models get the general trends right, but still predictions vary quite a bit and can even be far off.
 
