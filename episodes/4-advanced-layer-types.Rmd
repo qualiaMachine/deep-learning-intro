@@ -173,9 +173,14 @@ print(dim)
 ## Number of parameters
 Suppose we create a single Dense (fully connected) layer with 100 hidden units that connect to the input pixels, how many parameters does this layer have?
 
+- A. 307200
+- B. 307300
+- C. 100
+- D. 3072
+
 :::: solution
 ## Solution
-Each entry of the input dimensions, i.e. the `shape` of one single data point, is connected with 100 neurons of our hidden layer, and each of these neurons has a bias term associated to it. So we have `307300` parameters to learn.
+The correct answer is B: Each entry of the input dimensions, i.e. the `shape` of one single data point, is connected with 100 neurons of our hidden layer, and each of these neurons has a bias term associated to it. So we have `307300` parameters to learn.
 ```python
 width, height = (32, 32)
 n_hidden_neurons = 100
