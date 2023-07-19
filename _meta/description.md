@@ -1,5 +1,0 @@
-This is an hands-on introduction to the first steps in Deep Learning, intended for researchers who are familiar with (non-deep) Machine Learning.
-
-The use of Deep Learning has seen a sharp increase of popularity and applicability over the last decade. While Deep Learning can be a useful tool for researchers from a wide range of domains, taking the first steps in the world of Deep Learning can be somewhat intimidating. This introduction aims to cover the basics of Deep Learning in a practical and hands-on manner, so that upon completion, you will be able to train your first neural network and understand what next steps to take to improve the model.
-
-We start with explaining the basic concepts of neural networks, and then go through the different steps of a Deep Learning workflow. Learners will learn how to prepare data for deep learning, how to implement a basic Deep Learning model in Python with Keras, how to monitor and troubleshoot the training process and how to implement different layer types such as convolutional layers.

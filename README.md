@@ -10,6 +10,24 @@ The design of this lesson can be found in the [lesson design](_extras/design.md)
 The main audience of this carpentry lesson is PhD students that have little to no experience with
 deep learning. In addition, we expect them to know basics of statistics and machine learning.
 
+## Setup the Workshop Website locally
+
+To build this lesson locally, you should follow the [setup instructions for the
+workbench](https://carpentries.github.io/sandpaper-docs/#overview). In short,
+make sure you have R, Git, and Pandoc installed, open R and use the following
+commands to install/update the packages needed for the infrastructure:
+
+```r
+# register the repositories for The Carpentries and CRAN
+options(repos = c(
+  carpentries = "https://carpentries.r-universe.dev/",
+  CRAN = "https://cran.rstudio.com/"
+))
+
+# Install the template packages to your R library
+install.packages(c("sandpaper", "varnish", "pegboard", "tinkr"))
+```
+
 ## Contributing
 
 We welcome all contributions to improve the lesson! Maintainers will do their best to help you
