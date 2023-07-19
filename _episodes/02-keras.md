@@ -341,8 +341,8 @@ X_train, X_test, y_train, y_test = train_test_split(penguins_features, target,te
 ## 4. Build an architecture from scratch or choose a pretrained model
 
 ### Keras for neural networks
-For this lesson we will be using [Keras](https://keras.io/) to define and train our neural network
-models.
+We will now build out first neural network from scratch. Although this sounds like a daunting task, you will experience that with [Keras](https://keras.io/) it is actually surprisingly straightforward.
+
 Keras is a machine learning framework with ease of use as one of its main features.
 It is part of the tensorflow python package and can be imported using `from tensorflow import keras`.
 
