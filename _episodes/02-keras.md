@@ -183,6 +183,7 @@ sns.pairplot(penguins, hue="species")
 {:.language-python}
 ![Pair plot showing the separability of the three species of penguin for combinations of dataset attributes][pairplot]
 
+
 > ## Pairplot
 >
 > Take a look at the pairplot we created. Consider the following questions:
@@ -293,8 +294,8 @@ For this episode we will keep it at just a training and test set however.
 
 To split the cleaned dataset into a training and test set we will use a very convenient
 function from sklearn called `train_test_split`.
-This function takes a number of parameters:
-- The first two are the dataset and the corresponding targets.
+This function takes a number of parameters which are extensively explained [here](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) :
+- The first two parameters are the dataset (in our case penguins_features) and the corresponding targets (i.e. defined as target).
 - Next is the named parameter `test_size` this is the fraction of the dataset that is
 used for testing, in this case `0.2` means 20% of the data will be used for testing.
 - `random_state` controls the shuffling of the dataset, setting this value will reproduce
@@ -308,6 +309,8 @@ from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(penguins_features, target,test_size=0.2, random_state=0, shuffle=True, stratify=target)
 ~~~
 {:.language-python}
+
+In order to explore and see what the X_train, x_test, y_train, y_test contain you can use the .head() and .desrcibe() functions from pandas. 
 
 > ## Training and Test sets
 >
@@ -383,8 +386,7 @@ The hidden layer in the image in the introduction of this episode is a Dense lay
 
 The input in Keras also gets special treatment, Keras automatically calculates the number of inputs
 and outputs a layer needs and therefore how many edges need to be created.
-This means we need to let Keras now how big our input is going to be.
-We do this by instantiating a `keras.Input` class and tell it how big our input is.
+This means we need to inform Keras how big our input is going to be. We do this by instantiating a `keras.Input` class and tell it how big our input is, thus the number of columns it contains.
 
 ~~~
 inputs = keras.Input(shape=X_train.shape[1])
@@ -521,7 +523,7 @@ Next we need to choose which optimizer to use and, if this optimizer has paramet
 to use for those. Furthermore, we need to specify how many times to show the training samples to the optimizer.
 
 Once more, Keras gives us plenty of choices all of which have their own pros and cons,
-but for now let us go with the widely used Adam optimizer.
+but for now let us go with the widely used [Adam optimizer](https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam).
 Adam has a number of parameters, but the default values work well for most problems.
 So we will use it with its default parameters.
 
@@ -647,7 +649,7 @@ Now that we have a trained neural network it is important to assess how well it 
 We want to know how well it will perform in a realistic prediction scenario, measuring
 performance will also come back when tuning the hyperparameters.
 
-We have created a test set during the data preparation stage which we will use
+We have created a test set (i.e. y_test) during the data preparation stage which we will use
 now to create a confusion matrix.
 
 ### Confusion matrix
@@ -734,7 +736,9 @@ many hyper parameter choices.
 We will go into more depth of these hyperparameters in later episodes.
 For now it is important to realize that the parameters we chose were
 somewhat arbitrary and more careful consideration needs to be taken to
-pick hyperparameter values.
+pick hyperparameter values. 
+
+Note that the outcome you have might be slightly different from what is shown in this tutorial.
 
 ## 10. Share model
 It is very useful to be able to use the trained neural network at a later
