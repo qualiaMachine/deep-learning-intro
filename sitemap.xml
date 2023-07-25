@@ -22,7 +22,13 @@
     <loc>https://carpentries-incubator.github.io/deep-learning-intro/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/deep-learning-intro/aio.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/deep-learning-intro/bonus-material.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/deep-learning-intro/images.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/deep-learning-intro/index.html</loc>
@@ -49,10 +55,22 @@
     <loc>https://carpentries-incubator.github.io/deep-learning-intro/instructor/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/deep-learning-intro/instructor/aio.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/deep-learning-intro/instructor/bonus-material.html</loc>
   </url>
   <url>
+    <loc>https://carpentries-incubator.github.io/deep-learning-intro/instructor/images.html</loc>
+  </url>
+  <url>
     <loc>https://carpentries-incubator.github.io/deep-learning-intro/instructor/index.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/deep-learning-intro/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/deep-learning-intro/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/deep-learning-intro/instructor/profiles.html</loc>
@@ -62,6 +80,12 @@
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/deep-learning-intro/instructor/survey-templates.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/deep-learning-intro/instructor-notes.html</loc>
+  </url>
+  <url>
+    <loc>https://carpentries-incubator.github.io/deep-learning-intro/key-points.html</loc>
   </url>
   <url>
     <loc>https://carpentries-incubator.github.io/deep-learning-intro/profiles.html</loc>
