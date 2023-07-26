@@ -1,3 +1,5 @@
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/carpentries-incubator/deep-learning-intro/scaffolds)
+
 # Introduction to deep learning
 This lesson gives an introduction to deep learning.
 
@@ -7,6 +9,24 @@ The design of this lesson can be found in the [lesson design](_extras/design.md)
 ## Target Audience
 The main audience of this carpentry lesson is PhD students that have little to no experience with
 deep learning. In addition, we expect them to know basics of statistics and machine learning.
+
+## Setup the Workshop Website locally
+
+To build this lesson locally, you should follow the [setup instructions for the
+workbench](https://carpentries.github.io/sandpaper-docs/#overview). In short,
+make sure you have R, Git, and Pandoc installed, open R and use the following
+commands to install/update the packages needed for the infrastructure:
+
+```r
+# register the repositories for The Carpentries and CRAN
+options(repos = c(
+  carpentries = "https://carpentries.r-universe.dev/",
+  CRAN = "https://cran.rstudio.com/"
+))
+
+# Install the template packages to your R library
+install.packages(c("sandpaper", "varnish", "pegboard", "tinkr"))
+```
 
 ## Contributing
 
@@ -45,14 +65,17 @@ After the workshop, lease create an issue (or comment on the issue you created b
 
 In addition, you are very welcome to add issues or pull requests that address more specific feedback.
 
+## Rendering the website locally
+See https://carpentries.github.io/workbench/ for instructions on how to render the website locally.
+
 ## Maintainer(s)
 
 Current maintainers of this lesson are
-* Dafne van Kuppevelt
 * Peter Steinbach
 * Colin Sauze
 * Djura Smits
-
+* Sven van der Burg
+* Pranav Chandramouli
 
 ## Authors
 
