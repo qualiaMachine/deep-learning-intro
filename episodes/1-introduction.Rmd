@@ -146,7 +146,7 @@ So, a loss function quantifies the total error of the model.
 The process of adjusting the weights in such a way as to minimize the loss function is called 'optimization'.
 We will dive further into how optimization works in episode 3,
 for now it is enough to understand that during training the weights in the network are adjusted so that the loss decreases through the process of optimization.
-Ultimately resulting in a low loss, and thus predictions that are close to the expected values.
+This ultimately results in a low loss, and this, generally, implies predictions that are closer to the expected values.
 
 ### What sort of problems can Deep Learning solve?
 
