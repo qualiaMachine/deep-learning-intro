@@ -95,20 +95,8 @@ penguins = sns.load_dataset('penguins')
 
 This will give you a pandas dataframe which contains the penguin data.
 
-::: challenge
-## Penguin Dataset
-
-Inspect the penguins dataset.
-
-1. What are the different features called in the dataframe?
-2. Are the target classes of the dataset stored as numbers or strings?
-3. How many samples does this dataset have?
-
-:::: solution
-
-## Solution
-**1.** Using the pandas `head` function you can see the names of the features.
-Using the `describe` function we can also see some statistics for the numeric columns
+### Inspecting the data
+Using the pandas `head` function gives us a quick look at the data:
 ```python
 penguins.head()
 ```
@@ -121,48 +109,13 @@ penguins.head()
  | 3 | Adelie | Torgersen | NaN  | NaN  | NaN   | NaN    | NaN    |
  | 4 | Adelie | Torgersen | 36.7 | 19.3 | 193.0 | 3450.0 | Female |
 
+ All columns but the 'species' columns are features that we can use.
+
+There are 344 samples and 7 columns, so 6 features:
+
  ```python
- penguins.describe()
+ penguins.shape
  ```
- 
-
- |       | bill_length_mm | bill_depth_mm | flipper_length_mm | body_mass_g |
- |------:|---------------:|--------------:|------------------:|------------:|
- | count |     342.000000 |    342.000000 |        342.000000 |  342.000000 |
- |  mean |      43.921930 |     17.151170 |        200.915205 | 4201.754386 |
- |   std |       5.459584 |      1.974793 |         14.061714 |  801.954536 |
- |   min |      32.100000 |     13.100000 |        172.000000 | 2700.000000 |
- |   25% |      39.225000 |     15.600000 |        190.000000 | 3550.000000 |
- |   50% |      44.450000 |     17.300000 |        197.000000 | 4050.000000 |
- |   75% |      48.500000 |     18.700000 |        213.000000 | 4750.000000 |
- |   max |      59.600000 |     21.500000 |        231.000000 | 6300.000000 |
-
-**2.** We can get the unique values in the `species` column using the `unique` function of pandas.
-It shows the target class is stored as a string and has 3 unique values. This type of column is
-usually called a 'categorical' column.
-```python
-penguins["species"].unique()
-```
-```output
-array(['Adelie', 'Chinstrap', 'Gentoo'], dtype=object)
-```
-
-**3.** Using `describe` function on the species column shows there are 344 samples
-unique species
-```python
-penguins["species"].describe()
-```
-
-```output
-count        344
-unique         3
-top       Adelie
-freq         152
-Name: species, dtype: object
-```
-
-::::
-:::
 
 ### Visualization
 Looking at numbers like this usually does not give a very good intuition about the data we are
@@ -179,6 +132,7 @@ sns.pairplot(penguins, hue="species")
 ![][pairplot]
 
 ::: challenge
+
 ## Pairplot
 
 Take a look at the pairplot we created. Consider the following questions:
@@ -220,14 +174,24 @@ penguins['species'] = penguins['species'].astype('category')
 
 This will make later interaction with this column a little easier.
 
+For now we will only use the numerical features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, `body_mass_g` only,
+so let's drop the categorical columns:
+```python
+# Drop categorical columns
+penguins_filtered = penguins.drop(columns=['island', 'sex'])
+```
+
 ### Clean missing values
 During the exploration phase you may have noticed that some rows in the dataset have missing (NaN)
 values, leaving such values in the input data will ruin the training, so we need to deal with them.
 There are many ways to deal with missing values, but for now we will just remove the offending rows by adding a call to `dropna()`:
 ```python
-# Drop two columns and the rows that have NaN values in them
-penguins_filtered = penguins.drop(columns=['island', 'sex']).dropna()
+# Drop the rows that have NaN values in them
+penguins_filtered = penguins_filtered.dropna()
+```
 
+Finally, we select only the features
+```python
 # Extract columns corresponding to features
 penguins_features = penguins_filtered.drop(columns=['species'])
 ```
@@ -254,28 +218,17 @@ target.head() # print out the top 5 to see what it looks like.
 ```
 
 ::: challenge
-## One-hot encoding vs ordinal encoding
-1. How many output neurons will our network have now that we
-  one-hot encoded the target class?
-2. Another encoding method is 'ordinal encoding'.
-  Here the variable is represented by a single column,
-  where each category is represented by a different integer
-  (0, 1, 2 in the case of the 3 penguin species).
-  How many output neurons will a network have when ordinal encoding is used?
-3. (Optional) What would be the advantage of using one-hot versus ordinal encoding
-  for the task of classifying penguin species?
+## One-hot encoding
+How many output neurons will our network have now that we one-hot encoded the target class?
+
+* A: 1
+* B: 2
+* C: 3
 
 :::: solution
 ## Solution
-1. 3, one for each output variable class
-2. 1, the 3 classes are represented in a single variable
-3. In this case there is no ordinal relationship between the different penguin species,
-  so it does not make sense to use ordinal encoding.
-  To give an intuition of how a machine learning model deals with ordinal encoding:
-  Let us say that the model predicted 0 (Gentoo) instead of the true value 2 (Adélie),
-  the error would in this case be 2 (2-0). But if the prediction would be 1 (Chinstrap),
-  the error would be 1 (2-1). A missclassification between Gentoo and Adélie would then
-  thus contribute more to the overall error than missclassificaiton between Chinstrap and Adélie!
+3, one for each output variable class
+
 ::::
 :::
 
@@ -305,33 +258,6 @@ from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(penguins_features, target,test_size=0.2, random_state=0, shuffle=True, stratify=target)
 ```
-::: challenge
-## Training and Test sets
-Take a look at the training and test set we created.
-- How many samples do the training and test sets have?
-- Are the classes in the training set well balanced?
-
-:::: solution
-## Solution
-Using `y_train.shape` and `y_test.shape` we can see the training set has 273
-samples and y_test has 69 samples.
-We can check the balance of classes by counting the number of ones for each
-of the columns in the one-hot-encoded target,
-which shows the training set has 121 Adelie, 98 Gentoo and 54 Chinstrap samples.
-```python
-y_train.sum()
-```
-```output
-Adelie       121
-Chinstrap     54
-Gentoo        98
-dtype: int64
-```
-
-The dataset is not perfectly balanced, but it is not orders of magnitude out of balance
-either. So we will leave it as it is.
-::::
-:::
 
 ## 4. Build an architecture from scratch or choose a pretrained model
 
