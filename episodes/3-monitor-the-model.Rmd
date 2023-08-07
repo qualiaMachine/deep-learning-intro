@@ -303,7 +303,7 @@ Answer the following questions:
 
 - A. The number of samples in an epoch also increases
 - B. The number of batches in an epoch goes down
-- C. The training progress is less jumpy, because more samples are consulted in each update step (one batch).
+- C. The training progress is more jumpy, because more samples are consulted in each update step (one batch).
 - D. The memory load (memory as in computer hardware) of the training process is increased
 
 :::: solution
