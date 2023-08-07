@@ -375,7 +375,13 @@ history = model.fit(train_images, train_labels, epochs=10,
                     validation_data=(test_images, test_labels))
 ```
 
-## 7. Perform a Prediction/Classification and 8. Measure performance
+## 7. Perform a Prediction/Classification
+Here we skip performing a prediction, and continue to measuring the performance.
+In practice, you will only do this step once in a while when you actually need to have the individual predictions,
+often you know enough based on the evaluation metric scores.
+Of course, behind the scenes whenever you measure performance you have to make predictions and compare them to the ground truth.
+
+## 8. Measure performance
 
 We can plot the training process using the history:
 
