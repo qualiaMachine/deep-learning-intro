@@ -132,6 +132,7 @@ sns.pairplot(penguins, hue="species")
 ![][pairplot]
 
 ::: challenge
+
 ## Pairplot
 
 Take a look at the pairplot we created. Consider the following questions:
