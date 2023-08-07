@@ -26,7 +26,7 @@ So far, we have seen one type of layer, namely the **fully connected**, or **den
 
 However, there are many different types of layers that perform different calculations and take different inputs. In this episode we will take a look at **convolutional layers** and **dropout layers**, which are useful in the context of image data, but also in many other types of (structured) data.
 
-## Image classification
+## 1. Formulate / Outline the problem: Image classification
 Keras comes with a few prepared datasets. We have a look at the [CIFAR10 dataset](https://www.cs.toronto.edu/~kriz/cifar.html),
 which is a widely known dataset for image classification.
 ```python
@@ -64,6 +64,8 @@ n = 5000
 train_images = train_images[:n]
 train_labels = train_labels[:n]
 ```
+
+## 2. Identify inputs and outputs
 
 ::: challenge
 ## Explore the data
@@ -124,6 +126,7 @@ The values of the labels range between `0` and `9`, denoting 10 different classe
 ::::
 :::
 
+## 3. Prepare data
 
 The training set consists of 50000 images of `32x32` pixels and 3 channels (RGB values). The RGB values are between `0` and `255`. For input of neural networks, it is better to have small input values. So we normalize our data between `0` and `1`:
 
@@ -156,6 +159,8 @@ plt.show()
 
 
 ![](../fig/04_cifar10.png){alt="A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for example: 'frog' or 'horse'."}
+
+## 4. Choose a pretrained model or start building architecture from scratch
 
 ## Convolutional layers
 In the previous episodes, we used 'fully connected layers' , that connected all input values of a layer to all outputs of a layer. This results in many connections, and thus weights to be learned, in the network. Note that our input dimension is now quite high (even with small pictures of `32x32` pixels), we have:
@@ -353,6 +358,7 @@ Trainable params: 87,060
 Non-trainable params: 0
 _________________________________________________________________
 ```
+## 5. Choose a loss function and optimizer
 
 We compile the model using the adam optimizer (other optimizers could also be used here!).
 Similar to the penguin classification task, we will use the crossentropy function to calculate the model's loss.
@@ -365,6 +371,8 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 ```
 
+## 6. Train the model
+
 We then train the model for 10 epochs:
 
 ```python
@@ -372,6 +380,13 @@ history = model.fit(train_images, train_labels, epochs=10,
                     validation_data=(test_images, test_labels))
 ```
 
+## 7. Perform a Prediction/Classification
+Here we skip performing a prediction, and continue to measuring the performance.
+In practice, you will only do this step once in a while when you actually need to have the individual predictions,
+often you know enough based on the evaluation metric scores.
+Of course, behind the scenes whenever you measure performance you have to make predictions and compare them to the ground truth.
+
+## 8. Measure performance
 
 We can plot the training process using the history:
 
@@ -391,6 +406,8 @@ sns.lineplot(data=history_df[['loss', 'val_loss']])
 ![](../fig/04_training_history_loss_1.png){alt='Plot of training loss and validation loss vs epochs for the trained model'}
 
 It seems that the model is overfitting somewhat, because the validation accuracy and loss stagnates.
+
+## 9. Tune hyperparameters
 
 ::: challenge
 ## Network depth
@@ -665,6 +682,13 @@ sns.lineplot(data=loss_df, x='dropout_rate', y='test_loss')
 This is called hyperparameter tuning.
 ::::
 :::
+
+## 10. Share model
+Let's save our model
+
+```python
+model.save('cnn_model')
+```
 
 ::: keypoints
 - "Convolutional layers make efficient reuse of model parameters."
