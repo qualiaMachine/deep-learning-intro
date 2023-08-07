@@ -314,17 +314,20 @@ Let's put it into practice. We compose a Convolutional network with two convolut
 
 
 ```python
-inputs = keras.Input(shape=train_images.shape[1:])
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Flatten()(x)
-x = keras.layers.Dense(50, activation='relu')(x)
-outputs = keras.layers.Dense(10)(x)
+def create_nn():
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+    x = keras.layers.MaxPooling2D((2, 2))(x) # a new maxpooling layer
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.MaxPooling2D((2, 2))(x) # a new maxpooling layer (same as maxpool)
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(50, activation='relu')(x) # a new Dense layer
+    outputs = keras.layers.Dense(10)(x)
 
-model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model_small")
+    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    return model
 
+model = create_nn()
 model.summary()
 ```
 ```output
@@ -366,9 +369,11 @@ This loss function is appropriate to use when the data has two or more label cla
 
 To calculate crossentropy loss for data that has its classes represented by integers (i.e., not one-hot encoded), we use the SparseCategoricalCrossentropy() function:
 ```python
-model.compile(optimizer='adam',
-              loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-              metrics=['accuracy'])
+def compile_model(model):
+    model.compile(optimizer='adam',
+                  loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+                  metrics=['accuracy'])
+compile_model(model)
 ```
 
 ## 6. Train the model
@@ -392,15 +397,25 @@ We can plot the training process using the history:
 
 ```python
 import seaborn as sns
-import pandas as pd
+import matplotlib.pyplot as plt
 
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df[['accuracy', 'val_accuracy']])
+def plot_history(metrics):
+    """
+    Plot the training history
+
+    Args:
+        metrics(str, list): Metric or a list of metrics to plot
+    """
+    history_df = pd.DataFrame.from_dict(history.history)
+    sns.lineplot(data=history_df[metrics])
+    plt.xlabel("epochs")
+
+plot_history(['accuracy', 'val_accuracy'])
 ```
 ![](../fig/04_training_history_1.png){alt='Plot of training accuracy and validation accuracy vs epochs for the trained model'}
 
 ```python
-sns.lineplot(data=history_df[['loss', 'val_loss']])
+plot_history(['loss', 'val_loss'])
 ```
 
 ![](../fig/04_training_history_loss_1.png){alt='Plot of training loss and validation loss vs epochs for the trained model'}
@@ -433,16 +448,21 @@ outputs = keras.layers.Dense(10)(x)
 ## Solution
 We add an extra Conv2D layer after the second pooling layer:
 ```python
-inputs = keras.Input(shape=train_images.shape[1:])
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-x = keras.layers.Flatten()(x)
-x = keras.layers.Dense(50, activation='relu')(x)
-outputs = keras.layers.Dense(10)(x)
-model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+def create_nn_extra_layer():
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.MaxPooling2D((2, 2))(x) #
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x) # estra layer
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(50, activation='relu')(x) # a new Dense layer
+    outputs = keras.layers.Dense(10)(x)
+
+    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    return model
+
+model = create_nn_extra_layer()
 ```
 
 With the model defined above, we can inspect the number of parameters:
@@ -476,17 +496,14 @@ We can see that the conv layer decreases the resolution from 6x6 to 4x4,
 as a result, the input of the Dense layer is smaller than in the previous network.
 To train the network and plot the results:
 ```python
-model.compile(optimizer='adam',
-             loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-             metrics=['accuracy'])
+compile_model(model)
 history = model.fit(train_images, train_labels, epochs=20,
                    validation_data=(test_images, test_labels))
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df[['accuracy', 'val_accuracy']])
+plot_history(['accuracy', 'val_accuracy'])
 ```
 ![](../fig/04_training_history_2.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
 ```python
-sns.lineplot(data=history_df[['loss', 'val_loss']])
+plot_history(['loss', 'val_loss'])
 ```
 
 ![](../fig/04_training_history_loss_2.png){alt: "Plot of training loss and validation loss vs epochs for the trained model"}
@@ -547,19 +564,21 @@ In practice, however, dropout is computationally a very elegant solution which d
 Let us add one dropout layer towards the end of the network, that randomly drops 20% of the input units.
 
 ```python
-inputs = keras.Input(shape=train_images.shape[1:])
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-x = keras.layers.Dropout(0.8)(x) # This is new!
-x = keras.layers.Flatten()(x)
-x = keras.layers.Dense(50, activation='relu')(x)
-outputs = keras.layers.Dense(10)(x)
+def create_nn_with_dropout():
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.Dropout(0.8)(x) # This is new!
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(50, activation='relu')(x)
+    outputs = keras.layers.Dense(10)(x)
+    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    return model
 
-model_dropout = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
-
+model_dropout = create_nn_with_dropout()
 model_dropout.summary()
 ```
 ```output
@@ -600,20 +619,15 @@ We can see that the dropout does not alter the dimensions of the image, and has 
 
 We again compile and train the model.
 ```python
-model_dropout.compile(optimizer='adam',
-              loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-              metrics=['accuracy'])
+compile_model(model_dropout)
 
-history_dropout = model_dropout.fit(train_images, train_labels, epochs=20,
+history = model_dropout.fit(train_images, train_labels, epochs=20,
                     validation_data=(test_images, test_labels))
 ```
 
 And inspect the training results:
 ```python
-history_df = pd.DataFrame.from_dict(history_dropout.history)
-history_df['epoch'] = range(1,len(history_df)+1)
-history_df = history_df.set_index('epoch')
-sns.lineplot(data=history_df[['accuracy', 'val_accuracy']])
+plot_history(['accuracy', 'val_accuracy'])
 
 test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels, verbose=2)
 ```
@@ -624,7 +638,7 @@ test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels, verbose=
 ![](../fig/04_training_history_3.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
 
 ```python
-sns.lineplot(data=history_df[['loss', 'val_loss']])
+plot_history(['loss', 'val_loss'])
 ```
 
 ![](../fig/04_training_history_loss_3.png){alt="Plot of training loss and validation loss vs epochs for the trained model"}
@@ -651,28 +665,33 @@ This is where the test loss is lowest.
 - NB2: In the real world you should do this with a validation set and not with the test set!
 
 ```python
+def create_nn_with_dropout(dropout_rate):
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.Dropout(dropout_rate)(x)
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(50, activation='relu')(x)
+    outputs = keras.layers.Dense(10)(x)
+    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    return model
+
 dropout_rates = [0.15, 0.3, 0.45, 0.6, 0.75]
 test_losses = []
 for dropout_rate in dropout_rates:
-   inputs = keras.Input(shape=train_images.shape[1:])
-   x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
-   x = keras.layers.MaxPooling2D((2, 2))(x)
-   x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-   x = keras.layers.MaxPooling2D((2, 2))(x)
-   x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-   x = keras.layers.Dropout(dropout_rate)(x)
-   x = keras.layers.Flatten()(x)
-   x = keras.layers.Dense(50, activation='relu')(x)
-   outputs = keras.layers.Dense(10)(x)
-   model_dropout = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
-   model_dropout.compile(optimizer='adam',
-             loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-             metrics=['accuracy'])
-   model_dropout.fit(train_images, train_labels, epochs=20,
-                   validation_data=(test_images, test_labels))
-   test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels)
-   test_losses.append(test_loss)
+    model_dropout = create_nn_with_dropout(dropout_rate)
+    compile_model(model_dropout)
+    model_dropout.fit(train_images, train_labels, epochs=20,
+                    validation_data=(test_images, test_labels))
+
+    test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels)
+    test_losses.append(test_loss)
+
 loss_df = pd.DataFrame({'dropout_rate': dropout_rates, 'test_loss': test_losses})
+
 sns.lineplot(data=loss_df, x='dropout_rate', y='test_loss')
 ```
 
