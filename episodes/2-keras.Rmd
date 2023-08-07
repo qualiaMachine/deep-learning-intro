@@ -116,9 +116,6 @@ There are 344 samples and 7 columns, so 6 features:
  ```python
  penguins.shape
  ```
- ```output
- (344, 7)
- ```
 
 ### Visualization
 Looking at numbers like this usually does not give a very good intuition about the data we are
