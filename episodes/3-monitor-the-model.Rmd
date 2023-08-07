@@ -423,7 +423,6 @@ As a result, it makes much more accurate predictions on the training data than o
 Overfitting also happens in classical machine learning, but there it is usually interpreted as the model having more parameters than the training data would justify (say, a decision tree with too many branches for the number of training instances). As a consequence one would reduce the number of parameters to avoid overfitting.
 In deep learning the situation is slightly different. It can - as for classical machine learning - also be a sign of having a *too big* model, meaning a model with too many parameters (layers and/or nodes). However, in deep learning higher number of model parameters are often still considered acceptable and models often perform best (in terms of prediction accuracy) when they are at the verge of overfitting. So, in a way, training deep learning models is always a bit like playing with fire...
 
-## 9. Tune hyperparameters
 ### Set expectations: How difficult is the defined problem?
 
 Before we dive deeper into handling overfitting and (trying to) improving the model performance, let us ask the question: How well must a model perform before we consider it a good model?
@@ -469,6 +468,8 @@ randomly predicting a number, so the problem is not impossible to solve with mac
 2. There are a lot of possible answers. A slighly more complicated baseline would be to take the average over the last couple of days.
 ::::
 :::
+
+## 9. Tune hyperparameters
 
 ### Watch your model training closely
 
