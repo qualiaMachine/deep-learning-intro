@@ -243,7 +243,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Advanced layer types</h1>
-        <p> Last updated on 2023-08-01 | 
+        <p> Last updated on 2023-08-07 | 
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/4-advanced-layer-types.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -519,7 +519,11 @@ small pictures of <code>32x32</code> pixels), we have:</p>
 <p>Suppose we create a single Dense (fully connected) layer with 100
 hidden units that connect to the input pixels, how many parameters does
 this layer have?</p>
-</div>
+<ul><li>A. 307200</li>
+<li>B. 307300</li>
+<li>C. 100</li>
+<li>D. 3072</li>
+</ul></div>
 </div>
 </div>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
@@ -531,10 +535,11 @@ this layer have?</p>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<p>Each entry of the input dimensions, i.e. the <code>shape</code> of
-one single data point, is connected with 100 neurons of our hidden
-layer, and each of these neurons has a bias term associated to it. So we
-have <code>307300</code> parameters to learn.</p>
+<p>The correct answer is B: Each entry of the input dimensions, i.e. the
+<code>shape</code> of one single data point, is connected with 100
+neurons of our hidden layer, and each of these neurons has a bias term
+associated to it. So we have <code>307300</code> parameters to
+learn.</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1300,8 +1305,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/deep-learning-intro/instructor/4-advanced-layer-types.html",
   "identifier": "https://carpentries-incubator.github.io/deep-learning-intro/instructor/4-advanced-layer-types.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2023-08-01",
-  "datePublished": "2023-08-01"
+  "dateModified": "2023-08-07",
+  "datePublished": "2023-08-07"
 }
 
   </script><script>
