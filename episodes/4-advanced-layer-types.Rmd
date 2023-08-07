@@ -426,7 +426,7 @@ outputs = keras.layers.Dense(10)(x)
 ## Solution
 We add an extra Conv2D layer after the second pooling layer:
 ```python
-def create_nn():
+def create_nn_extra_layer():
     inputs = keras.Input(shape=train_images.shape[1:])
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
     x = keras.layers.MaxPooling2D((2, 2))(x)
@@ -440,7 +440,7 @@ def create_nn():
     model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
     return model
 
-model = create_nn()
+model = create_nn_extra_layer()
 ```
 
 With the model defined above, we can inspect the number of parameters:
@@ -542,7 +542,7 @@ In practice, however, dropout is computationally a very elegant solution which d
 Let us add one dropout layer towards the end of the network, that randomly drops 20% of the input units.
 
 ```python
-def create_nn():
+def create_nn_with_dropout():
     inputs = keras.Input(shape=train_images.shape[1:])
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
     x = keras.layers.MaxPooling2D((2, 2))(x)
@@ -556,7 +556,7 @@ def create_nn():
     model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
     return model
 
-model_dropout = create_nn()
+model_dropout = create_nn_with_dropout()
 model_dropout.summary()
 ```
 ```output
@@ -643,7 +643,7 @@ This is where the test loss is lowest.
 - NB2: In the real world you should do this with a validation set and not with the test set!
 
 ```python
-def create_nn(dropout_rate):
+def create_nn_with_dropout(dropout_rate):
     inputs = keras.Input(shape=train_images.shape[1:])
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
     x = keras.layers.MaxPooling2D((2, 2))(x)
@@ -660,7 +660,7 @@ def create_nn(dropout_rate):
 dropout_rates = [0.15, 0.3, 0.45, 0.6, 0.75]
 test_losses = []
 for dropout_rate in dropout_rates:
-    model_dropout = create_nn(dropout_rate)
+    model_dropout = create_nn_with_dropout(dropout_rate)
     compile_model(model_dropout)
     model_dropout.fit(train_images, train_labels, epochs=20,
                     validation_data=(test_images, test_labels))
