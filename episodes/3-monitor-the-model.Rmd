@@ -82,55 +82,18 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
        'TOURS_temp_mean', 'TOURS_temp_min', 'TOURS_temp_max'],
       dtype='object')
 ```
+There is a total of 9 different measured variables (global_radiation, humidity, etcetera)
 
-::: challenge
-## Exercise: Explore the dataset
-Let's get a quick idea of the dataset.
 
-* How many data points do we have?
-* How many features does the data have (don't count month and date as a feature)?
-* What are the different types of measurements (humidity etc.) in the data and how many are there?
-* (Optional) Plot the amount of sunshine hours in Basel over the course of a year. Are there any interesting properties that you notice?
-
-:::: solution
-
-## Solution
+Let's have a look at the shape of the dataset:
 ```python
 data.shape
 ```
-This will give both the number of datapoints (3654) and the number of features (89 + month +
-te).
-To see what type of features the data contains we could run something like:
-```python
-import string
-print({x.lstrip(string.ascii_uppercase + "_") for x in data.columns if x not in ["MONTH", "DATE"]})
-```
 ```output
-{'cloud_cover', 'precipitation', 'sunshine', 'global_radiation', 'temp_mean', 'humidity', 'pressure', 'temp_min', 'temp_max'}
+(3654, 91)
 ```
-An alternative way which is slightly more complicated but gives better results is using regex.
-```python
-import re
-feature_names = set()
-for col in data.columns:
-   feature_names.update(re.findall('[^A-Z]{2,}', col))
-feature_names
-```
-In total there are 9 different measured variables.
-
-### Optional exercise
-You can plot the sunshine hours in Basel as follows:
-```python
-data.iloc[:365]['BASEL_sunshine'].plot(xlabel="Day",ylabel="Basel sunchine hours")
-```
-
-![](../fig/03_exploration_basel_sunshine_graph.png){alt='Plot of Basel sunshine hours in one year'}
-
-There are a couple of things that might stand out to you. For example, it looks like the sunshine
-hours are fluctuating a lot per day. There also seems to be seasonal fluctuation, with the peaks
-becoming higher around the middle of the year.
-::::
-:::
+This will give both the number of samples (3654) and the number of features (89 + month +
+date).
 
 ## 3. Prepare data
 
@@ -138,9 +101,10 @@ becoming higher around the middle of the year.
 The full dataset comprises of 10 years (3654 days) from which we will select only the first 3 years. The present dataset is sorted by "DATE", so for each row `i` in the table we can pick a corresponding feature and location from row `i+1` that we later want to predict with our model. As outlined in step 1, we would like to predict the sunshine hours for the location: BASEL.
 
 ```python
-nr_rows = 365*3
+nr_rows = 365*3 # 3 years
 # data
-X_data = data.loc[:nr_rows].drop(columns=['DATE', 'MONTH'])
+X_data = data.loc[:nr_rows] # Select first 3 years
+X_data = X_data.drop(columns=['DATE', 'MONTH']) # Drop date and month column
 
 # labels (sunshine hours the next day)
 y_data = data.loc[1:(nr_rows + 1)]["BASEL_sunshine"]
@@ -393,7 +357,9 @@ plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 While the performance on the train set seems reasonable, the performance on the test set is much worse.
 This is a common problem called **overfitting**, which we will discuss in more detail later.
 Optional exercise:
-Mean accuracy would be a single-value metric that you can use in this case.
+The metric that we are using: RMSE would be a good one. You could also consider Mean Squared Error, that punishes large errors more (because large errors create even larger squared errors).
+It is important that if the model improves in performance on the basis of this metric then that should also lead you a step closer to reaching your goal: to predict tomorrow's sunshine hours. 
+If you feel that improving the metric does not lead you closer to your goal, then it would be better to choose a different metric
 ::::
 :::
 
@@ -421,7 +387,6 @@ As a result, it makes much more accurate predictions on the training data than o
 Overfitting also happens in classical machine learning, but there it is usually interpreted as the model having more parameters than the training data would justify (say, a decision tree with too many branches for the number of training instances). As a consequence one would reduce the number of parameters to avoid overfitting.
 In deep learning the situation is slightly different. It can - as for classical machine learning - also be a sign of having a *too big* model, meaning a model with too many parameters (layers and/or nodes). However, in deep learning higher number of model parameters are often still considered acceptable and models often perform best (in terms of prediction accuracy) when they are at the verge of overfitting. So, in a way, training deep learning models is always a bit like playing with fire...
 
-## 9. Tune hyperparameters
 ### Set expectations: How difficult is the defined problem?
 
 Before we dive deeper into handling overfitting and (trying to) improving the model performance, let us ask the question: How well must a model perform before we consider it a good model?
@@ -467,6 +432,8 @@ randomly predicting a number, so the problem is not impossible to solve with mac
 2. There are a lot of possible answers. A slighly more complicated baseline would be to take the average over the last couple of days.
 ::::
 :::
+
+## 9. Tune hyperparameters
 
 ### Watch your model training closely
 

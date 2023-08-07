@@ -26,7 +26,7 @@ So far, we have seen one type of layer, namely the **fully connected**, or **den
 
 However, there are many different types of layers that perform different calculations and take different inputs. In this episode we will take a look at **convolutional layers** and **dropout layers**, which are useful in the context of image data, but also in many other types of (structured) data.
 
-## Image classification
+## 1. Formulate / Outline the problem: Image classification
 Keras comes with a few prepared datasets. We have a look at the [CIFAR10 dataset](https://www.cs.toronto.edu/~kriz/cifar.html),
 which is a widely known dataset for image classification.
 ```python
@@ -35,6 +35,18 @@ from tensorflow import keras
 ```
 
 ::: callout
+## CERTIFICATE_VERIFY_FAILED error when downloading CIFAR-10 dataset
+When loading the CIFAR-10 dataset, you might get the following error:
+```
+[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1125)
+```
+You can solve this error by adding this to your notebook:
+```python
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context
+```
+:::
+
 ## CIFAR-10
 
 The CIFAR-10 dataset consists of images of 10 different classes: airplanes, cars, birds, cats, deer, dogs, frogs, horses, ships, and trucks.
@@ -42,21 +54,9 @@ It is widely used as a benchmark dataset for image classification. The low resol
 
 For more information about this dataset and how it was collected you can check out
 [Learning Multiple Layers of Features from Tiny Images by  Alex Krizhevsky, 2009](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
-:::
 
-::: callout
-## CERTIFICATE_VERIFY_FAILED error when downloading CIFAR-10 dataset
-When loading the CIFAR-10 dataset, you might get the following error:
-```
-[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1125)
-```
 
-You can solve this error by adding this to your notebook:
-```python
-import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
-```
-:::
+![Sample images from the CIFAR-10 data-set. Each image is labelled with a category, for example: 'frog' or 'horse'](../fig/04_cifar10.png){alt="A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for example: 'frog' or 'horse'."}
 
 We take a small sample of the data as training set for demonstration purposes.
 ```python
@@ -65,22 +65,12 @@ train_images = train_images[:n]
 train_labels = train_labels[:n]
 ```
 
-::: challenge
-## Explore the data
-Familiarize yourself with the CIFAR10 dataset. To start, consider the following questions:
 
-1. What is the dimension of a single data point? What do you think the dimensions mean?
-2. What is the range of values that your input data takes?
-3. What is the shape of the labels, and how many labels do we have?
-4. (Optional) We are going to build a new architecture from scratch to get you
-  familiar with the convolutional neural network basics.
-  But in the real world you wouldn't do that.
-  So the challenge is: Browse the web for (more) existing architectures or pre-trained models that are likely to work
-  well on this type of data. Try to understand why they work well for this type of data.
-  
-:::: solution
-## Solution
-To explore the dimensions of the input data:
+## 2. Identify inputs and outputs
+
+## Explore the data
+
+Let's do a quick exploration of the dimensions of the data:
 ```python
 train_images.shape
 ```
@@ -92,7 +82,26 @@ The first value, `5000`, is the number of training images that we have selected.
 The remainder of the shape, namely `32, 32, 3)`, denotes
 the dimension of one image. The last value 3 is typical for color images,
 and stands for the three color channels **R**ed, **G**reen, **B**lue.
-We are left with `32, 32`. This denotes the width and height of our input image in number of pixels. By convention, the first entry refers to the height, the second to the width of the image. In this case, we observe a quadratic image where height equals width.
+
+::: challenge
+
+## Number of features CIFAR-10
+
+How many features does one image in the CIFAR-10 dataset have?
+
+- A. 32
+- B. 1024
+- C. 3072
+- D. 5000
+
+
+:::: solution
+The correct solution is C: 3072. There are 1024 pixels in one image (32 * 32),
+each pixel has 3 channels (RGB). So 1024 * 3 = 3072.
+::::
+:::
+
+
 We can find out the range of values of our input data as follows:
 ```python
 train_images.min(), train_images.max()
@@ -121,9 +130,7 @@ train_labels.min(), train_labels.max()
 
 The values of the labels range between `0` and `9`, denoting 10 different classes.
 
-::::
-:::
-
+## 3. Prepare data
 
 The training set consists of 50000 images of `32x32` pixels and 3 channels (RGB values). The RGB values are between `0` and `255`. For input of neural networks, it is better to have small input values. So we normalize our data between `0` and `1`:
 
@@ -133,49 +140,25 @@ train_images = train_images / 255.0
 test_images = test_images / 255.0
 ```
 
-The labels are single numbers denoting the class.
-We map the class numbers back to the class names, taken from the documentation:
-
-```python
-class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer',
-               'dog', 'frog', 'horse', 'ship', 'truck']
-```
-
-
-Now we can plot a sample of the training images, using the `plt.imshow` function.
-```python
-import matplotlib.pyplot as plt
-plt.figure(figsize=(10,10))
-for i in range(25):
-    plt.subplot(5,5,i+1)
-    plt.imshow(train_images[i], cmap=plt.cm.binary)
-    plt.axis('off')
-    plt.title(class_names[train_labels[i,0]])
-plt.show()
-```
-
-
-![](../fig/04_cifar10.png){alt="A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for example: 'frog' or 'horse'."}
+## 4. Choose a pretrained model or start building architecture from scratch
 
 ## Convolutional layers
-In the previous episodes, we used 'fully connected layers' , that connected all input values of a layer to all outputs of a layer. This results in many connections, and thus weights to be learned, in the network. Note that our input dimension is now quite high (even with small pictures of `32x32` pixels), we have:
-
-
-```python
-dim = train_images.shape[1] * train_images.shape[2] * train_images.shape[3]
-print(dim)
-```
-```output
-3072
-```
+In the previous episodes, we used 'fully connected layers' , that connected all input values of a layer to all outputs of a layer.
+This results in many connections, and thus many weights to be learned, in the network.
+Note that our input dimension is now quite high (even with small pictures of `32x32` pixels): we have 3072 features.
 
 ::: challenge
 ## Number of parameters
 Suppose we create a single Dense (fully connected) layer with 100 hidden units that connect to the input pixels, how many parameters does this layer have?
 
+- A. 307200
+- B. 307300
+- C. 100
+- D. 3072
+
 :::: solution
 ## Solution
-Each entry of the input dimensions, i.e. the `shape` of one single data point, is connected with 100 neurons of our hidden layer, and each of these neurons has a bias term associated to it. So we have `307300` parameters to learn.
+The correct answer is B: Each entry of the input dimensions, i.e. the `shape` of one single data point, is connected with 100 neurons of our hidden layer, and each of these neurons has a bias term associated to it. So we have `307300` parameters to learn.
 ```python
 width, height = (32, 32)
 n_hidden_neurons = 100
@@ -304,17 +287,20 @@ Let's put it into practice. We compose a Convolutional network with two convolut
 
 
 ```python
-inputs = keras.Input(shape=train_images.shape[1:])
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Flatten()(x)
-x = keras.layers.Dense(50, activation='relu')(x)
-outputs = keras.layers.Dense(10)(x)
+def create_nn():
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+    x = keras.layers.MaxPooling2D((2, 2))(x) # a new maxpooling layer
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.MaxPooling2D((2, 2))(x) # a new maxpooling layer (same as maxpool)
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(50, activation='relu')(x) # a new Dense layer
+    outputs = keras.layers.Dense(10)(x)
 
-model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model_small")
+    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    return model
 
+model = create_nn()
 model.summary()
 ```
 ```output
@@ -348,6 +334,7 @@ Trainable params: 87,060
 Non-trainable params: 0
 _________________________________________________________________
 ```
+## 5. Choose a loss function and optimizer
 
 We compile the model using the adam optimizer (other optimizers could also be used here!).
 Similar to the penguin classification task, we will use the crossentropy function to calculate the model's loss.
@@ -355,10 +342,14 @@ This loss function is appropriate to use when the data has two or more label cla
 
 To calculate crossentropy loss for data that has its classes represented by integers (i.e., not one-hot encoded), we use the SparseCategoricalCrossentropy() function:
 ```python
-model.compile(optimizer='adam',
-              loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-              metrics=['accuracy'])
+def compile_model(model):
+    model.compile(optimizer='adam',
+                  loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+                  metrics=['accuracy'])
+compile_model(model)
 ```
+
+## 6. Train the model
 
 We then train the model for 10 epochs:
 
@@ -367,25 +358,44 @@ history = model.fit(train_images, train_labels, epochs=10,
                     validation_data=(test_images, test_labels))
 ```
 
+## 7. Perform a Prediction/Classification
+Here we skip performing a prediction, and continue to measuring the performance.
+In practice, you will only do this step once in a while when you actually need to have the individual predictions,
+often you know enough based on the evaluation metric scores.
+Of course, behind the scenes whenever you measure performance you have to make predictions and compare them to the ground truth.
+
+## 8. Measure performance
 
 We can plot the training process using the history:
 
 ```python
 import seaborn as sns
-import pandas as pd
+import matplotlib.pyplot as plt
 
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df[['accuracy', 'val_accuracy']])
+def plot_history(metrics):
+    """
+    Plot the training history
+
+    Args:
+        metrics(str, list): Metric or a list of metrics to plot
+    """
+    history_df = pd.DataFrame.from_dict(history.history)
+    sns.lineplot(data=history_df[metrics])
+    plt.xlabel("epochs")
+
+plot_history(['accuracy', 'val_accuracy'])
 ```
 ![](../fig/04_training_history_1.png){alt='Plot of training accuracy and validation accuracy vs epochs for the trained model'}
 
 ```python
-sns.lineplot(data=history_df[['loss', 'val_loss']])
+plot_history(['loss', 'val_loss'])
 ```
 
 ![](../fig/04_training_history_loss_1.png){alt='Plot of training loss and validation loss vs epochs for the trained model'}
 
 It seems that the model is overfitting somewhat, because the validation accuracy and loss stagnates.
+
+## 9. Tune hyperparameters
 
 ::: challenge
 ## Network depth
@@ -411,16 +421,21 @@ outputs = keras.layers.Dense(10)(x)
 ## Solution
 We add an extra Conv2D layer after the second pooling layer:
 ```python
-inputs = keras.Input(shape=train_images.shape[1:])
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-x = keras.layers.Flatten()(x)
-x = keras.layers.Dense(50, activation='relu')(x)
-outputs = keras.layers.Dense(10)(x)
-model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+def create_nn_extra_layer():
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.MaxPooling2D((2, 2))(x) #
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x) # estra layer
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(50, activation='relu')(x) # a new Dense layer
+    outputs = keras.layers.Dense(10)(x)
+
+    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    return model
+
+model = create_nn_extra_layer()
 ```
 
 With the model defined above, we can inspect the number of parameters:
@@ -454,17 +469,14 @@ We can see that the conv layer decreases the resolution from 6x6 to 4x4,
 as a result, the input of the Dense layer is smaller than in the previous network.
 To train the network and plot the results:
 ```python
-model.compile(optimizer='adam',
-             loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-             metrics=['accuracy'])
+compile_model(model)
 history = model.fit(train_images, train_labels, epochs=20,
                    validation_data=(test_images, test_labels))
-history_df = pd.DataFrame.from_dict(history.history)
-sns.lineplot(data=history_df[['accuracy', 'val_accuracy']])
+plot_history(['accuracy', 'val_accuracy'])
 ```
 ![](../fig/04_training_history_2.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
 ```python
-sns.lineplot(data=history_df[['loss', 'val_loss']])
+plot_history(['loss', 'val_loss'])
 ```
 
 ![](../fig/04_training_history_loss_2.png){alt: "Plot of training loss and validation loss vs epochs for the trained model"}
@@ -525,19 +537,21 @@ In practice, however, dropout is computationally a very elegant solution which d
 Let us add one dropout layer towards the end of the network, that randomly drops 20% of the input units.
 
 ```python
-inputs = keras.Input(shape=train_images.shape[1:])
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-x = keras.layers.MaxPooling2D((2, 2))(x)
-x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-x = keras.layers.Dropout(0.8)(x) # This is new!
-x = keras.layers.Flatten()(x)
-x = keras.layers.Dense(50, activation='relu')(x)
-outputs = keras.layers.Dense(10)(x)
+def create_nn_with_dropout():
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.Dropout(0.8)(x) # This is new!
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(50, activation='relu')(x)
+    outputs = keras.layers.Dense(10)(x)
+    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    return model
 
-model_dropout = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
-
+model_dropout = create_nn_with_dropout()
 model_dropout.summary()
 ```
 ```output
@@ -578,20 +592,15 @@ We can see that the dropout does not alter the dimensions of the image, and has 
 
 We again compile and train the model.
 ```python
-model_dropout.compile(optimizer='adam',
-              loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-              metrics=['accuracy'])
+compile_model(model_dropout)
 
-history_dropout = model_dropout.fit(train_images, train_labels, epochs=20,
+history = model_dropout.fit(train_images, train_labels, epochs=20,
                     validation_data=(test_images, test_labels))
 ```
 
 And inspect the training results:
 ```python
-history_df = pd.DataFrame.from_dict(history_dropout.history)
-history_df['epoch'] = range(1,len(history_df)+1)
-history_df = history_df.set_index('epoch')
-sns.lineplot(data=history_df[['accuracy', 'val_accuracy']])
+plot_history(['accuracy', 'val_accuracy'])
 
 test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels, verbose=2)
 ```
@@ -602,7 +611,7 @@ test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels, verbose=
 ![](../fig/04_training_history_3.png){alt="Plot of training accuracy and validation accuracy vs epochs for the trained model"}
 
 ```python
-sns.lineplot(data=history_df[['loss', 'val_loss']])
+plot_history(['loss', 'val_loss'])
 ```
 
 ![](../fig/04_training_history_loss_3.png){alt="Plot of training loss and validation loss vs epochs for the trained model"}
@@ -629,28 +638,33 @@ This is where the test loss is lowest.
 - NB2: In the real world you should do this with a validation set and not with the test set!
 
 ```python
+def create_nn_with_dropout(dropout_rate):
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+    x = keras.layers.Dropout(dropout_rate)(x)
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(50, activation='relu')(x)
+    outputs = keras.layers.Dense(10)(x)
+    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    return model
+
 dropout_rates = [0.15, 0.3, 0.45, 0.6, 0.75]
 test_losses = []
 for dropout_rate in dropout_rates:
-   inputs = keras.Input(shape=train_images.shape[1:])
-   x = keras.layers.Conv2D(50, (3, 3), activation='relu')(inputs)
-   x = keras.layers.MaxPooling2D((2, 2))(x)
-   x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-   x = keras.layers.MaxPooling2D((2, 2))(x)
-   x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
-   x = keras.layers.Dropout(dropout_rate)(x)
-   x = keras.layers.Flatten()(x)
-   x = keras.layers.Dense(50, activation='relu')(x)
-   outputs = keras.layers.Dense(10)(x)
-   model_dropout = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
-   model_dropout.compile(optimizer='adam',
-             loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
-             metrics=['accuracy'])
-   model_dropout.fit(train_images, train_labels, epochs=20,
-                   validation_data=(test_images, test_labels))
-   test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels)
-   test_losses.append(test_loss)
+    model_dropout = create_nn_with_dropout(dropout_rate)
+    compile_model(model_dropout)
+    model_dropout.fit(train_images, train_labels, epochs=20,
+                    validation_data=(test_images, test_labels))
+
+    test_loss, test_acc = model_dropout.evaluate(test_images,  test_labels)
+    test_losses.append(test_loss)
+
 loss_df = pd.DataFrame({'dropout_rate': dropout_rates, 'test_loss': test_losses})
+
 sns.lineplot(data=loss_df, x='dropout_rate', y='test_loss')
 ```
 
@@ -660,6 +674,13 @@ sns.lineplot(data=loss_df, x='dropout_rate', y='test_loss')
 This is called hyperparameter tuning.
 ::::
 :::
+
+## 10. Share model
+Let's save our model
+
+```python
+model.save('cnn_model')
+```
 
 ::: keypoints
 - "Convolutional layers make efficient reuse of model parameters."

@@ -27,10 +27,8 @@ you are ready to go as soon as the workshop begins.
 Checkout the [video tutorial][video-windows] or:
 
 1. Open [https://www.anaconda.com/products/distribution][anaconda-distribution]
-   with your web browser.
-
+with your web browser.
 2. Download the Python 3 installer for Windows.
-
 3. Double-click the executable and install Python 3 using _MOST_ of the
    default settings. The only exception is to check the
    **Make Anaconda the default Python** option.
@@ -45,9 +43,7 @@ Checkout the [video tutorial][video-mac] or:
 
 1. Open [https://www.anaconda.com/products/distribution][anaconda-distribution]
    with your web browser.
-
 2. Download the Python 3 installer for OS X.
-
 3. Install Python 3 using all of the defaults for installation.
 
 :::::::::::::::::::::::::
@@ -61,25 +57,16 @@ Note that the following installation steps require you to work from the shell.
 If you run into any difficulties, please request help before the workshop begins.
 
 1.  Open [https://www.anaconda.com/products/distribution][anaconda-distribution] with your web browser.
-
 2.  Download the Python 3 installer for Linux.
-
 3.  Install Python 3 using all of the defaults for installation.
-
     a.  Open a terminal window.
-
     b.  Navigate to the folder where you downloaded the installer
-
     c.  Type
-
     ```bash
     bash Anaconda3-
     ```
-
     and press tab.  The name of the file you just downloaded should appear.
-
     d.  Press enter.
-
     e.  Follow the text-only prompts.  When the license agreement appears (a colon
         will be present at the bottom of the screen) hold the down arrow until the
         bottom of the text. Type `yes` and press enter to approve the license. Press

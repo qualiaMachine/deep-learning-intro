@@ -14,7 +14,7 @@ carpentry: 'incubator'
 title: 'Introduction to deep learning'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: '2023-05-26'
+created: '2020-10-17'
 
 # Comma-separated list of keywords for the lesson
 keywords: 'deep learning, keras, lesson, The Carpentries, neural networks'
