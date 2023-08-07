@@ -160,6 +160,8 @@ plt.show()
 
 ![](../fig/04_cifar10.png){alt="A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for example: 'frog' or 'horse'."}
 
+## 4. Choose a pretrained model or start building architecture from scratch
+
 ## Convolutional layers
 In the previous episodes, we used 'fully connected layers' , that connected all input values of a layer to all outputs of a layer. This results in many connections, and thus weights to be learned, in the network. Note that our input dimension is now quite high (even with small pictures of `32x32` pixels), we have:
 
@@ -269,8 +271,6 @@ Suppose we apply a convolutional layer with 100 kernels of size 3 * 3 * 3 (the l
 We have 100 matrices with 3 * 3 * 3 = 27 values each so that gives 27 * 100 = 2700 weights. This is a magnitude of 100 less than the fully connected layer with 100 units! Nevertheless, as we will see, convolutional networks work very well for image data. This illustrates the expressiveness of convolutional layers.
 ::::
 :::
-
-## 4. Choose a pretrained model or start building architecture from scratch
 
 So let us look at a network with a few convolutional layers. We need to finish with a Dense layer to connect the output cells of the convolutional layer to the outputs for our classes.
 
