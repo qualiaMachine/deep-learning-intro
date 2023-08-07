@@ -299,6 +299,7 @@
 <li>“What are the tools involved?”</li>
 <li>“What is the workflow for Deep Learning?”</li>
 <li>“Why did we choose to use Keras in this lesson?”</li>
+<li>“How do neural networks learn?”</li>
 </ul>
 </div>
 </div>
@@ -316,6 +317,7 @@ tool”</li>
 <li>“Explain the operations performed in a single neuron”</li>
 <li>“Test that you have correctly installed the Keras, Seaborn and
 Sklearn libraries”</li>
+<li>“Describe what a loss function is”</li>
 </ul>
 </div>
 </div>
@@ -473,6 +475,127 @@ Volume 2018</a></p>
 </div>
 </div>
 <div class="section level3">
+<h3 id="how-do-neural-networks-learn">How do neural networks learn?<a class="anchor" aria-label="anchor" href="#how-do-neural-networks-learn"></a>
+</h3>
+<p>What happens in a neural network during the training process? The
+ultimate goal is of course to find a model that makes predictions that
+are as close to the target value as possible. In other words, the goal
+of training is to find the best set of parameters (weights and biases)
+that bring the error between prediction and expected value to a minimum.
+The total error between prediction and expected value is quantified in a
+loss function (also called cost function). There are lots of loss
+functions to pick from, and it is important that you pick one that
+matches your problem definition well. We will look at an example of a
+loss function in the next exercise.</p>
+<div id="exercise-mean-squared-error" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="exercise-mean-squared-error" class="callout-inner">
+<h3 class="callout-title">Exercise: Mean Squared Error<a class="anchor" aria-label="anchor" href="#exercise-mean-squared-error"></a>
+</h3>
+<div class="callout-content">
+<p>One of the simplest loss functions is the Mean Squared Error. MSE =
+<span class="math inline">\(\frac{1}{n}
+\Sigma_{i=1}^n({y}-\hat{y})^2\)</span> . It is the mean of all squared
+errors, where the error is the difference between the predicted and
+expected value. In the following table, fill in the missing values in
+the ‘squared error’ column. What is the MSE loss for the predictions on
+these 4 samples?</p>
+<table class="table">
+<thead><tr class="header">
+<th><strong>Prediction</strong></th>
+<th><strong>Expected value</strong></th>
+<th><strong>Squared error</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>-1</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>-1</td>
+<td>..</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>..</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>2</td>
+<td>..</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><strong>MSE:</strong></td>
+<td>..</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">
+  Show me the solution
+  </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
+<table class="table">
+<thead><tr class="header">
+<th><strong>Prediction</strong></th>
+<th><strong>Expected value</strong></th>
+<th><strong>Squared error</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>-1</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>-1</td>
+<td>9</td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><strong>MSE:</strong></td>
+<td>3.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<p>So, a loss function quantifies the total error of the model. The
+process of adjusting the weights in such a way as to minimize the loss
+function is called ‘optimization’. We will dive further into how
+optimization works in episode 3. For now, it is enough to understand
+that during training the weights in the network are adjusted so that the
+loss decreases through the process of optimization. This ultimately
+results in a low loss, and this, generally, implies predictions that are
+closer to the expected values.</p>
+</div>
+<div class="section level3">
 <h3 id="what-sort-of-problems-can-deep-learning-solve">What sort of problems can Deep Learning solve?<a class="anchor" aria-label="anchor" href="#what-sort-of-problems-can-deep-learning-solve"></a>
 </h3>
 <ul>
@@ -565,14 +688,14 @@ dogs.</li>
 </div>
 </div>
 </div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>and 5 are the sort of tasks often solved with Deep Learning.</li>
@@ -760,14 +883,14 @@ the data you will use to train the network.</li>
 </div>
 </div>
 </div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
@@ -905,6 +1028,7 @@ on a model inspired by groups of neurons in the brain.”</li>
 <li>“Artificial neural networks can be trained on example data.”</li>
 <li>“Deep Learning is a machine learning technique based on using many
 artificial neurons arranged in layers.”</li>
+<li>“Neural networks learn by minimizing a loss function.”</li>
 <li>“Deep Learning is well suited to classification and prediction
 problems such as image recognition.”</li>
 <li>“To use Deep Learning effectively we need to go through a workflow
@@ -2029,6 +2153,7 @@ any links that you are not going to use.
 <h3 class="card-title">Questions</h3>
 <ul>
 <li>“How do I create a neural network for a regression task?”</li>
+<li>“How does optimization work?”</li>
 <li>“How do I monitor the training process?”</li>
 <li>“How do I detect (and avoid) overfitting?”</li>
 <li>“What are common options to improve the model performance?”</li>
@@ -2044,6 +2169,7 @@ any links that you are not going to use.
 <li>“Explain the importance of keeping your test set clean, by
 validating on the validation set instead of the test set”</li>
 <li>“Use the data splits to plot the training process”</li>
+<li>“Explain how optimization works”</li>
 <li>“Design a neural network for a regression task”</li>
 <li>“Measure the performance of your deep neural network”</li>
 <li>“Interpret the training plots to recognize overfitting”</li>
@@ -2337,7 +2463,7 @@ sunshine hours?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The shape of the input layer has to correspond to the number of
@@ -2424,6 +2550,131 @@ Non-trainable params: 0</code></pre>
 </div>
 <p>When compiling the model we can define a few very important aspects.
 We will discuss them now in more detail.</p>
+</div>
+</section><section id="intermezzo-how-do-neural-networks-learn"><h2 class="section-heading">Intermezzo: How do neural networks learn?<a class="anchor" aria-label="anchor" href="#intermezzo-how-do-neural-networks-learn"></a>
+</h2>
+<hr class="half-width">
+<p>In the introduction we learned about the loss function: it quantifies
+the total error of the predictions made by the model. During model
+training we aim to find the model parameters that minimize the loss.
+This is called optimization, but how does optimization actually
+work?</p>
+<div class="section level3">
+<h3 id="gradient-descent">Gradient descent<a class="anchor" aria-label="anchor" href="#gradient-descent"></a>
+</h3>
+<p>Gradient descent is a widely used optimization algorithm, most other
+optimization algorithms are based on it. It works as follows: Imagine a
+neural network with only one neuron. Take a look at the figure below.
+The plot shows the loss as a function of the weight of the neuron. As
+you can see there is a global loss minimum, we would like to find the
+weight at this point in the parabola. To do this, we initialize the
+model weight with some random value. Then we compute the gradient of the
+loss function with respect to the weight. This tells us how much the
+loss function will change if we change the weight by a small amount.
+Then, we update the weight by taking a small step in the direction of
+the negative gradient, so down the slope. This will slightly decrease
+the loss. This process is repeated until the loss function reaches a
+minimum. The size of the step that is taken in each iteration is called
+the ‘learning rate’.</p>
+<figure><img src="fig/03_gradient_descent.png" alt="Plot of the loss as a function of the weights. Through gradient descent the global loss minimum is found" class="figure mx-auto d-block"></figure>
+</div>
+<div class="section level3">
+<h3 id="batch-gradient-descent">Batch gradient descent<a class="anchor" aria-label="anchor" href="#batch-gradient-descent"></a>
+</h3>
+<p>You could use the entire training dataset to perform one learning
+step in gradient descent, which would mean that one epoch equals one
+learning step. In practice, in each learning step we only use a subset
+of the training data to compute the loss and the gradients. This subset
+is called a ‘batch’, the number of samples in one batch is called the
+‘batch size’.</p>
+<div id="exercise-gradient-descent" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="exercise-gradient-descent" class="callout-inner">
+<h3 class="callout-title">Exercise: Gradient descent<a class="anchor" aria-label="anchor" href="#exercise-gradient-descent"></a>
+</h3>
+<div class="callout-content">
+<p>Answer the following questions:</p>
+<div class="section level3">
+<h3 id="what-is-the-goal-of-optimization">1. What is the goal of optimization?<a class="anchor" aria-label="anchor" href="#what-is-the-goal-of-optimization"></a>
+</h3>
+<ul>
+<li>A. To find the weights that maximize the loss function</li>
+<li>B. To find the weights that minimize the loss function</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="what-happens-in-one-gradient-descent-step">2. What happens in one gradient descent step?<a class="anchor" aria-label="anchor" href="#what-happens-in-one-gradient-descent-step"></a>
+</h3>
+<ul>
+<li>A. The weights are adjusted so that we move in the direction of the
+gradient, so up the slope of the loss function</li>
+<li>B. The weights are adjusted so that we move in the direction of the
+gradient, so down the slope of the loss function</li>
+<li>C. The weights are adjusted so that we move in the direction of the
+negative gradient, so up the slope of the loss function</li>
+<li>D. The weights are adjusted so that we move in the direction of the
+negative gradient, so down the slope of the loss function</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="when-the-batch-size-is-increased">3. When the batch size is increased:<a class="anchor" aria-label="anchor" href="#when-the-batch-size-is-increased"></a>
+</h3>
+<p>(multiple answers might apply)</p>
+<ul>
+<li>A. The number of samples in an epoch also increases</li>
+<li>B. The number of batches in an epoch goes down</li>
+<li>C. The training progress is more jumpy, because more samples are
+consulted in each update step (one batch).</li>
+<li>D. The memory load (memory as in computer hardware) of the training
+process is increased</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">
+  Show me the solution
+  </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
+<ol style="list-style-type: decimal">
+<li><p>Correct answer: B. To find the weights that minimize the loss
+function. The loss function quantifies the total error of the network,
+we want to have the smallest error as possible, hence we minimize the
+loss.</p></li>
+<li><p>Correct answer: D The weights are adjusted so that we move in the
+direction of the negative gradient, so down the slope of the loss
+function. We want to move towards the global minimum, so in the opposite
+direction of the gradient.</p></li>
+<li>
+<p>Correct answer: B &amp; D</p>
+<ul>
+<li>A. The number of samples in an epoch also increases (incorrect, an
+epoch is always defined as passing through the training data for one
+cycle)</li>
+<li>B. The number of batches in an epoch goes down (correct, the number
+of batches is the samples in an epoch divided by the batch size)</li>
+<li>C. The training progress is more jumpy, because more samples are
+consulted in each update step (one batch). (incorrect, more samples are
+consulted in each update step, but this makes the progress less jumpy
+since you get a more accurate estimate of the loss in the entire
+dataset)</li>
+<li>D. The memory load (memory as in computer hardware) of the training
+process is increased (correct, the data is begin loaded one batch at a
+time, so more samples means more memory usage)</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section><section id="choose-a-loss-function-and-optimizer"><h2 class="section-heading">5. Choose a loss function and optimizer<a class="anchor" aria-label="anchor" href="#choose-a-loss-function-and-optimizer"></a>
 </h2>
@@ -2624,14 +2875,14 @@ why?</li>
 </div>
 </div>
 </div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -2747,14 +2998,14 @@ problem to solve?</li>
 </div>
 </div>
 </div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>This really depends on your definition of hard! The baseline gives a
@@ -2852,14 +3103,14 @@ think about what you actually would like to see)</li>
 </div>
 </div>
 </div>
-<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -2906,14 +3157,14 @@ effect on the performance on the validation set?</li>
 </div>
 </div>
 </div>
-<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
-  <h4 class="accordion-header" id="headingSolution5">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
+  <h4 class="accordion-header" id="headingSolution6">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3206,14 +3457,14 @@ all features from all cities. How does it perform?</li>
 </div>
 </div>
 </div>
-<div id="accordionSolution6" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution7" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
-  <h4 class="accordion-header" id="headingSolution6">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
+  <h4 class="accordion-header" id="headingSolution7">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <p>Use 9 years out of the total dataset. This means 3 times as many rows
 as we used previously, but by removing columns not containing “BASEL” we
@@ -3368,14 +3619,14 @@ improve the prediction quality?</li>
 </div>
 </div>
 </div>
-<div id="accordionSolution7" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution8" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
-  <h4 class="accordion-header" id="headingSolution7">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
+  <h4 class="accordion-header" id="headingSolution8">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
