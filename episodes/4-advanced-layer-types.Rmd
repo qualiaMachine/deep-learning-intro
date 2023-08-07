@@ -140,8 +140,6 @@ train_images = train_images / 255.0
 test_images = test_images / 255.0
 ```
 
-![](../fig/04_cifar10.png){alt="A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for example: 'frog' or 'horse'."}
-
 ## 4. Choose a pretrained model or start building architecture from scratch
 
 ## Convolutional layers
