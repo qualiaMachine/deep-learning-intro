@@ -65,6 +65,9 @@ After the workshop, lease create an issue (or comment on the issue you created b
 
 In addition, you are very welcome to add issues or pull requests that address more specific feedback.
 
+## Rendering the website locally
+See https://carpentries.github.io/workbench/ for instructions on how to render the website locally.
+
 ## Maintainer(s)
 
 Current maintainers of this lesson are
