@@ -82,7 +82,7 @@ Index(['DATE', 'MONTH', 'BASEL_cloud_cover', 'BASEL_humidity',
        'TOURS_temp_mean', 'TOURS_temp_min', 'TOURS_temp_max'],
       dtype='object')
 ```
-There is a total of 9 different measured variables (global_readation, humidity, etcetera)
+There is a total of 9 different measured variables (global_radiation, humidity, etcetera)
 
 
 Let's have a look at the shape of the dataset:
