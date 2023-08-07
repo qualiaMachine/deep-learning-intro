@@ -422,7 +422,7 @@ Python, Excel…</em></p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Weighted sum of input: 0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25</p>
 <p>Add the bias: 0.25 + 1 = 1.25</p>
@@ -575,7 +575,7 @@ dogs.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>and 5 are the sort of tasks often solved with Deep Learning.</li>
@@ -770,7 +770,7 @@ the data you will use to train the network.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
@@ -3729,7 +3729,7 @@ different calculations and take different inputs. In this episode we
 will take a look at <strong>convolutional layers</strong> and
 <strong>dropout layers</strong>, which are useful in the context of
 image data, but also in many other types of (structured) data.</p>
-</section><section id="image-classification"><h2 class="section-heading">Image classification<a class="anchor" aria-label="anchor" href="#image-classification"></a>
+</section><section id="formulate-outline-the-problem-image-classification"><h2 class="section-heading">1. Formulate / Outline the problem: Image classification<a class="anchor" aria-label="anchor" href="#formulate-outline-the-problem-image-classification"></a>
 </h2>
 <hr class="half-width">
 <p>Keras comes with a few prepared datasets. We have a look at the <a href="https://www.cs.toronto.edu/~kriz/cifar.html" class="external-link">CIFAR10 dataset</a>,
@@ -3791,6 +3791,9 @@ purposes.</p>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>train_images <span class="op">=</span> train_images[:n]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train_labels <span class="op">=</span> train_labels[:n]</span></code></pre>
 </div>
+</section><section id="identify-inputs-and-outputs"><h2 class="section-heading">2. Identify inputs and outputs<a class="anchor" aria-label="anchor" href="#identify-inputs-and-outputs"></a>
+</h2>
+<hr class="half-width">
 <div id="explore-the-data" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -3824,7 +3827,7 @@ for this type of data.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>To explore the dimensions of the input data:</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -3888,6 +3891,9 @@ find out what the possible values of these labels are:</p>
 </div>
 </div>
 </div>
+</section><section id="prepare-data"><h2 class="section-heading">3. Prepare data<a class="anchor" aria-label="anchor" href="#prepare-data"></a>
+</h2>
+<hr class="half-width">
 <p>The training set consists of 50000 images of <code>32x32</code>
 pixels and 3 channels (RGB values). The RGB values are between
 <code>0</code> and <code>255</code>. For input of neural networks, it is
@@ -3921,7 +3927,10 @@ numbers back to the class names, taken from the documentation:</p>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    plt.title(class_names[train_labels[i,<span class="dv">0</span>]])</span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre>
 </div>
-<figure><img src="../fig/04_cifar10.png" alt="A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for example: 'frog' or 'horse'." class="figure mx-auto d-block"></figure></section><section id="convolutional-layers"><h2 class="section-heading">Convolutional layers<a class="anchor" aria-label="anchor" href="#convolutional-layers"></a>
+<figure><img src="../fig/04_cifar10.png" alt="A 5 by 5 grid of 25 sample images from the CIFAR-10 data-set. Each image is labelled with a category, for example: 'frog' or 'horse'." class="figure mx-auto d-block"></figure></section><section id="choose-a-pretrained-model-or-start-building-architecture-from-scratch"><h2 class="section-heading">4. Choose a pretrained model or start building architecture from
+scratch<a class="anchor" aria-label="anchor" href="#choose-a-pretrained-model-or-start-building-architecture-from-scratch"></a>
+</h2>
+<hr class="half-width"></section><section id="convolutional-layers"><h2 class="section-heading">Convolutional layers<a class="anchor" aria-label="anchor" href="#convolutional-layers"></a>
 </h2>
 <hr class="half-width">
 <p>In the previous episodes, we used ‘fully connected layers’ , that
@@ -3967,7 +3976,7 @@ this layer have?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>The correct answer is B: Each entry of the input dimensions, i.e. the
 <code>shape</code> of one single data point, is connected with 100
@@ -4100,7 +4109,7 @@ convolution?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>There are different ways of dealing with border pixels. You can
 ignore them, which means that your output image is slightly smaller then
@@ -4138,7 +4147,7 @@ the previous exercise</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We have 100 matrices with 3 * 3 * 3 = 27 values each so that gives 27
 * 100 = 2700 weights. This is a magnitude of 100 less than the fully
@@ -4192,7 +4201,7 @@ intuitive?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <ul>
 <li>The Flatten layer converts the 28x28x50 output of the convolutional
@@ -4267,6 +4276,9 @@ Trainable params: 87,060
 Non-trainable params: 0
 _________________________________________________________________</code></pre>
 </div>
+</section><section id="choose-a-loss-function-and-optimizer"><h2 class="section-heading">5. Choose a loss function and optimizer<a class="anchor" aria-label="anchor" href="#choose-a-loss-function-and-optimizer"></a>
+</h2>
+<hr class="half-width">
 <p>We compile the model using the adam optimizer (other optimizers could
 also be used here!). Similar to the penguin classification task, we will
 use the crossentropy function to calculate the model’s loss. This loss
@@ -4282,6 +4294,9 @@ SparseCategoricalCrossentropy() function:</p>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>              loss<span class="op">=</span>keras.losses.SparseCategoricalCrossentropy(from_logits<span class="op">=</span><span class="va">True</span>),</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>              metrics<span class="op">=</span>[<span class="st">'accuracy'</span>])</span></code></pre>
 </div>
+</section><section id="train-the-model"><h2 class="section-heading">6. Train the model<a class="anchor" aria-label="anchor" href="#train-the-model"></a>
+</h2>
+<hr class="half-width">
 <p>We then train the model for 10 epochs:</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4289,6 +4304,18 @@ SparseCategoricalCrossentropy() function:</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(train_images, train_labels, epochs<span class="op">=</span><span class="dv">10</span>,</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(test_images, test_labels))</span></code></pre>
 </div>
+</section><section id="perform-a-predictionclassification"><h2 class="section-heading">7. Perform a Prediction/Classification<a class="anchor" aria-label="anchor" href="#perform-a-predictionclassification"></a>
+</h2>
+<hr class="half-width">
+<p>Here we skip performing a prediction, and continue to measuring the
+performance. In practice, you will only do this step once in a while
+when you actually need to have the individual predictions, often you
+know enough based on the evaluation metric scores. Of course, behind the
+scenes whenever you measure performance you have to make predictions and
+compare them to the ground truth.</p>
+</section><section id="measure-performance"><h2 class="section-heading">8. Measure performance<a class="anchor" aria-label="anchor" href="#measure-performance"></a>
+</h2>
+<hr class="half-width">
 <p>We can plot the training process using the history:</p>
 <div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4306,6 +4333,9 @@ SparseCategoricalCrossentropy() function:</p>
 </div>
 <figure><img src="../fig/04_training_history_loss_1.png" alt="Plot of training loss and validation loss vs epochs for the trained model" class="figure mx-auto d-block"></figure><p>It seems that the model is overfitting somewhat, because the
 validation accuracy and loss stagnates.</p>
+</section><section id="tune-hyperparameters"><h2 class="section-heading">9. Tune hyperparameters<a class="anchor" aria-label="anchor" href="#tune-hyperparameters"></a>
+</h2>
+<hr class="half-width">
 <div id="network-depth" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -4344,7 +4374,7 @@ needs to be adjusted as follows:</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>We add an extra Conv2D layer after the second pooling layer:</p>
 <div class="codewrapper sourceCode" id="cb31">
@@ -4462,7 +4492,7 @@ would benefit from a CNN architecture?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>No that would not make sense. Convolutions only work when the
@@ -4636,7 +4666,7 @@ model performance, what is the term associated to this procedure?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="varying-the-dropout-rate">1. Varying the dropout rate<a class="anchor" aria-label="anchor" href="#varying-the-dropout-rate"></a>
@@ -4686,6 +4716,15 @@ not with the test set!</li>
 </div>
 </div>
 </div>
+</div>
+</section><section id="share-model"><h2 class="section-heading">10. Share model<a class="anchor" aria-label="anchor" href="#share-model"></a>
+</h2>
+<hr class="half-width">
+<p>Let’s save our model</p>
+<div class="codewrapper sourceCode" id="cb43">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">'cnn_model'</span>)</span></code></pre>
 </div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
