@@ -136,7 +136,7 @@ test_images = test_images / 255.0
 
 ## Convolutional layers
 In the previous episodes, we used 'fully connected layers' , that connected all input values of a layer to all outputs of a layer.
-This results in many connections, and thus weights to be learned, in the network.
+This results in many connections, and thus many weights to be learned, in the network.
 Note that our input dimension is now quite high (even with small pictures of `32x32` pixels): we have 3072 features.
 
 ::: challenge
