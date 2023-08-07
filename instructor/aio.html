@@ -1502,8 +1502,10 @@ keep it at just a training and test set however.</p>
 <p>To split the cleaned dataset into a training and test set we will use
 a very convenient function from sklearn called
 <code>train_test_split</code>. This function takes a number of
-parameters: - The first two are the dataset and the corresponding
-targets. - Next is the named parameter <code>test_size</code> this is
+parameters which are extensively explained <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html" class="external-link">here</a>
+: - The first two parameters are the dataset (in our case
+penguins_features) and the corresponding targets (i.e. defined as
+target). - Next is the named parameter <code>test_size</code> this is
 the fraction of the dataset that is used for testing, in this case
 <code>0.2</code> means 20% of the data will be used for testing. -
 <code>random_state</code> controls the shuffling of the dataset, setting
@@ -1578,10 +1580,12 @@ model<a class="anchor" aria-label="anchor" href="#build-an-architecture-from-scr
 <div class="section level3">
 <h3 id="keras-for-neural-networks">Keras for neural networks<a class="anchor" aria-label="anchor" href="#keras-for-neural-networks"></a>
 </h3>
-<p>For this lesson we will be using <a href="https://keras.io/" class="external-link">Keras</a> to define and train our neural
-network models. Keras is a machine learning framework with ease of use
-as one of its main features. It is part of the tensorflow python package
-and can be imported using <code>from tensorflow import keras</code>.</p>
+<p>We will now build our first neural network from scratch. Although
+this sounds like a daunting task, you will experience that with <a href="https://keras.io/" class="external-link">Keras</a> it is actually surprisingly
+straightforward.</p>
+<p>Keras is a machine learning framework with ease of use as one of its
+main features. It is part of the tensorflow python package and can be
+imported using <code>from tensorflow import keras</code>.</p>
 <p>Keras includes functions, classes and definitions to define deep
 learning models, cost functions and optimizers (optimizers are used to
 train a model).</p>
@@ -1624,9 +1628,10 @@ layer in the image in the introduction of this episode is a Dense
 layer.</p>
 <p>The input in Keras also gets special treatment, Keras automatically
 calculates the number of inputs and outputs a layer needs and therefore
-how many edges need to be created. This means we need to let Keras now
+how many edges need to be created. This means we need to inform Keras
 how big our input is going to be. We do this by instantiating a
-<code>keras.Input</code> class and tell it how big our input is.</p>
+<code>keras.Input</code> class and tell it how big our input is, thus
+the number of columns it contains.</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1799,9 +1804,9 @@ has parameters, what values to use for those. Furthermore, we need to
 specify how many times to show the training samples to the
 optimizer.</p>
 <p>Once more, Keras gives us plenty of choices all of which have their
-own pros and cons, but for now let us go with the widely used Adam
-optimizer. Adam has a number of parameters, but the default values work
-well for most problems. So we will use it with its default
+own pros and cons, but for now let us go with the widely used <a href="https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam" class="external-link">Adam
+optimizer</a>. Adam has a number of parameters, but the default values
+work well for most problems. So we will use it with its default
 parameters.</p>
 <p>Combining this with the loss function we decided on earlier we can
 now compile the model using <code>model.compile</code>. Compiling the
@@ -2001,8 +2006,8 @@ Length: 69, dtype: object</code></pre>
 how well it performs. We want to know how well it will perform in a
 realistic prediction scenario, measuring performance will also come back
 when tuning the hyperparameters.</p>
-<p>We have created a test set during the data preparation stage which we
-will use now to create a confusion matrix.</p>
+<p>We have created a test set (i.e. y_test) during the data preparation
+stage which we will use now to create a confusion matrix.</p>
 <div class="section level3">
 <h3 id="confusion-matrix">Confusion matrix<a class="anchor" aria-label="anchor" href="#confusion-matrix"></a>
 </h3>
@@ -2102,6 +2107,8 @@ these hyperparameters in later episodes. For now it is important to
 realize that the parameters we chose were somewhat arbitrary and more
 careful consideration needs to be taken to pick hyperparameter
 values.</p>
+<p>Note that the outcome you have might be slightly different from what
+is shown in this tutorial.</p>
 </section><section id="share-model"><h2 class="section-heading">10. Share model<a class="anchor" aria-label="anchor" href="#share-model"></a>
 </h2>
 <hr class="half-width">
@@ -2411,7 +2418,7 @@ notice?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2578,7 +2585,7 @@ sunshine hours?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The shape of the input layer has to correspond to the number of
@@ -2872,7 +2879,7 @@ why?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -2995,7 +3002,7 @@ problem to solve?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>This really depends on your definition of hard! The baseline gives a
@@ -3100,7 +3107,7 @@ think about what you actually would like to see)</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -3154,7 +3161,7 @@ effect on the performance on the validation set?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3454,7 +3461,7 @@ all features from all cities. How does it perform?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <p>Use 9 years out of the total dataset. This means 3 times as many rows
 as we used previously, but by removing columns not containing “BASEL” we
@@ -3616,7 +3623,7 @@ improve the prediction quality?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
@@ -3827,7 +3834,7 @@ for this type of data.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>To explore the dimensions of the input data:</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -3976,7 +3983,7 @@ this layer have?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The correct answer is B: Each entry of the input dimensions, i.e. the
 <code>shape</code> of one single data point, is connected with 100
@@ -4109,7 +4116,7 @@ convolution?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>There are different ways of dealing with border pixels. You can
 ignore them, which means that your output image is slightly smaller then
@@ -4147,7 +4154,7 @@ the previous exercise</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>We have 100 matrices with 3 * 3 * 3 = 27 values each so that gives 27
 * 100 = 2700 weights. This is a magnitude of 100 less than the fully
@@ -4201,7 +4208,7 @@ intuitive?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <ul>
 <li>The Flatten layer converts the 28x28x50 output of the convolutional
@@ -4374,7 +4381,7 @@ needs to be adjusted as follows:</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>We add an extra Conv2D layer after the second pooling layer:</p>
 <div class="codewrapper sourceCode" id="cb31">
@@ -4492,7 +4499,7 @@ would benefit from a CNN architecture?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>No that would not make sense. Convolutions only work when the
@@ -4666,7 +4673,7 @@ model performance, what is the term associated to this procedure?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="varying-the-dropout-rate">1. Varying the dropout rate<a class="anchor" aria-label="anchor" href="#varying-the-dropout-rate"></a>

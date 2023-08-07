@@ -752,8 +752,10 @@ keep it at just a training and test set however.</p>
 <p>To split the cleaned dataset into a training and test set we will use
 a very convenient function from sklearn called
 <code>train_test_split</code>. This function takes a number of
-parameters: - The first two are the dataset and the corresponding
-targets. - Next is the named parameter <code>test_size</code> this is
+parameters which are extensively explained <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html" class="external-link">here</a>
+: - The first two parameters are the dataset (in our case
+penguins_features) and the corresponding targets (i.e. defined as
+target). - Next is the named parameter <code>test_size</code> this is
 the fraction of the dataset that is used for testing, in this case
 <code>0.2</code> means 20% of the data will be used for testing. -
 <code>random_state</code> controls the shuffling of the dataset, setting
@@ -826,10 +828,12 @@ model<a class="anchor" aria-label="anchor" href="#build-an-architecture-from-scr
 </h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="keras-for-neural-networks">Keras for neural networks<a class="anchor" aria-label="anchor" href="#keras-for-neural-networks"></a></h3>
-<p>For this lesson we will be using <a href="https://keras.io/" class="external-link">Keras</a> to define and train our neural
-network models. Keras is a machine learning framework with ease of use
-as one of its main features. It is part of the tensorflow python package
-and can be imported using <code>from tensorflow import keras</code>.</p>
+<p>We will now build our first neural network from scratch. Although
+this sounds like a daunting task, you will experience that with <a href="https://keras.io/" class="external-link">Keras</a> it is actually surprisingly
+straightforward.</p>
+<p>Keras is a machine learning framework with ease of use as one of its
+main features. It is part of the tensorflow python package and can be
+imported using <code>from tensorflow import keras</code>.</p>
 <p>Keras includes functions, classes and definitions to define deep
 learning models, cost functions and optimizers (optimizers are used to
 train a model).</p>
@@ -871,9 +875,10 @@ layer in the image in the introduction of this episode is a Dense
 layer.</p>
 <p>The input in Keras also gets special treatment, Keras automatically
 calculates the number of inputs and outputs a layer needs and therefore
-how many edges need to be created. This means we need to let Keras now
+how many edges need to be created. This means we need to inform Keras
 how big our input is going to be. We do this by instantiating a
-<code>keras.Input</code> class and tell it how big our input is.</p>
+<code>keras.Input</code> class and tell it how big our input is, thus
+the number of columns it contains.</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1042,9 +1047,9 @@ has parameters, what values to use for those. Furthermore, we need to
 specify how many times to show the training samples to the
 optimizer.</p>
 <p>Once more, Keras gives us plenty of choices all of which have their
-own pros and cons, but for now let us go with the widely used Adam
-optimizer. Adam has a number of parameters, but the default values work
-well for most problems. So we will use it with its default
+own pros and cons, but for now let us go with the widely used <a href="https://www.tensorflow.org/api_docs/python/tf/keras/optimizers/Adam" class="external-link">Adam
+optimizer</a>. Adam has a number of parameters, but the default values
+work well for most problems. So we will use it with its default
 parameters.</p>
 <p>Combining this with the loss function we decided on earlier we can
 now compile the model using <code>model.compile</code>. Compiling the
@@ -1211,8 +1216,8 @@ Length: 69, dtype: object</code></pre>
 how well it performs. We want to know how well it will perform in a
 realistic prediction scenario, measuring performance will also come back
 when tuning the hyperparameters.</p>
-<p>We have created a test set during the data preparation stage which we
-will use now to create a confusion matrix.</p>
+<p>We have created a test set (i.e. y_test) during the data preparation
+stage which we will use now to create a confusion matrix.</p>
 <div class="section level3">
 <h3 id="confusion-matrix">Confusion matrix<a class="anchor" aria-label="anchor" href="#confusion-matrix"></a></h3>
 <p>With the predicted species we can now create a confusion matrix and
@@ -1308,6 +1313,8 @@ these hyperparameters in later episodes. For now it is important to
 realize that the parameters we chose were somewhat arbitrary and more
 careful consideration needs to be taken to pick hyperparameter
 values.</p>
+<p>Note that the outcome you have might be slightly different from what
+is shown in this tutorial.</p>
 </section><section id="share-model"><h2 class="section-heading">10. Share model<a class="anchor" aria-label="anchor" href="#share-model"></a>
 </h2>
 <hr class="half-width"><p>It is very useful to be able to use the trained neural network at a
