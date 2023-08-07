@@ -394,8 +394,8 @@ While the performance on the train set seems reasonable, the performance on the 
 This is a common problem called **overfitting**, which we will discuss in more detail later.
 Optional exercise:
 The metric that we are using: RMSE would be a good one. You could also consider Mean Squared Error, that punishes large errors more (because large errors create even larger squared errors).
-What matters is that if the models improve based on this metric, you also reach the goal that you want to achieve: predict tomorrows sunshine hours. 
-As soon as you have the feeling that whatever you are using as a metric does not help you reach your goal, you should pick a different one!
+It is important that if the model improves in performance on the basis of this metric then that should also lead you a step closer to reaching your goal: to predict tomorrow's sunshine hours. 
+If you feel that improving the metric does not lead you closer to your goal, then it would be better to choose a different metric
 ::::
 :::
 
