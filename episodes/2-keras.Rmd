@@ -112,6 +112,7 @@ penguins.head()
  All columns but the 'species' columns are features that we can use.
 
 There are 344 samples and 7 columns, so 6 features:
+
  ```python
  penguins.shape
  ```
