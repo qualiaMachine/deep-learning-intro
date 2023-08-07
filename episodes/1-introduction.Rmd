@@ -12,6 +12,7 @@ exercises: 15
 - "What are the tools involved?"
 - "What is the workflow for Deep Learning?"
 - "Why did we choose to use Keras in this lesson?"
+- "How do neural networks learn?"
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -23,9 +24,9 @@ exercises: 15
 - "Identify the inputs and outputs of a deep neural network."
 - "Explain the operations performed in a single neuron"
 - "Test that you have correctly installed the Keras, Seaborn and Sklearn libraries"
+- "Describe what a loss function is"
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-
 
 
 ## What is Deep Learning?
@@ -104,6 +105,48 @@ This image is from the paper ["An Efficient Pedestrian Detection Method Based on
 
 ![](../fig/01_deep_network.png){alt='An example of a deep neural network'}
 
+### How do neural networks learn?
+What happens in a neural network during the training process?
+The ultimate goal is of course to find a model that makes predictions that are as close to the target value as possible.
+In other words, the goal of training is to find the best set of parameters (weights and biases)
+that bring the error between prediction and expected value to a minimum.
+The total error between prediction and expected value is quantified in a loss function (also called cost function).
+There are lots of loss functions to pick from, and it is important that you pick one that matches your problem definition well.
+We will look at an example of a loss function in the next exercise.
+
+::: challenge
+## Exercise: Mean Squared Error
+One of the simplest loss functions is the Mean Squared Error. MSE = $\frac{1}{n} \Sigma_{i=1}^n({y}-\hat{y})^2$ .
+It is the mean of all squared errors, where the error is the difference between the predicted and expected value.
+In the following table, fill in the missing values in the 'squared error' column. What is the MSE loss
+for the predictions on these 4 samples?
+
+| **Prediction** | **Expected value** | **Squared error** |
+|----------------|--------------------|-------------------|
+| 1              | -1                 | 4                 |
+| 2              | -1                 | ..                |
+| 0              | 0                  | ..                |
+| 3              | 2                  | ..                |
+|                | **MSE:**           | ..                |
+
+:::: solution
+## Solution
+| **Prediction** | **Expected value** | **Squared error** |
+|----------------|--------------------|-------------------|
+| 1              | -1                 | 4                 |
+| 2              | -1                 | 9                 |
+| 0              | 0                  | 0                 |
+| 3              | 2                  | 1                 |
+|                | **MSE:**           | 3.5               |
+
+::::
+:::
+
+So, a loss function quantifies the total error of the model.
+The process of adjusting the weights in such a way as to minimize the loss function is called 'optimization'.
+We will dive further into how optimization works in episode 3.
+For now, it is enough to understand that during training the weights in the network are adjusted so that the loss decreases through the process of optimization.
+This ultimately results in a low loss, and this, generally, implies predictions that are closer to the expected values.
 
 ### What sort of problems can Deep Learning solve?
 
@@ -319,6 +362,7 @@ You should get a version number reported. At the time of writing 1.2.2 is the la
 - "Artificial neural networks are a machine learning technique based on a model inspired by groups of neurons in the brain."
 - "Artificial neural networks can be trained on example data."
 - "Deep Learning is a machine learning technique based on using many artificial neurons arranged in layers."
+- "Neural networks learn by minimizing a loss function."
 - "Deep Learning is well suited to classification and prediction problems such as image recognition."
 - "To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, tuning Hyperparameters, measuring performance before we can classify data."
 - "Keras is a Deep Learning library that is easier to use than many of the alternatives such as TensorFlow and PyTorch."

@@ -6,6 +6,7 @@ exercises: 80
 
 ::: questions
 - "How do I create a neural network for a regression task?"
+- "How does optimization work?"
 - "How do I monitor the training process?"
 - "How do I detect (and avoid) overfitting?"
 - "What are common options to improve the model performance?"
@@ -14,6 +15,7 @@ exercises: 80
 ::: objectives
 - "Explain the importance of keeping your test set clean, by validating on the validation set instead of the test set"
 - "Use the data splits to plot the training process"
+- "Explain how optimization works"
 - "Design a neural network for a regression task"
 - "Measure the performance of your deep neural network"
 - "Interpret the training plots to recognize overfitting"
@@ -217,6 +219,75 @@ Non-trainable params: 0
 
 
 When compiling the model we can define a few very important aspects. We will discuss them now in more detail.
+
+## Intermezzo: How do neural networks learn?
+In the introduction we learned about the loss function: it quantifies the total error of the predictions made by the model.
+During model training we aim to find the model parameters that minimize the loss.
+This is called optimization, but how does optimization actually work?
+
+### Gradient descent
+Gradient descent is a widely used optimization algorithm, most other optimization algorithms are based on it.
+It works as follows: Imagine a neural network with only one neuron.
+Take a look at the figure below. The plot shows the loss as a function of the weight of the neuron.
+As you can see there is a global loss minimum, we would like to find the weight at this point in the parabola.
+To do this, we initialize the model weight with some random value. Then we compute the gradient of the loss function with respect
+to the weight. This tells us how much the loss function will change if we change the weight by a small amount.
+Then, we update the weight by taking a small step in the direction of the negative gradient, so down the slope.
+This will slightly decrease the loss. This process is repeated until the loss function reaches a minimum.
+The size of the step that is taken in each iteration is called the 'learning rate'.
+
+![](../fig/03_gradient_descent.png){alt='Plot of the loss as a function of the weights. Through gradient descent the global loss minimum is found'}
+
+### Batch gradient descent
+You could use the entire training dataset to perform one learning step in gradient descent,
+which would mean that one epoch equals one learning step.
+In practice, in each learning step we only use a subset of the training data to compute the loss and the gradients.
+This subset is called a 'batch', the number of samples in one batch is called the 'batch size'.
+
+::: challenge
+
+## Exercise: Gradient descent
+
+Answer the following questions:
+
+### 1. What is the goal of optimization?
+
+- A. To find the weights that maximize the loss function
+- B. To find the weights that minimize the loss function
+
+### 2. What happens in one gradient descent step?
+
+- A. The weights are adjusted so that we move in the direction of the gradient, so up the slope of the loss function
+- B. The weights are adjusted so that we move in the direction of the gradient, so down the slope of the loss function
+- C. The weights are adjusted so that we move in the direction of the negative gradient, so up the slope of the loss function
+- D. The weights are adjusted so that we move in the direction of the negative gradient, so down the slope of the loss function
+
+### 3. When the batch size is increased:
+(multiple answers might apply)
+
+- A. The number of samples in an epoch also increases
+- B. The number of batches in an epoch goes down
+- C. The training progress is more jumpy, because more samples are consulted in each update step (one batch).
+- D. The memory load (memory as in computer hardware) of the training process is increased
+
+:::: solution
+
+## Solution
+
+1. Correct answer: B. To find the weights that minimize the loss function.
+   The loss function quantifies the total error of the network, we want to have the smallest error as possible, hence we minimize the loss.
+
+2. Correct answer: D The weights are adjusted so that we move in the direction of the negative gradient, so down the slope of the loss function.
+   We want to move towards the global minimum, so in the opposite direction of the gradient.
+
+3. Correct answer: B & D
+   - A. The number of samples in an epoch also increases (incorrect, an epoch is always defined as passing through the training data for one cycle)
+   - B. The number of batches in an epoch goes down (correct, the number of batches is the samples in an epoch divided by the batch size)
+   - C. The training progress is more jumpy, because more samples are consulted in each update step (one batch). (incorrect, more samples are consulted in each update step, but this makes the progress less jumpy since you get a more accurate estimate of the loss in the entire dataset)
+   - D. The memory load (memory as in computer hardware) of the training process is increased (correct, the data is begin loaded one batch at a time, so more samples means more memory usage)
+
+::::
+:::
 
 ## 5. Choose a loss function and optimizer
 ### Loss function
