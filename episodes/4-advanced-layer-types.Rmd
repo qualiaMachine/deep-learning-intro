@@ -678,6 +678,13 @@ This is called hyperparameter tuning.
 ::::
 :::
 
+## 10. Share model
+Let's save our model
+
+```python
+model.save('cnn_model')
+```
+
 ::: keypoints
 - "Convolutional layers make efficient reuse of model parameters."
 - "Pooling layers decrease the resolution of your input"
