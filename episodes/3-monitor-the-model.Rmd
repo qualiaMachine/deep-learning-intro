@@ -393,7 +393,9 @@ plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 While the performance on the train set seems reasonable, the performance on the test set is much worse.
 This is a common problem called **overfitting**, which we will discuss in more detail later.
 Optional exercise:
-Mean accuracy would be a single-value metric that you can use in this case.
+The metric that we are using: RMSE would be a good one. You could also consider Mean Squared Error, that punishes large errors more (because large errors create even larger squared errors).
+It is important that if the model improves in performance on the basis of this metric then that should also lead you a step closer to reaching your goal: to predict tomorrow's sunshine hours. 
+If you feel that improving the metric does not lead you closer to your goal, then it would be better to choose a different metric
 ::::
 :::
 
