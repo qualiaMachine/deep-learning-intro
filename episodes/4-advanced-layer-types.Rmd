@@ -377,8 +377,8 @@ def plot_history(history, metrics):
     Plot the training history
 
     Args:
-        metrics(str, list): Metric or a list of metrics to plot
         history (keras History object that is returned by model.fit())
+        metrics(str, list): Metric or a list of metrics to plot
     """
     history_df = pd.DataFrame.from_dict(history.history)
     sns.lineplot(data=history_df[metrics])
