@@ -27,6 +27,10 @@ It is part of the codebase for [this paper](https://doi.org/10.1186/s13321-021-0
 You do not need to fully understand the deep learning problem and the approach that is taken here, as it is quite domain-specific.
 We just want you to appreciate that you already learned enough to be able to do this yourself in your own domain.
 
+::: instructor
+You don't have to use this project as an example.
+It works best to use a suitable deep learning project that you know well and are passionate about.
+:::
 ::: challenge
 ## Exercise: A real-world deep learning application in science
 
@@ -52,5 +56,4 @@ You might have noticed that the data preparation for this example is much more e
 in this lesson. This is quite common for applied deep learning projects. It is said that 90% of the time in a
 deep learning problem is spend on data preparation, and only 10% on modeling!
 :::
-
 
