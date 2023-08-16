@@ -796,17 +796,17 @@ a complex phenomenon with correlations over large distances and time scales,
 but what happens if we limit ourselves to only one city?
 
 1. Since we will be reducing the number of features quite significantly,
-  we should afford to include more data. Instead of using only 3 years, use
+  we could afford to include more data. Instead of using only 3 years, use
   8 or 9 years!
-2. Remove all cities from the training data that are not for Basel.
+2. Only use the features in the dataset that are for Basel, remove the data for other cities.
   You can use something like:
   ```python
   cols = [c for c in X_data.columns if c[:5] == 'BASEL']
   X_data = X_data[cols]
   ```
 3. Now rerun the last model we defined which included the BatchNorm layer.
-  Recreate the scatter plot comparing your prediction with the baseline
-  prediction based on yesterday's sunshine hours, and compute also the RMSE.
+  Recreate the scatter plot comparing your predictions with the true values,
+  and evaluate the model by computing the RMSE on the test score.
   Note that even though we will use many more observations than previously,
   the network should still train quickly because we reduce the number of
   features (columns).
@@ -817,20 +817,23 @@ but what happens if we limit ourselves to only one city?
   
 :::: solution
 ## Solution
-Use 9 years out of the total dataset. This means 3 times as many
-rows as we used previously, but by removing columns not containing
-"BASEL" we reduce the number of columns from 89 to 11.
+### 1. Use 9 years out of the dataset
 ```python
 nr_rows = 365*9
 # data
 X_data = data.loc[:nr_rows].drop(columns=['DATE', 'MONTH'])
+
 # labels (sunshine hours the next day)
 y_data = data.loc[1:(nr_rows + 1)]["BASEL_sunshine"]
+```
+
+### 2. Only use features for Basel
+```python
 # only use columns with 'BASEL'
 cols = [c for c in X_data.columns if c[:5] == 'BASEL']
 X_data = X_data[cols]
 ```
-
+### 3. Rerun the model and evaluate it
 Do the train-test-validation split:
 ```python
 X_train, X_holdout, y_train, y_holdout = train_test_split(X_data, y_data, test_size=0.3, random_state=0)
@@ -845,6 +848,7 @@ model = create_nn()
 compile_model(model)
 model.summary()
 ```
+
 Fit with early stopping and output showing performance on validation set:
 ```python
 history = model.fit(X_train, y_train,
@@ -853,22 +857,48 @@ history = model.fit(X_train, y_train,
                    validation_data=(X_val, y_val),
                    callbacks=[earlystopper],
                    verbose = 2)
-plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
+plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
+
 Create a scatter plot to compare with true observations:
 ```python
 y_test_predicted = model.predict(X_test)
 plot_predictions(y_test_predicted, y_test, title='Predictions on the test set')
 ```
-Compare the mean squared error with baseline prediction. It should be
-similar or even a little better than what we saw with the larger model!
+![](../fig/03_scatter_plot_basel_model.png){alt='Scatterplot of predictions and true number of sunshine hours'}
+
+
+Compute the RMSE on the test set:
 ```python
-from sklearn.metrics import mean_squared_error
-y_baseline_prediction = X_test['BASEL_sunshine']
-rmse_nn = mean_squared_error(y_test, y_test_predicted, squared=False)
-rmse_baseline = mean_squared_error(y_test, y_baseline_prediction, squared=False)
-print('NN RMSE: {:.2f}, baseline RMSE: {:.2f}'.format(rmse_nn, rmse_baseline))
+test_metrics = model.evaluate(X_test, y_test, return_dict=True)
+print(f'Test RMSE: {test_metrics["root_mean_squared_error"]}')
 ```
+```output
+Test RMSE: 3.3761725425720215
+```
+
+This RMSE is already a lot better compared to what we had before and certainly better than the baseline.
+Additionally, it could be further improved with hyperparameter tuning.
+
+Note that because we ran `train_test_split()` again, we are evaluating on a different test set than before.
+In the real world it is important to always compare results on the exact same test set.
+
+### 4. (optional) Train a model on all years and all features available.
+You can tweak the above code to use all years and all features:
+```python
+# We cannot take all rows, because we need to be able to take the sunshine hours of the next day
+nr_rows = len(data) - 2
+
+# data
+X_data = data.loc[:nr_rows].drop(columns=['DATE', 'MONTH'])
+
+# labels (sunshine hours the next day)
+y_data = data.loc[1:(nr_rows + 1)]["BASEL_sunshine"]
+```
+For the rest you can use the same code as above to train and evaluate the model
+
+This results in an RMSE on the test set of 3.23 (your result can be different, but should be in the same range).
+From this we can conclude that adding more training data results in even better performance!
 ::::
 :::
 
