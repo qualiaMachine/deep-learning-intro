@@ -428,7 +428,7 @@ Python, Excel…</em></p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Weighted sum of input: 0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25</p>
 <p>Add the bias: 0.25 + 1 = 1.25</p>
@@ -553,7 +553,7 @@ these 4 samples?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <table class="table">
 <thead><tr class="header">
@@ -702,7 +702,7 @@ dogs.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>and 5 are the sort of tasks often solved with Deep Learning.</li>
@@ -897,7 +897,7 @@ the data you will use to train the network.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
@@ -1289,25 +1289,30 @@ the data:</p>
 </table>
 <p>All columns but the ‘species’ columns are features that we can
 use.</p>
-<p>There are 344 samples and 7 columns, so 6 features:</p>
+<p>Let’s look at the shape of the dataset:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins.shape</span></code></pre>
 </div>
+<p>There are 344 samples and 7 columns, so 6 features</p>
 </div>
 <div class="section level3">
 <h3 id="visualization">Visualization<a class="anchor" aria-label="anchor" href="#visualization"></a>
 </h3>
 <p>Looking at numbers like this usually does not give a very good
 intuition about the data we are working with, so let us create a
-visualization. #### Pair Plot One nice visualization for datasets with
-relatively few attributes is the Pair Plot. This can be created using
-<code>sns.pairplot(...)</code>. It shows a scatterplot of each attribute
-plotted against each of the other attributes. By using the
-<code>hue='species'</code> setting for the pairplot the graphs on the
-diagonal are layered kernel density estimate plots for the different
-values of the <code>species</code> column.</p>
+visualization.</p>
+<div class="section level4">
+<h4 id="pair-plot">Pair Plot<a class="anchor" aria-label="anchor" href="#pair-plot"></a>
+</h4>
+<p>One nice visualization for datasets with relatively few attributes is
+the Pair Plot. This can be created using <code>sns.pairplot(...)</code>.
+It shows a scatterplot of each attribute plotted against each of the
+other attributes. By using the <code>hue='species'</code> setting for
+the pairplot the graphs on the diagonal are layered kernel density
+estimate plots for the different values of the <code>species</code>
+column.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1345,6 +1350,7 @@ class labels at once?</li>
 distinguishable from the other two. The other two seem to be separable
 by a combination of bill length and bill depth (other combinations are
 also possible such as bill length and flipper length).</p>
+</div>
 </div>
 </div>
 </div>
