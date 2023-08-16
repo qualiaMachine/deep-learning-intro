@@ -425,7 +425,7 @@ Python, Excel…</em></p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Weighted sum of input: 0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25</p>
 <p>Add the bias: 0.25 + 1 = 1.25</p>
@@ -550,7 +550,7 @@ these 4 samples?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <table class="table">
 <thead><tr class="header">
@@ -699,7 +699,7 @@ dogs.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>and 5 are the sort of tasks often solved with Deep Learning.</li>
@@ -894,7 +894,7 @@ the data you will use to train the network.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
@@ -1382,29 +1382,15 @@ outputs.</p>
 <hr class="half-width">
 <p>The input data and target data are not yet in a format that is
 suitable to use for training a neural network.</p>
-<div class="section level3">
-<h3 id="change-types-if-needed">Change types if needed<a class="anchor" aria-label="anchor" href="#change-types-if-needed"></a>
-</h3>
-<p>First, the species column is our categorical target, however pandas
-still sees it as the generic type <code>Object</code>. We can convert
-this to the pandas categorical type:</p>
-<div class="codewrapper sourceCode" id="cb6">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>penguins[<span class="st">'species'</span>] <span class="op">=</span> penguins[<span class="st">'species'</span>].astype(<span class="st">'category'</span>)</span></code></pre>
-</div>
-<p>This will make later interaction with this column a little
-easier.</p>
 <p>For now we will only use the numerical features
 <code>bill_length_mm</code>, <code>bill_depth_mm</code>,
 <code>flipper_length_mm</code>, <code>body_mass_g</code> only, so let’s
 drop the categorical columns:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop categorical columns</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>penguins_filtered <span class="op">=</span> penguins.drop(columns<span class="op">=</span>[<span class="st">'island'</span>, <span class="st">'sex'</span>])</span></code></pre>
-</div>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop categorical columns</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>penguins_filtered <span class="op">=</span> penguins.drop(columns<span class="op">=</span>[<span class="st">'island'</span>, <span class="st">'sex'</span>])</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="clean-missing-values">Clean missing values<a class="anchor" aria-label="anchor" href="#clean-missing-values"></a>
@@ -1414,18 +1400,18 @@ the dataset have missing (NaN) values, leaving such values in the input
 data will ruin the training, so we need to deal with them. There are
 many ways to deal with missing values, but for now we will just remove
 the offending rows by adding a call to <code>dropna()</code>:</p>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the rows that have NaN values in them</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>penguins_filtered <span class="op">=</span> penguins_filtered.dropna()</span></code></pre>
+</div>
+<p>Finally, we select only the features</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the rows that have NaN values in them</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>penguins_filtered <span class="op">=</span> penguins_filtered.dropna()</span></code></pre>
-</div>
-<p>Finally, we select only the features</p>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract columns corresponding to features</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>penguins_features <span class="op">=</span> penguins_filtered.drop(columns<span class="op">=</span>[<span class="st">'species'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract columns corresponding to features</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>penguins_features <span class="op">=</span> penguins_filtered.drop(columns<span class="op">=</span>[<span class="st">'species'</span>])</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -1444,13 +1430,13 @@ corresponding correct class, and 0’s in the other columns. For instance,
 for a penguin of the Adelie species the one-hot encoding would be 1 0
 0</p>
 <p>Fortunately pandas is able to generate this encoding for us.</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> pd.get_dummies(penguins_filtered[<span class="st">'species'</span>])</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>target.head() <span class="co"># print out the top 5 to see what it looks like.</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> pd.get_dummies(penguins_filtered[<span class="st">'species'</span>])</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>target.head() <span class="co"># print out the top 5 to see what it looks like.</span></span></code></pre>
 </div>
 <div id="one-hot-encoding" class="callout challenge">
 <div class="callout-square">
@@ -1516,12 +1502,12 @@ advanced parameter that controls how the split is done. By setting it to
 <code>target</code> the train and test sets the function will return
 will have roughly the same proportions (with regards to the number of
 penguins of a certain species) as the dataset.</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(penguins_features, target,test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>, shuffle<span class="op">=</span><span class="va">True</span>, stratify<span class="op">=</span>target)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(penguins_features, target,test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>, shuffle<span class="op">=</span><span class="va">True</span>, stratify<span class="op">=</span>target)</span></code></pre>
 </div>
 </div>
 </section><section id="build-an-architecture-from-scratch-or-choose-a-pretrained-model"><h2 class="section-heading">4. Build an architecture from scratch or choose a pretrained
@@ -1542,22 +1528,22 @@ learning models, cost functions and optimizers (optimizers are used to
 train a model).</p>
 <p>Before we move on to the next section of the workflow we need to make
 sure we have Keras imported. We do this as follows:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span></code></pre>
 </div>
 <p>For this class it is useful if everyone gets the same results from
 their training. Keras uses a random number generator at certain points
 during its execution. Therefore we will need to set two random seeds,
 one for numpy and one for tensorflow:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> seed</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">1</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.random <span class="im">import</span> set_seed</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>set_seed(<span class="dv">2</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> seed</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.random <span class="im">import</span> set_seed</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>set_seed(<span class="dv">2</span>)</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -1583,18 +1569,18 @@ how many edges need to be created. This means we need to inform Keras
 how big our input is going to be. We do this by instantiating a
 <code>keras.Input</code> class and tell it how big our input is, thus
 the number of columns it contains.</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>])</span></code></pre>
 </div>
 <p>We store a reference to this input class in a variable so we can pass
 it to the creation of our hidden layer. Creating the hidden layer can
 then be done as follows:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>hidden_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(inputs)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>hidden_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(inputs)</span></code></pre>
 </div>
 <p>The instantiation here has 2 parameters and a seemingly strange
 combination of parentheses, so let us take a closer look. The first
@@ -1614,10 +1600,10 @@ minute.</p>
 <p>Now we create another layer that will be our output layer. Again we
 use a Dense layer and so the call is very similar to the previous
 one.</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>)(hidden_layer)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>)(hidden_layer)</span></code></pre>
 </div>
 <p>Because we chose the one-hot encoding, we use <code>3</code> neurons
 for the output layer.</p>
@@ -1627,11 +1613,11 @@ kind of ‘probability’ that the sample belongs to a certain species.</p>
 <p>Now that we have defined the layers of our neural network we can
 combine them into a Keras model which facilitates training the
 network.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>output_layer)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>output_layer)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
 </div>
 <p>The model summary here can show you some information about the neural
 network we have defined.</p>
@@ -1687,14 +1673,14 @@ the number of neurons in the hidden layer?</li>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>])</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>hidden_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(inputs)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>)(hidden_layer)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>output_layer)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>])</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>hidden_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(inputs)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>)(hidden_layer)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>output_layer)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1787,10 +1773,10 @@ parameters.</p>
 <p>Combining this with the loss function we decided on earlier we can
 now compile the model using <code>model.compile</code>. Compiling the
 model prepares it to start the training.</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span>keras.losses.CategoricalCrossentropy())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span>keras.losses.CategoricalCrossentropy())</span></code></pre>
 </div>
 </section><section id="train-model"><h2 class="section-heading">6. Train model<a class="anchor" aria-label="anchor" href="#train-model"></a>
 </h2>
@@ -1802,19 +1788,19 @@ parameters for certain options of the training. Here we only set a
 different number of <code>epochs</code>. One training epoch means that
 every sample in the training data has been shown to the neural network
 and used to update its parameters.</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, epochs<span class="op">=</span><span class="dv">100</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, epochs<span class="op">=</span><span class="dv">100</span>)</span></code></pre>
 </div>
 <p>The fit method returns a history object that has a history attribute
 with the training loss and potentially other metrics per training epoch.
 It can be very insightful to plot the training loss to see how the
 training progresses. Using seaborn we can do this as follow:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>history.epoch, y<span class="op">=</span>history.history[<span class="st">'loss'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>history.epoch, y<span class="op">=</span>history.history[<span class="st">'loss'</span>])</span></code></pre>
 </div>
 <figure><img src="fig/training_curve.png" title="Training Curve" alt="Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs" class="figure mx-auto d-block"></figure><p>This plot can be used to identify whether the training is well
 configured or whether there are problems that need to be addressed.</p>
@@ -1871,12 +1857,12 @@ using the <code>predict</code> function. We will be using this
 prediction in the next step to measure the performance of our trained
 network. This will return a <code>numpy</code> matrix, which we convert
 to a pandas dataframe to easily see the labels.</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>prediction <span class="op">=</span> pd.DataFrame(y_pred, columns<span class="op">=</span>target.columns)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>prediction</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>prediction <span class="op">=</span> pd.DataFrame(y_pred, columns<span class="op">=</span>target.columns)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>prediction</span></code></pre>
 </div>
 <table class="table"><tbody>
 <tr class="odd">
@@ -1953,11 +1939,11 @@ dataframe shows this nicely.</p>
 sample. We can do this by looking for the index of highest valued output
 and converting that to the corresponding species. Pandas dataframes have
 the <code>idxmax</code> function, which will do exactly that.</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>predicted_species <span class="op">=</span> prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>predicted_species</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>predicted_species <span class="op">=</span> prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>predicted_species</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1994,15 +1980,15 @@ another convenient function from sklearn called
 the true labels of the test set. We can get these by using the
 <code>idxmax</code> method on the y_test dataframe. The second parameter
 is the predicted labels which we did above.</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>true_species <span class="op">=</span> y_test.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>matrix <span class="op">=</span> confusion_matrix(true_species, predicted_species)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(matrix)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>true_species <span class="op">=</span> y_test.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>matrix <span class="op">=</span> confusion_matrix(true_species, predicted_species)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(matrix)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2015,24 +2001,24 @@ is the predicted labels which we did above.</p>
 column and which row corresponds to which species. So let’s convert it
 to a pandas dataframe with its index and columns set to the species as
 follows:</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a pandas dataframe</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>confusion_df <span class="op">=</span> pd.DataFrame(matrix, index<span class="op">=</span>y_test.columns.values, columns<span class="op">=</span>y_test.columns.values)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the names of the x and y axis, this helps with the readability of the heatmap.</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>confusion_df.index.name <span class="op">=</span> <span class="st">'True Label'</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>confusion_df.columns.name <span class="op">=</span> <span class="st">'Predicted Label'</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a pandas dataframe</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>confusion_df <span class="op">=</span> pd.DataFrame(matrix, index<span class="op">=</span>y_test.columns.values, columns<span class="op">=</span>y_test.columns.values)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the names of the x and y axis, this helps with the readability of the heatmap.</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>confusion_df.index.name <span class="op">=</span> <span class="st">'True Label'</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>confusion_df.columns.name <span class="op">=</span> <span class="st">'Predicted Label'</span></span></code></pre>
 </div>
 <p>We can then use the <code>heatmap</code> function from seaborn to
 create a nice visualization of the confusion matrix. The
 <code>annot=True</code> parameter here will put the numbers from the
 confusion matrix in the heatmap.</p>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(confusion_df, annot<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(confusion_df, annot<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
 <figure><img src="fig/confusion_matrix.png" title="Confusion Matrix" alt="Confusion matrix of the test set with high accuracy for Adelie and Gentoo classification and no correctly predicted Chinstrap" class="figure mx-auto d-block"></figure><div id="confusion-matrix-1" class="callout challenge">
 <div class="callout-square">
@@ -2092,29 +2078,29 @@ is shown in this tutorial.</p>
 later stage without having to retrain it. This can be done by using the
 <code>save</code> method of the model. It takes a string as a parameter
 which is the path of a directory where the model is stored.</p>
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">'my_first_model'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">'my_first_model'</span>)</span></code></pre>
 </div>
 <p>This saved model can be loaded again by using the
 <code>load_model</code> method as follows:</p>
+<div class="codewrapper sourceCode" id="cb30">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pretrained_model <span class="op">=</span> keras.models.load_model(<span class="st">'my_first_model'</span>)</span></code></pre>
+</div>
+<p>This loaded model can be used as before to predict.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>pretrained_model <span class="op">=</span> keras.models.load_model(<span class="st">'my_first_model'</span>)</span></code></pre>
-</div>
-<p>This loaded model can be used as before to predict.</p>
-<div class="codewrapper sourceCode" id="cb32">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use the pretrained model here</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>y_pretrained_pred <span class="op">=</span> pretrained_model.predict(X_test)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>pretrained_prediction <span class="op">=</span> pd.DataFrame(y_pretrained_pred, columns<span class="op">=</span>target.columns.values)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># idxmax will select the column for each row with the highest value</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>pretrained_predicted_species <span class="op">=</span> pretrained_prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pretrained_predicted_species)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use the pretrained model here</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>y_pretrained_pred <span class="op">=</span> pretrained_model.predict(X_test)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>pretrained_prediction <span class="op">=</span> pd.DataFrame(y_pretrained_pred, columns<span class="op">=</span>target.columns.values)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># idxmax will select the column for each row with the highest value</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>pretrained_predicted_species <span class="op">=</span> pretrained_prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pretrained_predicted_species)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2498,7 +2484,7 @@ sunshine hours?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The shape of the input layer has to correspond to the number of
@@ -2676,7 +2662,7 @@ process is increased</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Correct answer: B. To find the weights that minimize the loss
@@ -2917,7 +2903,7 @@ why?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -3040,7 +3026,7 @@ problem to solve?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>This really depends on your definition of hard! The baseline gives a
@@ -3145,7 +3131,7 @@ think about what you actually would like to see)</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -3199,7 +3185,7 @@ notable effect on the performance on the validation set?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Let’s first adapt our <code>create_nn</code> function so that we can
 tweak the number of nodes in the 2 layers by passing arguments to the
@@ -3504,7 +3490,7 @@ all features from all cities. How does it perform?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <p>Use 9 years out of the total dataset. This means 3 times as many rows
 as we used previously, but by removing columns not containing “BASEL” we
@@ -3666,7 +3652,7 @@ improve the prediction quality?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
@@ -3880,7 +3866,7 @@ channels <strong>R</strong>ed, <strong>G</strong>reen,
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The correct solution is C: 3072. There are 1024 pixels in one image
 (32 * 32), each pixel has 3 channels (RGB). So 1024 * 3 = 3072.</p>
@@ -3977,7 +3963,7 @@ this layer have?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The correct answer is B: Each entry of the input dimensions, i.e. the
 <code>shape</code> of one single data point, is connected with 100
@@ -4110,7 +4096,7 @@ convolution?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>There are different ways of dealing with border pixels. You can
 ignore them, which means that your output image is slightly smaller then
@@ -4148,7 +4134,7 @@ the previous exercise</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>We have 100 matrices with 3 * 3 * 3 = 27 values each so that gives 27
 * 100 = 2700 weights. This is a magnitude of 100 less than the fully
@@ -4202,7 +4188,7 @@ intuitive?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <ul>
 <li>The Flatten layer converts the 28x28x50 output of the convolutional
@@ -4390,7 +4376,7 @@ needs to be adjusted as follows:</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>We add an extra Conv2D layer after the second pooling layer:</p>
 <div class="codewrapper sourceCode" id="cb27">
@@ -4510,7 +4496,7 @@ would benefit from a CNN architecture?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>No that would not make sense. Convolutions only work when the
@@ -4681,7 +4667,7 @@ model performance, what is the term associated to this procedure?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="varying-the-dropout-rate">1. Varying the dropout rate<a class="anchor" aria-label="anchor" href="#varying-the-dropout-rate"></a>
