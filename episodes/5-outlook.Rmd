@@ -5,16 +5,16 @@ exercises: 15
 ---
 
 ::: questions
-- "How does what I learned in this lesson translate to real-world problems?"
-- "What are next steps to take after this lesson?"
+- "How does what I learned in this course translate to real-world problems?"
+- "What are next steps to take after this course?"
 :::
 
 ::: objectives
-- "Understand that what we learned in this lesson can be applied to real-world problems"
-- "Identify next steps to take after this lesson"
+- "Understand that what we learned in this course can be applied to real-world problems"
+- "Identify next steps to take after this course"
 :::
 
-You have come to the end of this lesson.
+You have come to the end of this course.
 In this episode we will look back at what we have learned so far, how to apply that to real-world problems, and identify
 next steps to take to start applying deep learning in your own projects.
 
@@ -50,7 +50,7 @@ It works best to use a suitable deep learning project that you know well and are
 ::: challenge
 ## Exercise: A real-world deep learning application
 
-1. Looking at the 'Model training' section of the notebook, what do you recognize from what you learned in this lesson?
+1. Looking at the 'Model training' section of the notebook, what do you recognize from what you learned in this course?
 2. Can you identify the different steps of the deep learning workflow in this notebook?
 3. (Optional): Try to fully understand the neural network architecture from the first figure of [the paper](https://doi.org/10.1186/s13321-021-00558-4)
 
@@ -58,20 +58,20 @@ It works best to use a suitable deep learning project that you know well and are
 ## Solution
 1. The model summary for the Siamese model is more complex than what we have seen so far,
 but it is basically a repetition of Dense, BatchNorm, and Dropout layers.
-The syntax for training and evaluating the model is the same as what we learned in this lesson.
+The syntax for training and evaluating the model is the same as what we learned in this course.
 EarlyStopping as well as the Adam optimizer is used.
-2. The different steps are not as clearly defined as in this lesson, but you should be able to identify '3: Data preparation',
+2. The different steps are not as clearly defined as in this course, but you should be able to identify '3: Data preparation',
 '4: Choose a pretrained model or start building architecture from scratch', '5: Choose a loss function and optimizer', '6: Train the model',
 '7: Make predictions' (which is called 'Model inference' in this notebook), and '10: Save model'.
 ::::
 :::
 
-Hopefully you can appreciate that what you learned in this lesson, can be applied to real-world problems as well.
+Hopefully you can appreciate that what you learned in this course, can be applied to real-world problems as well.
 
 ::: callout
 ## Extensive data preparation
 You might have noticed that the data preparation for this example is much more extensive than what we have done so far
-in this lesson. This is quite common for applied deep learning projects. It is said that 90% of the time in a
+in this course. This is quite common for applied deep learning projects. It is said that 90% of the time in a
 deep learning problem is spent on data preparation, and only 10% on modeling!
 :::
 
@@ -92,6 +92,6 @@ A simple and quick way to get access to a GPU is to use [Google Colab](https://c
 
 ::: keypoints
 - "Although the data preparation and model architectures are somewhat more complex,
-what we have learned in this lesson can directly be applied to real-world problems"
-- "Use what you have learned in this lesson as a basis for your own learning trajectory in the world of deep learning"
+what we have learned in this course can directly be applied to real-world problems"
+- "Use what you have learned in this course as a basis for your own learning trajectory in the world of deep learning"
 :::
