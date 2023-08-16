@@ -871,6 +871,9 @@ Test RMSE: 3.3761725425720215
 This RMSE is already a lot better compared to what we had before and certainly better than the baseline.
 Additionally, it could be further improved with hyperparameter tuning.
 
+Note that because we ran `train_test_split()` again, we are evaluating on a different testset than before.
+In the real world it is important to always compare results on the exact same test set.
+
 ### 4. (optional) Train a model on all years and all features available.
 You can tweak the above code to use all years and all features:
 ```python
