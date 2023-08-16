@@ -1,0 +1,56 @@
+---
+title: "Outlook"
+teaching: 15
+exercises: 10
+---
+
+::: questions
+- "How do I apply what I learned to real-world problems?"
+- "What are next steps to take after this lesson?"
+:::
+
+::: objectives
+- "Understand that what we learned in this lesson can be applied to real-world problems"
+- "Identify next steps to take after this lesson"
+:::
+
+## Real-world application
+To introduce the core concepts of deep learning we have used quite simple machine learning problems.
+But how does what we learned so far apply to real-world applications?
+
+To illustrate that what we learned is actually the basis of succesful applications in research,
+we will have a look at an example from the field of cheminformatics.
+
+We will have a look at [this notebook](https://github.com/matchms/ms2deepscore/blob/0.4.0/notebooks/MS2DeepScore_tutorial.ipynb).
+It is part of the codebase for [this paper](https://doi.org/10.1186/s13321-021-00558-4).
+
+You do not need to fully understand the deep learning problem and the approach that is taken here, as it is quite domain-specific.
+We just want you to appreciate that you already learned enough to be able to do this yourself in your own domain.
+
+::: challenge
+## Exercise: A real-world deep learning application in science
+
+1. Looking at the 'Model training' section of the notebook, what do you recognize from what you learned in this lesson?
+2. Can you identify the different steps of the deep learning workflow in this notebook?
+3. (Optional): Try to understand the neural network architecture from the first figure of [the paper](https://doi.org/10.1186/s13321-021-00558-4)
+
+:::: solution
+## Solution
+1. The model summary for the Siamese model is more complex than what we have seen so far,
+but it is basically a repetition of Dense, BatchNorm, and Dropout layers.
+The syntax for training and evaluating the model is the same as what we learned in this lesson.
+EarlyStopping as well as the Adam optimizer is used.
+2. The different steps are not as clearly defined as in this lesson, but you should be able to identify '3: Data preparation',
+'4: Choose a pretrained model or start building architecture from scratch', '5: Choose a loss function and optimizer', '6: Train the model',
+'7: Make predictions' (which is called 'Model inference' in this notebook), and '10: Save model'.
+::::
+:::
+
+::: callout
+## Extensive data preparation
+You might have noticed that the data preparation for this example is much more extensive than what we have done so far
+in this lesson. This is quite common for applied deep learning projects. It is said that 90% of the time in a
+deep learning problem is spend on data preparation, and only 10% on modeling!
+:::
+
+
