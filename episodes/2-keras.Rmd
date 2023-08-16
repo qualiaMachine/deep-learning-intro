@@ -111,15 +111,18 @@ penguins.head()
 
  All columns but the 'species' columns are features that we can use.
 
-There are 344 samples and 7 columns, so 6 features:
+Let's look at the shape of the dataset:
 
  ```python
  penguins.shape
  ```
 
+There are 344 samples and 7 columns, so 6 features
+
 ### Visualization
 Looking at numbers like this usually does not give a very good intuition about the data we are
 working with, so let us create a visualization.
+
 #### Pair Plot
 One nice visualization for datasets with relatively few attributes is the Pair Plot.
 This can be created using `sns.pairplot(...)`. It shows a scatterplot of each attribute plotted against each of the other attributes.
