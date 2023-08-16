@@ -574,12 +574,16 @@ We can keep the network architecture unchanged (2 dense layers + a one-node outp
 Try to lower the number of nodes in one or both of the two dense layers and observe the changes to the training and validation losses.
 If time is short: Suggestion is to run one network with only 10 and 5 nodes in the first and second layer.
 
-* Is it possible to get rid of overfitting this way?
-* Does the overall performance suffer or does it mostly stay the same?
-* How low can you go with the number of parameters without notable effect on the performance on the validation set?
+1. Is it possible to get rid of overfitting this way?
+2. Does the overall performance suffer or does it mostly stay the same?
+3. (optional) How low can you go with the number of parameters without notable effect on the performance on the validation set?
 
 :::: solution
 ## Solution
+
+Let's first adapt our `create_nn` function so that we can tweak the number of nodes in the 2 layers
+by passing arguments to the function:
+
 ```python
 def create_nn(nodes1=100, nodes2=50):
    # Input layer
@@ -590,6 +594,12 @@ def create_nn(nodes1=100, nodes2=50):
    # Output layer
    outputs = keras.layers.Dense(1)(layers_dense)
    return keras.Model(inputs=inputs, outputs=outputs, name="model_small")
+```
+
+Let's see if it works by creating a much smaller network with 10 nodes in the first layer,
+and 5 nodes in the second layer:
+
+```python
 model = create_nn(10, 5)
 model.summary()
 ```
@@ -610,6 +620,8 @@ Total params: 961
 Trainable params: 961
 Non-trainable params: 0
 ```
+
+Let's compile and train this network:
 ```python
 compile_model(model)
 history = model.fit(X_train, y_train,
@@ -621,20 +633,17 @@ plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
 
 ![](../fig/03_training_history_3_rmse_smaller_model.png){alt='Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets.'}
 
-There is no single correct solution here. But you will have noticed that the number of nodes can be reduced quite a bit!
-In general, it quickly becomes a very complicated search for the right "sweet spot", i.e. the settings for which overfitting will be (nearly) avoided but which still performs equally well.
+1. With this smaller model we have reduced overfitting a bit, since the training and validation loss are now closer to each other, and the validation loss does now reach a plateau and does not further increase.
+We have not completely avoided overfitting though. 
+2. In the case of this small example model, the validation RMSE seems to end up around 3.2, which is much better than the 4.08 we had before. Note that you can double check the actual score by calling `model.evaluate()` on the test set.
+3. In general, it quickly becomes a complicated search for the right "sweet spot", i.e. the settings for which overfitting will be (nearly) avoided but the model still performs equally well. A model with 3 neurons in both layers seems to be around this spot, reaching an RMSE of 3.1 on the validation set. 
+Reducing the number of nodes further increases the validation RMSE again.
 ::::
 :::
 
 We saw that reducing the number of parameters can be a strategy to avoid overfitting.
 In practice, however, this is usually not the (main) way to go when it comes to deep learning.
 One reason is, that finding the sweet spot can be really hard and time consuming. And it has to be repeated every time the model is adapted, e.g. when more training data becomes available.
-
-::: callout
-## Sweet Spots
-Note: There is no single correct solution here. But you will have noticed that the number of nodes can be reduced quite a bit!
-In general, it quickly becomes a very complicated search for the right "sweet spot", i.e. the settings for which overfitting will be (nearly) avoided but which still performes equally well.
-:::
 
 ### Early stopping: stop when things are looking best
 Arguable **the** most common technique to avoid (severe) overfitting in deep learning is called **early stopping**.
