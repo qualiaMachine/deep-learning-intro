@@ -67,12 +67,16 @@ deep learning problem is spend on data preparation, and only 10% on modeling!
 You now understand the basic principles of deep learning and are able to implement your own deep learning pipelines in Python.
 But there is still so much to learn and do!
 
-Here are some suggestions for next steps you can take to become a deep learning expert:
+Here are some suggestions for next steps you can take in your endeavor to become a deep learning expert:
 
 * Learn more by going through a few of [the learning resources we have compiled for you](learners/reference.md#external-references)
 * Apply what you have learned on your own projects. Use the deep learning workflow to structure your work.
 Start as simple as possible, and incrementally increase the complexity of your approach.
 * Compete in a [Kaggle competition](https://www.kaggle.com/competitions) to practice what you have learned.
+* Get access to a GPU. Your deep learning experiments will progress much quicker if you have to wait for your network to train
+in a few seconds instead of hours (which is the order of magnitude of speedup you can expect from training on a GPU instead of CPU).
+Tensorflow/Keras will automatically detect and use a GPU if it is available on your system without any code changes.
+A simple and quick way to get access to a GPU is to use [Google Colab](https://colab.google/)
 
 ::: keypoints
 - "Although the data preparation and model architectures are somewhat more complex,
