@@ -168,14 +168,6 @@ determine the relevant inputs and outputs.
 ## 3. Prepare data
 The input data and target data are not yet in a format that is suitable to use for training a neural network.
 
-### Change types if needed
-First, the species column is our categorical target, however pandas still sees it as the
-generic type `Object`. We can convert this to the pandas categorical type:
-```python
-penguins['species'] = penguins['species'].astype('category')
-```
-
-This will make later interaction with this column a little easier.
 
 For now we will only use the numerical features `bill_length_mm`, `bill_depth_mm`, `flipper_length_mm`, `body_mass_g` only,
 so let's drop the categorical columns:
