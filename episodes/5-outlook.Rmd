@@ -14,6 +14,10 @@ exercises: 10
 - "Identify next steps to take after this lesson"
 :::
 
+You have come to the end of this lesson.
+In this episode we will look back at what we have learned so far, how to apply that to real-world problems, and identify
+next steps to take to start applying deep learning in your own projects.
+
 ## Real-world application
 To introduce the core concepts of deep learning we have used quite simple machine learning problems.
 But how does what we learned so far apply to real-world applications?
@@ -57,3 +61,13 @@ in this lesson. This is quite common for applied deep learning projects. It is s
 deep learning problem is spend on data preparation, and only 10% on modeling!
 :::
 
+## Next steps
+You now understand the basic principles of deep learning and are able to implement your own deep learning pipelines in Python.
+But there is still so much to learn and do!
+
+Here are some suggestions for next steps you can take to become a deep learning expert:
+
+* Learn more by going through a few of [the learning resources we have compiled for you](learners/reference.md#external-references)
+* Apply what you have learned on your own projects. Use the deep learning workflow to structure your work.
+Start as simple as possible, and incrementally increase the complexity of your approach.
+* Compete in a [Kaggle competition](https://www.kaggle.com/competitions) to practice what you have learned.
