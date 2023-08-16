@@ -383,7 +383,7 @@ def plot_history(history, metrics):
     history_df = pd.DataFrame.from_dict(history.history)
     sns.lineplot(data=history_df[metrics])
     plt.xlabel("epochs")
-
+    plt.ylabel("metric")
 plot_history(history, ['accuracy', 'val_accuracy'])
 ```
 ![](../fig/04_training_history_1.png){alt='Plot of training accuracy and validation accuracy vs epochs for the trained model'}
