@@ -791,6 +791,29 @@ network.</p>
 </div>
 <p>The model summary here can show you some information about the neural
 network we have defined.</p>
+<div id="trainable-and-non-trainable-parameters" class="callout callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="trainable-and-non-trainable-parameters" class="callout-inner">
+<h3 class="callout-title">Trainable and non-trainable parameters<a class="anchor" aria-label="anchor" href="#trainable-and-non-trainable-parameters"></a>
+</h3>
+<div class="callout-content">
+<p>Keras distinguishes between two types of weights, namely:</p>
+<ul><li><p>trainable parameters: these are weights of the neurons that are
+modified when we train the model in order to minimize our loss function
+(we will learn about loss functions shortly!).</p></li>
+<li><p>non-trainable parameters: these are weights of the neurons that
+are not changed when we train the model. These could be for many reasons
+- using a pre-trained model, choice of a particular filter for a
+convolutional neural network, and statistical weights for batch
+normalization are some examples.</p></li>
+</ul><p>If these reasons are not clear right away, don’t worry! In later
+episodes of this course, we will touch upon a couple of these
+concepts.</p>
+</div>
+</div>
+</div>
 <div id="create-the-neural-network" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
