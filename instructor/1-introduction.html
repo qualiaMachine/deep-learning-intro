@@ -324,16 +324,20 @@ based on the way neurons in the brain work.</p>
 <h5 id="a-single-neuron">A single neuron<a class="anchor" aria-label="anchor" href="#a-single-neuron"></a></h5>
 <p>A neural network consists of connected computational units called
 <strong>neurons</strong>. Each neuron …</p>
-<ul><li>has one or more inputs, e.g. input data expressed as floating point
-numbers</li>
+<ul><li>has one or more inputs (<span class="math inline">\(x_1, x_2,
+...\)</span>), e.g. input data expressed as floating point numbers</li>
 <li>most of the time, each neuron conducts 3 main operations:
-<ul><li>take the weighted sum of the inputs</li>
+<ul><li>take the weighted sum of the inputs where ($w_1, w_2, … $) indicate
+weights</li>
 <li>add an extra constant weight (i.e. a bias term) to this weighted
 sum</li>
 <li>apply a non-linear function to the output so far (using a predefined
-activation function)</li>
+activation function such as the ReLU function)</li>
 </ul></li>
-<li>return one output value, again a floating point number</li>
+<li>return one output value, again a floating point number.</li>
+<li>one example equation to calculate the output for a neuron is: <span class="math inline">\(output = ReLU(\sum_{i} (x_i*w_i) +
+bias)\)</span>
+</li>
 </ul><figure><img src="../fig/01_neuron.png" alt="A diagram of a single artificial neuron combining inputs and weights using an activation function." width="600" class="figure mx-auto d-block"></figure></div>
 <div class="section level5">
 <h5 id="combinging-multiple-neurons-into-a-network">Combinging multiple neurons into a network<a class="anchor" aria-label="anchor" href="#combinging-multiple-neurons-into-a-network"></a></h5>
@@ -380,7 +384,7 @@ Python, Excel…</em></p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Weighted sum of input: 0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25</p>
 <p>Add the bias: 0.25 + 1 = 1.25</p>
@@ -486,7 +490,7 @@ these 4 samples?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th><strong>Prediction</strong></th>
 <th><strong>Expected value</strong></th>
@@ -603,7 +607,7 @@ dogs.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>and 5 are the sort of tasks often solved with Deep Learning.</li>
 <li>is technically possible but solving this with Deep Learning would be
@@ -781,7 +785,7 @@ the data you will use to train the network.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
