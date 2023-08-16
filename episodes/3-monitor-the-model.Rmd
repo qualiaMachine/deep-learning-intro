@@ -359,19 +359,20 @@ We will create a function for it, because we will make use of this more often in
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def plot_history(metrics):
+def plot_history(history, metrics):
     """
     Plot the training history
 
     Args:
-        metrics(str, list): Metric or a list of metrics to plot
+        history (keras History object that is returned by model.fit())
+        metrics (str, list): Metric or a list of metrics to plot
     """
     history_df = pd.DataFrame.from_dict(history.history)
     sns.lineplot(data=history_df[metrics])
     plt.xlabel("epochs")
-    plt.ylabel("RMSE")
+    plt.ylabel("metric")
 
-plot_history('root_mean_squared_error')
+plot_history(history, 'root_mean_squared_error')
 ```
 
 ![](../fig/03_training_history_1_rmse.png){alt='Plot of the RMSE over epochs for the trained model that shows a decreasing error metric'}
@@ -539,7 +540,7 @@ history = model.fit(X_train, y_train,
 With this we can plot both the performance on the training data and on the validation data!
 
 ```python
-plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
+plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
 ![](../fig/03_training_history_2_rmse.png){alt='Plot of RMSE vs epochs for the training set and the validation set which depicts a divergence between the two around 10 epochs.'}
@@ -628,7 +629,7 @@ history = model.fit(X_train, y_train,
                    batch_size = 32,
                    epochs = 200,
                    validation_data=(X_val, y_val))
-plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
+plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
 ![](../fig/03_training_history_3_rmse_smaller_model.png){alt='Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets.'}
@@ -677,7 +678,7 @@ history = model.fit(X_train, y_train,
 
 As before, we can plot the losses during training:
 ```python
-plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
+plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
 ![](../fig/03_training_history_3_rmse_early_stopping.png){alt='Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets.'}
@@ -758,7 +759,7 @@ history = model.fit(X_train, y_train,
                     validation_data=(X_val, y_val),
                     callbacks=[earlystopper])
 
-plot_history(['root_mean_squared_error', 'val_root_mean_squared_error'])
+plot_history(history, ['root_mean_squared_error', 'val_root_mean_squared_error'])
 ```
 
 ![](../fig/03_training_history_5_rmse_batchnorm.png){alt='Output of plotting sample'}
