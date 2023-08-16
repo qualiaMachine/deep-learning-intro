@@ -1,11 +1,11 @@
 ---
 title: "Outlook"
-teaching: 15
-exercises: 10
+teaching: 10
+exercises: 15
 ---
 
 ::: questions
-- "How do I apply what I learned to real-world problems?"
+- "How does what I learned in this lesson translate to real-world problems?"
 - "What are next steps to take after this lesson?"
 :::
 
@@ -36,7 +36,7 @@ You don't have to use this project as an example.
 It works best to use a suitable deep learning project that you know well and are passionate about.
 :::
 ::: challenge
-## Exercise: A real-world deep learning application in science
+## Exercise: A real-world deep learning application
 
 1. Looking at the 'Model training' section of the notebook, what do you recognize from what you learned in this lesson?
 2. Can you identify the different steps of the deep learning workflow in this notebook?
@@ -53,6 +53,8 @@ EarlyStopping as well as the Adam optimizer is used.
 '7: Make predictions' (which is called 'Model inference' in this notebook), and '10: Save model'.
 ::::
 :::
+
+Hopefully you can appreciate that what you learned in this lesson, can be applied to real-world problems as well.
 
 ::: callout
 ## Extensive data preparation
@@ -71,3 +73,9 @@ Here are some suggestions for next steps you can take to become a deep learning 
 * Apply what you have learned on your own projects. Use the deep learning workflow to structure your work.
 Start as simple as possible, and incrementally increase the complexity of your approach.
 * Compete in a [Kaggle competition](https://www.kaggle.com/competitions) to practice what you have learned.
+
+::: keypoints
+- "Although the data preparation and model architectures are somewhat more complex,
+what we have learned in this lesson can directly be applied to real-world problems"
+- "Use what you have learned in this lesson as a basis for your own learning trajectory in the world of deep learning"
+:::
