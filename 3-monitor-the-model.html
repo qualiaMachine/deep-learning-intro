@@ -543,7 +543,7 @@ sunshine hours?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>The shape of the input layer has to correspond to the number of
 features in our data: 89</li>
@@ -706,7 +706,7 @@ process is increased</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><p>Correct answer: B. To find the weights that minimize the loss
 function. The loss function quantifies the total error of the network,
@@ -844,19 +844,20 @@ it, because we will make use of this more often in this lesson!</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_history(metrics):</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_history(history, metrics):</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Plot the training history</span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">        metrics(str, list): Metric or a list of metrics to plot</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    history_df <span class="op">=</span> pd.DataFrame.from_dict(history.history)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    sns.lineplot(data<span class="op">=</span>history_df[metrics])</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"epochs"</span>)</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"RMSE"</span>)</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>plot_history(<span class="st">'root_mean_squared_error'</span>)</span></code></pre>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">        history (keras History object that is returned by model.fit())</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">        metrics (str, list): Metric or a list of metrics to plot</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    history_df <span class="op">=</span> pd.DataFrame.from_dict(history.history)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    sns.lineplot(data<span class="op">=</span>history_df[metrics])</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"epochs"</span>)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"metric"</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>plot_history(history, <span class="st">'root_mean_squared_error'</span>)</span></code></pre>
 </div>
 <figure><img src="fig/03_training_history_1_rmse.png" alt="Plot of the RMSE over epochs for the trained model that shows a decreasing error metric" class="figure mx-auto d-block"></figure><p>This looks very promising! Our metric (“RMSE”) is dropping nicely and
 while it maybe keeps fluctuating a bit it does end up at fairly low
@@ -932,7 +933,7 @@ why?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -1052,7 +1053,7 @@ problem to solve?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>This really depends on your definition of hard! The baseline gives a
 more accurate prediction than just randomly predicting a number, so the
@@ -1126,7 +1127,7 @@ on the validation data!</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_history([<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
 </div>
 <figure><img src="fig/03_training_history_2_rmse.png" alt="Plot of RMSE vs epochs for the training set and the validation set which depicts a divergence between the two around 10 epochs." class="figure mx-auto d-block"></figure><div id="exercise-plot-the-training-progress." class="callout challenge">
 <div class="callout-square">
@@ -1151,7 +1152,7 @@ think about what you actually would like to see)</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -1202,7 +1203,7 @@ notable effect on the performance on the validation set?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Let’s first adapt our <code>create_nn</code> function so that we can
 tweak the number of nodes in the 2 layers by passing arguments to the
@@ -1252,7 +1253,7 @@ Non-trainable params: 0</code></pre>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                   batch_size <span class="op">=</span> <span class="dv">32</span>,</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                   epochs <span class="op">=</span> <span class="dv">200</span>,</span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                   validation_data<span class="op">=</span>(X_val, y_val))</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>plot_history([<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
 </div>
 <figure><img src="fig/03_training_history_3_rmse_smaller_model.png" alt="Plot of RMSE vs epochs for the training set and the validation set with similar performance across the two sets." class="figure mx-auto d-block"></figure><ol style="list-style-type: decimal"><li>With this smaller model we have reduced overfitting a bit, since the
 training and validation loss are now closer to each other, and the
@@ -1324,7 +1325,7 @@ not gone down for 10 epochs.</p>
 <div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>plot_history([<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
 </div>
 <figure><img src="fig/03_training_history_3_rmse_early_stopping.png" alt="Plot of RMSE vs epochs for the training set and the validation set displaying similar performance across the two sets." class="figure mx-auto d-block"></figure><p>This still seems to reveal the onset of overfitting, but the training
 stops before the discrepancy between training and validation loss can
@@ -1416,7 +1417,7 @@ Non-trainable params: 178</code></pre>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(X_val, y_val),</span>
 <span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>                    callbacks<span class="op">=</span>[earlystopper])</span>
 <span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>plot_history([<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
 </div>
 <figure><img src="fig/03_training_history_5_rmse_batchnorm.png" alt="Output of plotting sample" class="figure mx-auto d-block"></figure><div id="batchnorm-parameters" class="callout callout">
 <div class="callout-square">
@@ -1498,7 +1499,7 @@ all features from all cities. How does it perform?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="use-9-years-out-of-the-dataset">1. Use 9 years out of the dataset<a class="anchor" aria-label="anchor" href="#use-9-years-out-of-the-dataset"></a></h3>
@@ -1695,7 +1696,7 @@ improve the prediction quality?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
