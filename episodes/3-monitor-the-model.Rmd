@@ -370,7 +370,7 @@ def plot_history(history, metrics):
     history_df = pd.DataFrame.from_dict(history.history)
     sns.lineplot(data=history_df[metrics])
     plt.xlabel("epochs")
-    plt.ylabel("RMSE")
+    plt.ylabel("metric")
 
 plot_history(history, 'root_mean_squared_error')
 ```
