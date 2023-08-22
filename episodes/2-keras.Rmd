@@ -276,8 +276,7 @@ Therefore we will need to set two random seeds, one for numpy and one for tensor
 ```python
 from numpy.random import seed
 seed(1)
-from tensorflow.random import set_seed
-set_seed(2)
+keras.utils.set_random_seed(2)
 ```
 
 ### Build a neural network from scratch
