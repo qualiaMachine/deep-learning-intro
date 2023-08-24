@@ -371,6 +371,7 @@ We can plot the training process using the history:
 ```python
 import seaborn as sns
 import matplotlib.pyplot as plt
+import pandas as pd
 
 def plot_history(history, metrics):
     """
