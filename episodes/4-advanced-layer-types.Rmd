@@ -208,9 +208,10 @@ This kernel will give a high value to a pixel if it is on a horizontal border be
 Note that for RGB images, the kernel should also have a depth of 3.
 
 In the following image, we see the effect of such a kernel on the values of a single-channel image. The red cell in the output matrix is the result of multiplying and summing the values of the red square in the input, and the kernel. Applying this kernel to a real image shows that it indeed detects horizontal edges.
-![](../fig/04_conv_matrix.png){alt='Example of a convolution matrix calculation'}
 
-![](../fig/04_conv_image.png){alt='Convolution example on an image of a cat to extract features'}
+![](../fig/04_conv_matrix.png){alt='Example of a convolution matrix calculation' style='width:90%'}
+
+![](../fig/04_conv_image.png){alt='Convolution example on an image of a cat to extract features' style='width:100%'}
 
 In our **convolutional layer** our hidden units are a number of convolutional matrices (or kernels), where the values of the matrices are the weights that we learn in the training process. The output of a convolutional layer is an 'image' for each of the kernels, that gives the output of the kernel applied to each pixel.
 
