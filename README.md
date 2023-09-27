@@ -13,7 +13,7 @@ deep learning. In addition, we expect them to know basics of statistics and mach
 ## Lesson development sprints
 We regularly host lesson development sprints, in which we work together at the lesson.
 The next one is scheduled for the 30th of November. We kickoff with an online meeting at 9:30 CEST.
-If you want to join (you are very welcome to join even if you have never contributed so far) send an email to svenvanderburg@gmail.com.
+If you want to join (you are very welcome to join even if you have never contributed so far) send an email to s.vanderburg@esciencecenter.nl .
 
 ## Contributing
 
