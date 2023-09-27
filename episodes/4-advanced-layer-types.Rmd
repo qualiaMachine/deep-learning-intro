@@ -526,17 +526,18 @@ Note that the training loss continues to decrease, while the validation loss sta
 
 Techniques to avoid overfitting, or to improve model generalization, are termed **regularization techniques**.
 One of the most versatile regularization technique is **dropout** ([Srivastava et al., 2014](https://jmlr.org/papers/v15/srivastava14a.html)).
-Dropout essentially means that during each training cycle a random fraction of the dense layer nodes are turned off. This is described with the dropout rate between 0 and 1 which determines the fraction of nodes to silence at a time.
+Dropout means that during each training cycle (one forward pass of the data through the model) a random fraction of neurons in a dense layer are turned off.
+This is described with the dropout rate between 0 and 1 which determines the fraction of nodes to silence at a time.
 
 ![](../fig/neural_network_sketch_dropout.png){alt='A sketch of a neural network with and without dropout'}
 
 The intuition behind dropout is that it enforces redundancies in the network by constantly removing different elements of a network. The model can no longer rely on individual nodes and instead must create multiple "paths". In addition, the model has to make predictions with much fewer nodes and weights (connections between the nodes).
-As a result, it becomes much harder for a network to memorize particular features. At first this might appear a quiet drastic approach which affects the network architecture strongly.
+As a result, it becomes much harder for a network to memorize particular features. At first this might appear a quite drastic approach which affects the network architecture strongly.
 In practice, however, dropout is computationally a very elegant solution which does not affect training speed. And it frequently works very well.
 
 **Important to note:** Dropout layers will only randomly silence nodes during training! During a predictions step, all nodes remain active (dropout is off). During training, the sample of nodes that are silenced are different for each training instance, to give all nodes a chance to observe enough training data to learn its weights.
 
-Let us add one dropout layer towards the end of the network, that randomly drops 20% of the input units.
+Let us add one dropout layer towards the end of the network, that randomly drops 80% of the nodes.
 
 ```python
 def create_nn_with_dropout():
