@@ -526,7 +526,7 @@ Note that the training loss continues to decrease, while the validation loss sta
 
 Techniques to avoid overfitting, or to improve model generalization, are termed **regularization techniques**.
 One of the most versatile regularization technique is **dropout** ([Srivastava et al., 2014](https://jmlr.org/papers/v15/srivastava14a.html)).
-Dropout essentially means that during each training cycle a random fraction of the dense layer nodes are turned off.
+Dropout means that during each training cycle (one forward pass of the data through the model) a random fraction of neurons in a dense layer are turned off.
 This is described with the dropout rate between 0 and 1 which determines the fraction of nodes to silence at a time.
 
 ![](../fig/neural_network_sketch_dropout.png){alt='A sketch of a neural network with and without dropout'}
