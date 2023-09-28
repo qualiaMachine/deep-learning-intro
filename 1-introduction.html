@@ -256,7 +256,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction</h1>
-        <p> Last updated on 2023-09-27 | 
+        <p> Last updated on 2023-09-28 | 
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/1-introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -402,6 +402,62 @@ Python, Excel…</em></p>
 </div>
 </div>
 </div>
+<div id="activation-functions" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="activation-functions" class="callout-inner">
+<h3 class="callout-title">Activation functions<a class="anchor" aria-label="anchor" href="#activation-functions"></a>
+</h3>
+<div class="callout-content">
+<p>Look at the following activation functions:</p>
+<p><img src="fig/01_sigmoid.svg" alt="Plot of the sigmoid function" width="200" class="figure"> A. Sigmoid activation function</p>
+<p><img src="fig/01_relu.svg" alt="Plot of the ReLU function" width="200" class="figure"> B. ReLU activation function</p>
+<p><img src="fig/01_identity_function.svg" alt="Plot of the Identity function" width="200" class="figure"> C. Identity (or
+linear) activation function</p>
+<p>Combine the following statements to the correct activation
+function:</p>
+<ol style="list-style-type: decimal"><li>This function enforces the activation of a neuron to be between 0
+and 1</li>
+<li>This function is useful in regression tasks when applied to an
+output neuron</li>
+<li>This function is the most popular activation function in hidden
+layers, since it introduces non-linearity in a computationally efficient
+way.</li>
+<li>This function is useful in classification tasks when applied to an
+output neuron</li>
+<li>(optional) For positive values this function results in the same
+activations as the identity function.</li>
+<li>(optional) This function is not differentiable at 0</li>
+<li>(optional) This function is the default for Dense layers (search the
+Keras documentation!)</li>
+</ol><p><em>Activation function plots by Laughsinthestocks - Own work, CC
+BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=44920411" class="external-link uri">https://commons.wikimedia.org/w/index.php?curid=44920411</a>,
+<a href="https://commons.wikimedia.org/w/index.php?curid=44920600" class="external-link uri">https://commons.wikimedia.org/w/index.php?curid=44920600</a>,
+<a href="https://commons.wikimedia.org/w/index.php?curid=44920533" class="external-link uri">https://commons.wikimedia.org/w/index.php?curid=44920533</a></em></p>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2">
+  Show me the solution
+  </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
+<ol style="list-style-type: decimal"><li>A</li>
+<li>C</li>
+<li>B</li>
+<li>A</li>
+<li>B</li>
+<li>B</li>
+<li>C</li>
+</ol></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section level5">
 <h5 id="what-makes-deep-learning-deep-learning">What makes deep learning deep learning?<a class="anchor" aria-label="anchor" href="#what-makes-deep-learning-deep-learning"></a></h5>
@@ -491,14 +547,14 @@ these 4 samples?</p>
 </tr></tbody></table></div>
 </div>
 </div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th><strong>Prediction</strong></th>
 <th><strong>Expected value</strong></th>
@@ -608,14 +664,14 @@ dogs.</li>
 </ol></div>
 </div>
 </div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
+  <h4 class="accordion-header" id="headingSolution4">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>and 5 are the sort of tasks often solved with Deep Learning.</li>
 <li>is technically possible but solving this with Deep Learning would be
@@ -786,14 +842,14 @@ the data you will use to train the network.</li>
 </ol></div>
 </div>
 </div>
-<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
+  <h4 class="accordion-header" id="headingSolution5">
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
@@ -998,8 +1054,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/deep-learning-intro/1-introduction.html",
   "identifier": "https://carpentries-incubator.github.io/deep-learning-intro/1-introduction.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2023-09-27",
-  "datePublished": "2023-09-27"
+  "dateModified": "2023-09-28",
+  "datePublished": "2023-09-28"
 }
 
   </script><script>
