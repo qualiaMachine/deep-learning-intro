@@ -94,6 +94,45 @@ So, neuron output = 1.25
 ::::
 :::
 
+::: challenge
+## Activation functions
+Look at the following activation functions:
+
+![](../fig/01_sigmoid.svg){alt='Plot of the sigmoid function' width='200px'}
+A. Sigmoid activation function
+
+![](../fig/01_relu.svg){alt='Plot of the ReLU function' width='200px'}
+B. ReLU activation function
+
+![](../fig/01_identity_function.svg){alt='Plot of the Identity function' width='200px'}
+C. Identity (or linear) activation function
+
+Combine the following statements to the correct activation function:
+
+1. This function enforces the activation of a neuron to be between 0 and 1
+2. This function is useful in regression tasks when applied to an output neuron
+3. This function is the most popular activation function in hidden layers, since it introduces non-linearity in a computationally efficient way.
+4. This function is useful in classification tasks when applied to an output neuron
+5. (optional) For positive values this function results in the same activations as the identity function.
+6. (optional) This function is not differentiable at 0
+7. (optional) This function is the default for Dense layers (search the Keras documentation!)
+
+*Activation function plots by Laughsinthestocks - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=44920411,
+https://commons.wikimedia.org/w/index.php?curid=44920600, https://commons.wikimedia.org/w/index.php?curid=44920533*
+
+:::: solution
+## Solution
+1. A
+2. C
+3. B
+4. A
+5. B
+6. B
+7. C
+::::
+:::
+
+
 ##### What makes deep learning deep learning?
 Neural networks aren't a new technique, they have been around since the late 1940s. But until around 2010 neural networks tended to be quite small, consisting of only 10s or perhaps 100s of neurons. This limited them to only solving quite basic problems. Around 2010 improvements in computing power and the algorithms for training the networks made much larger and more powerful networks practical. These are known as deep neural networks or Deep Learning.
 
