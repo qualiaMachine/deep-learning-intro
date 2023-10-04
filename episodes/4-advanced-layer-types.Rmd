@@ -1,6 +1,6 @@
 ---
 title: "Advanced layer types"
-teaching: 30
+teaching: 35
 exercises: 70
 ---
 
@@ -397,6 +397,73 @@ plot_history(history, ['loss', 'val_loss'])
 ![](../fig/04_training_history_loss_1.png){alt='Plot of training loss and validation loss vs epochs for the trained model'}
 
 It seems that the model is overfitting somewhat, because the validation accuracy and loss stagnates.
+
+::: instructor
+## Comparison with a network with only dense layers
+The callout box below compares the CNN approach with a network with only dense layers.
+Depending on time, the following discussion can be extended in depth up to your liking. You have several options:
+
+1. It can be used as a good recap exercise. The exercise question is then:
+'How does this simple CNN compare to a neural network with only dense layers?
+Implement a dense neural network and compare its performance to that of the CNN'.
+This will take 30-45 minutes and might deviate the focus away from CNNs.
+2. You can demonstrate (no typing along), just to show how the network would look like and make the comparison.
+3. You can just mention that a simple network with only dense layers reaches 35% accuracy, considerably worse than our simple CNN.
+:::
+
+::: callout
+## Comparison with a network with only dense layers
+How does this simple CNN compare to a neural network with only dense layers?
+
+We can define a neural network with only dense layers:
+```python
+def create_dense_model():
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = keras.layers.Flatten()(inputs)
+    x = keras.layers.Dense(50, activation='relu')(x)
+    x = keras.layers.Dense(50, activation='relu')(x)
+    outputs = keras.layers.Dense(10)(x)
+    return keras.models.Model(inputs=inputs, outputs=outputs,
+                              name='dense_model')
+
+dense_model = create_dense_model()
+dense_model.summary()
+```
+```output
+Model: "dense_model"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #
+=================================================================
+ input_9 (InputLayer)        [(None, 32, 32, 3)]       0
+
+ flatten_7 (Flatten)         (None, 3072)              0
+
+ dense_21 (Dense)            (None, 50)                153650
+
+ dense_22 (Dense)            (None, 50)                2550
+
+ dense_23 (Dense)            (None, 10)                510
+
+=================================================================
+Total params: 156710 (612.15 KB)
+Trainable params: 156710 (612.15 KB)
+Non-trainable params: 0 (0.00 Byte)
+_________________________________________________________________
+```
+As you can see this model has 1.5x more parameters than our simple CNN, let's train and evaluate it!
+
+```python
+compile_model(dense_model)
+history = dense_model.fit(train_images, train_labels, epochs=30,
+                    validation_data=(test_images, test_labels))
+plot_history(['accuracy', 'val_accuracy'])
+```
+![](../fig/04_dense_model_training_history.png){alt="Plot of training accuracy and validation accuracy vs epochs for a model with only dense layers"}
+
+As you can see the validation accuracy only reaches about 35%, whereas the CNN reached about 55% accuracy.
+
+This demonstrates that convolutional layers are a big improvement over dense layers for this kind of datasets.
+:::
 
 ## 9. Tune hyperparameters
 
