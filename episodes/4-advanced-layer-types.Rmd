@@ -400,7 +400,7 @@ It seems that the model is overfitting somewhat, because the validation accuracy
 ::: instructor
 ## Comparison with a network with only dense layers
 The callout box below compares the CNN approach with a network with only dense layers.
-You can choice how much you want to go in depth here, probably depending on time. You have several options:
+Depending on time, the following discussion can be extended in depth up to your liking. You have several options:
 
 1. It can be used as a good recap exercise. The exercise question is then:
 'How does this simple CNN compare to a neural network with only dense layers?
