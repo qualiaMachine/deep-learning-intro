@@ -350,7 +350,7 @@ bias)\)</span>
 </li>
 </ul><figure><img src="../fig/01_neuron.png" alt="A diagram of a single artificial neuron combining inputs and weights using an activation function." width="600" class="figure mx-auto d-block"></figure></div>
 <div class="section level5">
-<h5 id="combinging-multiple-neurons-into-a-network">Combinging multiple neurons into a network<a class="anchor" aria-label="anchor" href="#combinging-multiple-neurons-into-a-network"></a></h5>
+<h5 id="combining-multiple-neurons-into-a-network">Combining multiple neurons into a network<a class="anchor" aria-label="anchor" href="#combining-multiple-neurons-into-a-network"></a></h5>
 <p>Multiple neurons can be joined together by connecting the output of
 one to the input of another. These connections are associated with
 weights that determine the ‘strength’ of the connection, the weights are
@@ -366,14 +366,17 @@ the direction data moves in.</p>
 The image above is by Glosser.ca, CC BY-SA 3.0 <a href="https://creativecommons.org/licenses/by-sa/3.0" class="external-link uri">https://creativecommons.org/licenses/by-sa/3.0</a>, via
 Wikimedia Commons, <a href="https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg" class="external-link">original
 source</a></p>
-<div id="calculate-the-output-for-one-neuron" class="callout challenge">
+<div id="neural-network-calculations" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="calculate-the-output-for-one-neuron" class="callout-inner">
-<h3 class="callout-title">Calculate the output for one neuron<a class="anchor" aria-label="anchor" href="#calculate-the-output-for-one-neuron"></a>
+<div id="neural-network-calculations" class="callout-inner">
+<h3 class="callout-title">Neural network calculations<a class="anchor" aria-label="anchor" href="#neural-network-calculations"></a>
 </h3>
 <div class="callout-content">
+<p>.</p>
+<div class="section level4">
+<h4 id="calculate-the-output-for-one-neuron">1. Calculate the output for one neuron<a class="anchor" aria-label="anchor" href="#calculate-the-output-for-one-neuron"></a></h4>
 <p>Suppose we have:</p>
 <ul><li>Input: X = (0, 0.5, 1)</li>
 <li>Weights: W = (-1, -0.5, 0.5)</li>
@@ -385,6 +388,29 @@ source</a></p>
 <p><em>Note: You can use whatever you like: brain only, pen&amp;paper,
 Python, Excel…</em></p>
 </div>
+<div class="section level4">
+<h4 id="optional-calculate-outputs-for-a-network">2. (optional) Calculate outputs for a network<a class="anchor" aria-label="anchor" href="#optional-calculate-outputs-for-a-network"></a></h4>
+<p>Have a look at the following network:</p>
+<figure><img src="../fig/01_xor_exercise.png" alt="A diagram of a neural network with 2 inputs, 2 hidden layer neurons, and 1 output." width="400" class="figure mx-auto d-block"></figure><ol style="list-style-type: lower-alpha"><li>Calculate the output of the network for the following combinations
+of inputs:</li>
+</ol><table class="table"><thead><tr class="header"><th>x1</th>
+<th>x2</th>
+<th>y</th>
+</tr></thead><tbody><tr class="odd"><td>0</td>
+<td>0</td>
+<td>..</td>
+</tr><tr class="even"><td>0</td>
+<td>1</td>
+<td>..</td>
+</tr><tr class="odd"><td>1</td>
+<td>0</td>
+<td>..</td>
+</tr><tr class="even"><td>1</td>
+<td>1</td>
+<td>..</td>
+</tr></tbody></table><ol start="2" style="list-style-type: lower-alpha"><li>What logical problem does this network solve?</li>
+</ol></div>
+</div>
 </div>
 </div>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
@@ -394,12 +420,40 @@ Python, Excel…</em></p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<p>Weighted sum of input: 0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25</p>
-<p>Add the bias: 0.25 + 1 = 1.25</p>
-<p>Apply activation function: max(1.25, 0) = 1.25</p>
-<p>So, neuron output = 1.25</p>
+<div class="section level4">
+<h4 id="calculate-the-output-for-one-neuron-1">1: calculate the output for one neuron<a class="anchor" aria-label="anchor" href="#calculate-the-output-for-one-neuron-1"></a></h4>
+<ul><li>Weighted sum of input:
+<code>0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25</code>
+</li>
+<li>Add the bias: <code>0.25 + 1 = 1.25</code>
+</li>
+<li>Apply activation function: <code>max(1.25, 0) = 1.25</code>
+</li>
+</ul><p>So, the neuron’s output is <code>1.25</code></p>
+</div>
+<div class="section level4">
+<h4 id="calculate-outputs-for-a-network">2: Calculate outputs for a network<a class="anchor" aria-label="anchor" href="#calculate-outputs-for-a-network"></a></h4>
+<ol style="list-style-type: lower-alpha"><li><table class="table"><thead><tr class="header"><th>x1</th>
+<th>x2</th>
+<th>y</th>
+</tr></thead><tbody><tr class="odd"><td>0</td>
+<td>0</td>
+<td><strong>0</strong></td>
+</tr><tr class="even"><td>0</td>
+<td>1</td>
+<td><strong>1</strong></td>
+</tr><tr class="odd"><td>1</td>
+<td>1</td>
+<td><strong>0</strong></td>
+</tr><tr class="even"><td>1</td>
+<td>0</td>
+<td><strong>1</strong></td>
+</tr></tbody></table></li>
+<li>This solves the XOR logical problem, the output is 1 if only one of
+the two inputs is 1.</li>
+</ol></div>
 </div>
 </div>
 </div>
@@ -447,7 +501,7 @@ BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=44920411" cl
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>A</li>
 <li>C</li>
@@ -513,14 +567,17 @@ loss function (also called cost function). There are lots of loss
 functions to pick from, and it is important that you pick one that
 matches your problem definition well. We will look at an example of a
 loss function in the next exercise.</p>
-<div id="exercise-mean-squared-error" class="callout challenge">
+<div id="exercise-loss-function" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="exercise-mean-squared-error" class="callout-inner">
-<h3 class="callout-title">Exercise: Mean Squared Error<a class="anchor" aria-label="anchor" href="#exercise-mean-squared-error"></a>
+<div id="exercise-loss-function" class="callout-inner">
+<h3 class="callout-title">Exercise: Loss function<a class="anchor" aria-label="anchor" href="#exercise-loss-function"></a>
 </h3>
 <div class="callout-content">
+<p>.</p>
+<div class="section level4">
+<h4 id="compute-the-mean-squared-error">1. Compute the Mean Squared Error<a class="anchor" aria-label="anchor" href="#compute-the-mean-squared-error"></a></h4>
 <p>One of the simplest loss functions is the Mean Squared Error. MSE =
 <span class="math inline">\(\frac{1}{n}
 \Sigma_{i=1}^n({y}-\hat{y})^2\)</span> . It is the mean of all squared
@@ -547,6 +604,16 @@ these 4 samples?</p>
 <td><strong>MSE:</strong></td>
 <td>..</td>
 </tr></tbody></table></div>
+<div class="section level4">
+<h4 id="optional-huber-loss">2. (optional) Huber loss<a class="anchor" aria-label="anchor" href="#optional-huber-loss"></a></h4>
+<p>A more complicated and less used loss function for regression is the
+<a href="https://keras.io/api/losses/regression_losses/#huber-class" class="external-link">Huber
+loss</a>.</p>
+<p>Below you see the Huber loss (green, delta = 1) and Squared error
+loss (blue) as a function of <code>y_true - y_pred</code>.</p>
+<figure><img src="../fig/01_huber_loss.png" alt="Huber loss (green, delta = 1) and squared error loss (blue) as a function of y_true - y_pred" width="400" class="figure mx-auto d-block"></figure><p>Which loss function is more sensitive to outliers?</p>
+</div>
+</div>
 </div>
 </div>
 <div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
@@ -556,8 +623,10 @@ these 4 samples?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
+<div class="section level4">
+<h4 id="compute-the-mean-squared-error-1">1. ‘Compute the Mean Squared Error’<a class="anchor" aria-label="anchor" href="#compute-the-mean-squared-error-1"></a></h4>
 <table class="table"><thead><tr class="header"><th><strong>Prediction</strong></th>
 <th><strong>Expected value</strong></th>
 <th><strong>Squared error</strong></th>
@@ -577,6 +646,15 @@ these 4 samples?</p>
 <td><strong>MSE:</strong></td>
 <td>3.5</td>
 </tr></tbody></table></div>
+<div class="section level4">
+<h4 id="huber-loss">2. ‘Huber loss’<a class="anchor" aria-label="anchor" href="#huber-loss"></a></h4>
+<p>The squared error loss is more sensitive to outliers. Errors between
+-1 and 1 result in the same loss value for both loss functions. But,
+larger errors (in other words: outliers) result in quadratically larger
+losses for the Mean Squared Error, while for the Huber loss they only
+increase linearly.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -673,7 +751,7 @@ dogs.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>and 5 are the sort of tasks often solved with Deep Learning.</li>
 <li>is technically possible but solving this with Deep Learning would be
@@ -851,7 +929,7 @@ the data you will use to train the network.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
