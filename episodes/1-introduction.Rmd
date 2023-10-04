@@ -61,7 +61,7 @@ A neural network consists of connected computational units called **neurons**. E
 
 ![](../fig/01_neuron.png){alt='A diagram of a single artificial neuron combining inputs and weights using an activation function.' width='600px'}
 
-##### Combinging multiple neurons into a network
+##### Combining multiple neurons into a network
 Multiple neurons can be joined together by connecting the output of one to the input of another. These connections are associated with weights that determine the 'strength' of the connection, the weights are adjusted during training. In this way, the combination of neurons and connections describe a computational graph, an example can be seen in the image below. In most neural networks neurons are aggregated into layers. Signals travel from the input layer to the output layer, possibly through one or more intermediate layers called hidden layers.
 The image below shows an example of a neural network with three layers, each circle is a neuron, each line is an edge and the arrows indicate the direction data moves in.
 
@@ -69,7 +69,10 @@ The image below shows an example of a neural network with three layers, each cir
 The image above is by Glosser.ca, CC BY-SA 3.0 <https://creativecommons.org/licenses/by-sa/3.0>, via Wikimedia Commons, [original source](https://commons.wikimedia.org/wiki/File:Colored_neural_network.svg)
 
 ::: challenge
-## Calculate the output for one neuron
+## Neural network calculations
+.
+
+#### 1. Calculate the output for one neuron
 Suppose we have:
 
 - Input: X = (0, 0.5, 1)
@@ -81,15 +84,41 @@ What is the output of the neuron?
 
 _Note: You can use whatever you like: brain only, pen&paper, Python, Excel..._
 
+#### 2. (optional) Calculate outputs for a network
+
+Have a look at the following network:
+
+![](../fig/01_xor_exercise.png){alt='A diagram of a neural network with 2 inputs, 2 hidden layer neurons, and 1 output.' width='400px'}
+
+a. Calculate the output of the network for the following combinations of inputs:
+
+| x1 | x2 | y |
+|----|----|---|
+| 0  | 0  | ..|
+| 0  | 1  | ..|
+| 1  | 0  | ..|
+| 1  | 1  | ..|
+
+b. What logical problem does this network solve?
+
 :::: solution
 ## Solution
-Weighted sum of input: 0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25
+#### 1: calculate the output for one neuron
+* Weighted sum of input: `0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25`
+* Add the bias: `0.25 + 1 = 1.25`
+* Apply activation function: `max(1.25, 0) = 1.25`
 
-Add the bias: 0.25 + 1 = 1.25
+So, the neuron's output is `1.25`
 
-Apply activation function: max(1.25, 0) = 1.25
-
-So, neuron output = 1.25
+#### 2: Calculate outputs for a network
+a.
+| x1 | x2 | y     |
+|----|----|---    |
+| 0  | 0  | **0** |
+| 0  | 1  | **1** |
+| 1  | 1  | **0** |
+| 1  | 0  | **1** |
+b. This solves the XOR logical problem, the output is 1 if only one of the two inputs is 1.
 
 ::::
 :::
@@ -155,7 +184,10 @@ There are lots of loss functions to pick from, and it is important that you pick
 We will look at an example of a loss function in the next exercise.
 
 ::: challenge
-## Exercise: Mean Squared Error
+## Exercise: Loss function
+.
+
+#### 1. Compute the Mean Squared Error
 One of the simplest loss functions is the Mean Squared Error. MSE = $\frac{1}{n} \Sigma_{i=1}^n({y}-\hat{y})^2$ .
 It is the mean of all squared errors, where the error is the difference between the predicted and expected value.
 In the following table, fill in the missing values in the 'squared error' column. What is the MSE loss
@@ -169,8 +201,20 @@ for the predictions on these 4 samples?
 | 3              | 2                  | ..                |
 |                | **MSE:**           | ..                |
 
+#### 2. (optional) Huber loss
+A more complicated and less used loss function for regression is the [Huber loss](https://keras.io/api/losses/regression_losses/#huber-class).
+
+Below you see the Huber loss (green, delta = 1) and Squared error loss (blue)
+as a function of `y_true - y_pred`.
+
+![](../fig/01_huber_loss.png){alt='Huber loss (green, delta = 1) and squared error loss (blue)
+as a function of y_true - y_pred' width='400px'}
+
+Which loss function is more sensitive to outliers?
+
 :::: solution
 ## Solution
+#### 1. 'Compute the Mean Squared Error'
 | **Prediction** | **Expected value** | **Squared error** |
 |----------------|--------------------|-------------------|
 | 1              | -1                 | 4                 |
@@ -179,6 +223,10 @@ for the predictions on these 4 samples?
 | 3              | 2                  | 1                 |
 |                | **MSE:**           | 3.5               |
 
+#### 2. 'Huber loss'
+The squared error loss is more sensitive to outliers. Errors between -1 and 1 result in the same loss value
+for both loss functions. But, larger errors (in other words: outliers) result in quadratically larger losses for
+the Mean Squared Error, while for the Huber loss they only increase linearly.
 ::::
 :::
 
