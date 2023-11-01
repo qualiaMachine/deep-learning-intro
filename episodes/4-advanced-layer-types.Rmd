@@ -465,7 +465,7 @@ As you can see the validation accuracy only reaches about 35%, whereas the CNN r
 This demonstrates that convolutional layers are a big improvement over dense layers for this kind of datasets.
 :::
 
-## 9. Tune hyperparameters
+## 9. Refine the model
 
 ::: challenge
 ## Network depth

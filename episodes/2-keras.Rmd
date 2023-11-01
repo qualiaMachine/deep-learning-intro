@@ -40,7 +40,7 @@ As a reminder below are the steps of the deep learning workflow:
 6. Train the model
 7. Perform a Prediction/Classification
 8. Measure performance
-9. Tune hyperparameters
+9. Refine the model
 10. Save model
 
 In this episode we will focus on a minimal example for each of these steps, later episodes will build on this knowledge to go into greater depth for some or all of these steps.
@@ -327,7 +327,7 @@ The instantiation here has 2 parameters and a seemingly strange combination of p
 let us take a closer look.
 The first parameter `10` is the number of neurons we want in this layer, this is one of the
 hyperparameters of our system and needs to be chosen carefully. We will get back to this in the section
-on hyperparameter tuning.
+on refining the model.
 The second parameter is the activation function to use, here we choose relu which is 0
 for inputs that are 0 and below and the identity function (returning the same value)
 for inputs above 0.
@@ -593,7 +593,7 @@ Length: 69, dtype: object
 ## 8. Measuring performance
 Now that we have a trained neural network it is important to assess how well it performs.
 We want to know how well it will perform in a realistic prediction scenario, measuring
-performance will also come back when tuning the hyperparameters.
+performance will also come back when refining the model.
 
 We have created a test set (i.e. y_test) during the data preparation stage which we will use
 now to create a confusion matrix.
@@ -667,18 +667,19 @@ We can try many things to improve the performance from here.
 One of the first things we can try is to balance the dataset better.
 Other options include: changing the network architecture or changing the
 training parameters
+
+Note that the outcome you have might be slightly different from what is shown in this tutorial.
 ::::
 :::
 
-## 9. Tune hyperparameters
+## 9. Refine the model
 As we discussed before the design and training of a neural network comes with
-many hyper parameter choices.
-We will go into more depth of these hyperparameters in later episodes.
+many hyperparameter and model architecture choices.
+We will go into more depth of these choices in later episodes.
 For now it is important to realize that the parameters we chose were
 somewhat arbitrary and more careful consideration needs to be taken to
 pick hyperparameter values. 
 
-Note that the outcome you have might be slightly different from what is shown in this tutorial.
 
 ## 10. Share model
 It is very useful to be able to use the trained neural network at a later

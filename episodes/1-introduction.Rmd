@@ -325,7 +325,10 @@ For the outputs we will need to look at what we want to identify from the data. 
 
 Many datasets are not ready for immediate use in a neural network and will require some preparation. Neural networks can only really deal with numerical data, so any non-numerical data (for example words) will have to be somehow converted to numerical data.
 
-Next we will need to divide the data into multiple sets. One of these will be used by the training process and we will call it the training set. Another will be used to evaluate the accuracy of the training and we will call that one the test set. Sometimes we will also use a 3rd set known as a validation set to tune hyperparameters.
+Next we will need to divide the data into multiple sets.
+One of these will be used by the training process and we will call it the training set.
+Another will be used to evaluate the accuracy of the training and we will call that one the test set.
+Sometimes we will also use a 3rd set known as a validation set to refine the model.
 
 ### 4. Choose a pre-trained model or build a new architecture from scratch
 
@@ -358,9 +361,12 @@ of the network.
 
 Once we trained the network we want to measure its performance. To do this we use some additional data that was not part of the training, this is known as a test set. There are many different methods available for measuring performance and which one is best depends on the type of task we are attempting. These metrics are often published as an indication of how well our network performs.
 
-### 9. Tune Hyperparameters
+### 9. Refine the model
 
-Hyperparameters are all the parameters set by the person configuring the machine learning instead of those learned by the algorithm itself. The hyperparameters include the number of epochs or the parameters for the optimizer. It might be necessary to adjust these and re-run the training many times before we are happy with the result.
+We refine the model further. We can for example slightly change the architecture of the model, or change the number of nodes in a layer.
+Hyperparameters are all the parameters set by the person configuring the machine learning instead of those learned by the algorithm itself.
+The hyperparameters include the number of epochs or the parameters for the optimizer.
+It might be necessary to adjust these and re-run the training many times before we are happy with the result, this is often done automatically and that is referred to as hyperparameter tuning.
 
 ### 10. Share Model
 
@@ -452,7 +458,7 @@ You should get a version number reported. At the time of writing 1.2.2 is the la
 - "Deep Learning is a machine learning technique based on using many artificial neurons arranged in layers."
 - "Neural networks learn by minimizing a loss function."
 - "Deep Learning is well suited to classification and prediction problems such as image recognition."
-- "To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, tuning Hyperparameters, measuring performance before we can classify data."
+- "To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, refine the model, measuring performance before we can classify data."
 - "Keras is a Deep Learning library that is easier to use than many of the alternatives such as TensorFlow and PyTorch."
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
