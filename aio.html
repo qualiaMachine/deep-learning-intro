@@ -479,7 +479,7 @@ of inputs:</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="calculate-the-output-for-one-neuron-1">1: calculate the output for one neuron<a class="anchor" aria-label="anchor" href="#calculate-the-output-for-one-neuron-1"></a>
@@ -581,7 +581,7 @@ BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=44920411" cl
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>A</li>
@@ -726,7 +726,7 @@ loss (blue) as a function of <code>y_true - y_pred</code>.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="compute-the-mean-squared-error-1">1. ‘Compute the Mean Squared Error’<a class="anchor" aria-label="anchor" href="#compute-the-mean-squared-error-1"></a>
@@ -888,7 +888,7 @@ dogs.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>and 5 are the sort of tasks often solved with Deep Learning.</li>
@@ -974,7 +974,7 @@ to be somehow converted to numerical data.</p>
 will be used by the training process and we will call it the training
 set. Another will be used to evaluate the accuracy of the training and
 we will call that one the test set. Sometimes we will also use a 3rd set
-known as a validation set to tune hyperparameters.</p>
+known as a validation set to refine the model.</p>
 </div>
 <div class="section level3">
 <h3 id="choose-a-pre-trained-model-or-build-a-new-architecture-from-scratch">4. Choose a pre-trained model or build a new architecture from
@@ -1036,13 +1036,16 @@ we are attempting. These metrics are often published as an indication of
 how well our network performs.</p>
 </div>
 <div class="section level3">
-<h3 id="tune-hyperparameters">9. Tune Hyperparameters<a class="anchor" aria-label="anchor" href="#tune-hyperparameters"></a>
+<h3 id="refine-the-model">9. Refine the model<a class="anchor" aria-label="anchor" href="#refine-the-model"></a>
 </h3>
-<p>Hyperparameters are all the parameters set by the person configuring
-the machine learning instead of those learned by the algorithm itself.
-The hyperparameters include the number of epochs or the parameters for
-the optimizer. It might be necessary to adjust these and re-run the
-training many times before we are happy with the result.</p>
+<p>We refine the model further. We can for example slightly change the
+architecture of the model, or change the number of nodes in a layer.
+Hyperparameters are all the parameters set by the person configuring the
+machine learning instead of those learned by the algorithm itself. The
+hyperparameters include the number of epochs or the parameters for the
+optimizer. It might be necessary to adjust these and re-run the training
+many times before we are happy with the result, this is often done
+automatically and that is referred to as hyperparameter tuning.</p>
 </div>
 <div class="section level3">
 <h3 id="share-model">10. Share Model<a class="anchor" aria-label="anchor" href="#share-model"></a>
@@ -1083,7 +1086,7 @@ the data you will use to train the network.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
@@ -1227,7 +1230,7 @@ problems such as image recognition.”</li>
 <li>“To use Deep Learning effectively we need to go through a workflow
 of: defining the problem, identifying inputs and outputs, preparing
 data, choosing the type of network, choosing a loss function, training
-the model, tuning Hyperparameters, measuring performance before we can
+the model, refine the model, measuring performance before we can
 classify data.”</li>
 <li>“Keras is a Deep Learning library that is easier to use than many of
 the alternatives such as TensorFlow and PyTorch.”</li>
@@ -1307,7 +1310,7 @@ scratch</li>
 <li>Train the model</li>
 <li>Perform a Prediction/Classification</li>
 <li>Measure performance</li>
-<li>Tune hyperparameters</li>
+<li>Refine the model</li>
 <li>Save model</li>
 </ol>
 <p>In this episode we will focus on a minimal example for each of these
@@ -1791,12 +1794,12 @@ then be done as follows:</p>
 combination of parentheses, so let us take a closer look. The first
 parameter <code>10</code> is the number of neurons we want in this
 layer, this is one of the hyperparameters of our system and needs to be
-chosen carefully. We will get back to this in the section on
-hyperparameter tuning. The second parameter is the activation function
-to use, here we choose relu which is 0 for inputs that are 0 and below
-and the identity function (returning the same value) for inputs above 0.
-This is a commonly used activation function in deep neural networks that
-is proven to work well. Next we see an extra set of parenthenses with
+chosen carefully. We will get back to this in the section on refining
+the model. The second parameter is the activation function to use, here
+we choose relu which is 0 for inputs that are 0 and below and the
+identity function (returning the same value) for inputs above 0. This is
+a commonly used activation function in deep neural networks that is
+proven to work well. Next we see an extra set of parenthenses with
 inputs in them, this means that after creating an instance of the Dense
 layer we call it as if it was a function. This tells the Dense layer to
 connect the layer passed as a parameter, in this case the inputs.
@@ -2206,7 +2209,7 @@ Length: 69, dtype: object</code></pre>
 <p>Now that we have a trained neural network it is important to assess
 how well it performs. We want to know how well it will perform in a
 realistic prediction scenario, measuring performance will also come back
-when tuning the hyperparameters.</p>
+when refining the model.</p>
 <p>We have created a test set (i.e. y_test) during the data preparation
 stage which we will use now to create a confusion matrix.</p>
 <div class="section level3">
@@ -2294,22 +2297,22 @@ important when training neural networks. We can try many things to
 improve the performance from here. One of the first things we can try is
 to balance the dataset better. Other options include: changing the
 network architecture or changing the training parameters</p>
+<p>Note that the outcome you have might be slightly different from what
+is shown in this tutorial.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section><section id="tune-hyperparameters"><h2 class="section-heading">9. Tune hyperparameters<a class="anchor" aria-label="anchor" href="#tune-hyperparameters"></a>
+</section><section id="refine-the-model"><h2 class="section-heading">9. Refine the model<a class="anchor" aria-label="anchor" href="#refine-the-model"></a>
 </h2>
 <hr class="half-width">
 <p>As we discussed before the design and training of a neural network
-comes with many hyper parameter choices. We will go into more depth of
-these hyperparameters in later episodes. For now it is important to
-realize that the parameters we chose were somewhat arbitrary and more
-careful consideration needs to be taken to pick hyperparameter
-values.</p>
-<p>Note that the outcome you have might be slightly different from what
-is shown in this tutorial.</p>
+comes with many hyperparameter and model architecture choices. We will
+go into more depth of these choices in later episodes. For now it is
+important to realize that the parameters we chose were somewhat
+arbitrary and more careful consideration needs to be taken to pick
+hyperparameter values.</p>
 </section><section id="share-model"><h2 class="section-heading">10. Share model<a class="anchor" aria-label="anchor" href="#share-model"></a>
 </h2>
 <hr class="half-width">
@@ -2723,7 +2726,7 @@ sunshine hours?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The shape of the input layer has to correspond to the number of
@@ -2901,7 +2904,7 @@ process is increased</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Correct answer: B. To find the weights that minimize the loss
@@ -3143,7 +3146,7 @@ why?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -3266,7 +3269,7 @@ problem to solve?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>This really depends on your definition of hard! The baseline gives a
@@ -3283,7 +3286,7 @@ baseline would be to take the average over the last couple of days.</li>
 </div>
 </div>
 </div>
-</section><section id="tune-hyperparameters"><h2 class="section-heading">9. Tune hyperparameters<a class="anchor" aria-label="anchor" href="#tune-hyperparameters"></a>
+</section><section id="refine-the-model"><h2 class="section-heading">9. Refine the model<a class="anchor" aria-label="anchor" href="#refine-the-model"></a>
 </h2>
 <hr class="half-width">
 <div class="section level3">
@@ -3371,7 +3374,7 @@ think about what you actually would like to see)</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -3425,7 +3428,7 @@ notable effect on the performance on the validation set?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Let’s first adapt our <code>create_nn</code> function so that we can
 tweak the number of nodes in the 2 layers by passing arguments to the
@@ -3730,7 +3733,7 @@ all features from all cities. How does it perform?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="use-9-years-out-of-the-dataset">1. Use 9 years out of the dataset<a class="anchor" aria-label="anchor" href="#use-9-years-out-of-the-dataset"></a>
@@ -3935,7 +3938,7 @@ improve the prediction quality?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
@@ -4688,7 +4691,7 @@ over dense layers for this kind of datasets.</p>
 </div>
 </div>
 </div>
-</section><section id="tune-hyperparameters"><h2 class="section-heading">9. Tune hyperparameters<a class="anchor" aria-label="anchor" href="#tune-hyperparameters"></a>
+</section><section id="refine-the-model"><h2 class="section-heading">9. Refine the model<a class="anchor" aria-label="anchor" href="#refine-the-model"></a>
 </h2>
 <hr class="half-width">
 <div id="network-depth" class="callout challenge">
@@ -5210,7 +5213,7 @@ from the first figure of <a href="https://doi.org/10.1186/s13321-021-00558-4" cl
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The model summary for the Siamese model is more complex than what we

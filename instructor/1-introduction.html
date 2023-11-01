@@ -420,7 +420,7 @@ of inputs:</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="calculate-the-output-for-one-neuron-1">1: calculate the output for one neuron<a class="anchor" aria-label="anchor" href="#calculate-the-output-for-one-neuron-1"></a></h4>
@@ -501,7 +501,7 @@ BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=44920411" cl
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>A</li>
 <li>C</li>
@@ -623,7 +623,7 @@ loss (blue) as a function of <code>y_true - y_pred</code>.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="compute-the-mean-squared-error-1">1. ‘Compute the Mean Squared Error’<a class="anchor" aria-label="anchor" href="#compute-the-mean-squared-error-1"></a></h4>
@@ -751,7 +751,7 @@ dogs.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>and 5 are the sort of tasks often solved with Deep Learning.</li>
 <li>is technically possible but solving this with Deep Learning would be
@@ -830,7 +830,7 @@ to be somehow converted to numerical data.</p>
 will be used by the training process and we will call it the training
 set. Another will be used to evaluate the accuracy of the training and
 we will call that one the test set. Sometimes we will also use a 3rd set
-known as a validation set to tune hyperparameters.</p>
+known as a validation set to refine the model.</p>
 </div>
 <div class="section level3">
 <h3 id="choose-a-pre-trained-model-or-build-a-new-architecture-from-scratch">4. Choose a pre-trained model or build a new architecture from
@@ -886,12 +886,15 @@ we are attempting. These metrics are often published as an indication of
 how well our network performs.</p>
 </div>
 <div class="section level3">
-<h3 id="tune-hyperparameters">9. Tune Hyperparameters<a class="anchor" aria-label="anchor" href="#tune-hyperparameters"></a></h3>
-<p>Hyperparameters are all the parameters set by the person configuring
-the machine learning instead of those learned by the algorithm itself.
-The hyperparameters include the number of epochs or the parameters for
-the optimizer. It might be necessary to adjust these and re-run the
-training many times before we are happy with the result.</p>
+<h3 id="refine-the-model">9. Refine the model<a class="anchor" aria-label="anchor" href="#refine-the-model"></a></h3>
+<p>We refine the model further. We can for example slightly change the
+architecture of the model, or change the number of nodes in a layer.
+Hyperparameters are all the parameters set by the person configuring the
+machine learning instead of those learned by the algorithm itself. The
+hyperparameters include the number of epochs or the parameters for the
+optimizer. It might be necessary to adjust these and re-run the training
+many times before we are happy with the result, this is often done
+automatically and that is referred to as hyperparameter tuning.</p>
 </div>
 <div class="section level3">
 <h3 id="share-model">10. Share Model<a class="anchor" aria-label="anchor" href="#share-model"></a></h3>
@@ -929,7 +932,7 @@ the data you will use to train the network.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
@@ -1064,7 +1067,7 @@ problems such as image recognition.”</li>
 <li>“To use Deep Learning effectively we need to go through a workflow
 of: defining the problem, identifying inputs and outputs, preparing
 data, choosing the type of network, choosing a loss function, training
-the model, tuning Hyperparameters, measuring performance before we can
+the model, refine the model, measuring performance before we can
 classify data.”</li>
 <li>“Keras is a Deep Learning library that is easier to use than many of
 the alternatives such as TensorFlow and PyTorch.”</li>
