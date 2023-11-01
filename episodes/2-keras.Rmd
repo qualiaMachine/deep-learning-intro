@@ -674,7 +674,7 @@ Note that the outcome you have might be slightly different from what is shown in
 
 ## 9. Refine the model
 As we discussed before the design and training of a neural network comes with
-many hyper parameter and model architecture choices.
+many hyperparameter and model architecture choices.
 We will go into more depth of these choices in later episodes.
 For now it is important to realize that the parameters we chose were
 somewhat arbitrary and more careful consideration needs to be taken to
