@@ -84,13 +84,10 @@ Current maintainers of this lesson are
 * Sven van der Burg
 * Pranav Chandramouli
 
-## Authors
+## Citation and authors
 
-A list of contributors to the lesson can be found in [AUTHORS](AUTHORS)
-
-## Citation
-
-To cite this lesson, please consult with [CITATION](CITATION)
+To cite this lesson, please consult with [CITATION.cff](CITATION.cff).
+This also holds a list of contributors to the lesson.
 
 [cdh]: https://cdh.carpentries.org
 [community-lessons]: https://carpentries.org/community-lessons
