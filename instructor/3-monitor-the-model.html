@@ -1368,34 +1368,29 @@ of the batch normalization layer</a>) which will learn how to scale the
 input values. Similar to dropout, batch normalization is available as a
 network layer in Keras and can be added to the network in a similar way.
 It does not require any additional parameter setting.</p>
+<p>The <code>BatchNormalization</code> can be inserted as yet another
+layer into the architecture.</p>
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.layers <span class="im">import</span> BatchNormalization</span></code></pre>
-</div>
-<p>The <code>BatchNormalization</code> can be inserted as yet another
-layer into the architecture.</p>
-<div class="codewrapper sourceCode" id="cb38">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_nn():</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Input layer</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> keras.layers.Input(shape<span class="op">=</span>(X_data.shape[<span class="dv">1</span>],), name<span class="op">=</span><span class="st">'input'</span>)</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dense layers</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    layers_dense <span class="op">=</span> keras.layers.BatchNormalization()(inputs)</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    layers_dense <span class="op">=</span> keras.layers.Dense(<span class="dv">100</span>, <span class="st">'relu'</span>)(layers_dense)</span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    layers_dense <span class="op">=</span> keras.layers.Dense(<span class="dv">50</span>, <span class="st">'relu'</span>)(layers_dense)</span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Output layer</span></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>)(layers_dense)</span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Defining the model and compiling it</span></span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, name<span class="op">=</span><span class="st">"model_batchnorm"</span>)</span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> create_nn()</span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>compile_model(model)</span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_nn():</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Input layer</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    inputs <span class="op">=</span> keras.layers.Input(shape<span class="op">=</span>(X_data.shape[<span class="dv">1</span>],), name<span class="op">=</span><span class="st">'input'</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dense layers</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    layers_dense <span class="op">=</span> keras.layers.BatchNormalization()(inputs) <span class="co"># This is new!</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    layers_dense <span class="op">=</span> keras.layers.Dense(<span class="dv">100</span>, <span class="st">'relu'</span>)(layers_dense)</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    layers_dense <span class="op">=</span> keras.layers.Dense(<span class="dv">50</span>, <span class="st">'relu'</span>)(layers_dense)</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Output layer</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">1</span>)(layers_dense)</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Defining the model and compiling it</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, name<span class="op">=</span><span class="st">"model_batchnorm"</span>)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> create_nn()</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>compile_model(model)</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
 </div>
 <p>This new layer appears in the model summary as well.</p>
 <div class="codewrapper">
@@ -1420,16 +1415,16 @@ Trainable params: 14,279
 Non-trainable params: 178</code></pre>
 </div>
 <p>We can train the model again as follows:</p>
-<div class="codewrapper sourceCode" id="cb40">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train,</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>                    batch_size <span class="op">=</span> <span class="dv">32</span>,</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>                    epochs <span class="op">=</span> <span class="dv">1000</span>,</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>                    callbacks<span class="op">=</span>[earlystopper])</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train,</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                    batch_size <span class="op">=</span> <span class="dv">32</span>,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                    epochs <span class="op">=</span> <span class="dv">1000</span>,</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>                    callbacks<span class="op">=</span>[earlystopper])</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
 </div>
 <figure><img src="../fig/03_training_history_5_rmse_batchnorm.png" alt="Output of plotting sample" class="figure mx-auto d-block"></figure><div id="batchnorm-parameters" class="callout callout">
 <div class="callout-square">
@@ -1458,11 +1453,11 @@ used in both training and prediction.</p>
 <p>It seems that no matter what we add, the overall loss does not
 decrease much further (we at least avoided overfitting though!). Let us
 again plot the results on the test set:</p>
-<div class="codewrapper sourceCode" id="cb41">
+<div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>y_test_predicted <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>plot_predictions(y_test_predicted, y_test, title<span class="op">=</span><span class="st">'Predictions on the test set'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>y_test_predicted <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>plot_predictions(y_test_predicted, y_test, title<span class="op">=</span><span class="st">'Predictions on the test set'</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/03_regression_test_5_dropout_batchnorm.png" alt="Scatter plot between predictions and true sunshine hours for Basel on the test set" class="figure mx-auto d-block"></figure><p>Well, the above is certainly not perfect. But how good or bad is
 this? Maybe not good enough to plan your picnic for tomorrow. But let’s
@@ -1486,11 +1481,11 @@ significantly, we could afford to include more data. Instead of using
 only 3 years, use 8 or 9 years!</li>
 <li>Only use the features in the dataset that are for Basel, remove the
 data for other cities. You can use something like:</li>
-</ol><div class="codewrapper sourceCode" id="cb42">
+</ol><div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> X_data.columns <span class="cf">if</span> c[:<span class="dv">5</span>] <span class="op">==</span> <span class="st">'BASEL'</span>]</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>X_data <span class="op">=</span> X_data[cols]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> X_data.columns <span class="cf">if</span> c[:<span class="dv">5</span>] <span class="op">==</span> <span class="st">'BASEL'</span>]</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>X_data <span class="op">=</span> X_data[cols]</span></code></pre>
 </div>
 <ol start="3" style="list-style-type: decimal"><li>Now rerun the last model we defined which included the BatchNorm
 layer. Recreate the scatter plot comparing your predictions with the
@@ -1515,73 +1510,73 @@ all features from all cities. How does it perform?</li>
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="use-9-years-out-of-the-dataset">1. Use 9 years out of the dataset<a class="anchor" aria-label="anchor" href="#use-9-years-out-of-the-dataset"></a></h3>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>nr_rows <span class="op">=</span> <span class="dv">365</span><span class="op">*</span><span class="dv">9</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>X_data <span class="op">=</span> data.loc[:nr_rows].drop(columns<span class="op">=</span>[<span class="st">'DATE'</span>, <span class="st">'MONTH'</span>])</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># labels (sunshine hours the next day)</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>y_data <span class="op">=</span> data.loc[<span class="dv">1</span>:(nr_rows <span class="op">+</span> <span class="dv">1</span>)][<span class="st">"BASEL_sunshine"</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>nr_rows <span class="op">=</span> <span class="dv">365</span><span class="op">*</span><span class="dv">9</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># data</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>X_data <span class="op">=</span> data.loc[:nr_rows].drop(columns<span class="op">=</span>[<span class="st">'DATE'</span>, <span class="st">'MONTH'</span>])</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># labels (sunshine hours the next day)</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>y_data <span class="op">=</span> data.loc[<span class="dv">1</span>:(nr_rows <span class="op">+</span> <span class="dv">1</span>)][<span class="st">"BASEL_sunshine"</span>]</span></code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="only-use-features-for-basel">2. Only use features for Basel<a class="anchor" aria-label="anchor" href="#only-use-features-for-basel"></a></h3>
-<div class="codewrapper sourceCode" id="cb44">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># only use columns with 'BASEL'</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> X_data.columns <span class="cf">if</span> c[:<span class="dv">5</span>] <span class="op">==</span> <span class="st">'BASEL'</span>]</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>X_data <span class="op">=</span> X_data[cols]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># only use columns with 'BASEL'</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> X_data.columns <span class="cf">if</span> c[:<span class="dv">5</span>] <span class="op">==</span> <span class="st">'BASEL'</span>]</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>X_data <span class="op">=</span> X_data[cols]</span></code></pre>
 </div>
 </div>
 <div class="section level3">
 <h3 id="rerun-the-model-and-evaluate-it">3. Rerun the model and evaluate it<a class="anchor" aria-label="anchor" href="#rerun-the-model-and-evaluate-it"></a></h3>
 <p>Do the train-test-validation split:</p>
-<div class="codewrapper sourceCode" id="cb45">
+<div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>X_train, X_holdout, y_train, y_holdout <span class="op">=</span> train_test_split(X_data, y_data, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>X_val, X_test, y_val, y_test <span class="op">=</span> train_test_split(X_holdout, y_holdout, test_size<span class="op">=</span><span class="fl">0.5</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>X_train, X_holdout, y_train, y_holdout <span class="op">=</span> train_test_split(X_data, y_data, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>X_val, X_test, y_val, y_test <span class="op">=</span> train_test_split(X_holdout, y_holdout, test_size<span class="op">=</span><span class="fl">0.5</span>, random_state<span class="op">=</span><span class="dv">0</span>)</span></code></pre>
 </div>
 <p>Create the network. We can re-use the <code>create_nn</code> that we
 already have. Because we have reduced the number of input features the
 number of parameters in the network goes down from 14457 to 6137.</p>
-<div class="codewrapper sourceCode" id="cb46">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the network and view its summary</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> create_nn()</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>compile_model(model)</span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create the network and view its summary</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> create_nn()</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>compile_model(model)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
 </div>
 <p>Fit with early stopping and output showing performance on validation
 set:</p>
+<div class="codewrapper sourceCode" id="cb46">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train,</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>                   batch_size <span class="op">=</span> <span class="dv">32</span>,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                   epochs <span class="op">=</span> <span class="dv">1000</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                   validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>                   callbacks<span class="op">=</span>[earlystopper],</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>                   verbose <span class="op">=</span> <span class="dv">2</span>)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
+</div>
+<p>Create a scatter plot to compare with true observations:</p>
 <div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train,</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>                   batch_size <span class="op">=</span> <span class="dv">32</span>,</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>                   epochs <span class="op">=</span> <span class="dv">1000</span>,</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>                   validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>                   callbacks<span class="op">=</span>[earlystopper],</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>                   verbose <span class="op">=</span> <span class="dv">2</span>)</span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>y_test_predicted <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>plot_predictions(y_test_predicted, y_test, title<span class="op">=</span><span class="st">'Predictions on the test set'</span>)</span></code></pre>
 </div>
-<p>Create a scatter plot to compare with true observations:</p>
+<figure><img src="../fig/03_scatter_plot_basel_model.png" alt="Scatterplot of predictions and true number of sunshine hours" class="figure mx-auto d-block"></figure><p>Compute the RMSE on the test set:</p>
 <div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>y_test_predicted <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>plot_predictions(y_test_predicted, y_test, title<span class="op">=</span><span class="st">'Predictions on the test set'</span>)</span></code></pre>
-</div>
-<figure><img src="../fig/03_scatter_plot_basel_model.png" alt="Scatterplot of predictions and true number of sunshine hours" class="figure mx-auto d-block"></figure><p>Compute the RMSE on the test set:</p>
-<div class="codewrapper sourceCode" id="cb49">
-<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>test_metrics <span class="op">=</span> model.evaluate(X_test, y_test, return_dict<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Test RMSE: </span><span class="sc">{</span>test_metrics[<span class="st">"root_mean_squared_error"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>test_metrics <span class="op">=</span> model.evaluate(X_test, y_test, return_dict<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Test RMSE: </span><span class="sc">{</span>test_metrics[<span class="st">"root_mean_squared_error"</span>]<span class="sc">}</span><span class="ss">'</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1599,17 +1594,17 @@ is important to always compare results on the exact same test set.</p>
 <h3 id="optional-train-a-model-on-all-years-and-all-features-available-">4. (optional) Train a model on all years and all features
 available.<a class="anchor" aria-label="anchor" href="#optional-train-a-model-on-all-years-and-all-features-available-"></a></h3>
 <p>You can tweak the above code to use all years and all features:</p>
-<div class="codewrapper sourceCode" id="cb51">
+<div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We cannot take all rows, because we need to be able to take the sunshine hours of the next day</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>nr_rows <span class="op">=</span> <span class="bu">len</span>(data) <span class="op">-</span> <span class="dv">2</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data</span></span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>X_data <span class="op">=</span> data.loc[:nr_rows].drop(columns<span class="op">=</span>[<span class="st">'DATE'</span>, <span class="st">'MONTH'</span>])</span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="co"># labels (sunshine hours the next day)</span></span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>y_data <span class="op">=</span> data.loc[<span class="dv">1</span>:(nr_rows <span class="op">+</span> <span class="dv">1</span>)][<span class="st">"BASEL_sunshine"</span>]</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We cannot take all rows, because we need to be able to take the sunshine hours of the next day</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>nr_rows <span class="op">=</span> <span class="bu">len</span>(data) <span class="op">-</span> <span class="dv">2</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># data</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>X_data <span class="op">=</span> data.loc[:nr_rows].drop(columns<span class="op">=</span>[<span class="st">'DATE'</span>, <span class="st">'MONTH'</span>])</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="co"># labels (sunshine hours the next day)</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>y_data <span class="op">=</span> data.loc[<span class="dv">1</span>:(nr_rows <span class="op">+</span> <span class="dv">1</span>)][<span class="st">"BASEL_sunshine"</span>]</span></code></pre>
 </div>
 <p>For the rest you can use the same code as above to train and evaluate
 the model</p>
@@ -1636,19 +1631,19 @@ keeps track of our experiments and shows graphs like we plotted above.
 Tensorboard is included in our tensorflow installation by default. To
 use it, we first need to add a <em>callback</em> to our (compiled) model
 that saves the progress of training performance in a logs rectory:</p>
-<div class="codewrapper sourceCode" id="cb52">
+<div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.callbacks <span class="im">import</span> TensorBoard</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>log_dir <span class="op">=</span> <span class="st">"logs/fit/"</span> <span class="op">+</span> datetime.datetime.now().strftime(<span class="st">"%Y%m</span><span class="sc">%d</span><span class="st">-%H%M%S"</span>) <span class="co"># You can adjust this to add a more meaningful model name</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>tensorboard_callback <span class="op">=</span> TensorBoard(log_dir<span class="op">=</span>log_dir, histogram_freq<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train,</span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>                   batch_size <span class="op">=</span> <span class="dv">32</span>,</span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>                   epochs <span class="op">=</span> <span class="dv">200</span>,</span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>                   validation_data<span class="op">=</span>(X_val, y_val),</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>                   callbacks<span class="op">=</span>[tensorboard_callback],</span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>                   verbose <span class="op">=</span> <span class="dv">2</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow.keras.callbacks <span class="im">import</span> TensorBoard</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>log_dir <span class="op">=</span> <span class="st">"logs/fit/"</span> <span class="op">+</span> datetime.datetime.now().strftime(<span class="st">"%Y%m</span><span class="sc">%d</span><span class="st">-%H%M%S"</span>) <span class="co"># You can adjust this to add a more meaningful model name</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>tensorboard_callback <span class="op">=</span> TensorBoard(log_dir<span class="op">=</span>log_dir, histogram_freq<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train,</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>                   batch_size <span class="op">=</span> <span class="dv">32</span>,</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>                   epochs <span class="op">=</span> <span class="dv">200</span>,</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>                   validation_data<span class="op">=</span>(X_val, y_val),</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>                   callbacks<span class="op">=</span>[tensorboard_callback],</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>                   verbose <span class="op">=</span> <span class="dv">2</span>)</span></code></pre>
 </div>
 <p>You can launch the tensorboard interface from a Jupyter notebook,
 showing all trained models: <!--cce:skip--></p>
@@ -1663,10 +1658,10 @@ showing all trained models: <!--cce:skip--></p>
 </h2>
 <hr class="half-width"><p>Now that we have a somewhat acceptable model, let us not forget to
 save it for future users to benefit from our explorative efforts!</p>
-<div class="codewrapper sourceCode" id="cb54">
+<div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">'my_tuned_weather_model'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">'my_tuned_weather_model'</span>)</span></code></pre>
 </div>
 </section><section id="outlook"><h2 class="section-heading">Outlook<a class="anchor" aria-label="anchor" href="#outlook"></a>
 </h2>
