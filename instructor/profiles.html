@@ -65,7 +65,7 @@
           <button class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             More <i data-feather="chevron-down"></i>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><li><a class="dropdown-item" href="bonus-material.html">Bonus material</a></li><li><a class="dropdown-item" href="survey-templates.html">Workshop survey templates</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><li><a class="dropdown-item" href="bonus-material.html">Bonus material</a></li><li><a class="dropdown-item" href="design.html">Lesson design</a></li><li><a class="dropdown-item" href="survey-templates.html">Workshop survey templates</a></li>
           </ul></li>
       </ul></div>
     <form class="d-flex col-md-2 search-form">
@@ -203,7 +203,7 @@
                       <li>
                         <a href="../instructor/images.html">Extract All Images</a>
                       </li>
-                      <li><a href="bonus-material.html">Bonus material</a></li><li><a href="survey-templates.html">Workshop survey templates</a></li>
+                      <li><a href="bonus-material.html">Bonus material</a></li><li><a href="design.html">Lesson design</a></li><li><a href="survey-templates.html">Workshop survey templates</a></li>
                     </ul></div>
                 </div>
               </div>
@@ -226,16 +226,6 @@
         <h1>Learner Profiles</h1>
         
 
-<p>This page documents the design process and motivation of this lesson
-material.</p>
-<p><strong>Lesson Title: An Introduction to Deep Learning</strong></p>
-<section id="target-audience"><h2 class="section-heading">Target audience<a class="anchor" aria-label="anchor" href="#target-audience"></a>
-</h2>
-<hr class="half-width"><p>The main audience of this carpentry lesson is PhD students that have
-little to no experience with deep learning. In addition, we expect them
-to know basics of statistics and machine learning.</p>
-<div class="section level3">
-<h3 id="learner-profiles">Learner Profiles<a class="anchor" aria-label="anchor" href="#learner-profiles"></a></h3>
 <div class="section level4">
 <h4 id="ann-from-meteorology">Ann from Meteorology<a class="anchor" aria-label="anchor" href="#ann-from-meteorology"></a></h4>
 <p>Ann has collected 2-3 GB of structured image data from several
@@ -287,141 +277,14 @@ where necessary, but never saw it necessary to learn coding. His
 cheatsheet is his core wisdom with code. So his supervisor invited him
 to take a course on ML as “this is the tech of these days!” as his boss
 said.</p>
-</div>
-</div>
-<div class="section level3">
-<h3 id="notes">Notes<a class="anchor" aria-label="anchor" href="#notes"></a></h3>
-<ul><li>Probably have overhyped expectations of deep learning.</li>
-<li>They don’t know if it’s the right tool for their situations.</li>
-<li>They have no idea what it takes to actually do deep learning.</li>
-<li>Want to quickly have some useful skills for their own data.</li>
-</ul><div class="section level4">
-<h4 id="required-pre-knowledge">Required Pre-Knowledge<a class="anchor" aria-label="anchor" href="#required-pre-knowledge"></a></h4>
-<ul><li>
-<strong>Python</strong> – Previous programming experience in Python
-is required (Refer to Python Data Carpentry Lesson)</li>
-<li>
-<strong>Pandas</strong> – Knowledge of the Pandas Python
-package</li>
-<li>
-<strong>Basic Machine Learning Knowledge</strong> – Data cleaning,
-train &amp; test split, overfitting &amp; underfitting, metrics
-(accuracy, recall, etc.),</li>
-</ul></div>
-</div>
-</section><section id="learning-objectives"><h2 class="section-heading">Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
-</h2>
-<hr class="half-width"><blockquote>
-<h2 id="overview">Overview</h2>
-<p>After following this lesson, learners will be able to:</p>
-<ul><li>Prepare input data for use for deep learning</li>
-<li>Design and train a Deep Neural Network</li>
-<li>Troubleshoot the learning process</li>
-<li>Measure the performance of the network</li>
-<li>Visualizing data and results</li>
-<li>Re-use existing network architectures with and without pre-trained
-weights</li>
-</ul></blockquote>
-<p>The following offers more details to each learning objective based on
-Bloom’s Taxonomy. For hints on how to use this approach, see <a href="https://carpentries.github.io/instructor-training/15-lesson-study/index.html" class="external-link">lesson
-15 of the instructor training</a></p>
-<div class="section level3">
-<h3 id="prepare-input-data-for-use-for-deep-learning">Prepare input data for use for deep learning<a class="anchor" aria-label="anchor" href="#prepare-input-data-for-use-for-deep-learning"></a></h3>
-<p>This includes cleaning data, filling missing values, normalizing, and
-transforming categorical columns into dummy encoding.</p>
-<p>After this module, learners can …</p>
-<ul><li>define a checklist for data analysis steps before applying Deep
-Learning to the data</li>
-<li>describe criteria by which to judge good or bad data, e.g. how a
-column’s values should be distributed</li>
-<li>execute a min-max normalization on floating point data</li>
-<li>sketch how to insert missing timestamps or literal values
-(i.e. factors or non-numeric entries)</li>
-<li>implement a transformation of categorical values into a numerical
-encoding (<code>int8</code>)</li>
-<li>argue for or against strategies to normalize data</li>
-<li>formulate techniques to prepare (clean) data for training a deep
-learning network</li>
-</ul></div>
-<div class="section level3">
-<h3 id="design-and-train-a-deep-neural-network">Design and train a Deep Neural Network<a class="anchor" aria-label="anchor" href="#design-and-train-a-deep-neural-network"></a></h3>
-<p>This includes knowledge of when to different types of layers</p>
-<p>After this module, learners can …</p>
-<ul><li>list/repeat the three ingredients to a feed forward network: input,
-hidden layers, output</li>
-<li>classify/categorize parts of a feed forward network when presented a
-network architecture (as from <code>keras.model.summary()</code>)</li>
-<li>describe a fully connected (dense) layer</li>
-<li>describe a convolutional layer</li>
-<li>describe a max pooling layer</li>
-<li>describe an activation function</li>
-<li>describe a softmax layer</li>
-<li>argue against abundant use of the sigmoid function
-(exploding/vanishing gradients)</li>
-<li>calculate the output data shape of an image when transformed by a
-fixed convolutional layer</li>
-<li>interpret errors with convolutional layers</li>
-<li>execute a 3 layer network on the MNIST data (or similar)</li>
-<li>differentiate a dense layer and a convolutional layer</li>
-<li>experiment with values of dense layer and a convolutional layer</li>
-<li>select a layer type depending on the input data</li>
-<li>develop a 5 layer network that comprises both layer types</li>
-</ul></div>
-<div class="section level3">
-<h3 id="monitoring-and-troubleshooting-the-learning-process">Monitoring and Troubleshooting the learning process<a class="anchor" aria-label="anchor" href="#monitoring-and-troubleshooting-the-learning-process"></a></h3>
-<p>Often when designing neural networks training will not automatically
-work very well. This requires setting the parameters of the training
-algorithm correctly, modifying the design of the network or changing the
-data pre-processing. After training, the performance of the network
-should be checked to prevent overfitting.</p>
-<p>After this module, learners can …</p>
-<ul><li>define precision and recall/accuracy for a classification task</li>
-<li>state that cross-validation is used in Deep Learning too</li>
-<li>describe how to split a dataset into training/test/validation
-set</li>
-<li>describe how Drop-Out Layers work</li>
-<li>execute a plot to draw the loss per epoch for training and test
-set</li>
-<li>compare values of precision and recall</li>
-<li>differentiate a overfitting network from a well-behaved network</li>
-<li>detect when a network is underfitting or overfitting</li>
-<li>design countermeasures for overfitting (e.g. more dropout layers,
-reduce model size)</li>
-<li>design countermeasures for underfitting (e.g. larger model)</li>
-<li>critique a provided network design</li>
-</ul></div>
-<div class="section level3">
-<h3 id="visualizing-data-and-results">Visualizing Data and Results<a class="anchor" aria-label="anchor" href="#visualizing-data-and-results"></a></h3>
-<p>Within each episode how to visualize data and results</p>
-<p>After this module, learners can …</p>
-<ul><li>identify important plots to create at the end of training (provide
-selected samples and their prediction)</li>
-<li>execute plotting of important variables during training (loss,
-ROC)</li>
-<li>use tensorboard and related callbacks during training</li>
-<li>examine the results of a partners network</li>
-<li>critique the results of a partners network</li>
-</ul></div>
-<div class="section level3">
-<h3 id="re-use-existing-network-architectures-with-and-without-pre-trained-weights">Re-use existing network architectures with and without pre-trained
-weights<a class="anchor" aria-label="anchor" href="#re-use-existing-network-architectures-with-and-without-pre-trained-weights"></a></h3>
-<p>Re-use of architectures is common in deep learning. Especially when
-using pre-trained weights (transfer-learning) it can also be very
-powerful.</p>
-<p>After this module, learners can …</p>
-<ul><li>describe what transfer learning stands for</li>
-<li>explain in what situations transfer learning is beneficial</li>
-<li>solve common issues of transfer learning (such as different
-resolutions of the original training and the training at hand)</li>
-<li>test training under different data shape mitigation strategies</li>
-<li>relate training time of a de-novo network and a pretrained one</li>
-<li>relate prediction quality of a de-novo network and a pretrained
-one</li>
-</ul><!-- 
+<!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
- --></div>
-</section></div>
+ -->
+</div>
+
+
+      </div>
     </main></div>
 <!-- END  : inst/pkgdown/templates/content-extra.html -->
 

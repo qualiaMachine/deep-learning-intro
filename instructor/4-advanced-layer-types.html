@@ -65,7 +65,7 @@
           <button class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             More <i data-feather="chevron-down"></i>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><li><a class="dropdown-item" href="bonus-material.html">Bonus material</a></li><li><a class="dropdown-item" href="survey-templates.html">Workshop survey templates</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><li><a class="dropdown-item" href="bonus-material.html">Bonus material</a></li><li><a class="dropdown-item" href="design.html">Lesson design</a></li><li><a class="dropdown-item" href="survey-templates.html">Workshop survey templates</a></li>
           </ul></li>
       </ul></div>
     <form class="d-flex col-md-2 search-form">
@@ -230,7 +230,7 @@ scratch</a></li>
                       <li>
                         <a href="../instructor/images.html">Extract All Images</a>
                       </li>
-                      <li><a href="bonus-material.html">Bonus material</a></li><li><a href="survey-templates.html">Workshop survey templates</a></li>
+                      <li><a href="bonus-material.html">Bonus material</a></li><li><a href="design.html">Lesson design</a></li><li><a href="survey-templates.html">Workshop survey templates</a></li>
                     </ul></div>
                 </div>
               </div>
@@ -332,7 +332,7 @@ which is a widely known dataset for image classification.</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(train_images, train_labels), (test_images, test_labels) <span class="op">=</span> keras.datasets.cifar10.load_data()</span></code></pre>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(train_images, train_labels), (val_images, val_labels) <span class="op">=</span> keras.datasets.cifar10.load_data()</span></code></pre>
 </div>
 <div id="certificate_verify_failed-error-when-downloading-cifar-10-dataset" class="callout callout">
 <div class="callout-square">
@@ -477,7 +477,7 @@ better to have small input values. So we normalize our data between
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>train_images <span class="op">=</span> train_images <span class="op">/</span> <span class="fl">255.0</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>test_images <span class="op">=</span> test_images <span class="op">/</span> <span class="fl">255.0</span></span></code></pre>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>val_images <span class="op">=</span> val_images <span class="op">/</span> <span class="fl">255.0</span></span></code></pre>
 </div>
 </section><section id="choose-a-pretrained-model-or-start-building-architecture-from-scratch"><h2 class="section-heading">4. Choose a pretrained model or start building architecture from
 scratch<a class="anchor" aria-label="anchor" href="#choose-a-pretrained-model-or-start-building-architecture-from-scratch"></a>
@@ -902,7 +902,7 @@ one-hot encoding.</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(train_images, train_labels, epochs<span class="op">=</span><span class="dv">10</span>,</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(test_images, test_labels))</span></code></pre>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(val_images, val_labels))</span></code></pre>
 </div>
 </section><section id="perform-a-predictionclassification"><h2 class="section-heading">7. Perform a Prediction/Classification<a class="anchor" aria-label="anchor" href="#perform-a-predictionclassification"></a>
 </h2>
@@ -1138,7 +1138,7 @@ network. To train the network and plot the results:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>compile_model(model)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(train_images, train_labels, epochs<span class="op">=</span><span class="dv">20</span>,</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                   validation_data<span class="op">=</span>(test_images, test_labels))</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                   validation_data<span class="op">=</span>(val_images, val_labels))</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'accuracy'</span>, <span class="st">'val_accuracy'</span>])</span></code></pre>
 </div>
 <figure><img src="../fig/04_training_history_2.png" alt="Plot of training accuracy and validation accuracy vs epochs for the trained model" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb34">
@@ -1312,7 +1312,7 @@ image, and has zero parameters.</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>compile_model(model_dropout)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model_dropout.fit(train_images, train_labels, epochs<span class="op">=</span><span class="dv">20</span>,</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(test_images, test_labels))</span></code></pre>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(val_images, val_labels))</span></code></pre>
 </div>
 <p>And inspect the training results:</p>
 <div class="codewrapper sourceCode" id="cb38">
@@ -1320,7 +1320,7 @@ image, and has zero parameters.</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'accuracy'</span>, <span class="st">'val_accuracy'</span>])</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>test_loss, test_acc <span class="op">=</span> model_dropout.evaluate(test_images,  test_labels, verbose<span class="op">=</span><span class="dv">2</span>)</span></code></pre>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>val_loss, val_acc <span class="op">=</span> model_dropout.evaluate(val_images,  val_labels, verbose<span class="op">=</span><span class="dv">2</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1365,10 +1365,8 @@ model performance, what is the term associated to this procedure?</li>
 <h3 id="varying-the-dropout-rate">1. Varying the dropout rate<a class="anchor" aria-label="anchor" href="#varying-the-dropout-rate"></a></h3>
 <p>The code below instantiates and trains a model with varying dropout
 rates. You can see from the resulting plot that the ideal dropout rate
-in this case is around 0.45. This is where the test loss is lowest.</p>
+in this case is around 0.45. This is where the val loss is lowest.</p>
 <ul><li>NB1: It takes a while to train these 5 networks.</li>
-<li>NB2: In the real world you should do this with a validation set and
-not with the test set!</li>
 </ul><div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1387,21 +1385,21 @@ not with the test set!</li>
 <span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> model</span>
 <span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>dropout_rates <span class="op">=</span> [<span class="fl">0.15</span>, <span class="fl">0.3</span>, <span class="fl">0.45</span>, <span class="fl">0.6</span>, <span class="fl">0.75</span>]</span>
-<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>test_losses <span class="op">=</span> []</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>val_losses <span class="op">=</span> []</span>
 <span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dropout_rate <span class="kw">in</span> dropout_rates:</span>
 <span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>    model_dropout <span class="op">=</span> create_nn_with_dropout(dropout_rate)</span>
 <span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>    compile_model(model_dropout)</span>
 <span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a>    model_dropout.fit(train_images, train_labels, epochs<span class="op">=</span><span class="dv">20</span>,</span>
-<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(test_images, test_labels))</span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(val_images, val_labels))</span>
 <span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>    test_loss, test_acc <span class="op">=</span> model_dropout.evaluate(test_images,  test_labels)</span>
-<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>    test_losses.append(test_loss)</span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a>    val_loss, val_acc <span class="op">=</span> model_dropout.evaluate(val_images,  val_labels)</span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>    val_losses.append(val_loss)</span>
 <span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>loss_df <span class="op">=</span> pd.DataFrame({<span class="st">'dropout_rate'</span>: dropout_rates, <span class="st">'test_loss'</span>: test_losses})</span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>loss_df <span class="op">=</span> pd.DataFrame({<span class="st">'dropout_rate'</span>: dropout_rates, <span class="st">'val_loss'</span>: val_losses})</span>
 <span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>loss_df, x<span class="op">=</span><span class="st">'dropout_rate'</span>, y<span class="op">=</span><span class="st">'test_loss'</span>)</span></code></pre>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>loss_df, x<span class="op">=</span><span class="st">'dropout_rate'</span>, y<span class="op">=</span><span class="st">'val_loss'</span>)</span></code></pre>
 </div>
-<figure><img src="../fig/04_vary_dropout_rate.png" alt="Plot of test loss vs dropout rate used in the model. The test loss varies between 1.26 and 1.40 and is lowest with a dropout_rate around 0.45." class="figure mx-auto d-block"></figure></div>
+<figure><img src="../fig/04_vary_dropout_rate.png" alt="Plot of vall loss vs dropout rate used in the model. The val loss varies between 1.26 and 1.40 and is lowest with a dropout_rate around 0.45." class="figure mx-auto d-block"></figure></div>
 <div class="section level3">
 <h3 id="term-associated-to-this-procedure">2. Term associated to this procedure<a class="anchor" aria-label="anchor" href="#term-associated-to-this-procedure"></a></h3>
 <p>This is called hyperparameter tuning.</p>
