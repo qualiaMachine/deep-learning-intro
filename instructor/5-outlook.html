@@ -337,7 +337,7 @@ domain.</p>
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>You don’t have to use this project as an example. It works best to
 use a suitable deep learning project that you know well and are
@@ -359,9 +359,12 @@ application<a class="anchor" aria-label="anchor" href="#exercise-a-real-world-de
 recognize from what you learned in this course?</li>
 <li>Can you identify the different steps of the deep learning workflow
 in this notebook?</li>
-<li>(Optional): Try to fully understand the neural network architecture
-from the first figure of <a href="https://doi.org/10.1186/s13321-021-00558-4" class="external-link">the paper</a>
-</li>
+<li>(Optional): Try to understand the neural network architecture from
+the first figure of <a href="https://doi.org/10.1186/s13321-021-00558-4" class="external-link">the paper</a>.
+<ol style="list-style-type: lower-alpha"><li>Why are there 10.000 neurons in the input layer?</li>
+<li>What do you think would happen if you would decrease the size of
+spectral embedding layer drastically, to for example 5 neurons?</li>
+</ol></li>
 </ol></div>
 </div>
 </div>
@@ -372,7 +375,7 @@ from the first figure of <a href="https://doi.org/10.1186/s13321-021-00558-4" cl
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>The model summary for the Siamese model is more complex than what we
 have seen so far, but it is basically a repetition of Dense, BatchNorm,
@@ -385,6 +388,15 @@ pretrained model or start building architecture from scratch’, ‘5:
 Choose a loss function and optimizer’, ‘6: Train the model’, ‘7: Make
 predictions’ (which is called ‘Model inference’ in this notebook), and
 ‘10: Save model’.</li>
+<li>(optional)
+<ol style="list-style-type: lower-alpha"><li>Because the shape of the input is 10.000. More specifically, the
+spectrum is binned into a size 10.000 vector, apparently this is a good
+size to represent the mass spectrum.</li>
+<li>This would force the neural network to have a representation of the
+mass spectrum in only 5 numbers. This representation would probably be
+more generic, but might fail to capture all the characteristics found in
+the spectrum. This would likely result in underfitting.</li>
+</ol></li>
 </ol></div>
 </div>
 </div>
