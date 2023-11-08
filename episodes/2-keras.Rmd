@@ -45,6 +45,14 @@ As a reminder below are the steps of the deep learning workflow:
 
 In this episode we will focus on a minimal example for each of these steps, later episodes will build on this knowledge to go into greater depth for some or all of these steps.
 
+::: instructor
+This episode really aims to go through the whole process once, as quickly as possible. 
+In episode 3 we will expand on all the concepts that are lightly inroduced in episode 2. Some concepts like monitoring the training progress, optimization and learning rate are explained in detail in episode 3.
+It is good to stress this a few times, because learners will usually have a lot of questions like:
+'Why don't we normalize our features' or 'Why do we choose Adam optimizer?'. 
+It can be a good idea to park some of these questions for discussion in episode 3 and 4.
+:::
+
 ::: callout
 ## GPU usage
 For this lesson having a GPU (graphics card) available is not needed.
