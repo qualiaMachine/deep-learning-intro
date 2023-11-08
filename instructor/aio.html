@@ -289,7 +289,7 @@
         
 <section id="aio-1-introduction"><p>Content from <a href="1-introduction.html">Introduction</a></p>
 <hr>
-<p> Last updated on 2023-11-07 | 
+<p> Last updated on 2023-11-08 | 
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/1-introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 55 minutes </p>
@@ -1247,7 +1247,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-2-keras"><p>Content from <a href="2-keras.html">Classification by a neural network using Keras</a></p>
 <hr>
-<p> Last updated on 2023-11-07 | 
+<p> Last updated on 2023-11-08 | 
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/2-keras.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 95 minutes </p>
@@ -2048,7 +2048,7 @@ training progresses. Using seaborn we can do this as follow:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>history.epoch, y<span class="op">=</span>history.history[<span class="st">'loss'</span>])</span></code></pre>
 </div>
-<figure><img src="../fig/training_curve.png" title="Training Curve" alt="Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs" class="figure mx-auto d-block"></figure><p>This plot can be used to identify whether the training is well
+<figure><img src="../fig/02_training_curve.png" title="Training Curve" alt="Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs" class="figure mx-auto d-block"></figure><p>This plot can be used to identify whether the training is well
 configured or whether there are problems that need to be addressed.</p>
 <div id="the-training-curve" class="callout challenge">
 <div class="callout-square">
@@ -2070,6 +2070,13 @@ configured or whether there are problems that need to be addressed.</p>
 <li>Do you think the resulting trained network will work well on the
 test set?</li>
 </ol>
+<p>When the training process does not go well:</p>
+<ol start="3" style="list-style-type: decimal">
+<li>(optional) Something went wrong here during training. What could be
+the problem, and how do you see that in the training curve? Also compare
+the range on the y-axis with the previous training curve. <img src="../fig/02_bad_training_history_1.png" alt="Very jittery training curve with the loss value jumping back and forth between 2 and 4. The range of the y-axis is from 2 to 4, whereas in the previous training curve it was from 0 to 2. The loss seems to decrease a litle bit, but not as much as compared to the previous plot where it dropped to almost 0. The minimum loss in the end is somewhere around 2." class="figure">
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -2083,12 +2090,30 @@ test set?</li>
 <div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
-<li>The loss curve should drop quite quickly in a smooth line with
-little jitter</li>
+<li>The training loss decreases quickly. It drops in a smooth line with
+little jitter. This is ideal for a training curve.</li>
 <li>The results of the training give very little information on its
 performance on a test set. You should be careful not to use it as an
 indication of a well trained network.</li>
+<li>(optional) The loss does not go down at all, or only very slightly.
+This means that the model is not learning anything. It could be that
+something went wrong in the data preparation (for example the labels are
+not attached to the right features). In addition, the graph is very
+jittery. This means that for every update step, the weights in the
+network are updated in such a way that the loss sometimes increases a
+lot and sometimes decreases a lot. This could indicate that the weights
+are updated too much at every learning step and you need a smaller
+learning rate (we will go into more details on this in the next
+episode). Or there is a high variation in the data, leading the
+optimizer to change the weights in different directions at every
+learning step. This could be addressed by presenting more data at every
+learning step (or in other words increasing the batch size). In this
+case the graph was created by training on nonsense data, so this a
+training curve for a problem where nothing can be learned really.</li>
 </ol>
+<p>We will take a closer look at training curves in the next episode.
+Some of the concepts touched upon here will also be further explained
+there.</p>
 </div>
 </div>
 </div>
@@ -2405,7 +2430,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-3-monitor-the-model"><p>Content from <a href="3-monitor-the-model.html">Monitor the training process</a></p>
 <hr>
-<p> Last updated on 2023-11-07 | 
+<p> Last updated on 2023-11-08 | 
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/3-monitor-the-model.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 215 minutes </p>
@@ -2731,7 +2756,7 @@ sunshine hours?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The shape of the input layer has to correspond to the number of
@@ -2909,7 +2934,7 @@ process is increased</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Correct answer: B. To find the weights that minimize the loss
@@ -3151,7 +3176,7 @@ why?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -3274,7 +3299,7 @@ problem to solve?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>This really depends on your definition of hard! The baseline gives a
@@ -3379,7 +3404,7 @@ think about what you actually would like to see)</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -3433,7 +3458,7 @@ notable effect on the performance on the validation set?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Let’s first adapt our <code>create_nn</code> function so that we can
 tweak the number of nodes in the 2 layers by passing arguments to the
@@ -3738,7 +3763,7 @@ all features from all cities. How does it perform?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="use-9-years-out-of-the-dataset">1. Use 9 years out of the dataset<a class="anchor" aria-label="anchor" href="#use-9-years-out-of-the-dataset"></a>
@@ -3943,7 +3968,7 @@ improve the prediction quality?</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
@@ -4000,7 +4025,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-4-advanced-layer-types"><p>Content from <a href="4-advanced-layer-types.html">Advanced layer types</a></p>
 <hr>
-<p> Last updated on 2023-11-07 | 
+<p> Last updated on 2023-11-08 | 
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/4-advanced-layer-types.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 105 minutes </p>
@@ -5145,7 +5170,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-5-outlook"><p>Content from <a href="5-outlook.html">Outlook</a></p>
 <hr>
-<p> Last updated on 2023-11-07 | 
+<p> Last updated on 2023-11-08 | 
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/5-outlook.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 25 minutes </p>
@@ -5226,7 +5251,7 @@ domain.</p>
   Instructor Note
   </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>You don’t have to use this project as an example. It works best to
 use a suitable deep learning project that you know well and are
@@ -5263,7 +5288,7 @@ from the first figure of <a href="https://doi.org/10.1186/s13321-021-00558-4" cl
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The model summary for the Siamese model is more complex than what we
@@ -5397,8 +5422,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/deep-learning-intro/instructor/aio.html",
   "identifier": "https://carpentries-incubator.github.io/deep-learning-intro/instructor/aio.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2023-11-07",
-  "datePublished": "2023-11-07"
+  "dateModified": "2023-11-08",
+  "datePublished": "2023-11-08"
 }
 
   </script><script>
