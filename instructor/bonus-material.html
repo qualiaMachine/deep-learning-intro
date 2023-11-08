@@ -257,7 +257,7 @@
 </h2>
 <hr class="half-width"><p>To apply Deep Learning to a problem there are several steps we need
 to go through:</p>
-<figure><img src="../fig/graphviz/pipeline.png" alt="" class="figure mx-auto d-block"><figcaption>A visualisation of the Machine Learning Pipeline</figcaption></figure><p>Feel free to use this figure as <a href="../fig/graphviz/pipeline.png">png</a>. The figure is contained in
+<figure><img src="../fig/graphviz/pipeline.png" alt="A flow diagram illustrating the ten-step deep learning pipeline described in the lesson introduction." class="figure mx-auto d-block"><figcaption>A visualisation of the Machine Learning Pipeline</figcaption></figure><p>Feel free to use this figure as <a href="../fig/graphviz/pipeline.png">png</a>. The figure is contained in
 <code>fig/graphviz/</code> of this repository. Use the
 <code>Makefile</code> there in order to reproduce it in different output
 formats.</p>
@@ -280,16 +280,16 @@ technique: <strong>Dropout</strong>. So let’s first introduce this:</p>
 <strong>dropout</strong>. Dropout essentially means that during each
 training cycle a random fraction of the dense layer nodes are turned
 off. This is described with the dropout rate between 0 and 1 which
-determines the fraction of nodes to silence at a time. <img src="../fig/neural_network_sketch_dropout.png" alt="Dropout sketch" class="figure"> The
-intuition behind dropout is that it enforces redundancies in the network
-by constantly removing different elements of a network. The model can no
-longer rely on individual nodes and instead must create multiple
-“paths”. In addition, the model has to make predictions with much fewer
-nodes and weights (connections between the nodes). As a result, it
-becomes much harder for a network to memorize particular features. At
-first this might appear a quiet drastic approach which affects the
-network architecture strongly. In practice, however, dropout is
-computationally a very elegant solution which does not affet training
+determines the fraction of nodes to silence at a time.</p>
+<figure><img src="../fig/neural_network_sketch_dropout.png" alt="A sketch of a neural network with and without dropout" class="figure mx-auto d-block"><figcaption>Dropout sketch</figcaption></figure><p>The intuition behind dropout is that it enforces redundancies in the
+network by constantly removing different elements of a network. The
+model can no longer rely on individual nodes and instead must create
+multiple “paths”. In addition, the model has to make predictions with
+much fewer nodes and weights (connections between the nodes). As a
+result, it becomes much harder for a network to memorize particular
+features. At first this might appear a quiet drastic approach which
+affects the network architecture strongly. In practice, however, dropout
+is computationally a very elegant solution which does not affet training
 speed. And it frequently works very well.</p>
 <p><strong>Important to note:</strong> Dropout layers will only randomly
 silence nodes during training! During a predictions step, all nodes
@@ -367,7 +367,7 @@ our new model and plot the losses:</p>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"epochs"</span>)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"RMSE"</span>)</span></code></pre>
 </div>
-<figure><img src="../fig/03_training_history_4_rmse_dropout.png" alt="" class="figure mx-auto d-block"><figcaption>Output of plotting sample</figcaption></figure><p>In this setting overfitting seems to be pervented succesfully. The
+<figure><img src="../fig/03_training_history_4_rmse_dropout.png" alt="Output of plotting sample" class="figure mx-auto d-block"><figcaption>Output of plotting sample</figcaption></figure><p>In this setting overfitting seems to be pervented succesfully. The
 overall results though have not improved (at least not by much). Above
 we have used dropout to randomly turn off network nodes during training.
 When doing predictions, dropout is automatically deactivated and all
@@ -447,7 +447,7 @@ distribution, for instance by plotting a histrogram:</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.hist(y_test_predicted_ensemble[<span class="dv">0</span>,:], rwidth<span class="op">=</span><span class="fl">0.9</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"predicted sunshine hours"</span>)</span></code></pre>
 </div>
-<figure><img src="../fig/03_monte_carlo_dropout_distribution_example.png" alt="" class="figure mx-auto d-block"><figcaption>Output of plotting sample</figcaption></figure><p>Instead of full distributions for every datapoint we might also just
+<figure><img src="../fig/03_monte_carlo_dropout_distribution_example.png" alt="bar plot summarising distribution of frequencies of predictions with different numbers of hours of sunshine" class="figure mx-auto d-block"><figcaption>Output of plotting sample</figcaption></figure><p>Instead of full distributions for every datapoint we might also just
 want to extract the mean and standard deviation.</p>
 <pre><code><span><span class="va">y_test_predicted_mean</span> <span class="op">=</span> <span class="fu">np.mean</span><span class="op">(</span><span class="va">y_test_predicted_ensemble</span>, axis<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">y_test_predicted_std</span> <span class="op">=</span> <span class="fu">np.std</span><span class="op">(</span><span class="va">y_test_predicted_ensemble</span>, axis<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span></code></pre>
@@ -462,7 +462,7 @@ information on the model uncertainty.</p>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"predicted"</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"true values"</span>)</span></code></pre>
 </div>
-<figure><img src="../fig/03_scatter_plot_model_uncertainty.png" alt="" class="figure mx-auto d-block"><figcaption>Output of plotting sample</figcaption></figure><!-- 
+<figure><img src="../fig/03_scatter_plot_model_uncertainty.png" alt="scatter plot of mean predicted hours of sunshine against true values, colored by standard deviation of the predictions, showing some correlation between the predictions from the model and the observed data" class="figure mx-auto d-block"><figcaption>Output of plotting sample</figcaption></figure><!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  --></section></div> <!-- / div.lesson-content -->
