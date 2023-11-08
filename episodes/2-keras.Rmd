@@ -524,11 +524,30 @@ Looking at the training curve we have just made.
    * Does the graph look very jittery?
 2. Do you think the resulting trained network will work well on the test set?
 
+When the training process does not go well:
+
+3. (optional) Something went wrong here during training. What could be the problem, and how do you see that in the training curve?
+Also compare the range on the y-axis with the previous training curve.
+![](../fig/02_bad_training_history_1.png){alt='Very jittery training curve with the loss value jumping back and forth between 2 and 4. The range of the y-axis is from 2 to 4, whereas in the previous training curve it was from 0 to 2. The loss seems to decrease a litle bit, but not as much as compared to the previous plot where it dropped to almost 0. The minimum loss in the end is somewhere around 2.'}
+
 :::: solution
 ## Solution
-1. The loss curve should drop quite quickly in a smooth line with little jitter
+1. The training loss decreases quickly. It drops in a smooth line with little jitter.
+This is ideal for a training curve.
 2. The results of the training give very little information on its performance on a test set.
   You should be careful not to use it as an indication of a well trained network.
+3. (optional) The loss does not go down at all, or only very slightly. This means that the model is not learning anything.
+It could be that something went wrong in the data preparation (for example the labels are not attached to the right features).
+In addition, the graph is very jittery. This means that for every update step,
+the weights in the network are updated in such a way that the loss sometimes increases a lot and sometimes decreases a lot.
+This could indicate that the weights are updated too much at every learning step and you need a smaller learning rate
+(we will go into more details on this in the next episode).
+Or there is a high variation in the data, leading the optimizer to change the weights in different directions at every learning step.
+This could be addressed by presenting more data at every learning step (or in other words increasing the batch size).
+In this case the graph was created by training on nonsense data, so this a training curve for a problem where nothing can be learned really.
+
+We will take a closer look at training curves in the next episode. Some of the concepts touched upon here will also be further explained there.
+
 ::::
 :::
 
@@ -736,7 +755,7 @@ Length: 69, dtype: object
 [sex_pairplot]: ../fig/02_sex_pairplot.png "Pair plot grouped by sex"
 {alt='Pair plot showing the separability of the two sexes of penguin for combinations of dataset attributes'}
 
-[training_curve]: ../fig/training_curve.png "Training Curve"
+[training_curve]: ../fig/02_training_curve.png "Training Curve"
 {alt='Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs'}
 
 [confusion_matrix]: ../fig/confusion_matrix.png "Confusion Matrix"
