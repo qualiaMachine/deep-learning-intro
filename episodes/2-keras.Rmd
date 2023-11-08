@@ -244,7 +244,7 @@ How many output neurons will our network have now that we one-hot encoded the ta
 
 :::: solution
 ## Solution
-3, one for each output variable class
+C: 3, one for each output variable class
 
 ::::
 :::
@@ -397,11 +397,8 @@ where each layer has **exactly one input tensor and one output tensor**.
 
 :::: solution
 ## Solution
+Have a look at the output of `model.summary()`:
 ```python
-inputs = keras.Input(shape=X_train.shape[1])
-hidden_layer = keras.layers.Dense(10, activation="relu")(inputs)
-output_layer = keras.layers.Dense(3, activation="softmax")(hidden_layer)
-model = keras.Model(inputs=inputs, outputs=output_layer)
 model.summary()
 ```
 
@@ -422,10 +419,14 @@ Non-trainable params: 0
 _________________________________________________________________
 ```
 The model has 83 trainable parameters.
+
 If you increase the number of neurons in the hidden layer the number of
 trainable parameters in both the hidden and output layer increases or
-decreases accordingly of neurons.
-The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.
+decreases in accordance with the number of neurons added.
+Each extra neuron has 4 weights connected to the input layer, 1 bias term, and 3 weights connected to the output layer.
+So in total 8 extra parameters.
+
+*The name in quotes within the string `Model: "model_1"` may be different in your view; this detail is not important.*
 
 #### (optional) Keras Sequential vs Functional API
 3. This implements the same model using the Sequential API:
