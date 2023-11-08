@@ -1715,15 +1715,17 @@ the neural network and the training methods. For this episode we will
 keep it at just a training and test set however.</p>
 <p>To split the cleaned dataset into a training and test set we will use
 a very convenient function from sklearn called
-<code>train_test_split</code>. This function takes a number of
-parameters which are extensively explained <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html" class="external-link">here</a>
-: - The first two parameters are the dataset (in our case features) and
-the corresponding targets (i.e. defined as target). - Next is the named
-parameter <code>test_size</code> this is the fraction of the dataset
-that is used for testing, in this case <code>0.2</code> means 20% of the
-data will be used for testing. - <code>random_state</code> controls the
-shuffling of the dataset, setting this value will reproduce the same
-results (assuming you give the same integer) every time it is called. -
+<code>train_test_split</code>.</p>
+<p>This function takes a number of parameters which are extensively
+explained in <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html" class="external-link">the
+scikit-learn documentation</a> : - The first two parameters are the
+dataset (in our case <code>features</code>) and the corresponding
+targets (i.e. defined as target). - Next is the named parameter
+<code>test_size</code> this is the fraction of the dataset that is used
+for testing, in this case <code>0.2</code> means 20% of the data will be
+used for testing. - <code>random_state</code> controls the shuffling of
+the dataset, setting this value will reproduce the same results
+(assuming you give the same integer) every time it is called. -
 <code>shuffle</code> which can be either <code>True</code> or
 <code>False</code>, it controls whether the order of the rows of the
 dataset is shuffled before splitting. It defaults to <code>True</code>.
