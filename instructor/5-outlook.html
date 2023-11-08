@@ -78,11 +78,11 @@
   Introduction to deep learning
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 95%" class="percentage">
-    95%
+<aside class="col-md-12 lesson-progress"><div style="width: 94%" class="percentage">
+    94%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 95%" aria-valuenow="95" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 94%" aria-valuenow="94" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -186,6 +186,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#real-world-application">Real-world application</a></li>
+<li><a href="#organising-deep-learning-projects">Organising deep learning projects</a></li>
 <li><a href="#next-steps">Next steps</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -257,7 +258,7 @@
         
         
         
-        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 25 minutes </p>
+        <p>Estimated time <i aria-hidden="true" data-feather="clock"></i> 30 minutes </p>
         
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -274,6 +275,7 @@
 <h3 class="card-title">Questions</h3>
 <ul><li>“How does what I learned in this course translate to real-world
 problems?”</li>
+<li>“How do I organise a deep learning project?”</li>
 <li>“What are next steps to take after this course?”</li>
 </ul></div>
 </div>
@@ -284,6 +286,7 @@ problems?”</li>
 <h3 class="card-title">Objectives</h3>
 <ul><li>“Understand that what we learned in this course can be applied to
 real-world problems”</li>
+<li>“Use best practices for organising a deep learning project”</li>
 <li>“Identify next steps to take after this course”</li>
 </ul></div>
 </div>
@@ -401,6 +404,75 @@ much more extensive than what we have done so far in this course. This
 is quite common for applied deep learning projects. It is said that 90%
 of the time in a deep learning problem is spent on data preparation, and
 only 10% on modeling!</p>
+</div>
+</div>
+</div>
+</section><section id="organising-deep-learning-projects"><h2 class="section-heading">Organising deep learning projects<a class="anchor" aria-label="anchor" href="#organising-deep-learning-projects"></a>
+</h2>
+<hr class="half-width"><p>As you might have noticed already in this course, deep learning
+projects can quickly become messy. Here follow some best practices for
+keeping your projects organized:</p>
+<div class="section level3">
+<h3 id="organise-experiments-in-notebooks">1. Organise experiments in notebooks<a class="anchor" aria-label="anchor" href="#organise-experiments-in-notebooks"></a></h3>
+<p>Jupyter notebooks are a useful tool for doing deep learning
+experiments. You can very easily modify your code bit by bit, and
+interactively look at the results. In addition you can explain why you
+are doing things in markdown cells. - As a rule of thumb do one approach
+or experiment in one notebook. - Give consistent and meaningful names to
+notebooks, such as: <code>01-all-cities-simple-cnn.ipynb</code> - Add a
+rationale on top and a conclusion on the bottom of each notebook</p>
+<p><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1007007" class="external-link"><em>Ten
+simple rules for writing and sharing computational analyses in Jupyter
+Notebooks</em></a> provides further advice on how to maximise the
+usefulness and reproducibility of experiments captured in a
+notebook.</p>
+</div>
+<div class="section level3">
+<h3 id="use-python-modules">2. Use Python modules<a class="anchor" aria-label="anchor" href="#use-python-modules"></a></h3>
+<p>Code that is repeatedly used should live in a Python module and not
+be copied to multiple notebooks. You can import functions and classes
+from the module(s) in the notebooks. This way you can remove a lot of
+code definition from your notebooks and have a focus on the actual
+experiment.</p>
+</div>
+<div class="section level3">
+<h3 id="keep-track-of-your-results-in-a-central-place">3. Keep track of your results in a central place<a class="anchor" aria-label="anchor" href="#keep-track-of-your-results-in-a-central-place"></a></h3>
+<p>Always evaluate your experiments in the same way, on the exact same
+test set. Document the results of your experiments in a consistent and
+meaningful way. You can use a simple spreadsheet such as this:</p>
+<table class="table"><colgroup><col width="21%"><col width="38%"><col width="5%"><col width="13%"><col width="13%"><col width="8%"></colgroup><thead><tr class="header"><th>MODEL NAME</th>
+<th>MODEL DESCRIPTION</th>
+<th>RMSE</th>
+<th>TESTSET NAME</th>
+<th>GITHUB COMMIT</th>
+<th>COMMENTS</th>
+</tr></thead><tbody><tr class="odd"><td>weather_prediction_v1.0</td>
+<td>Basel features only, 10 years. nn: 100-50</td>
+<td>3.21</td>
+<td>10_years_v1.0</td>
+<td>ed28d85</td>
+<td></td>
+</tr><tr class="even"><td>weather_prediction_v1.1</td>
+<td>all features, 10 years. nn: 100-50</td>
+<td>3.35</td>
+<td>10_years_v1.0</td>
+<td>4427b78</td>
+<td></td>
+</tr></tbody></table><p>You could also use a tool such as <a href="https://wandb.ai/site" class="external-link">Weights and Biases</a> for this.</p>
+<div id="cookiecutter-data-science" class="callout callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="cookiecutter-data-science" class="callout-inner">
+<h3 class="callout-title">Cookiecutter data science<a class="anchor" aria-label="anchor" href="#cookiecutter-data-science"></a>
+</h3>
+<div class="callout-content">
+<p>If you want to get more pointers for organising deep learning, or
+data science projects in general, we recommend <a href="https://drivendata.github.io/cookiecutter-data-science/" class="external-link">Cookiecutter
+data science</a>. It is a template for initiating an organized data
+science project folder structure that you can adapt to your own
+needs.</p>
+</div>
 </div>
 </div>
 </div>
