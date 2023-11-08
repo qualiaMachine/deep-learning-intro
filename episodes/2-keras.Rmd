@@ -261,8 +261,9 @@ For this episode we will keep it at just a training and test set however.
 
 To split the cleaned dataset into a training and test set we will use a very convenient
 function from sklearn called `train_test_split`.
-This function takes a number of parameters which are extensively explained [here](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) :
-- The first two parameters are the dataset (in our case features) and the corresponding targets (i.e. defined as target).
+
+This function takes a number of parameters which are extensively explained in [the scikit-learn documentation](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html) :
+- The first two parameters are the dataset (in our case `features`) and the corresponding targets (i.e. defined as target).
 - Next is the named parameter `test_size` this is the fraction of the dataset that is
 used for testing, in this case `0.2` means 20% of the data will be used for testing.
 - `random_state` controls the shuffling of the dataset, setting this value will reproduce
