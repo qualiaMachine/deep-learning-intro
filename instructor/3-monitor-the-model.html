@@ -752,19 +752,20 @@ function. We want to move towards the global minimum, so in the opposite
 direction of the gradient.</p></li>
 <li>
 <p>Correct answer: B &amp; D</p>
-<ul><li>A. The number of samples in an epoch also increases (incorrect, an
-epoch is always defined as passing through the training data for one
-cycle)</li>
-<li>B. The number of batches in an epoch goes down (correct, the number
-of batches is the samples in an epoch divided by the batch size)</li>
+<ul><li>A. The number of samples in an epoch also increases
+(<strong>incorrect</strong>, an epoch is always defined as passing
+through the training data for one cycle)</li>
+<li>B. The number of batches in an epoch goes down
+(<strong>correct</strong>, the number of batches is the samples in an
+epoch divided by the batch size)</li>
 <li>C. The training progress is more jumpy, because more samples are
-consulted in each update step (one batch). (incorrect, more samples are
-consulted in each update step, but this makes the progress less jumpy
-since you get a more accurate estimate of the loss in the entire
-dataset)</li>
+consulted in each update step (one batch). (<strong>incorrect</strong>,
+more samples are consulted in each update step, but this makes the
+progress less jumpy since you get a more accurate estimate of the loss
+in the entire dataset)</li>
 <li>D. The memory load (memory as in computer hardware) of the training
-process is increased (correct, the data is begin loaded one batch at a
-time, so more samples means more memory usage)</li>
+process is increased (<strong>correct</strong>, the data is begin loaded
+one batch at a time, so more samples means more memory usage)</li>
 </ul></li>
 </ol></div>
 </div>
@@ -972,14 +973,18 @@ why?</li>
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
 called <strong>overfitting</strong>, which we will discuss in more
-detail later. Optional exercise: The metric that we are using: RMSE
-would be a good one. You could also consider Mean Squared Error, that
-punishes large errors more (because large errors create even larger
-squared errors). It is important that if the model improves in
-performance on the basis of this metric then that should also lead you a
-step closer to reaching your goal: to predict tomorrow’s sunshine hours.
-If you feel that improving the metric does not lead you closer to your
-goal, then it would be better to choose a different metric</p>
+detail later.</p>
+<div class="section level4">
+<h4 id="optional-exercise">Optional exercise:<a class="anchor" aria-label="anchor" href="#optional-exercise"></a></h4>
+<p>The metric that we are using: RMSE would be a good one. You could
+also consider Mean Squared Error, that punishes large errors more
+(because large errors create even larger squared errors). It is
+important that if the model improves in performance on the basis of this
+metric then that should also lead you a step closer to reaching your
+goal: to predict tomorrow’s sunshine hours. If you feel that improving
+the metric does not lead you closer to your goal, then it would be
+better to choose a different metric</p>
+</div>
 </div>
 </div>
 </div>

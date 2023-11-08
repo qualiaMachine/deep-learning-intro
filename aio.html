@@ -479,11 +479,12 @@ of inputs:</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="calculate-the-output-for-one-neuron-1">1: calculate the output for one neuron<a class="anchor" aria-label="anchor" href="#calculate-the-output-for-one-neuron-1"></a>
 </h4>
+<p>You can calculate the output as follows:</p>
 <ul>
 <li>Weighted sum of input:
 <code>0 * (-1) + 0.5 * (-0.5) + 1 * 0.5 = 0.25</code>
@@ -581,7 +582,7 @@ BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=44920411" cl
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>A</li>
@@ -726,7 +727,7 @@ loss (blue) as a function of <code>y_true - y_pred</code>.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="compute-the-mean-squared-error-1">1. ‘Compute the Mean Squared Error’<a class="anchor" aria-label="anchor" href="#compute-the-mean-squared-error-1"></a>
@@ -888,7 +889,7 @@ dogs.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>and 5 are the sort of tasks often solved with Deep Learning.</li>
@@ -1086,7 +1087,7 @@ the data you will use to train the network.</li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
@@ -1621,7 +1622,7 @@ the offending rows by adding a call to <code>dropna()</code>:</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract columns corresponding to features</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>penguins_features <span class="op">=</span> penguins_filtered.drop(columns<span class="op">=</span>[<span class="st">'species'</span>])</span></code></pre>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> penguins_filtered.drop(columns<span class="op">=</span>[<span class="st">'species'</span>])</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -1675,7 +1676,7 @@ encoded the target class?</p>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<p>3, one for each output variable class</p>
+<p>C: 3, one for each output variable class</p>
 </div>
 </div>
 </div>
@@ -1697,27 +1698,27 @@ keep it at just a training and test set however.</p>
 a very convenient function from sklearn called
 <code>train_test_split</code>. This function takes a number of
 parameters which are extensively explained <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html" class="external-link">here</a>
-: - The first two parameters are the dataset (in our case
-penguins_features) and the corresponding targets (i.e. defined as
-target). - Next is the named parameter <code>test_size</code> this is
-the fraction of the dataset that is used for testing, in this case
-<code>0.2</code> means 20% of the data will be used for testing. -
-<code>random_state</code> controls the shuffling of the dataset, setting
-this value will reproduce the same results (assuming you give the same
-integer) every time it is called. - <code>shuffle</code> which can be
-either <code>True</code> or <code>False</code>, it controls whether the
-order of the rows of the dataset is shuffled before splitting. It
-defaults to <code>True</code>. - <code>stratify</code> is a more
-advanced parameter that controls how the split is done. By setting it to
-<code>target</code> the train and test sets the function will return
-will have roughly the same proportions (with regards to the number of
-penguins of a certain species) as the dataset.</p>
+: - The first two parameters are the dataset (in our case features) and
+the corresponding targets (i.e. defined as target). - Next is the named
+parameter <code>test_size</code> this is the fraction of the dataset
+that is used for testing, in this case <code>0.2</code> means 20% of the
+data will be used for testing. - <code>random_state</code> controls the
+shuffling of the dataset, setting this value will reproduce the same
+results (assuming you give the same integer) every time it is called. -
+<code>shuffle</code> which can be either <code>True</code> or
+<code>False</code>, it controls whether the order of the rows of the
+dataset is shuffled before splitting. It defaults to <code>True</code>.
+- <code>stratify</code> is a more advanced parameter that controls how
+the split is done. By setting it to <code>target</code> the train and
+test sets the function will return will have roughly the same
+proportions (with regards to the number of penguins of a certain
+species) as the dataset.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(penguins_features, target,test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>, shuffle<span class="op">=</span><span class="va">True</span>, stratify<span class="op">=</span>target)</span></code></pre>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(features, target, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>, shuffle<span class="op">=</span><span class="va">True</span>, stratify<span class="op">=</span>target)</span></code></pre>
 </div>
 </div>
 </section><section id="build-an-architecture-from-scratch-or-choose-a-pretrained-model"><h2 class="section-heading">4. Build an architecture from scratch or choose a pretrained
@@ -1896,14 +1897,11 @@ network</li>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
+<p>Have a look at the output of <code>model.summary()</code>:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>])</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>hidden_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(inputs)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>)(hidden_layer)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>output_layer)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1923,12 +1921,16 @@ Trainable params: 83
 Non-trainable params: 0
 _________________________________________________________________</code></pre>
 </div>
-<p>The model has 83 trainable parameters. If you increase the number of
-neurons in the hidden layer the number of trainable parameters in both
-the hidden and output layer increases or decreases accordingly of
-neurons. The name in quotes within the string
+<p>The model has 83 trainable parameters.</p>
+<p>If you increase the number of neurons in the hidden layer the number
+of trainable parameters in both the hidden and output layer increases or
+decreases in accordance with the number of neurons added. Each extra
+neuron has 4 weights connected to the input layer, 1 bias term, and 3
+weights connected to the output layer. So in total 8 extra
+parameters.</p>
+<p><em>The name in quotes within the string
 <code>Model: "model_1"</code> may be different in your view; this detail
-is not important.</p>
+is not important.</em></p>
 <div class="section level4">
 <h4 id="optional-keras-sequential-vs-functional-api-1">(optional) Keras Sequential vs Functional API<a class="anchor" aria-label="anchor" href="#optional-keras-sequential-vs-functional-api-1"></a>
 </h4>
@@ -2944,19 +2946,20 @@ direction of the gradient.</p></li>
 <li>
 <p>Correct answer: B &amp; D</p>
 <ul>
-<li>A. The number of samples in an epoch also increases (incorrect, an
-epoch is always defined as passing through the training data for one
-cycle)</li>
-<li>B. The number of batches in an epoch goes down (correct, the number
-of batches is the samples in an epoch divided by the batch size)</li>
+<li>A. The number of samples in an epoch also increases
+(<strong>incorrect</strong>, an epoch is always defined as passing
+through the training data for one cycle)</li>
+<li>B. The number of batches in an epoch goes down
+(<strong>correct</strong>, the number of batches is the samples in an
+epoch divided by the batch size)</li>
 <li>C. The training progress is more jumpy, because more samples are
-consulted in each update step (one batch). (incorrect, more samples are
-consulted in each update step, but this makes the progress less jumpy
-since you get a more accurate estimate of the loss in the entire
-dataset)</li>
+consulted in each update step (one batch). (<strong>incorrect</strong>,
+more samples are consulted in each update step, but this makes the
+progress less jumpy since you get a more accurate estimate of the loss
+in the entire dataset)</li>
 <li>D. The memory load (memory as in computer hardware) of the training
-process is increased (correct, the data is begin loaded one batch at a
-time, so more samples means more memory usage)</li>
+process is increased (<strong>correct</strong>, the data is begin loaded
+one batch at a time, so more samples means more memory usage)</li>
 </ul>
 </li>
 </ol>
@@ -3177,14 +3180,19 @@ why?</li>
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
 called <strong>overfitting</strong>, which we will discuss in more
-detail later. Optional exercise: The metric that we are using: RMSE
-would be a good one. You could also consider Mean Squared Error, that
-punishes large errors more (because large errors create even larger
-squared errors). It is important that if the model improves in
-performance on the basis of this metric then that should also lead you a
-step closer to reaching your goal: to predict tomorrow’s sunshine hours.
-If you feel that improving the metric does not lead you closer to your
-goal, then it would be better to choose a different metric</p>
+detail later.</p>
+<div class="section level4">
+<h4 id="optional-exercise">Optional exercise:<a class="anchor" aria-label="anchor" href="#optional-exercise"></a>
+</h4>
+<p>The metric that we are using: RMSE would be a good one. You could
+also consider Mean Squared Error, that punishes large errors more
+(because large errors create even larger squared errors). It is
+important that if the model improves in performance on the basis of this
+metric then that should also lead you a step closer to reaching your
+goal: to predict tomorrow’s sunshine hours. If you feel that improving
+the metric does not lead you closer to your goal, then it would be
+better to choose a different metric</p>
+</div>
 </div>
 </div>
 </div>
@@ -4410,7 +4418,8 @@ ignore them, which means that your output image is slightly smaller then
 your input. It is also possible to ‘pad’ the borders, e.g. with the same
 value or with zeros, so that the convolution can also be applied to the
 border pixels. In that case, the output image will have the same size as
-the input image. <a href="https://datacarpentry.org/image-processing/06-blurring.html#callout4" class="external-link">A
+the input image.</p>
+<p><a href="https://datacarpentry.org/image-processing/06-blurring.html#callout4" class="external-link">This
 callout in the Data Carpentry: Image Processing with Python
 curriculum</a> provides more detail about convolution at the boundaries
 of an image, in the context of applying a <em>Gaussian blur</em>.</p>
@@ -5271,7 +5280,7 @@ from the first figure of <a href="https://doi.org/10.1186/s13321-021-00558-4" cl
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The model summary for the Siamese model is more complex than what we

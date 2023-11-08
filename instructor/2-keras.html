@@ -623,7 +623,7 @@ the offending rows by adding a call to <code>dropna()</code>:</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract columns corresponding to features</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>penguins_features <span class="op">=</span> penguins_filtered.drop(columns<span class="op">=</span>[<span class="st">'species'</span>])</span></code></pre>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> penguins_filtered.drop(columns<span class="op">=</span>[<span class="st">'species'</span>])</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -674,7 +674,7 @@ encoded the target class?</p>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<p>3, one for each output variable class</p>
+<p>C: 3, one for each output variable class</p>
 </div>
 </div>
 </div>
@@ -695,27 +695,27 @@ keep it at just a training and test set however.</p>
 a very convenient function from sklearn called
 <code>train_test_split</code>. This function takes a number of
 parameters which are extensively explained <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html" class="external-link">here</a>
-: - The first two parameters are the dataset (in our case
-penguins_features) and the corresponding targets (i.e. defined as
-target). - Next is the named parameter <code>test_size</code> this is
-the fraction of the dataset that is used for testing, in this case
-<code>0.2</code> means 20% of the data will be used for testing. -
-<code>random_state</code> controls the shuffling of the dataset, setting
-this value will reproduce the same results (assuming you give the same
-integer) every time it is called. - <code>shuffle</code> which can be
-either <code>True</code> or <code>False</code>, it controls whether the
-order of the rows of the dataset is shuffled before splitting. It
-defaults to <code>True</code>. - <code>stratify</code> is a more
-advanced parameter that controls how the split is done. By setting it to
-<code>target</code> the train and test sets the function will return
-will have roughly the same proportions (with regards to the number of
-penguins of a certain species) as the dataset.</p>
+: - The first two parameters are the dataset (in our case features) and
+the corresponding targets (i.e. defined as target). - Next is the named
+parameter <code>test_size</code> this is the fraction of the dataset
+that is used for testing, in this case <code>0.2</code> means 20% of the
+data will be used for testing. - <code>random_state</code> controls the
+shuffling of the dataset, setting this value will reproduce the same
+results (assuming you give the same integer) every time it is called. -
+<code>shuffle</code> which can be either <code>True</code> or
+<code>False</code>, it controls whether the order of the rows of the
+dataset is shuffled before splitting. It defaults to <code>True</code>.
+- <code>stratify</code> is a more advanced parameter that controls how
+the split is done. By setting it to <code>target</code> the train and
+test sets the function will return will have roughly the same
+proportions (with regards to the number of penguins of a certain
+species) as the dataset.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(penguins_features, target,test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>, shuffle<span class="op">=</span><span class="va">True</span>, stratify<span class="op">=</span>target)</span></code></pre>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(features, target, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>, shuffle<span class="op">=</span><span class="va">True</span>, stratify<span class="op">=</span>target)</span></code></pre>
 </div>
 </div>
 </section><section id="build-an-architecture-from-scratch-or-choose-a-pretrained-model"><h2 class="section-heading">4. Build an architecture from scratch or choose a pretrained
@@ -884,14 +884,11 @@ network</li>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
+<p>Have a look at the output of <code>model.summary()</code>:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>])</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>hidden_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(inputs)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>)(hidden_layer)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>output_layer)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -911,12 +908,16 @@ Trainable params: 83
 Non-trainable params: 0
 _________________________________________________________________</code></pre>
 </div>
-<p>The model has 83 trainable parameters. If you increase the number of
-neurons in the hidden layer the number of trainable parameters in both
-the hidden and output layer increases or decreases accordingly of
-neurons. The name in quotes within the string
+<p>The model has 83 trainable parameters.</p>
+<p>If you increase the number of neurons in the hidden layer the number
+of trainable parameters in both the hidden and output layer increases or
+decreases in accordance with the number of neurons added. Each extra
+neuron has 4 weights connected to the input layer, 1 bias term, and 3
+weights connected to the output layer. So in total 8 extra
+parameters.</p>
+<p><em>The name in quotes within the string
 <code>Model: "model_1"</code> may be different in your view; this detail
-is not important.</p>
+is not important.</em></p>
 <div class="section level4">
 <h4 id="optional-keras-sequential-vs-functional-api-1">(optional) Keras Sequential vs Functional API<a class="anchor" aria-label="anchor" href="#optional-keras-sequential-vs-functional-api-1"></a></h4>
 <ol start="3" style="list-style-type: decimal"><li>This implements the same model using the Sequential API:</li>
