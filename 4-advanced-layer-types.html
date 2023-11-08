@@ -185,6 +185,7 @@
 <li><a href="#choose-a-pretrained-model-or-start-building-architecture-from-scratch">4. Choose a pretrained model or start building architecture from
 scratch</a></li>
 <li><a href="#convolutional-layers">Convolutional layers</a></li>
+<li><a href="#pooling-layers">Pooling layers</a></li>
 <li><a href="#choose-a-loss-function-and-optimizer">5. Choose a loss function and optimizer</a></li>
 <li><a href="#train-the-model">6. Train the model</a></li>
 <li><a href="#perform-a-predictionclassification">7. Perform a Prediction/Classification</a></li>
@@ -746,7 +747,35 @@ the convolutional layers, that have much fewer parameters.</li>
 </div>
 </div>
 </div>
-<p>Often in convolutional neural networks, the convolutional layers are
+<div id="search-for-existing-architectures-or-pretrained-models" class="callout callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="search-for-existing-architectures-or-pretrained-models" class="callout-inner">
+<h3 class="callout-title">Search for existing architectures or
+pretrained models<a class="anchor" aria-label="anchor" href="#search-for-existing-architectures-or-pretrained-models"></a>
+</h3>
+<div class="callout-content">
+<p>So far in this course we have built neural networks from scratch,
+because we want you to fully understand the basics of Keras. In the real
+world however, you would first search for existing solutions to your
+problem. The CIFAR10 dataset lends itself extremely well for using
+existing models, since it is a standard machine learning problem that is
+often used in deep learning research.</p>
+<p>You could for example search for ‘CIFAR10 state-of-the-art Keras’,
+and see if you can find any Keras implementations of more advanced
+architectures that you could reuse. A lot of the best-performing
+architectures for the CIFAR10 problem are convolutional neural networks
+or at least have some elements in common. Therefore, we will introduce
+convolutional neural networks here, and the best way to teach you is by
+developing a neural network from scratch!</p>
+</div>
+</div>
+</div>
+
+</section><section id="pooling-layers"><h2 class="section-heading">Pooling layers<a class="anchor" aria-label="anchor" href="#pooling-layers"></a>
+</h2>
+<hr class="half-width"><p>Often in convolutional neural networks, the convolutional layers are
 intertwined with <strong>Pooling layers</strong>. As opposed to the
 convolutional layer, the pooling layer actually alters the dimensions of
 the image and reduces it by a scaling factor. It is basically decreasing
