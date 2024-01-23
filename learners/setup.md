@@ -84,7 +84,7 @@ Make sure you have an up-to-date version of Conda running.
 See [these instructions](https://docs.anaconda.com/anaconda/install/update-version/) for updating Conda if required.
 {: .callout}
 
-To create a conda environment called `dl_workshop` with the required packages, open a terminal (Mac) or Anaconda prompt (Windows) and type the command:
+To create a conda environment called `dl_workshop` with the required packages, open a terminal (Mac/Linux) or Anaconda prompt (Windows) and type the command:
 ```bash
 conda create --name dl_workshop python jupyter seaborn scikit-learn pandas
 ```
@@ -150,13 +150,13 @@ installed Python using Anaconda, Jupyter should already be on your system. If
 you did not use Anaconda, use the Python package manager pip
 (see the [Jupyter website][jupyter-install] for details.)
 
-To start jupyter lab, open a terminal and type the command:
+To start jupyter lab, open a terminal (Mac/Linux) or Anaconda prompt (Windows) and type the command:
 
 ```bash
 jupyter lab
 ```
 
-To start the Python interpreter without jupyter lab, open a terminal
+To start the Python interpreter without jupyter lab, open a terminal (Mac/Linux) or Anaconda prompt (Windows)
 or git bash and type the command:
 
 ```bash
