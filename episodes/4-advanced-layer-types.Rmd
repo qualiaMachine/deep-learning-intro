@@ -744,7 +744,7 @@ The code below instantiates and trains a model with varying dropout rates.
 You can see from the resulting plot that the ideal dropout rate in this case is around 0.45.
 This is where the val loss is lowest.
 
-- NB1: It takes a while to train these 5 networks.
+Note that it can take a while to train these 5 networks.
 
 ```python
 def create_nn_with_dropout(dropout_rate):
@@ -777,7 +777,7 @@ loss_df = pd.DataFrame({'dropout_rate': dropout_rates, 'val_loss': val_losses})
 sns.lineplot(data=loss_df, x='dropout_rate', y='val_loss')
 ```
 
-![](/fig/04_vary_dropout_rate.png){alt="Plot of vall loss vs dropout rate used in the model. The val loss varies between 1.26 and 1.40 and is lowest with a dropout_rate around 0.45."}
+![](fig/04_vary_dropout_rate.png){alt="Plot of vall loss vs dropout rate used in the model. The val loss varies between 1.26 and 1.40 and is lowest with a dropout_rate around 0.45."}
 
 
 ### 2. Term associated to this procedure
