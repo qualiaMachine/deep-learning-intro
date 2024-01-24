@@ -85,6 +85,22 @@ in this course. This is quite common for applied deep learning projects. It is s
 deep learning problem is spent on data preparation, and only 10% on modeling!
 :::
 
+::: discussion
+## Discussion: Large Language Models and prompt engineering
+Large Language Models (LLMs) are deep learning models that are able to perform general-purpose language generation.
+They are trained on large amounts of texts, such all pages of Wikipedia. 
+In recent years the quality of LLMs language understanding and generation has increased tremendously, and since the launch of generative chatbot ChatGPT in 2022 the power of LLMs is now appreciated by the general public.
+
+It is becoming more and more feasible to unleash this power in scientific research. For example, the authors of [Zheng et al. (2023)](https://doi.org/10.1021/jacs.3c05819) guided ChatGPT in the automation of extracting chemical information from a large amount of research articles. The authors did not implement a deep learning model themselves, but instead they designed the right input for ChatGPT (called a 'prompt') that would produce optimal outputs. This is called prompt engineering. A highly simplified example of such a prompt would be: "Given compounds X and Y and context Z, what are the chemical details of the reaction?"
+
+Developments in LLM research are moving fast, at the end of 2023 the newest ChatGPT version [could take images and sound as input](https://openai.com/blog/chatgpt-can-now-see-hear-and-speak). 
+In theory, this means that you can solve the Cifar-10 image classification problem from the previous episode by prompt engineering, with prompts similar to "Which out of these categories: [LIST OF CATEGORIES] is depicted in the image".
+
+**Discuss the following statement with your neighbors:**
+
+_In a few years most machine learning problems in scientific research can be solved with prompt engineering._
+:::
+
 ## Organising deep learning projects
 As you might have noticed already in this course, deep learning projects can quickly become messy.
 Here follow some best practices for keeping your projects organized:

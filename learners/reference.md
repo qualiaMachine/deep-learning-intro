@@ -27,6 +27,7 @@ Here is a (non exhaustive) list of external resources for further study after th
 - [Unbalanced data](https://towardsdatascience.com/handling-imbalanced-datasets-in-deep-learning-f48407a0e758)
 - [Unbalanced data in Keras](https://www.tensorflow.org/tutorials/structured_data/imbalanced_data)
 - [Tensorflow Playground, for visualizing neural networks](http://playground.tensorflow.org/)
+- [ChatGPT prompt engineering course](https://learn.deeplearning.ai/chatgpt-prompt-eng/lesson/1/lesson_1)
 
 ### Some ML challenges or benchmarks
 - https://mlcontests.com/
