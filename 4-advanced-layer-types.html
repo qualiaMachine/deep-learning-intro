@@ -266,7 +266,7 @@ scratch</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Advanced layer types</h1>
-        <p>Last updated on 2024-01-30 |
+        <p>Last updated on 2024-01-31 |
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/4-advanced-layer-types.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -534,7 +534,7 @@ learn.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>dim)</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>n_input_items)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">100</span>)(inputs)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.models.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
@@ -961,8 +961,8 @@ CNN, let’s train and evaluate it!</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>compile_model(dense_model)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> dense_model.fit(train_images, train_labels, epochs<span class="op">=</span><span class="dv">30</span>,</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(test_images, test_labels))</span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plot_history([<span class="st">'accuracy'</span>, <span class="st">'val_accuracy'</span>])</span></code></pre>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                    validation_data<span class="op">=</span>(val_images, val_labels))</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>plot_history(history, [<span class="st">'accuracy'</span>, <span class="st">'val_accuracy'</span>])</span></code></pre>
 </div>
 <figure><img src="fig/04_dense_model_training_history.png" alt="Plot of training accuracy and validation accuracy vs epochs for a model with only dense layers" class="figure mx-auto d-block"></figure><p>As you can see the validation accuracy only reaches about 35%,
 whereas the CNN reached about 55% accuracy.</p>
@@ -1420,8 +1420,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/deep-learning-intro/4-advanced-layer-types.html",
   "identifier": "https://carpentries-incubator.github.io/deep-learning-intro/4-advanced-layer-types.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2024-01-30",
-  "datePublished": "2024-01-30"
+  "dateModified": "2024-01-31",
+  "datePublished": "2024-01-31"
 }
 
   </script><script>
