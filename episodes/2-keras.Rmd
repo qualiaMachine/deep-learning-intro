@@ -1,6 +1,6 @@
 ---
 title: "Classification by a neural network using Keras"
-teaching: 45
+teaching: 60
 exercises: 50
 ---
 

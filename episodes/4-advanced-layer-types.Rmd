@@ -1,6 +1,6 @@
 ---
 title: "Advanced layer types"
-teaching: 35
+teaching: 70
 exercises: 70
 ---
 
