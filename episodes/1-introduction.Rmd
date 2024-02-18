@@ -461,13 +461,13 @@ You should get a version number reported. At the time of writing 1.2.2 is the la
 
 :::::::::::::::::::::::::::::::::::::: keypoints
 
-- "Machine learning is the process where computers learn to recognise patterns of data."
-- "Artificial neural networks are a machine learning technique based on a model inspired by groups of neurons in the brain."
-- "Artificial neural networks can be trained on example data."
-- "Deep Learning is a machine learning technique based on using many artificial neurons arranged in layers."
-- "Neural networks learn by minimizing a loss function."
-- "Deep Learning is well suited to classification and prediction problems such as image recognition."
-- "To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, refine the model, measuring performance before we can classify data."
-- "Keras is a Deep Learning library that is easier to use than many of the alternatives such as TensorFlow and PyTorch."
+- Machine learning is the process where computers learn to recognise patterns of data.
+- Artificial neural networks are a machine learning technique based on a model inspired by groups of neurons in the brain.
+- Artificial neural networks can be trained on example data.
+- Deep Learning is a machine learning technique based on using many artificial neurons arranged in layers.
+- Neural networks learn by minimizing a loss function.
+- Deep Learning is well suited to classification and prediction problems such as image recognition.
+- To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, refine the model, measuring performance before we can classify data.
+- Keras is a Deep Learning library that is easier to use than many of the alternatives such as TensorFlow and PyTorch.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::

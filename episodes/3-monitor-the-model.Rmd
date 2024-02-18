@@ -990,6 +990,6 @@ This will turn the data into time series data which in turn might also make it w
 
 
 ::: keypoints
-- "Separate training, validation, and test sets allows monitoring and evaluating your model."
-- "Batchnormalization scales the data as part of the model."
+- Separate training, validation, and test sets allows monitoring and evaluating your model.
+- Batchnormalization scales the data as part of the model.
 :::

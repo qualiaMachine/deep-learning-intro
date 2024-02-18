@@ -793,7 +793,7 @@ model.save('cnn_model')
 ```
 
 ::: keypoints
-- "Convolutional layers make efficient reuse of model parameters."
-- "Pooling layers decrease the resolution of your input"
-- "Dropout is a way to prevent overfitting"
+- Convolutional layers make efficient reuse of model parameters.
+- Pooling layers decrease the resolution of your input
+- Dropout is a way to prevent overfitting
 :::
