@@ -5,22 +5,22 @@ exercises: 50
 ---
 
 ::: questions
-- "What is a neural network?"
-- "How do I compose a Neural Network using Keras?"
-- "How do I train this network on a dataset?"
-- "How do I get insight into learning process?"
-- "How do I measure the performance of the network?"
+- What is a neural network?
+- How do I compose a Neural Network using Keras?
+- How do I train this network on a dataset?
+- How do I get insight into learning process?
+- How do I measure the performance of the network?
 :::
 
 ::: objectives
-- "Use the deep learning workflow to structure the notebook"
-- "Explore the dataset using pandas and seaborn"
-- "Use one-hot encoding to prepare data for classification in Keras"
-- "Describe a fully connected layer"
-- "Implement a fully connected layer with Keras"
-- "Use Keras to train a small fully connected network on prepared data"
-- "Interpret the loss curve of the training process"
-- "Use a confusion matrix to measure the trained networks' performance on a test set"
+- Use the deep learning workflow to structure the notebook
+- Explore the dataset using pandas and seaborn
+- Use one-hot encoding to prepare data for classification in Keras
+- Describe a fully connected layer
+- Implement a fully connected layer with Keras
+- Use Keras to train a small fully connected network on prepared data
+- Interpret the loss curve of the training process
+- Use a confusion matrix to measure the trained networks' performance on a test set
 :::
 
 

@@ -5,15 +5,15 @@ exercises: 15
 ---
 
 ::: questions
-- "How does what I learned in this course translate to real-world problems?"
-- "How do I organise a deep learning project?"
-- "What are next steps to take after this course?"
+- How does what I learned in this course translate to real-world problems?
+- How do I organise a deep learning project?
+- What are next steps to take after this course?
 :::
 
 ::: objectives
-- "Understand that what we learned in this course can be applied to real-world problems"
-- "Use best practices for organising a deep learning project"
-- "Identify next steps to take after this course"
+- Understand that what we learned in this course can be applied to real-world problems
+- Use best practices for organising a deep learning project
+- Identify next steps to take after this course
 :::
 
 You have come to the end of this course.
