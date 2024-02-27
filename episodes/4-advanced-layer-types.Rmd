@@ -5,16 +5,16 @@ exercises: 70
 ---
 
 ::: questions
-- "Why do we need different types of layers?"
-- "What are good network designs for image data?"
-- "What is a convolutional layer?"
-- "How can we use different types of layers to prevent overfitting?"
+- Why do we need different types of layers?
+- What are good network designs for image data?
+- What is a convolutional layer?
+- How can we use different types of layers to prevent overfitting?
 :::
 
 ::: objectives
-- "Understand why convolutional and pooling layers are useful for image data"
-- "Implement a convolutional neural network on an image dataset"
-- "Use a drop-out layer to prevent overfitting"
+- Understand why convolutional and pooling layers are useful for image data
+- Implement a convolutional neural network on an image dataset
+- Use a drop-out layer to prevent overfitting
 :::
 
 
@@ -793,7 +793,7 @@ model.save('cnn_model')
 ```
 
 ::: keypoints
-- "Convolutional layers make efficient reuse of model parameters."
-- "Pooling layers decrease the resolution of your input"
-- "Dropout is a way to prevent overfitting"
+- Convolutional layers make efficient reuse of model parameters.
+- Pooling layers decrease the resolution of your input
+- Dropout is a way to prevent overfitting
 :::

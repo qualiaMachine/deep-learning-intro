@@ -5,22 +5,22 @@ exercises: 80
 ---
 
 ::: questions
-- "How do I create a neural network for a regression task?"
-- "How does optimization work?"
-- "How do I monitor the training process?"
-- "How do I detect (and avoid) overfitting?"
-- "What are common options to improve the model performance?"
+- How do I create a neural network for a regression task?
+- How does optimization work?
+- How do I monitor the training process?
+- How do I detect (and avoid) overfitting?
+- What are common options to improve the model performance?
 :::
 
 ::: objectives
-- "Explain the importance of keeping your test set clean, by validating on the validation set instead of the test set"
-- "Use the data splits to plot the training process"
-- "Explain how optimization works"
-- "Design a neural network for a regression task"
-- "Measure the performance of your deep neural network"
-- "Interpret the training plots to recognize overfitting"
-- "Use normalization as preparation step for Deep Learning"
-- "Implement basic strategies to prevent overfitting"
+- Explain the importance of keeping your test set clean, by validating on the validation set instead of the test set
+- Use the data splits to plot the training process
+- Explain how optimization works
+- Design a neural network for a regression task
+- Measure the performance of your deep neural network
+- Interpret the training plots to recognize overfitting
+- Use normalization as preparation step for Deep Learning
+- Implement basic strategies to prevent overfitting
 :::
 
 ::: instructor
@@ -990,6 +990,6 @@ This will turn the data into time series data which in turn might also make it w
 
 
 ::: keypoints
-- "Separate training, validation, and test sets allows monitoring and evaluating your model."
-- "Batchnormalization scales the data as part of the model."
+- Separate training, validation, and test sets allows monitoring and evaluating your model.
+- Batchnormalization scales the data as part of the model.
 :::

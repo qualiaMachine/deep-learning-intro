@@ -1,30 +1,30 @@
 ---
 title: 'Introduction'
-teaching: 40
-exercises: 15
+teaching: 50
+exercises: 30
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions
 
-- "What is Deep Learning?"
-- "When does it make sense to use and not use Deep Learning?"
-- "When is it successful?"
-- "What are the tools involved?"
-- "What is the workflow for Deep Learning?"
-- "Why did we choose to use Keras in this lesson?"
-- "How do neural networks learn?"
+- What is Deep Learning?
+- When does it make sense to use and not use Deep Learning?
+- When is it successful?
+- What are the tools involved?
+- What is the workflow for Deep Learning?
+- Why did we choose to use Keras in this lesson?
+- How do neural networks learn?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::: objectives
 
-- "Recall the sort of problems for which Deep Learning is a useful tool"
-- "List some of the available tools for Deep Learning"
-- "Recall the steps of a Deep Learning workflow"
-- "Identify the inputs and outputs of a deep neural network."
-- "Explain the operations performed in a single neuron"
-- "Test that you have correctly installed the Keras, Seaborn and Sklearn libraries"
-- "Describe what a loss function is"
+- Recall the sort of problems for which Deep Learning is a useful tool
+- List some of the available tools for Deep Learning
+- Recall the steps of a Deep Learning workflow
+- Identify the inputs and outputs of a deep neural network.
+- Explain the operations performed in a single neuron
+- Test that you have correctly installed the Keras, Seaborn and Sklearn libraries
+- Describe what a loss function is
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -217,7 +217,7 @@ A more complicated and less used loss function for regression is the [Huber loss
 Below you see the Huber loss (green, delta = 1) and Squared error loss (blue)
 as a function of `y_true - y_pred`.
 
-![](fig/01_huber_loss.png){alt='Line plot comparing squared error loss function with the Huber loss function where delta = 1, showing the cost of prediction error of both functions equal where y_true - y_pred is between -1 and 1, then rising linearly with the Huber loss function as y_true diverges further from y_pred, as opposed to expontentially for the squared error function.',' width='400px'}
+![](fig/01_huber_loss.png){alt='Line plot comparing squared error loss function with the Huber loss function where delta = 1, showing the cost of prediction error of both functions equal where y_true - y_pred is between -1 and 1, then rising linearly with the Huber loss function as y_true diverges further from y_pred, as opposed to expontentially for the squared error function.' width='400px'}
 
 Which loss function is more sensitive to outliers?
 
@@ -461,13 +461,13 @@ You should get a version number reported. At the time of writing 1.2.2 is the la
 
 :::::::::::::::::::::::::::::::::::::: keypoints
 
-- "Machine learning is the process where computers learn to recognise patterns of data."
-- "Artificial neural networks are a machine learning technique based on a model inspired by groups of neurons in the brain."
-- "Artificial neural networks can be trained on example data."
-- "Deep Learning is a machine learning technique based on using many artificial neurons arranged in layers."
-- "Neural networks learn by minimizing a loss function."
-- "Deep Learning is well suited to classification and prediction problems such as image recognition."
-- "To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, refine the model, measuring performance before we can classify data."
-- "Keras is a Deep Learning library that is easier to use than many of the alternatives such as TensorFlow and PyTorch."
+- Machine learning is the process where computers learn to recognise patterns of data.
+- Artificial neural networks are a machine learning technique based on a model inspired by groups of neurons in the brain.
+- Artificial neural networks can be trained on example data.
+- Deep Learning is a machine learning technique based on using many artificial neurons arranged in layers.
+- Neural networks learn by minimizing a loss function.
+- Deep Learning is well suited to classification and prediction problems such as image recognition.
+- To use Deep Learning effectively we need to go through a workflow of: defining the problem, identifying inputs and outputs, preparing data, choosing the type of network, choosing a loss function, training the model, refine the model, measuring performance before we can classify data.
+- Keras is a Deep Learning library that is easier to use than many of the alternatives such as TensorFlow and PyTorch.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
