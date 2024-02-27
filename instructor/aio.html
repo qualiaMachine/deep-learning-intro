@@ -298,7 +298,7 @@
 <p>Last updated on 2024-02-27 |
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/1-introduction.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 55 minutes</p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 80 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -310,13 +310,13 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>“What is Deep Learning?”</li>
-<li>“When does it make sense to use and not use Deep Learning?”</li>
-<li>“When is it successful?”</li>
-<li>“What are the tools involved?”</li>
-<li>“What is the workflow for Deep Learning?”</li>
-<li>“Why did we choose to use Keras in this lesson?”</li>
-<li>“How do neural networks learn?”</li>
+<li>What is Deep Learning?</li>
+<li>When does it make sense to use and not use Deep Learning?</li>
+<li>When is it successful?</li>
+<li>What are the tools involved?</li>
+<li>What is the workflow for Deep Learning?</li>
+<li>Why did we choose to use Keras in this lesson?</li>
+<li>How do neural networks learn?</li>
 </ul>
 </div>
 </div>
@@ -326,15 +326,15 @@
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>“Recall the sort of problems for which Deep Learning is a useful
-tool”</li>
-<li>“List some of the available tools for Deep Learning”</li>
-<li>“Recall the steps of a Deep Learning workflow”</li>
-<li>“Identify the inputs and outputs of a deep neural network.”</li>
-<li>“Explain the operations performed in a single neuron”</li>
-<li>“Test that you have correctly installed the Keras, Seaborn and
-Sklearn libraries”</li>
-<li>“Describe what a loss function is”</li>
+<li>Recall the sort of problems for which Deep Learning is a useful
+tool</li>
+<li>List some of the available tools for Deep Learning</li>
+<li>Recall the steps of a Deep Learning workflow</li>
+<li>Identify the inputs and outputs of a deep neural network.</li>
+<li>Explain the operations performed in a single neuron</li>
+<li>Test that you have correctly installed the Keras, Seaborn and
+Sklearn libraries</li>
+<li>Describe what a loss function is</li>
 </ul>
 </div>
 </div>
@@ -483,7 +483,7 @@ of inputs:</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="calculate-the-output-for-one-neuron-1">1: calculate the output for one neuron<a class="anchor" aria-label="anchor" href="#calculate-the-output-for-one-neuron-1"></a>
@@ -580,7 +580,7 @@ BY-SA 4.0, <a href="https://commons.wikimedia.org/w/index.php?curid=44920411" cl
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>A</li>
@@ -713,13 +713,7 @@ these 4 samples?</p>
 loss</a>.</p>
 <p>Below you see the Huber loss (green, delta = 1) and Squared error
 loss (blue) as a function of <code>y_true - y_pred</code>.</p>
-<p><img src="../fig/01_huber_loss.png" class="figure">{alt=‘Line plot comparing squared
-error loss function with the Huber loss function where delta = 1,
-showing the cost of prediction error of both functions equal where
-y_true - y_pred is between -1 and 1, then rising linearly with the Huber
-loss function as y_true diverges further from y_pred, as opposed to
-expontentially for the squared error function.’,’ width=‘400px’}</p>
-<p>Which loss function is more sensitive to outliers?</p>
+<figure><img src="../fig/01_huber_loss.png" alt="Line plot comparing squared error loss function with the Huber loss function where delta = 1, showing the cost of prediction error of both functions equal where y_true - y_pred is between -1 and 1, then rising linearly with the Huber loss function as y_true diverges further from y_pred, as opposed to expontentially for the squared error function." width="400" class="figure mx-auto d-block"></figure><p>Which loss function is more sensitive to outliers?</p>
 </div>
 </div>
 </div>
@@ -729,7 +723,7 @@ expontentially for the squared error function.’,’ width=‘400px’}</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="compute-the-mean-squared-error-1">1. ‘Compute the Mean Squared Error’<a class="anchor" aria-label="anchor" href="#compute-the-mean-squared-error-1"></a>
@@ -889,7 +883,7 @@ dogs.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>and 5 are the sort of tasks often solved with Deep Learning.</li>
@@ -1085,7 +1079,7 @@ the data you will use to train the network.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Discuss your answers with the group or the person next to you.</p>
 </div>
@@ -1216,23 +1210,23 @@ commands:</p>
 </h3>
 <div class="callout-content">
 <ul>
-<li>“Machine learning is the process where computers learn to recognise
-patterns of data.”</li>
-<li>“Artificial neural networks are a machine learning technique based
-on a model inspired by groups of neurons in the brain.”</li>
-<li>“Artificial neural networks can be trained on example data.”</li>
-<li>“Deep Learning is a machine learning technique based on using many
-artificial neurons arranged in layers.”</li>
-<li>“Neural networks learn by minimizing a loss function.”</li>
-<li>“Deep Learning is well suited to classification and prediction
-problems such as image recognition.”</li>
-<li>“To use Deep Learning effectively we need to go through a workflow
+<li>Machine learning is the process where computers learn to recognise
+patterns of data.</li>
+<li>Artificial neural networks are a machine learning technique based on
+a model inspired by groups of neurons in the brain.</li>
+<li>Artificial neural networks can be trained on example data.</li>
+<li>Deep Learning is a machine learning technique based on using many
+artificial neurons arranged in layers.</li>
+<li>Neural networks learn by minimizing a loss function.</li>
+<li>Deep Learning is well suited to classification and prediction
+problems such as image recognition.</li>
+<li>To use Deep Learning effectively we need to go through a workflow
 of: defining the problem, identifying inputs and outputs, preparing
 data, choosing the type of network, choosing a loss function, training
 the model, refine the model, measuring performance before we can
-classify data.”</li>
-<li>“Keras is a Deep Learning library that is easier to use than many of
-the alternatives such as TensorFlow and PyTorch.”</li>
+classify data.</li>
+<li>Keras is a Deep Learning library that is easier to use than many of
+the alternatives such as TensorFlow and PyTorch.</li>
 </ul>
 </div>
 </div>
@@ -1246,7 +1240,7 @@ any links that you are not going to use.
 <p>Last updated on 2024-02-27 |
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/2-keras.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 95 minutes</p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 110 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -1258,11 +1252,11 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>“What is a neural network?”</li>
-<li>“How do I compose a Neural Network using Keras?”</li>
-<li>“How do I train this network on a dataset?”</li>
-<li>“How do I get insight into learning process?”</li>
-<li>“How do I measure the performance of the network?”</li>
+<li>What is a neural network?</li>
+<li>How do I compose a Neural Network using Keras?</li>
+<li>How do I train this network on a dataset?</li>
+<li>How do I get insight into learning process?</li>
+<li>How do I measure the performance of the network?</li>
 </ul>
 </div>
 </div>
@@ -1272,17 +1266,17 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>“Use the deep learning workflow to structure the notebook”</li>
-<li>“Explore the dataset using pandas and seaborn”</li>
-<li>“Use one-hot encoding to prepare data for classification in
-Keras”</li>
-<li>“Describe a fully connected layer”</li>
-<li>“Implement a fully connected layer with Keras”</li>
-<li>“Use Keras to train a small fully connected network on prepared
-data”</li>
-<li>“Interpret the loss curve of the training process”</li>
-<li>“Use a confusion matrix to measure the trained networks’ performance
-on a test set”</li>
+<li>Use the deep learning workflow to structure the notebook</li>
+<li>Explore the dataset using pandas and seaborn</li>
+<li>Use one-hot encoding to prepare data for classification in
+Keras</li>
+<li>Describe a fully connected layer</li>
+<li>Implement a fully connected layer with Keras</li>
+<li>Use Keras to train a small fully connected network on prepared
+data</li>
+<li>Interpret the loss curve of the training process</li>
+<li>Use a confusion matrix to measure the trained networks’ performance
+on a test set</li>
 </ul>
 </div>
 </div>
@@ -1322,7 +1316,7 @@ depth for some or all of these steps.</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>This episode really aims to go through the whole process once, as
 quickly as possible. In episode 3 we will expand on all the concepts
@@ -1552,7 +1546,7 @@ of features distinguishes the two sexes best?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ul>
 <li>The plots show that the green class, Gentoo is somewhat more easily
@@ -1687,7 +1681,7 @@ encoded the target class?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>C: 3, one for each output variable class</p>
 </div>
@@ -1908,7 +1902,7 @@ network</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Have a look at the output of <code>model.summary()</code>:</p>
 <div class="codewrapper sourceCode" id="cb18">
@@ -2097,7 +2091,7 @@ the range on the y-axis with the previous training curve. <img src="../fig/02_ba
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The training loss decreases quickly. It drops in a smooth line with
@@ -2324,7 +2318,7 @@ visualize a confusion matrix.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The confusion matrix shows that the predictions for Adelie and Gentoo
 are decent, but could be improved. However, Chinstrap is not predicted
@@ -2441,7 +2435,7 @@ any links that you are not going to use.
 <p>Last updated on 2024-02-27 |
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/3-monitor-the-model.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 215 minutes</p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 200 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -2453,11 +2447,11 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>“How do I create a neural network for a regression task?”</li>
-<li>“How does optimization work?”</li>
-<li>“How do I monitor the training process?”</li>
-<li>“How do I detect (and avoid) overfitting?”</li>
-<li>“What are common options to improve the model performance?”</li>
+<li>How do I create a neural network for a regression task?</li>
+<li>How does optimization work?</li>
+<li>How do I monitor the training process?</li>
+<li>How do I detect (and avoid) overfitting?</li>
+<li>What are common options to improve the model performance?</li>
 </ul>
 </div>
 </div>
@@ -2467,15 +2461,15 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>“Explain the importance of keeping your test set clean, by
-validating on the validation set instead of the test set”</li>
-<li>“Use the data splits to plot the training process”</li>
-<li>“Explain how optimization works”</li>
-<li>“Design a neural network for a regression task”</li>
-<li>“Measure the performance of your deep neural network”</li>
-<li>“Interpret the training plots to recognize overfitting”</li>
-<li>“Use normalization as preparation step for Deep Learning”</li>
-<li>“Implement basic strategies to prevent overfitting”</li>
+<li>Explain the importance of keeping your test set clean, by validating
+on the validation set instead of the test set</li>
+<li>Use the data splits to plot the training process</li>
+<li>Explain how optimization works</li>
+<li>Design a neural network for a regression task</li>
+<li>Measure the performance of your deep neural network</li>
+<li>Interpret the training plots to recognize overfitting</li>
+<li>Use normalization as preparation step for Deep Learning</li>
+<li>Implement basic strategies to prevent overfitting</li>
 </ul>
 </div>
 </div>
@@ -2488,7 +2482,7 @@ validating on the validation set instead of the test set”</li>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Copy-pasting code</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>In this episode we first introduce a simple approach to the problem,
 then we iterate on that a few times to, step-by-step, working towards a
@@ -2782,7 +2776,7 @@ sunshine hours?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The shape of the input layer has to correspond to the number of
@@ -2958,7 +2952,7 @@ process is increased</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>Correct answer: B. To find the weights that minimize the loss
@@ -3199,7 +3193,7 @@ why?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -3325,7 +3319,7 @@ problem to solve?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>This really depends on your definition of hard! The baseline gives a
@@ -3428,7 +3422,7 @@ think about what you actually would like to see)</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -3480,7 +3474,7 @@ notable effect on the performance on the validation set?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Let’s first adapt our <code>create_nn</code> function so that we can
 tweak the number of nodes in the 2 layers by passing arguments to the
@@ -3778,7 +3772,7 @@ all features from all cities. How does it perform?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">Show me the solution</h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="use-9-years-out-of-the-dataset">1. Use 9 years out of the dataset<a class="anchor" aria-label="anchor" href="#use-9-years-out-of-the-dataset"></a>
@@ -3981,7 +3975,7 @@ improve the prediction quality?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8">Show me the solution</h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
@@ -4025,9 +4019,9 @@ apply different model architectures…</p>
 </h3>
 <div class="callout-content">
 <ul>
-<li>“Separate training, validation, and test sets allows monitoring and
-evaluating your model.”</li>
-<li>“Batchnormalization scales the data as part of the model.”</li>
+<li>Separate training, validation, and test sets allows monitoring and
+evaluating your model.</li>
+<li>Batchnormalization scales the data as part of the model.</li>
 </ul>
 </div>
 </div>
@@ -4041,7 +4035,7 @@ any links that you are not going to use.
 <p>Last updated on 2024-02-27 |
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/4-advanced-layer-types.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 105 minutes</p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 140 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -4053,11 +4047,11 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>“Why do we need different types of layers?”</li>
-<li>“What are good network designs for image data?”</li>
-<li>“What is a convolutional layer?”</li>
-<li>“How can we use different types of layers to prevent
-overfitting?”</li>
+<li>Why do we need different types of layers?</li>
+<li>What are good network designs for image data?</li>
+<li>What is a convolutional layer?</li>
+<li>How can we use different types of layers to prevent
+overfitting?</li>
 </ul>
 </div>
 </div>
@@ -4067,10 +4061,10 @@ overfitting?”</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>“Understand why convolutional and pooling layers are useful for
-image data”</li>
-<li>“Implement a convolutional neural network on an image dataset”</li>
-<li>“Use a drop-out layer to prevent overfitting”</li>
+<li>Understand why convolutional and pooling layers are useful for image
+data</li>
+<li>Implement a convolutional neural network on an image dataset</li>
+<li>Use a drop-out layer to prevent overfitting</li>
 </ul>
 </div>
 </div>
@@ -5211,10 +5205,9 @@ in this case is around 0.45. This is where the val loss is lowest.</p>
 </h3>
 <div class="callout-content">
 <ul>
-<li>“Convolutional layers make efficient reuse of model
-parameters.”</li>
-<li>“Pooling layers decrease the resolution of your input”</li>
-<li>“Dropout is a way to prevent overfitting”</li>
+<li>Convolutional layers make efficient reuse of model parameters.</li>
+<li>Pooling layers decrease the resolution of your input</li>
+<li>Dropout is a way to prevent overfitting</li>
 </ul>
 </div>
 </div>
@@ -5228,7 +5221,7 @@ any links that you are not going to use.
 <p>Last updated on 2024-02-27 |
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/5-outlook.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 30 minutes</p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -5240,10 +5233,10 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>“How does what I learned in this course translate to real-world
-problems?”</li>
-<li>“How do I organise a deep learning project?”</li>
-<li>“What are next steps to take after this course?”</li>
+<li>How does what I learned in this course translate to real-world
+problems?</li>
+<li>How do I organise a deep learning project?</li>
+<li>What are next steps to take after this course?</li>
 </ul>
 </div>
 </div>
@@ -5253,10 +5246,10 @@ problems?”</li>
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>“Understand that what we learned in this course can be applied to
-real-world problems”</li>
-<li>“Use best practices for organising a deep learning project”</li>
-<li>“Identify next steps to take after this course”</li>
+<li>Understand that what we learned in this course can be applied to
+real-world problems</li>
+<li>Use best practices for organising a deep learning project</li>
+<li>Identify next steps to take after this course</li>
 </ul>
 </div>
 </div>
@@ -5557,11 +5550,11 @@ is to use <a href="https://colab.google/" class="external-link">Google Colab</a>
 </h3>
 <div class="callout-content">
 <ul>
-<li>“Although the data preparation and model architectures are somewhat
+<li>Although the data preparation and model architectures are somewhat
 more complex, what we have learned in this course can directly be
-applied to real-world problems”</li>
-<li>“Use what you have learned in this course as a basis for your own
-learning trajectory in the world of deep learning”</li>
+applied to real-world problems</li>
+<li>Use what you have learned in this course as a basis for your own
+learning trajectory in the world of deep learning</li>
 </ul>
 </div>
 </div>
