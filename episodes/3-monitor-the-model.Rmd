@@ -1,6 +1,6 @@
 ---
 title: "Monitor the training process"
-teaching: 135
+teaching: 120
 exercises: 80
 ---
 
