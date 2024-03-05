@@ -261,7 +261,7 @@ model</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Classification by a neural network using Keras</h1>
-        <p>Last updated on 2024-02-27 |
+        <p>Last updated on 2024-03-05 |
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/2-keras.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -340,7 +340,7 @@ depth for some or all of these steps.</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>This episode really aims to go through the whole process once, as
 quickly as possible. In episode 3 we will expand on all the concepts
@@ -355,13 +355,12 @@ and 4.</p>
 </div>
 </div>
 </div>
-<div id="gpu-usage" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="gpu-usage" class="callout-inner">
-<h3 class="callout-title">GPU usage<a class="anchor" aria-label="anchor" href="#gpu-usage"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="gpu-usage">GPU usage<a class="anchor" aria-label="anchor" href="#gpu-usage"></a></h3>
 <div class="callout-content">
 <p>For this lesson having a GPU (graphics card) available is not needed.
 We specifically use very small toy problems so that you do not need one.
@@ -379,13 +378,12 @@ three different species of the penguins.</p>
 <p>We will use the penguin dataset to train a neural network which can
 classify which species a penguin belongs to, based on their physical
 characteristics.</p>
-<div id="goal" class="callout callout">
+<div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="goal" class="callout-inner">
-<h3 class="callout-title">Goal<a class="anchor" aria-label="anchor" href="#goal"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="goal">Goal<a class="anchor" aria-label="anchor" href="#goal"></a></h3>
 <div class="callout-content">
 <p>The goal is to predict a penguins’ species using the attributes
 available in this dataset.</p>
@@ -396,7 +394,9 @@ available in this dataset.</p>
 three penguin species observed on three islands in the Palmer
 Archipelago, Antarctica. The physical attributes measured are flipper
 length, beak length, beak width, body mass, and sex.</p>
-<figure><img src="../fig/palmer_penguins.png" title="Palmer Penguins" alt="Illustration of the three species of penguins found in the Palmer Archipelago, Antarctica: Chinstrap, Gentoo and Adele" class="figure mx-auto d-block"><figcaption><em>Artwork by <span class="citation">@allison_horst</span></em></figcaption></figure><figure><img src="../fig/culmen_depth.png" title="Culmen Depth" alt="Illustration of the beak dimensions called culmen length and culmen depth in the dataset" class="figure mx-auto d-block"><figcaption><em>Artwork by <span class="citation">@allison_horst</span></em></figcaption></figure><p>These data were collected from 2007 - 2009 by Dr. Kristen Gorman with
+<figure><img src="../fig/palmer_penguins.png" title="Palmer Penguins" alt="Illustration of the three species of penguins found in the Palmer Archipelago, Antarctica: Chinstrap, Gentoo and Adele" class="figure mx-auto d-block"><div class="figcaption"><em>Artwork by <span class="citation">@allison_horst</span></em></div>
+</figure><figure><img src="../fig/culmen_depth.png" title="Culmen Depth" alt="Illustration of the beak dimensions called culmen length and culmen depth in the dataset" class="figure mx-auto d-block"><div class="figcaption"><em>Artwork by <span class="citation">@allison_horst</span></em></div>
+</figure><p>These data were collected from 2007 - 2009 by Dr. Kristen Gorman with
 the <a href="https://pal.lternet.edu/" class="external-link">Palmer Station Long Term
 Ecological Research Program</a>, part of the <a href="https://lternet.edu/" class="external-link">US Long Term Ecological Research
 Network</a>. The data were imported directly from the <a href="https://environmentaldatainitiative.org/" class="external-link">Environmental Data
@@ -416,13 +416,13 @@ pandas dataframe.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre>
 </div>
 <p>We can load the penguin dataset using</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">'penguins'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>penguins <span class="op">=</span> sns.load_dataset(<span class="st">'penguins'</span>)</span></code></pre>
 </div>
 <p>This will give you a pandas dataframe which contains the penguin
 data.</p>
@@ -433,7 +433,7 @@ the data:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>penguins.head()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>penguins.head()</span></code></pre>
 </div>
 <table style="width:100%;" class="table"><colgroup><col width="6%"><col width="14%"><col width="13%"><col width="17%"><col width="11%"><col width="11%"><col width="11%"><col width="11%"></colgroup><thead><tr class="header"><th align="right"></th>
 <th align="right">species</th>
@@ -489,7 +489,7 @@ use.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins.shape</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>penguins.shape</span></code></pre>
 </div>
 <p>There are 344 samples and 7 columns, so 6 features</p>
 </div>
@@ -510,7 +510,7 @@ column.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sns.pairplot(penguins, hue<span class="op">=</span><span class="st">"species"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>sns.pairplot(penguins, hue<span class="op">=</span><span class="st">"species"</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/pairplot.png" title="Pair Plot" alt="Pair plot showing the separability of the three species of penguin for combinations of dataset attributes" class="figure mx-auto d-block"></figure><div id="pairplot" class="callout challenge">
 <div class="callout-square">
@@ -537,7 +537,7 @@ of features distinguishes the two sexes best?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ul><li>The plots show that the green class, Gentoo is somewhat more easily
 distinguishable from the other two.</li>
@@ -548,7 +548,7 @@ and flipper length).</li>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sns.pairplot(penguins, hue<span class="op">=</span><span class="st">'sex'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>sns.pairplot(penguins, hue<span class="op">=</span><span class="st">'sex'</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/02_sex_pairplot.png" title="Pair plot grouped by sex" alt="Pair plot showing the separability of the two sexes of penguin for combinations of dataset attributes" class="figure mx-auto d-block"></figure><p>You see that for each species females have smaller bills and
 flippers, as well as a smaller body mass. You would need a combination
@@ -570,13 +570,12 @@ the target that we want to predict.</p>
 <code>bill_length_mm</code>, <code>bill_depth_mm</code>,
 <code>flipper_length_mm</code>, <code>body_mass_g</code> attributes. The
 target for the classification task will be the <code>species</code>.</p>
-<div id="data-exploration" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="data-exploration" class="callout-inner">
-<h3 class="callout-title">Data Exploration<a class="anchor" aria-label="anchor" href="#data-exploration"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="data-exploration">Data Exploration<a class="anchor" aria-label="anchor" href="#data-exploration"></a></h3>
 <div class="callout-content">
 <p>Exploring the data is an important step to familiarize yourself with
 the problem and to help you determine the relevant inputs and
@@ -596,8 +595,8 @@ drop the categorical columns:</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop categorical columns</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>penguins_filtered <span class="op">=</span> penguins.drop(columns<span class="op">=</span>[<span class="st">'island'</span>, <span class="st">'sex'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Drop categorical columns</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>penguins_filtered <span class="op">=</span> penguins.drop(columns<span class="op">=</span>[<span class="st">'island'</span>, <span class="st">'sex'</span>])</span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="clean-missing-values">Clean missing values<a class="anchor" aria-label="anchor" href="#clean-missing-values"></a></h3>
@@ -609,15 +608,15 @@ the offending rows by adding a call to <code>dropna()</code>:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop the rows that have NaN values in them</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>penguins_filtered <span class="op">=</span> penguins_filtered.dropna()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Drop the rows that have NaN values in them</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>penguins_filtered <span class="op">=</span> penguins_filtered.dropna()</span></code></pre>
 </div>
 <p>Finally, we select only the features</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract columns corresponding to features</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>features <span class="op">=</span> penguins_filtered.drop(columns<span class="op">=</span>[<span class="st">'species'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="co"># Extract columns corresponding to features</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>features <span class="op">=</span> penguins_filtered.drop(columns<span class="op">=</span>[<span class="st">'species'</span>])</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -638,10 +637,10 @@ for a penguin of the Adelie species the one-hot encoding would be 1 0
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>target <span class="op">=</span> pd.get_dummies(penguins_filtered[<span class="st">'species'</span>])</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>target.head() <span class="co"># print out the top 5 to see what it looks like.</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>target <span class="op">=</span> pd.get_dummies(penguins_filtered[<span class="st">'species'</span>])</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>target.head() <span class="co"># print out the top 5 to see what it looks like.</span></span></code></pre>
 </div>
 <div id="one-hot-encoding" class="callout challenge">
 <div class="callout-square">
@@ -664,7 +663,7 @@ encoded the target class?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>C: 3, one for each output variable class</p>
 </div>
@@ -707,9 +706,9 @@ species) as the dataset.</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(features, target, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>, shuffle<span class="op">=</span><span class="va">True</span>, stratify<span class="op">=</span>target)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(features, target, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">0</span>, shuffle<span class="op">=</span><span class="va">True</span>, stratify<span class="op">=</span>target)</span></code></pre>
 </div>
 </div>
 </section><section id="build-an-architecture-from-scratch-or-choose-a-pretrained-model"><h2 class="section-heading">4. Build an architecture from scratch or choose a pretrained
@@ -731,7 +730,7 @@ sure we have Keras imported. We do this as follows:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span></code></pre>
 </div>
 <p>For this class it is useful if everyone gets the same results from
 their training. Keras uses a random number generator at certain points
@@ -740,9 +739,9 @@ one for numpy and one for tensorflow:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> seed</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>seed(<span class="dv">1</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>keras.utils.set_random_seed(<span class="dv">2</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> seed</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>seed(<span class="dv">1</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>keras.utils.set_random_seed(<span class="dv">2</span>)</span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -770,7 +769,7 @@ the number of columns it contains.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>])</span></code></pre>
 </div>
 <p>We store a reference to this input class in a variable so we can pass
 it to the creation of our hidden layer. Creating the hidden layer can
@@ -778,7 +777,7 @@ then be done as follows:</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>hidden_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(inputs)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>hidden_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>)(inputs)</span></code></pre>
 </div>
 <p>The instantiation here has 2 parameters and a seemingly strange
 combination of parentheses, so let us take a closer look. The first
@@ -801,7 +800,7 @@ one.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>output_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>)(hidden_layer)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>output_layer <span class="op">=</span> keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>)(hidden_layer)</span></code></pre>
 </div>
 <p>Because we chose the one-hot encoding, we use <code>3</code> neurons
 for the output layer.</p>
@@ -814,18 +813,17 @@ network.</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>output_layer)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>model <span class="op">=</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>output_layer)</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>model.summary()</span></code></pre>
 </div>
 <p>The model summary here can show you some information about the neural
 network we have defined.</p>
-<div id="trainable-and-non-trainable-parameters" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="trainable-and-non-trainable-parameters" class="callout-inner">
-<h3 class="callout-title">Trainable and non-trainable parameters<a class="anchor" aria-label="anchor" href="#trainable-and-non-trainable-parameters"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="trainable-and-non-trainable-parameters">Trainable and non-trainable parameters<a class="anchor" aria-label="anchor" href="#trainable-and-non-trainable-parameters"></a></h3>
 <div class="callout-content">
 <p>Keras distinguishes between two types of weights, namely:</p>
 <ul><li><p>trainable parameters: these are weights of the neurons that are
@@ -874,13 +872,13 @@ network</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Have a look at the output of <code>model.summary()</code>:</p>
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>model.summary()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -916,13 +914,13 @@ is not important.</em></p>
 </ol><div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> keras.Sequential(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    [</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>        keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>]),</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>),</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>),</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>model <span class="op">=</span> keras.Sequential(</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>    [</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>        keras.Input(shape<span class="op">=</span>X_train.shape[<span class="dv">1</span>]),</span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>        keras.layers.Dense(<span class="dv">10</span>, activation<span class="op">=</span><span class="st">"relu"</span>),</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>        keras.layers.Dense(<span class="dv">3</span>, activation<span class="op">=</span><span class="st">"softmax"</span>),</span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>    ]</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>)</span></code></pre>
 </div>
 <p>We will use the Functional API for the remainder of this course,
 since it is more flexible and more explicit.</p>
@@ -931,13 +929,12 @@ since it is more flexible and more explicit.</p>
 </div>
 </div>
 </div>
-<div id="how-to-choose-an-architecture" class="callout callout">
+<div id="callout5" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="how-to-choose-an-architecture" class="callout-inner">
-<h3 class="callout-title">How to choose an architecture?<a class="anchor" aria-label="anchor" href="#how-to-choose-an-architecture"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="how-to-choose-an-architecture">How to choose an architecture?<a class="anchor" aria-label="anchor" href="#how-to-choose-an-architecture"></a></h3>
 <div class="callout-content">
 <p>Even for this small neural network, we had to make a choice on the
 number of hidden neurons. Other choices to be made are the number of
@@ -995,7 +992,7 @@ model prepares it to start the training.</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span>keras.losses.CategoricalCrossentropy())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>model.<span class="bu">compile</span>(optimizer<span class="op">=</span><span class="st">'adam'</span>, loss<span class="op">=</span>keras.losses.CategoricalCrossentropy())</span></code></pre>
 </div>
 </section><section id="train-model"><h2 class="section-heading">6. Train model<a class="anchor" aria-label="anchor" href="#train-model"></a>
 </h2>
@@ -1009,7 +1006,7 @@ and used to update its parameters.</p>
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, epochs<span class="op">=</span><span class="dv">100</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>history <span class="op">=</span> model.fit(X_train, y_train, epochs<span class="op">=</span><span class="dv">100</span>)</span></code></pre>
 </div>
 <p>The fit method returns a history object that has a history attribute
 with the training loss and potentially other metrics per training epoch.
@@ -1018,7 +1015,7 @@ training progresses. Using seaborn we can do this as follow:</p>
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>history.epoch, y<span class="op">=</span>history.history[<span class="st">'loss'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span>history.epoch, y<span class="op">=</span>history.history[<span class="st">'loss'</span>])</span></code></pre>
 </div>
 <figure><img src="../fig/02_training_curve.png" title="Training Curve" alt="Training loss curve of the neural network training which depicts exponential decrease in loss before a plateau from ~10 epochs" class="figure mx-auto d-block"></figure><p>This plot can be used to identify whether the training is well
 configured or whether there are problems that need to be addressed.</p>
@@ -1050,7 +1047,7 @@ the range on the y-axis with the previous training curve. <img src="../fig/02_ba
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>The training loss decreases quickly. It drops in a smooth line with
 little jitter. This is ideal for a training curve.</li>
@@ -1091,9 +1088,9 @@ to a pandas dataframe to easily see the labels.</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>prediction <span class="op">=</span> pd.DataFrame(y_pred, columns<span class="op">=</span>target.columns)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>prediction</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>prediction <span class="op">=</span> pd.DataFrame(y_pred, columns<span class="op">=</span>target.columns)</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>prediction</span></code></pre>
 </div>
 <table class="table"><tbody><tr class="odd"><td align="right">0</td>
 <td align="right">0.304484</td>
@@ -1149,8 +1146,8 @@ the <code>idxmax</code> function, which will do exactly that.</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>predicted_species <span class="op">=</span> prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>predicted_species</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>predicted_species <span class="op">=</span> prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>predicted_species</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1188,12 +1185,12 @@ is the predicted labels which we did above.</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>true_species <span class="op">=</span> y_test.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>matrix <span class="op">=</span> confusion_matrix(true_species, predicted_species)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(matrix)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>true_species <span class="op">=</span> y_test.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>matrix <span class="op">=</span> confusion_matrix(true_species, predicted_species)</span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="bu">print</span>(matrix)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1209,12 +1206,12 @@ follows:</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to a pandas dataframe</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>confusion_df <span class="op">=</span> pd.DataFrame(matrix, index<span class="op">=</span>y_test.columns.values, columns<span class="op">=</span>y_test.columns.values)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the names of the x and y axis, this helps with the readability of the heatmap.</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>confusion_df.index.name <span class="op">=</span> <span class="st">'True Label'</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>confusion_df.columns.name <span class="op">=</span> <span class="st">'Predicted Label'</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="co"># Convert to a pandas dataframe</span></span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>confusion_df <span class="op">=</span> pd.DataFrame(matrix, index<span class="op">=</span>y_test.columns.values, columns<span class="op">=</span>y_test.columns.values)</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a><span class="co"># Set the names of the x and y axis, this helps with the readability of the heatmap.</span></span>
+<span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>confusion_df.index.name <span class="op">=</span> <span class="st">'True Label'</span></span>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>confusion_df.columns.name <span class="op">=</span> <span class="st">'Predicted Label'</span></span></code></pre>
 </div>
 <p>We can then use the <code>heatmap</code> function from seaborn to
 create a nice visualization of the confusion matrix. The
@@ -1223,7 +1220,7 @@ confusion matrix in the heatmap.</p>
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sns.heatmap(confusion_df, annot<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>sns.heatmap(confusion_df, annot<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
 <figure><img src="../fig/confusion_matrix.png" title="Confusion Matrix" alt="Confusion matrix of the test set with high accuracy for Adelie and Gentoo classification and no correctly predicted Chinstrap" class="figure mx-auto d-block"></figure><div id="confusion-matrix-1" class="callout challenge">
 <div class="callout-square">
@@ -1246,7 +1243,7 @@ visualize a confusion matrix.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The confusion matrix shows that the predictions for Adelie and Gentoo
 are decent, but could be improved. However, Chinstrap is not predicted
@@ -1280,26 +1277,26 @@ which is the path of a directory where the model is stored.</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model.save(<span class="st">'my_first_model'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>model.save(<span class="st">'my_first_model'</span>)</span></code></pre>
 </div>
 <p>This saved model can be loaded again by using the
 <code>load_model</code> method as follows:</p>
 <div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>pretrained_model <span class="op">=</span> keras.models.load_model(<span class="st">'my_first_model'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>pretrained_model <span class="op">=</span> keras.models.load_model(<span class="st">'my_first_model'</span>)</span></code></pre>
 </div>
 <p>This loaded model can be used as before to predict.</p>
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use the pretrained model here</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>y_pretrained_pred <span class="op">=</span> pretrained_model.predict(X_test)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>pretrained_prediction <span class="op">=</span> pd.DataFrame(y_pretrained_pred, columns<span class="op">=</span>target.columns.values)</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># idxmax will select the column for each row with the highest value</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>pretrained_predicted_species <span class="op">=</span> pretrained_prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pretrained_predicted_species)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="co"># use the pretrained model here</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>y_pretrained_pred <span class="op">=</span> pretrained_model.predict(X_test)</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>pretrained_prediction <span class="op">=</span> pd.DataFrame(y_pretrained_pred, columns<span class="op">=</span>target.columns.values)</span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a><span class="co"># idxmax will select the column for each row with the highest value</span></span>
+<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a>pretrained_predicted_species <span class="op">=</span> pretrained_prediction.idxmax(axis<span class="op">=</span><span class="st">"columns"</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a><span class="bu">print</span>(pretrained_predicted_species)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1412,8 +1409,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/deep-learning-intro/instructor/2-keras.html",
   "identifier": "https://carpentries-incubator.github.io/deep-learning-intro/instructor/2-keras.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "dateModified": "2024-03-05",
+  "datePublished": "2024-03-05"
 }
 
   </script><script>
