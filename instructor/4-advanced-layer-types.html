@@ -266,7 +266,7 @@ scratch</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Advanced layer types</h1>
-        <p>Last updated on 2024-03-12 |
+        <p>Last updated on 2024-03-19 |
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/4-advanced-layer-types.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -334,13 +334,14 @@ which is a widely known dataset for image classification.</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">from</span> tensorflow <span class="im">import</span> keras</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>(train_images, train_labels), (val_images, val_labels) <span class="op">=</span> keras.datasets.cifar10.load_data()</span></code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="certificate_verify_failed-error-when-downloading-cifar-10-dataset" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="certificate_verify_failed-error-when-downloading-cifar-10-dataset">CERTIFICATE_VERIFY_FAILED error when
-downloading CIFAR-10 dataset<a class="anchor" aria-label="anchor" href="#certificate_verify_failed-error-when-downloading-cifar-10-dataset"></a></h3>
+<div id="certificate_verify_failed-error-when-downloading-cifar-10-dataset" class="callout-inner">
+<h3 class="callout-title">CERTIFICATE_VERIFY_FAILED error when
+downloading CIFAR-10 dataset<a class="anchor" aria-label="anchor" href="#certificate_verify_failed-error-when-downloading-cifar-10-dataset"></a>
+</h3>
 <div class="callout-content">
 <p>When loading the CIFAR-10 dataset, you might get the following
 error:</p>
@@ -599,12 +600,13 @@ number of convolutional matrices (or kernels), where the values of the
 matrices are the weights that we learn in the training process. The
 output of a convolutional layer is an ‘image’ for each of the kernels,
 that gives the output of the kernel applied to each pixel.</p>
-<div id="callout2" class="callout">
+<div id="playing-with-convolutions" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="playing-with-convolutions">Playing with convolutions<a class="anchor" aria-label="anchor" href="#playing-with-convolutions"></a></h3>
+<div id="playing-with-convolutions" class="callout-inner">
+<h3 class="callout-title">Playing with convolutions<a class="anchor" aria-label="anchor" href="#playing-with-convolutions"></a>
+</h3>
 <div class="callout-content">
 <p>Convolutions applied to images can be hard to grasp at first.
 Fortunately there are resources out there that enable users to
@@ -739,13 +741,14 @@ the convolutional layers, that have much fewer parameters.</li>
 </div>
 </div>
 </div>
-<div id="callout3" class="callout">
+<div id="search-for-existing-architectures-or-pretrained-models" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="search-for-existing-architectures-or-pretrained-models">Search for existing architectures or
-pretrained models<a class="anchor" aria-label="anchor" href="#search-for-existing-architectures-or-pretrained-models"></a></h3>
+<div id="search-for-existing-architectures-or-pretrained-models" class="callout-inner">
+<h3 class="callout-title">Search for existing architectures or
+pretrained models<a class="anchor" aria-label="anchor" href="#search-for-existing-architectures-or-pretrained-models"></a>
+</h3>
 <div class="callout-content">
 <p>So far in this course we have built neural networks from scratch,
 because we want you to fully understand the basics of Keras. In the real
@@ -954,13 +957,14 @@ reaches 35% accuracy, considerably worse than our simple CNN.</li>
 </div>
 </div>
 </div>
-<div id="callout4" class="callout">
+<div id="comparison-with-a-network-with-only-dense-layers-1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="comparison-with-a-network-with-only-dense-layers-1">Comparison with a network with only dense
-layers<a class="anchor" aria-label="anchor" href="#comparison-with-a-network-with-only-dense-layers-1"></a></h3>
+<div id="comparison-with-a-network-with-only-dense-layers-1" class="callout-inner">
+<h3 class="callout-title">Comparison with a network with only dense
+layers<a class="anchor" aria-label="anchor" href="#comparison-with-a-network-with-only-dense-layers-1"></a>
+</h3>
 <div class="callout-content">
 <p>How does this simple CNN compare to a neural network with only dense
 layers?</p>
@@ -1132,12 +1136,13 @@ network. To train the network and plot the results:</p>
 </div>
 </div>
 </div>
-<div id="callout5" class="callout">
+<div id="other-types-of-data" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="other-types-of-data">Other types of data<a class="anchor" aria-label="anchor" href="#other-types-of-data"></a></h3>
+<div id="other-types-of-data" class="callout-inner">
+<h3 class="callout-title">Other types of data<a class="anchor" aria-label="anchor" href="#other-types-of-data"></a>
+</h3>
 <div class="callout-content">
 <p>Convolutional and Pooling layers are also applicable to different
 types of data than image data. Whenever the data is ordered in a
@@ -1445,7 +1450,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1467,8 +1472,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/deep-learning-intro/instructor/4-advanced-layer-types.html",
   "identifier": "https://carpentries-incubator.github.io/deep-learning-intro/instructor/4-advanced-layer-types.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2024-03-12",
-  "datePublished": "2024-03-12"
+  "dateModified": "2024-03-19",
+  "datePublished": "2024-03-19"
 }
 
   </script><script>

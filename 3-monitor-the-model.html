@@ -262,7 +262,7 @@ scratch</a></li>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Monitor the training process</h1>
-        <p>Last updated on 2024-03-12 |
+        <p>Last updated on 2024-03-19 |
         
         <a href="https://github.com/carpentries-incubator/deep-learning-intro/edit/main/episodes/3-monitor-the-model.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -390,12 +390,13 @@ available weather data for one location: BASEL.</p>
 <td align="right">0.90</td>
 <td align="right">1.0246</td>
 <td align="right">…</td>
-</tr></tbody></table><div id="callout1" class="callout">
+</tr></tbody></table><div id="load-the-data" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="load-the-data">Load the data<a class="anchor" aria-label="anchor" href="#load-the-data"></a></h3>
+<div id="load-the-data" class="callout-inner">
+<h3 class="callout-title">Load the data<a class="anchor" aria-label="anchor" href="#load-the-data"></a>
+</h3>
 <div class="callout-content">
 <p>If you have not downloaded the data yet, you can also load it
 directly from Zenodo:</p>
@@ -552,7 +553,7 @@ sunshine hours?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>The shape of the input layer has to correspond to the number of
 features in our data: 89</li>
@@ -713,7 +714,7 @@ process is increased</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li><p>Correct answer: B. To find the weights that minimize the loss
 function. The loss function quantifies the total error of the network,
@@ -939,7 +940,7 @@ why?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>While the performance on the train set seems reasonable, the
 performance on the test set is much worse. This is a common problem
@@ -1061,7 +1062,7 @@ problem to solve?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal"><li>This really depends on your definition of hard! The baseline gives a
 more accurate prediction than just randomly predicting a number, so the
@@ -1094,12 +1095,13 @@ Since we are adapting our model (tuning our hyperparameters) based on
 this validation set, it is <em>very</em> important that it is kept
 separate from the test set. If we used the same set, we would not know
 whether our model truly generalizes or is only overfitting.</p>
-<div id="callout2" class="callout">
+<div id="test-vs.-validation-set" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="test-vs--validation-set">Test vs. validation set<a class="anchor" aria-label="anchor" href="#test-vs--validation-set"></a></h3>
+<div id="test-vs.-validation-set" class="callout-inner">
+<h3 class="callout-title">Test vs. validation set<a class="anchor" aria-label="anchor" href="#test-vs.-validation-set"></a>
+</h3>
 <div class="callout-content">
 <p>Not everybody agrees on the terminology of test set versus validation
 set. You might find examples in literature where these terms are used
@@ -1157,7 +1159,7 @@ think about what you actually would like to see)</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The difference in the two curves shows that something is not
 completely right here. The error for the model predictions on the
@@ -1206,7 +1208,7 @@ notable effect on the performance on the validation set?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Let’s first adapt our <code>create_nn</code> function so that we can
 tweak the number of nodes in the 2 layers by passing arguments to the
@@ -1417,12 +1419,13 @@ Non-trainable params: 178</code></pre>
 <span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a></span>
 <span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a>plot_history(history, [<span class="st">'root_mean_squared_error'</span>, <span class="st">'val_root_mean_squared_error'</span>])</span></code></pre>
 </div>
-<figure><img src="fig/03_training_history_5_rmse_batchnorm.png" alt="Output of plotting sample" class="figure mx-auto d-block"></figure><div id="callout3" class="callout">
+<figure><img src="fig/03_training_history_5_rmse_batchnorm.png" alt="Output of plotting sample" class="figure mx-auto d-block"></figure><div id="batchnorm-parameters" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="batchnorm-parameters">Batchnorm parameters<a class="anchor" aria-label="anchor" href="#batchnorm-parameters"></a></h3>
+<div id="batchnorm-parameters" class="callout-inner">
+<h3 class="callout-title">Batchnorm parameters<a class="anchor" aria-label="anchor" href="#batchnorm-parameters"></a>
+</h3>
 <div class="callout-content">
 <p>You may have noticed that the number of parameters of the Batchnorm
 layers corresponds to 4 parameters per input node. These are the moving
@@ -1494,7 +1497,7 @@ all features from all cities. How does it perform?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">Show me the solution</h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="use-9-years-out-of-the-dataset">1. Use 9 years out of the dataset<a class="anchor" aria-label="anchor" href="#use-9-years-out-of-the-dataset"></a></h3>
@@ -1604,12 +1607,13 @@ that adding more training data results in even better performance!</p>
 </div>
 </div>
 </div>
-<div id="callout4" class="callout">
+<div id="tensorboard" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tensorboard">Tensorboard<a class="anchor" aria-label="anchor" href="#tensorboard"></a></h3>
+<div id="tensorboard" class="callout-inner">
+<h3 class="callout-title">Tensorboard<a class="anchor" aria-label="anchor" href="#tensorboard"></a>
+</h3>
 <div class="callout-content">
 <p>If we run many different experiments with different architectures, it
 can be difficult to keep track of these different models or compare the
@@ -1688,7 +1692,7 @@ improve the prediction quality?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8">Show me the solution</h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>This is an open question. And we don’t actually know how far one
 could push this sunshine hour prediction (try it out yourself if you
@@ -1773,7 +1777,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1795,8 +1799,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/deep-learning-intro/3-monitor-the-model.html",
   "identifier": "https://carpentries-incubator.github.io/deep-learning-intro/3-monitor-the-model.html",
   "dateCreated": "2020-10-17",
-  "dateModified": "2024-03-12",
-  "datePublished": "2024-03-12"
+  "dateModified": "2024-03-19",
+  "datePublished": "2024-03-19"
 }
 
   </script><script>
