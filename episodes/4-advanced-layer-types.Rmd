@@ -411,6 +411,11 @@ def compile_model(model):
 compile_model(model)
 ```
 
+::: instructor
+## BREAK
+This is a good time for switching instructor and/or a break.
+:::
+
 ## 6. Train the model
 
 We then train the model for 10 epochs:
