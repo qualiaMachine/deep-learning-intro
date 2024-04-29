@@ -71,6 +71,7 @@ learners:
 
 # Information for Instructors
 instructors:
+- schedule.md
 
 # Learner Profiles
 profiles:

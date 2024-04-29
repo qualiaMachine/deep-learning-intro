@@ -33,3 +33,8 @@ based on your experience in the workshop.
 
 :::
 
+::: instructor
+
+If needed, use the [example schedule](schedule.html) with breaks!
+
+:::
