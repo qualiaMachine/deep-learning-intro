@@ -37,7 +37,7 @@ based on your experience in the workshop.
 
 ## Breaks and Schedule
 
-The episodes in this workshop are relatively long.
+Episode 2, 3, and 4 in this workshop are relatively long.
 We suggest to have a break at least every 90 minutes and to switch the instructor regularly, also within episodes.
 We have added reminders to the longer episodes with suggestions for when to have a switch and/or a break.
 
