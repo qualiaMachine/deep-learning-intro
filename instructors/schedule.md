@@ -1,5 +1,5 @@
 ---
-title: Schedule
+title: Example schedule
 ---
 
 ## Day 1
