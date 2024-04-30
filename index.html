@@ -147,7 +147,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#software-setup">Software Setup</a></li>
-<li><a href="#installing-the-required-packages">Installing the required packages</a></li>
+<li><a href="#packages">Installing the required packages</a></li>
 <li><a href="#starting-jupyter-lab">Starting Jupyter Lab</a></li>
 <li><a href="#check-your-setup">Check your setup</a></li>
 <li><a href="#fallback-option-cloud-environment">Fallback option: cloud environment</a></li>
@@ -320,12 +320,13 @@ the workshop begins.</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1">Windows</h4>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Windows</h3>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Checkout the <a href="https://www.youtube.com/watch?v=xxQ0mzZ8UvA" class="external-link">video tutorial</a>
 or:</p>
@@ -339,29 +340,33 @@ Anaconda the default Python</strong> option.</li>
 </div>
 </div>
 </div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2">MacOS</h4>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
+  <h3 class="accordion-header" id="headingSpoiler2">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>MacOS</h3>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <p>Checkout the <a href="https://www.youtube.com/watch?v=TcSAln46u9U" class="external-link">video tutorial</a>
 or:</p>
 <ol style="list-style-type: decimal"><li>Open <a href="https://www.anaconda.com/products/distribution" class="external-link">https://www.anaconda.com/products/distribution</a>
 with your web browser.</li>
-<li>Download the Python 3 installer for OS X.</li>
+<li>Download the Python 3 installer for OS X. Make sure to use the
+correct version for your hardware, i.e. choose the options with “(M1)”
+if yours is one of the more recent models containing Apple’s chip.</li>
 <li>Install Python 3 using all of the defaults for installation.</li>
 </ol></div>
 </div>
 </div>
 </div>
-<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
-  <h4 class="accordion-header" id="headingSolution3">Linux</h4>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler3" aria-expanded="false" aria-controls="collapseSpoiler3">
+  <h3 class="accordion-header" id="headingSpoiler3">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Linux</h3>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
 <p>Note that the following installation steps require you to work from
 the shell. If you run into any difficulties, please request help before
@@ -392,7 +397,7 @@ default Python).</li>
 </div>
 </div>
 </div>
-</section><section id="installing-the-required-packages"><h2 class="section-heading">Installing the required packages<a class="anchor" aria-label="anchor" href="#installing-the-required-packages"></a>
+</section><section id="packages"><h2 class="section-heading">Installing the required packages<a class="anchor" aria-label="anchor" href="#packages"></a>
 </h2>
 <hr class="half-width"><p><a href="https://docs.conda.io/projects/conda/en/latest/" class="external-link">Conda</a>
 is the package management system associated with <a href="https://anaconda.org" class="external-link">Anaconda</a> and runs on Windows, macOS and
@@ -436,12 +441,13 @@ troubleshooting<a class="anchor" aria-label="anchor" href="#python-package-insta
 </div>
 </div>
 </div>
-<div id="accordionSolution4" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSpoiler4" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
-  <h4 class="accordion-header" id="headingSolution4">Troubleshooting for Windows</h4>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler4" aria-expanded="false" aria-controls="collapseSpoiler4">
+  <h3 class="accordion-header" id="headingSpoiler4">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Troubleshooting for Windows</h3>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSpoiler4" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler4" aria-labelledby="headingSpoiler4">
 <div class="accordion-body">
 <p>It is possible that Windows users will run into version conflicts. If
 you are on Windows and get errors running the command, you can try
@@ -457,24 +463,27 @@ installing the packages using pip within a conda environment:</p>
 </div>
 </div>
 </div>
-<div id="accordionSolution5" class="accordion challenge-accordion accordion-flush">
+<div id="accordionSpoiler5" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
-  <h4 class="accordion-header" id="headingSolution5">Troubleshooting for Macs with Apple silicon chip</h4>
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler5" aria-expanded="false" aria-controls="collapseSpoiler5">
+  <h3 class="accordion-header" id="headingSpoiler5">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Troubleshooting for Macs with Apple silicon chip</h3>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSpoiler5" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler5" aria-labelledby="headingSpoiler5">
 <div class="accordion-body">
 <p>Newer Macs (from 2020 onwards) often have a different kind of chip,
 manufactured by Apple instead of Intel. This can lead to problems
-installing Tensorflow . If you get errors running the installation
-command or conda hangs endlessly, you can try installing Tensorflow for
-Mac with pip:</p>
-<div class="codewrapper sourceCode" id="cb6">
-<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">pip</span> install tensorflow-macos</span></code></pre>
-</div>
-</div>
+installing Tensorflow. If you get errors running the installation
+command or conda hangs endlessly, you probably <a href="https://www.youtube.com/watch?v=BEUU-icPg78" class="external-link">need to change the
+version of Anaconda you have installed</a>.</p>
+<ol style="list-style-type: decimal"><li>Uninstall Anaconda</li>
+<li>
+<a href="https://www.anaconda.com/products/distribution" class="external-link">Download
+the version of Anaconda for Apple chips</a> (i.e. the version with
+“(M1)” in the name) and install it with the default settings</li>
+<li>Follow <a href="#packages">the instructions above</a> to install the
+required packages</li>
+</ol></div>
 </div>
 </div>
 </div>
@@ -490,38 +499,38 @@ Anaconda, use the Python package manager pip (see the <a href="http://jupyter.re
 website</a> for details.)</p>
 <p>To start jupyter lab, open a terminal (Mac/Linux) or Anaconda prompt
 (Windows) and type the command:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code></pre>
 </div>
 <p>To start the Python interpreter without jupyter lab, open a terminal
 (Mac/Linux) or Anaconda prompt (Windows) or git bash and type the
 command:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">python</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="ex">python</span></span></code></pre>
 </div>
 </section><section id="check-your-setup"><h2 class="section-heading">Check your setup<a class="anchor" aria-label="anchor" href="#check-your-setup"></a>
 </h2>
 <hr class="half-width"><p>To check whether all packages installed correctly, start a jupyter
 notebook in jupyter lab as explained above. Run the following lines of
 code:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="im">import</span> sklearn</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'sklearn version: '</span>, sklearn.__version__)</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="im">import</span> seaborn</span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'seaborn version: '</span>, seaborn.__version__)</span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="im">import</span> pandas</span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'pandas version: '</span>, pandas.__version__)</span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="im">import</span> tensorflow</span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Tensorflow version: '</span>, tensorflow.__version__)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="im">import</span> sklearn</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'sklearn version: '</span>, sklearn.__version__)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="im">import</span> seaborn</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'seaborn version: '</span>, seaborn.__version__)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="im">import</span> pandas</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'pandas version: '</span>, pandas.__version__)</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="im">import</span> tensorflow</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Tensorflow version: '</span>, tensorflow.__version__)</span></code></pre>
 </div>
 <p>This should output the versions of all required packages without
 giving errors. Most versions will work fine with this lesson, but: - For
