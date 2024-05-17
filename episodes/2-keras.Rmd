@@ -6,7 +6,7 @@ exercises: 50
 
 ::: questions
 - What is a neural network?
-- How do I compose a Neural Network using Keras?
+- How do I compose a neural network using Keras?
 - How do I train this network on a dataset?
 - How do I get insight into learning process?
 - How do I measure the performance of the network?
@@ -25,7 +25,7 @@ exercises: 50
 
 
 ## Introduction
-In this episode we will learn how to create and train a Neural Network using Keras to solve a simple classification task.
+In this episode we will learn how to create and train a neural network using Keras to solve a simple classification task.
 
 The goal of this episode is to quickly get your hands dirty in actually defining and training a neural network, without going into depth of how neural networks work on a technical or mathematical level.
 We want you to go through the most commonly used deep learning workflow that was covered
@@ -59,7 +59,7 @@ For this lesson having a GPU (graphics card) available is not needed.
 We specifically use very small toy problems so that you do not need one.
 However, Keras will use your GPU automatically when it is available.
 Using a GPU becomes necessary when tackling larger datasets or complex problems which
-require a more complex Neural Network.
+require a more complex neural network.
 :::
 
 ## 1. Formulate/outline the problem: penguin classification
