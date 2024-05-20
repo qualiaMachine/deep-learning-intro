@@ -1355,7 +1355,7 @@ depth for some or all of these steps.</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>This episode really aims to go through the whole process once, as
 quickly as possible. In episode 3 we will expand on all the concepts
@@ -1587,7 +1587,7 @@ of features distinguishes the two sexes best?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ul>
 <li>The plots show that the green class, Gentoo is somewhat more easily
@@ -1722,7 +1722,7 @@ encoded the target class?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>C: 3, one for each output variable class</p>
 </div>
@@ -1776,7 +1776,7 @@ species) as the dataset.</p>
   <h3 class="accordion-header" id="headingInstructor2">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>BREAK</h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -1956,7 +1956,7 @@ network</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Have a look at the output of <code>model.summary()</code>:</p>
 <div class="codewrapper sourceCode" id="cb18">
@@ -2145,7 +2145,7 @@ the range on the y-axis with the previous training curve. <img src="../fig/02_ba
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The training loss decreases quickly. It drops in a smooth line with
@@ -2296,7 +2296,7 @@ Length: 69, dtype: object</code></pre>
   <h3 class="accordion-header" id="headingInstructor3">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>BREAK</h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
+<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -2385,7 +2385,7 @@ visualize a confusion matrix.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The confusion matrix shows that the predictions for Adelie and Gentoo
 are decent, but could be improved. However, Chinstrap is not predicted
@@ -4146,6 +4146,7 @@ any links that you are not going to use.
 <li>What is a convolutional layer?</li>
 <li>How can we use different types of layers to prevent
 overfitting?</li>
+<li>What is hyperparameter tuning?</li>
 </ul>
 </div>
 </div>
@@ -4159,6 +4160,7 @@ overfitting?</li>
 data</li>
 <li>Implement a convolutional neural network on an image dataset</li>
 <li>Use a drop-out layer to prevent overfitting</li>
+<li>Be able to tune the hyperparameters of a Keras model</li>
 </ul>
 </div>
 </div>
@@ -4287,7 +4289,7 @@ classes, this is the mapping of the categories:</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Framing the classification task</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>The sample images from the dataset, shown below, provide a good
 opportunity to lead a discussion with learners about the nature of the
@@ -4355,7 +4357,7 @@ have?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The correct solution is C: 12288</p>
 <p>There are 4096 pixels in one image (64 * 64), each pixel has 3
@@ -4453,7 +4455,7 @@ this layer have?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The correct answer is B: Each entry of the input dimensions, i.e. the
 <code>shape</code> of one single data point, is connected with 100
@@ -4489,12 +4491,12 @@ learn.</p>
 </h3>
 <pre class="output" tabindex="0"><code>Model: "model"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_1 (InputLayer)        [(None, 12288)]           0         
-                                                                 
- dense (Dense)               (None, 100)               1228900   
-                                                                 
+ input_1 (InputLayer)        [(None, 12288)]           0
+
+ dense (Dense)               (None, 100)               1228900
+
 =================================================================
 Total params: 1228900 (4.69 MB)
 Trainable params: 1228900 (4.69 MB)
@@ -4584,7 +4586,7 @@ convolution?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>There are different ways of dealing with border pixels. You can
 ignore them, which means that your output image is slightly smaller then
@@ -4622,7 +4624,7 @@ Parameters”</a>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>We have 100 matrices with 3 * 3 * 3 = 27 values each so that gives 27
 * 100 = 2700 weights. This is a magnitude of 2000 less than the fully
@@ -4654,18 +4656,18 @@ convolutional layer to the outputs for our classes.</p>
 </h3>
 <pre class="output" tabindex="0"><code>Model: "dollar_street_model_small"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_8 (InputLayer)        [(None, 64, 64, 3)]       0         
-                                                                 
- conv2d_10 (Conv2D)          (None, 62, 62, 50)        1400      
-                                                                 
- conv2d_11 (Conv2D)          (None, 60, 60, 50)        22550     
-                                                                 
- flatten_6 (Flatten)         (None, 180000)            0         
-                                                                 
- dense_14 (Dense)            (None, 10)                1800010   
-                                                                 
+ input_8 (InputLayer)        [(None, 64, 64, 3)]       0
+
+ conv2d_10 (Conv2D)          (None, 62, 62, 50)        1400
+
+ conv2d_11 (Conv2D)          (None, 60, 60, 50)        22550
+
+ flatten_6 (Flatten)         (None, 180000)            0
+
+ dense_14 (Dense)            (None, 10)                1800010
+
 =================================================================
 Total params: 1823960 (6.96 MB)
 Trainable params: 1823960 (6.96 MB)
@@ -4700,7 +4702,7 @@ could work on our dataset here: <a href="https://paperswithcode.com/sota/image-c
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <ul>
 <li>The Flatten layer converts the 60x60x50 output of the convolutional
@@ -4745,7 +4747,7 @@ teach you is by developing a neural network from scratch!</p>
   <h3 class="accordion-header" id="headingInstructor2">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Demonstrate searching for existing architectures</h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>At this point it can be nice to apply above callout box and
 demonstrate searching for state-of-the-art implementations. If you
@@ -4801,26 +4803,26 @@ two convolutional layers and two pooling layers.</p>
 </h3>
 <pre class="output" tabindex="0"><code>Model: "dollar_street_model"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_3 (InputLayer)        [(None, 64, 64, 3)]       0         
-                                                                 
- conv2d_2 (Conv2D)           (None, 62, 62, 50)        1400      
-                                                                 
- max_pooling2d (MaxPooling2  (None, 31, 31, 50)        0         
- D)                                                              
-                                                                 
- conv2d_3 (Conv2D)           (None, 29, 29, 50)        22550     
-                                                                 
- max_pooling2d_1 (MaxPoolin  (None, 14, 14, 50)        0         
- g2D)                                                            
-                                                                 
- flatten_1 (Flatten)         (None, 9800)              0         
-                                                                 
- dense_2 (Dense)             (None, 50)                490050    
-                                                                 
- dense_3 (Dense)             (None, 10)                510       
-                                                                 
+ input_3 (InputLayer)        [(None, 64, 64, 3)]       0
+
+ conv2d_2 (Conv2D)           (None, 62, 62, 50)        1400
+
+ max_pooling2d (MaxPooling2  (None, 31, 31, 50)        0
+ D)
+
+ conv2d_3 (Conv2D)           (None, 29, 29, 50)        22550
+
+ max_pooling2d_1 (MaxPoolin  (None, 14, 14, 50)        0
+ g2D)
+
+ flatten_1 (Flatten)         (None, 9800)              0
+
+ dense_2 (Dense)             (None, 50)                490050
+
+ dense_3 (Dense)             (None, 10)                510
+
 =================================================================
 Total params: 514510 (1.96 MB)
 Trainable params: 514510 (1.96 MB)
@@ -4861,7 +4863,7 @@ one-hot encoding.</p>
   <h3 class="accordion-header" id="headingInstructor3">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>BREAK</h3>
 </button>
-<div id="collapseInstructor3" class="accordion-collapse collapse" aria-labelledby="headingInstructor3" data-bs-parent="#accordionInstructor3">
+<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
 <div class="accordion-body">
 <p>This is a good time for switching instructor and/or a break.</p>
 </div>
@@ -4927,7 +4929,7 @@ starts increasing after a few epochs.</p>
   <h3 class="accordion-header" id="headingInstructor4">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Comparison with a network with only dense layers</h3>
 </button>
-<div id="collapseInstructor4" class="accordion-collapse collapse" aria-labelledby="headingInstructor4" data-bs-parent="#accordionInstructor4">
+<div id="collapseInstructor4" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor4" aria-labelledby="headingInstructor4">
 <div class="accordion-body">
 <p>The callout box below compares the CNN approach with a network with
 only dense layers. Depending on time, the following discussion can be
@@ -4979,18 +4981,18 @@ layers?</p>
 </h3>
 <pre class="output" tabindex="0"><code>Model: "dense_model"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_7 (InputLayer)        [(None, 64, 64, 3)]       0         
-                                                                 
- flatten_5 (Flatten)         (None, 12288)             0         
-                                                                 
- dense_11 (Dense)            (None, 50)                614450    
-                                                                 
- dense_12 (Dense)            (None, 50)                2550      
-                                                                 
- dense_13 (Dense)            (None, 10)                510       
-                                                                 
+ input_7 (InputLayer)        [(None, 64, 64, 3)]       0
+
+ flatten_5 (Flatten)         (None, 12288)             0
+
+ dense_11 (Dense)            (None, 50)                614450
+
+ dense_12 (Dense)            (None, 50)                2550
+
+ dense_13 (Dense)            (None, 10)                510
+
 =================================================================
 Total params: 617510 (2.36 MB)
 Trainable params: 617510 (2.36 MB)
@@ -5053,7 +5055,7 @@ needs to be adjusted as follows:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>We add an extra Conv2D layer after the second pooling layer:</p>
 <div class="codewrapper sourceCode" id="cb28">
@@ -5088,31 +5090,31 @@ parameters:</p>
 </h3>
 <pre class="output" tabindex="0"><code>Model: "dollar_street_model"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_4 (InputLayer)        [(None, 64, 64, 3)]       0         
-                                                                 
- conv2d_4 (Conv2D)           (None, 62, 62, 50)        1400      
-                                                                 
- max_pooling2d_2 (MaxPoolin  (None, 31, 31, 50)        0         
- g2D)                                                            
-                                                                 
- conv2d_5 (Conv2D)           (None, 29, 29, 50)        22550     
-                                                                 
- max_pooling2d_3 (MaxPoolin  (None, 14, 14, 50)        0         
- g2D)                                                            
-                                                                 
- conv2d_6 (Conv2D)           (None, 12, 12, 50)        22550     
-                                                                 
- max_pooling2d_4 (MaxPoolin  (None, 6, 6, 50)          0         
- g2D)                                                            
-                                                                 
- flatten_2 (Flatten)         (None, 1800)              0         
-                                                                 
- dense_4 (Dense)             (None, 50)                90050     
-                                                                 
- dense_5 (Dense)             (None, 10)                510       
-                                                                 
+ input_4 (InputLayer)        [(None, 64, 64, 3)]       0
+
+ conv2d_4 (Conv2D)           (None, 62, 62, 50)        1400
+
+ max_pooling2d_2 (MaxPoolin  (None, 31, 31, 50)        0
+ g2D)
+
+ conv2d_5 (Conv2D)           (None, 29, 29, 50)        22550
+
+ max_pooling2d_3 (MaxPoolin  (None, 14, 14, 50)        0
+ g2D)
+
+ conv2d_6 (Conv2D)           (None, 12, 12, 50)        22550
+
+ max_pooling2d_4 (MaxPoolin  (None, 6, 6, 50)          0
+ g2D)
+
+ flatten_2 (Flatten)         (None, 1800)              0
+
+ dense_4 (Dense)             (None, 50)                90050
+
+ dense_5 (Dense)             (None, 10)                510
+
 =================================================================
 Total params: 137060 (535.39 KB)
 Trainable params: 137060 (535.39 KB)
@@ -5179,7 +5181,7 @@ would benefit from a CNN architecture?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">Show me the solution</h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>No that would not make sense. Convolutions only work when the
@@ -5248,7 +5250,7 @@ the network, that randomly drops 80% of the nodes.</p>
 <span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a></span>
 <span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Conv2D(<span class="dv">50</span>, (<span class="dv">3</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">'relu'</span>)(x)</span>
 <span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.MaxPooling2D((<span class="dv">2</span>, <span class="dv">2</span>))(x)</span>
-<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a>    </span>
+<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a></span>
 <span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Conv2D(<span class="dv">50</span>, (<span class="dv">3</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">'relu'</span>)(x)</span>
 <span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.MaxPooling2D((<span class="dv">2</span>, <span class="dv">2</span>))(x)</span>
 <span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Dropout(<span class="fl">0.8</span>)(x) <span class="co"># This is new!</span></span>
@@ -5267,33 +5269,33 @@ the network, that randomly drops 80% of the nodes.</p>
 </h3>
 <pre class="output" tabindex="0"><code>Model: "dropout_model"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_5 (InputLayer)        [(None, 64, 64, 3)]       0         
-                                                                 
- conv2d_7 (Conv2D)           (None, 62, 62, 50)        1400      
-                                                                 
- max_pooling2d_5 (MaxPoolin  (None, 31, 31, 50)        0         
- g2D)                                                            
-                                                                 
- conv2d_8 (Conv2D)           (None, 29, 29, 50)        22550     
-                                                                 
- max_pooling2d_6 (MaxPoolin  (None, 14, 14, 50)        0         
- g2D)                                                            
-                                                                 
- conv2d_9 (Conv2D)           (None, 12, 12, 50)        22550     
-                                                                 
- max_pooling2d_7 (MaxPoolin  (None, 6, 6, 50)          0         
- g2D)                                                            
-                                                                 
- dropout (Dropout)           (None, 6, 6, 50)          0         
-                                                                 
- flatten_3 (Flatten)         (None, 1800)              0         
-                                                                 
- dense_6 (Dense)             (None, 50)                90050     
-                                                                 
- dense_7 (Dense)             (None, 10)                510       
-                                                                 
+ input_5 (InputLayer)        [(None, 64, 64, 3)]       0
+
+ conv2d_7 (Conv2D)           (None, 62, 62, 50)        1400
+
+ max_pooling2d_5 (MaxPoolin  (None, 31, 31, 50)        0
+ g2D)
+
+ conv2d_8 (Conv2D)           (None, 29, 29, 50)        22550
+
+ max_pooling2d_6 (MaxPoolin  (None, 14, 14, 50)        0
+ g2D)
+
+ conv2d_9 (Conv2D)           (None, 12, 12, 50)        22550
+
+ max_pooling2d_7 (MaxPoolin  (None, 6, 6, 50)          0
+ g2D)
+
+ dropout (Dropout)           (None, 6, 6, 50)          0
+
+ flatten_3 (Flatten)         (None, 1800)              0
+
+ dense_6 (Dense)             (None, 50)                90050
+
+ dense_7 (Dense)             (None, 10)                510
+
 =================================================================
 Total params: 137060 (535.39 KB)
 Trainable params: 137060 (535.39 KB)
@@ -5343,7 +5345,7 @@ model performance, what is the term associated to this procedure?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8">Show me the solution</h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="varying-the-dropout-rate">1. Varying the dropout rate<a class="anchor" aria-label="anchor" href="#varying-the-dropout-rate"></a>
@@ -5364,7 +5366,7 @@ in this case is around 0.9. This is where the val loss is lowest.</p>
 <span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Conv2D(<span class="dv">50</span>, (<span class="dv">3</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">'relu'</span>)(x)</span>
 <span id="cb36-8"><a href="#cb36-8" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.MaxPooling2D((<span class="dv">2</span>, <span class="dv">2</span>))(x)</span>
 <span id="cb36-9"><a href="#cb36-9" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Dropout(dropout_rate)(x)</span>
-<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a>    </span>
+<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a></span>
 <span id="cb36-11"><a href="#cb36-11" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Conv2D(<span class="dv">50</span>, (<span class="dv">3</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">'relu'</span>)(x)</span>
 <span id="cb36-12"><a href="#cb36-12" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Dropout(dropout_rate)(x)</span>
 <span id="cb36-13"><a href="#cb36-13" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Flatten()(x)</span>
@@ -5374,7 +5376,7 @@ in this case is around 0.9. This is where the val loss is lowest.</p>
 <span id="cb36-17"><a href="#cb36-17" tabindex="-1"></a>    <span class="cf">return</span> model</span>
 <span id="cb36-18"><a href="#cb36-18" tabindex="-1"></a></span>
 <span id="cb36-19"><a href="#cb36-19" tabindex="-1"></a>early_stopper <span class="op">=</span> keras.callbacks.EarlyStopping(monitor<span class="op">=</span><span class="st">'val_loss'</span>, patience<span class="op">=</span><span class="dv">5</span>)</span>
-<span id="cb36-20"><a href="#cb36-20" tabindex="-1"></a>                                         </span>
+<span id="cb36-20"><a href="#cb36-20" tabindex="-1"></a></span>
 <span id="cb36-21"><a href="#cb36-21" tabindex="-1"></a>dropout_rates <span class="op">=</span> [<span class="fl">0.2</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.8</span>, <span class="fl">0.9</span>, <span class="fl">0.95</span>]</span>
 <span id="cb36-22"><a href="#cb36-22" tabindex="-1"></a>val_losses <span class="op">=</span> []</span>
 <span id="cb36-23"><a href="#cb36-23" tabindex="-1"></a><span class="cf">for</span> dropout_rate <span class="kw">in</span> dropout_rates:</span>
@@ -5404,16 +5406,308 @@ in this case is around 0.9. This is where the val loss is lowest.</p>
 </div>
 </div>
 </div>
+</section><section id="hyperparameter-tuning"><h2 class="section-heading">Hyperparameter tuning<a class="anchor" aria-label="anchor" href="#hyperparameter-tuning"></a>
+</h2>
+<hr class="half-width">
+<div id="accordionInstructor5" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor5" aria-expanded="false" aria-controls="collapseInstructor5">
+  <h3 class="accordion-header" id="headingInstructor5">
+<div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Do a live demo instead of live coding</h3>
+</button>
+<div id="collapseInstructor5" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor5" aria-labelledby="headingInstructor5">
+<div class="accordion-body">
+<p>You might want to demonstrate this section on hyperparameter tuning
+instead of doing live coding. The goal is to show that hyperparameter
+tuning can be done easily with <code>keras_tuner</code>, not to memorize
+all the exact syntax of how to do it. This will probably save you half
+an hour of participants typing over code that they already know from
+before. In addition, on really slow machines running the grid search
+could possibly take more than 10 minutes.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Recall that hyperparameters are model configuration settings that are
+chosen before the training process and affect the model’s learning
+behavior and performance, for example the dropout rate. In general, if
+you are varying hyperparameters to find the combination of
+hyperparameters with the best model performance this is called
+hyperparameter tuning. A naive way to do this is to write a for-loop and
+train a slightly different model in every cycle. However, it is better
+to use the <code>keras_tuner</code> package for this.</p>
+<p>Let’s first define a function that creates a neuronal network given 2
+hyperparameters, namely the dropout rate and the number of layers:</p>
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="kw">def</span> create_nn_with_hp(dropout_rate, n_layers):</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>    inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>train_images.shape[<span class="dv">1</span>:])</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>    x <span class="op">=</span> inputs</span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>    <span class="cf">for</span> layer <span class="kw">in</span> <span class="bu">range</span>(n_layers):</span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a>        x <span class="op">=</span> keras.layers.Conv2D(<span class="dv">50</span>, (<span class="dv">3</span>, <span class="dv">3</span>), activation<span class="op">=</span><span class="st">'relu'</span>)(x)</span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a>        x <span class="op">=</span> keras.layers.MaxPooling2D((<span class="dv">2</span>, <span class="dv">2</span>))(x)</span>
+<span id="cb37-7"><a href="#cb37-7" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Dropout(dropout_rate)(x)</span>
+<span id="cb37-8"><a href="#cb37-8" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Flatten()(x)</span>
+<span id="cb37-9"><a href="#cb37-9" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Dense(<span class="dv">50</span>, activation<span class="op">=</span><span class="st">'relu'</span>)(x)</span>
+<span id="cb37-10"><a href="#cb37-10" tabindex="-1"></a>    outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">10</span>)(x)</span>
+<span id="cb37-11"><a href="#cb37-11" tabindex="-1"></a>    model <span class="op">=</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, name<span class="op">=</span><span class="st">"cifar_model"</span>)</span>
+<span id="cb37-12"><a href="#cb37-12" tabindex="-1"></a>    <span class="cf">return</span> model</span></code></pre>
+</div>
+<p>Now, let’s find the best combination of hyperparameters using grid
+search. Grid search is the simplest hyperparameter tuning strategy, you
+test all the combinations of predefined values for the hyperparameters
+that you want to vary.</p>
+<p>For this we will make use of the package <code>keras_tuner</code>, we
+can install it by typing in the command line:</p>
+<div class="codewrapper sourceCode" id="cb38">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="ex">pip</span> install keras_tuner</span></code></pre>
+</div>
+<p>Note that this can take some time to train (around 5 minutes or
+longer).</p>
+<div class="codewrapper sourceCode" id="cb39">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="im">import</span> keras_tuner</span>
+<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a>hp <span class="op">=</span> keras_tuner.HyperParameters()</span>
+<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a></span>
+<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a><span class="kw">def</span> build_model(hp):</span>
+<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a>    <span class="co"># Define values for hyperparameters to try out:</span></span>
+<span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a>    n_layers <span class="op">=</span> hp.Int(<span class="st">"n_layers"</span>, min_value<span class="op">=</span><span class="dv">1</span>, max_value<span class="op">=</span><span class="dv">2</span>, step<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb39-8"><a href="#cb39-8" tabindex="-1"></a>    dropout_rate <span class="op">=</span> hp.Float(<span class="st">"dropout_rate"</span>, min_value<span class="op">=</span><span class="fl">0.2</span>, max_value<span class="op">=</span><span class="fl">0.8</span>, step<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" tabindex="-1"></a>    model <span class="op">=</span> create_nn_with_hp(dropout_rate, n_layers)</span>
+<span id="cb39-11"><a href="#cb39-11" tabindex="-1"></a>    compile_model(model)</span>
+<span id="cb39-12"><a href="#cb39-12" tabindex="-1"></a>    <span class="cf">return</span> model</span>
+<span id="cb39-13"><a href="#cb39-13" tabindex="-1"></a></span>
+<span id="cb39-14"><a href="#cb39-14" tabindex="-1"></a>tuner <span class="op">=</span> keras_tuner.GridSearch(build_model, objective<span class="op">=</span><span class="st">'val_loss'</span>)</span>
+<span id="cb39-15"><a href="#cb39-15" tabindex="-1"></a></span>
+<span id="cb39-16"><a href="#cb39-16" tabindex="-1"></a>tuner.search(train_images, train_labels, epochs<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb39-17"><a href="#cb39-17" tabindex="-1"></a>             validation_data<span class="op">=</span>(val_images, val_labels))</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Trial 6 Complete [00h 00m 19s]
+val_loss: 2.086069345474243
+
+Best val_loss So Far: 2.086069345474243
+Total elapsed time: 00h 01m 28s</code></pre>
+</div>
+<p>Let’s have a look at the results:</p>
+<div class="codewrapper sourceCode" id="cb41">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a>tuner.results_summary()</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Results summary
+Results in ./untitled_project
+Showing 10 best trials
+Objective(name="val_loss", direction="min")
+
+Trial 0005 summary
+Hyperparameters:
+n_layers: 2
+dropout_rate: 0.8
+Score: 2.086069345474243
+
+Trial 0000 summary
+Hyperparameters:
+n_layers: 1
+dropout_rate: 0.2
+Score: 2.101102352142334
+
+Trial 0001 summary
+Hyperparameters:
+n_layers: 1
+dropout_rate: 0.5
+Score: 2.1184325218200684
+
+Trial 0003 summary
+Hyperparameters:
+n_layers: 2
+dropout_rate: 0.2
+Score: 2.1233835220336914
+
+Trial 0002 summary
+Hyperparameters:
+n_layers: 1
+dropout_rate: 0.8
+Score: 2.1370232105255127
+
+Trial 0004 summary
+Hyperparameters:
+n_layers: 2
+dropout_rate: 0.5
+Score: 2.143627882003784</code></pre>
+</div>
+<div id="hyperparameter-tuning-1" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="hyperparameter-tuning-1" class="callout-inner">
+<h3 class="callout-title">Hyperparameter tuning<a class="anchor" aria-label="anchor" href="#hyperparameter-tuning-1"></a>
+</h3>
+<div class="callout-content">
+<p>1: Looking at the grid search results, select all correct
+statements:</p>
+<ul>
+<li>A. 6 different models were trained in this grid search run, because
+there are 6 possible combinations for the defined hyperparameter
+values</li>
+<li>B. 2 different models were trained, 1 for each hyperparameter that
+we want to change</li>
+<li>C. 1 model is trained with 6 different hyperparameter
+combinations</li>
+<li>D. The model with 2 layer and a dropout rate of 0.5 is the best
+model with a validation loss of 2.144</li>
+<li>E. The model with 2 layers and a dropout rate of 0.8 is the best
+model with a validation loss of 2.086</li>
+<li>F. We found the model with the best possible combination of dropout
+rate and number of layers</li>
+</ul>
+<p>2 (Optional): Perform a grid search finding the best combination of
+the following hyperparameters: 2 different activation functions: ‘relu’,
+and ‘tanh’, and 2 different values for the kernel size: 3 and 4. Which
+combination works best?</p>
+<p><strong>Hint</strong>: Instead of <code>hp.Int</code> you should now
+use <code>hp.Choice("name", ["value1", "value2"])</code> to use
+hyperparameters from a predefined set of possible values.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution9" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution9" aria-expanded="false" aria-controls="collapseSolution9">
+  <h4 class="accordion-header" id="headingSolution9">Show me the solution</h4>
+</button>
+<div id="collapseSolution9" class="accordion-collapse collapse" data-bs-parent="#accordionSolution9" aria-labelledby="headingSolution9">
+<div class="accordion-body">
+<p>1:</p>
+<ul>
+<li>A: Correct, 2 values for number of layers (1 and 2) are combined
+with 3 values for the dropout rate (0.2, 0.5, 0.8). 2 * 3 = 6
+combinations</li>
+<li>B: Incorrect, a model is trained for each combination of defined
+hyperparameter values</li>
+<li>C: Incorrect, it is important to note that you actually train and
+test different models for each run of the grid search</li>
+<li>D: Incorrect, this is the worst model since the validation loss is
+highest</li>
+<li>E: Correct, this is the best model with the lowest loss</li>
+<li>F: Incorrect, it could be that a different number of layers in
+combination with a dropout rate that we did not test (for example 3
+layers and a dropout rate of 0.6) could be the best model.</li>
+</ul>
+<p>2 (Optional):</p>
+<p>You need to adapt the code as follows:</p>
+<div class="codewrapper sourceCode" id="cb43">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="kw">def</span> create_nn_with_hp(activation_function, kernel_size):</span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a>    inputs <span class="op">=</span> keras.Input(shape<span class="op">=</span>train_images.shape[<span class="dv">1</span>:])</span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a>    x <span class="op">=</span> inputs</span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a>    <span class="cf">for</span> layer <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a>        x <span class="op">=</span> keras.layers.Conv2D(<span class="dv">50</span>, (kernel_size, kernel_size), activation<span class="op">=</span>activation_function)(x)</span>
+<span id="cb43-6"><a href="#cb43-6" tabindex="-1"></a>        x <span class="op">=</span> keras.layers.MaxPooling2D((<span class="dv">2</span>, <span class="dv">2</span>))(x)</span>
+<span id="cb43-7"><a href="#cb43-7" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Dropout(<span class="fl">0.2</span>)(x)</span>
+<span id="cb43-8"><a href="#cb43-8" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Flatten()(x)</span>
+<span id="cb43-9"><a href="#cb43-9" tabindex="-1"></a>    x <span class="op">=</span> keras.layers.Dense(<span class="dv">50</span>, activation<span class="op">=</span>activation_function)(x)</span>
+<span id="cb43-10"><a href="#cb43-10" tabindex="-1"></a>    outputs <span class="op">=</span> keras.layers.Dense(<span class="dv">10</span>)(x)</span>
+<span id="cb43-11"><a href="#cb43-11" tabindex="-1"></a>    model <span class="op">=</span> keras.Model(inputs<span class="op">=</span>inputs, outputs<span class="op">=</span>outputs, name<span class="op">=</span><span class="st">"cifar_model"</span>)</span>
+<span id="cb43-12"><a href="#cb43-12" tabindex="-1"></a>    <span class="cf">return</span> model</span>
+<span id="cb43-13"><a href="#cb43-13" tabindex="-1"></a></span>
+<span id="cb43-14"><a href="#cb43-14" tabindex="-1"></a>hp <span class="op">=</span> keras_tuner.HyperParameters()</span>
+<span id="cb43-15"><a href="#cb43-15" tabindex="-1"></a></span>
+<span id="cb43-16"><a href="#cb43-16" tabindex="-1"></a><span class="kw">def</span> build_model(hp):</span>
+<span id="cb43-17"><a href="#cb43-17" tabindex="-1"></a>    kernel_size <span class="op">=</span> hp.Int(<span class="st">"kernel_size"</span>, min_value<span class="op">=</span><span class="dv">3</span>, max_value<span class="op">=</span><span class="dv">4</span>, step<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb43-18"><a href="#cb43-18" tabindex="-1"></a>    activation <span class="op">=</span> hp.Choice(<span class="st">"activation"</span>, [<span class="st">"relu"</span>, <span class="st">"tanh"</span>])</span>
+<span id="cb43-19"><a href="#cb43-19" tabindex="-1"></a>    model <span class="op">=</span> create_nn_with_hp(activation, kernel_size)</span>
+<span id="cb43-20"><a href="#cb43-20" tabindex="-1"></a>    compile_model(model)</span>
+<span id="cb43-21"><a href="#cb43-21" tabindex="-1"></a>    <span class="cf">return</span> model</span>
+<span id="cb43-22"><a href="#cb43-22" tabindex="-1"></a></span>
+<span id="cb43-23"><a href="#cb43-23" tabindex="-1"></a>tuner <span class="op">=</span> keras_tuner.GridSearch(build_model, objective<span class="op">=</span><span class="st">'val_loss'</span>, project_name<span class="op">=</span><span class="st">'new_project'</span>)</span>
+<span id="cb43-24"><a href="#cb43-24" tabindex="-1"></a>tuner.search(train_images, train_labels, epochs<span class="op">=</span><span class="dv">20</span>,</span>
+<span id="cb43-25"><a href="#cb43-25" tabindex="-1"></a>             validation_data<span class="op">=</span>(val_images, val_labels))</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Trial 4 Complete [00h 00m 25s]
+val_loss: 2.0591845512390137
+
+Best val_loss So Far: 2.0277602672576904
+Total elapsed time: 00h 01m 30s</code></pre>
+</div>
+<p>Let’s look at the results:</p>
+<div class="codewrapper sourceCode" id="cb45">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a>tuner.results_summary()</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Results summary
+Results in ./new_project
+Showing 10 best trials
+Objective(name="val_loss", direction="min")
+
+Trial 0001 summary
+Hyperparameters:
+kernel_size: 3
+activation: tanh
+Score: 2.0277602672576904
+
+Trial 0003 summary
+Hyperparameters:
+kernel_size: 4
+activation: tanh
+Score: 2.0591845512390137
+
+Trial 0000 summary
+Hyperparameters:
+kernel_size: 3
+activation: relu
+Score: 2.123767614364624
+
+Trial 0002 summary
+Hyperparameters:
+kernel_size: 4
+activation: relu
+Score: 2.150160551071167</code></pre>
+</div>
+<p>A kernel size of 3 and <code>tanh</code> as activation function is
+the best tested combination.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Grid search can quickly result in a combinatorial explosion because
+all combinations of hyperparameters are trained and tested. Instead,
+<code>random search</code> randomly samples combinations of
+hyperparemeters, allowing for a much larger look through a large number
+of possible hyperparameter combinations.</p>
+<p>Next to grid search and random search there are many different
+hyperparameter tuning strategies, including <a href="https://en.wikipedia.org/wiki/Neural_architecture_search" class="external-link">neural
+architecture search</a> where a separate neural network is trained to
+find the best architecture for a model!</p>
 </section><section id="share-model"><h2 class="section-heading">10. Share model<a class="anchor" aria-label="anchor" href="#share-model"></a>
 </h2>
 <hr class="half-width">
 <p>Let’s save our model</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a>model.save(<span class="st">'cnn_model'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a>model.save(<span class="st">'cnn_model'</span>)</span></code></pre>
 </div>
-</section><section id="conclusion-and-next-steps"><h2 class="section-heading">Conclusion and Next Steps<a class="anchor" aria-label="anchor" href="#conclusion-and-next-steps"></a>
+</section><section id="conclusion-and-next-steps"><h2 class="section-heading">Conclusion and next steps<a class="anchor" aria-label="anchor" href="#conclusion-and-next-steps"></a>
 </h2>
 <hr class="half-width">
 <p>How successful were we with creating a model here? With ten image
@@ -5660,7 +5954,7 @@ as argument for <code>DenseNet121()</code>?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solutions</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="trainable-parameters-1">1. Trainable parameters<a class="anchor" aria-label="anchor" href="#trainable-parameters-1"></a>
@@ -5730,7 +6024,7 @@ to DenseNet121?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="section level3">
 <h3 id="compile-the-model-1">1. Compile the model<a class="anchor" aria-label="anchor" href="#compile-the-model-1"></a>
@@ -5909,7 +6203,7 @@ domain.</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>You don’t have to use this project as an example. It works best to
 use a suitable deep learning project that you know well and are
@@ -5949,7 +6243,7 @@ spectral embedding layer drastically, to for example 5 neurons?</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>The model summary for the Siamese model is more complex than what we
