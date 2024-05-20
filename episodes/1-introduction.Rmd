@@ -138,13 +138,14 @@ b. This solves the XOR logical problem, the output is 1 if only one of the two i
 ## Activation functions
 Look at the following activation functions:
 
-![A. Sigmoid activation function](fig/01_sigmoid.svg){alt='Plot of the sigmoid function' width='200px'}
+**A. Sigmoid activation function**
+![](fig/01_sigmoid.svg){alt='Plot of the sigmoid function' width='200px'}
 
+**B. ReLU activation function**
+![](fig/01_relu.svg){alt='Plot of the ReLU function' width='200px'}
 
-![B. ReLU activation function](fig/01_relu.svg){alt='Plot of the ReLU function' width='200px'}
-
-
-![C. Identity (or linear) activation function](fig/01_identity_function.svg){alt='Plot of the Identity function' width='200px'}
+**C. Identity (or linear) activation function (output=input)**
+![](fig/01_identity_function.svg){alt='Plot of the Identity function' width='200px'}
 
 Combine the following statements to the correct activation function:
 
