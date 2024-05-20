@@ -156,8 +156,8 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#what-is-deep-learning">What is Deep Learning?</a></li>
-<li><a href="#how-much-data-do-you-need-for-deep-learning">How much data do you need for Deep Learning?</a></li>
-<li><a href="#deep-learning-workflow">Deep Learning workflow</a></li>
+<li><a href="#how-much-data-do-you-need-for-deep-learning">How much data do you need for deep learning?</a></li>
+<li><a href="#deep-learning-workflow">Deep learning workflow</a></li>
 <li><a href="#deep-learning-libraries">Deep Learning Libraries</a></li>
 <li><a href="#testing-keras-installation">Testing Keras Installation</a></li>
 <li><a href="#testing-seaborn-installation">Testing Seaborn Installation</a></li>
@@ -290,11 +290,11 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>What is Deep Learning?</li>
-<li>When does it make sense to use and not use Deep Learning?</li>
+<ul><li>What is deep learning?</li>
+<li>When does it make sense to use and not use deep learning?</li>
 <li>When is it successful?</li>
 <li>What are the tools involved?</li>
-<li>What is the workflow for Deep Learning?</li>
+<li>What is the workflow for deep learning?</li>
 <li>Why did we choose to use Keras in this lesson?</li>
 <li>How do neural networks learn?</li>
 </ul></div>
@@ -304,10 +304,10 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Recall the sort of problems for which Deep Learning is a useful
+<ul><li>Recall the sort of problems for which deep learning is a useful
 tool</li>
-<li>List some of the available tools for Deep Learning</li>
-<li>Recall the steps of a Deep Learning workflow</li>
+<li>List some of the available tools for deep learning</li>
+<li>Recall the steps of a deep learning workflow</li>
 <li>Identify the inputs and outputs of a deep neural network.</li>
 <li>Explain the operations performed in a single neuron</li>
 <li>Test that you have correctly installed the Keras, Seaborn and
@@ -322,7 +322,7 @@ Sklearn libraries</li>
 </h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="deep-learning-machine-learning-and-artificial-intelligence">Deep Learning, Machine Learning and Artificial Intelligence<a class="anchor" aria-label="anchor" href="#deep-learning-machine-learning-and-artificial-intelligence"></a></h3>
-<p>Deep Learning (DL) is just one of many techniques collectively known
+<p>Deep learning (DL) is just one of many techniques collectively known
 as machine learning. Machine learning (ML) refers to techniques where a
 computer can “learn” patterns in data, usually by being shown numerous
 examples to train it. People often talk about machine learning being a
@@ -334,8 +334,8 @@ intelligence which matches (or exceeds) human intelligence in all areas.
 Although there have been great advances in AI and ML research recently
 we can only come close to human like intelligence in a few specialist
 areas and are still a long way from a general purpose AI. The image
-below shows some differences between artificial intelligence, Machine
-Learning and Deep Learning.</p>
+below shows some differences between artificial intelligence, machine
+learning and deep learning.</p>
 <figure><img src="fig/01_AI_ML_DL_differences.png" alt="An infographic showing the relation of AI, ML, NN and DL. NN are methods in DL which is a subset of ML algorithms that falls within the umbrella of AI" class="figure mx-auto d-block"><div class="figcaption">Image credit: Tukijaaliwa, CC BY-SA 4.0, via
 Wikimedia Commons, <a href="https://en.wikipedia.org/wiki/File:AI-ML-DL.svg" class="external-link">original
 source</a>
@@ -534,18 +534,18 @@ small, consisting of only 10s or perhaps 100s of neurons. This limited
 them to only solving quite basic problems. Around 2010 improvements in
 computing power and the algorithms for training the networks made much
 larger and more powerful networks practical. These are known as deep
-neural networks or Deep Learning.</p>
+neural networks or deep learning.</p>
 <p>Deep Learning requires extensive training using example data which
 shows the network what output it should produce for a given input. One
-common application of Deep Learning is classifying images. Here the
+common application of deep learning is classifying images. Here the
 network will be trained by being “shown” a series of images and told
 what they contain. Once the network is trained it should be able to take
 another image and correctly classify its contents. But we are not
 restricted to just using images, any kind of data can be learned by a
-Deep Learning neural network. This makes them able to appear to learn a
+deep learning neural network. This makes them able to appear to learn a
 set of complex rules only by being shown what the inputs and outputs of
 those rules are instead of being taught the actual rules. Using these
-approaches Deep Learning networks have been taught to play video games
+approaches deep learning networks have been taught to play video games
 and even drive cars. The data on which networks are trained usually has
 to be quite extensive, typically including thousands of examples. For
 this reason they are not suited to all applications and should be
@@ -555,7 +555,7 @@ available.</p>
 five layers, deep networks often have tens or even hundreds of layers.
 This leads to them having millions of individual weights. The image
 below shows a diagram of all the layers (there are too many neurons to
-draw them all) on a Deep Learning network designed to detect pedestrians
+draw them all) on a deep learning network designed to detect pedestrians
 in images. The input (left most) layer of the network is an image and
 the final (right most) layer of the network outputs a zero or one to
 determine if the input data belongs to the class of data we are
@@ -678,7 +678,7 @@ closer to the expected values.</p>
 
 </div>
 <div class="section level3">
-<h3 id="what-sort-of-problems-can-deep-learning-solve">What sort of problems can Deep Learning solve?<a class="anchor" aria-label="anchor" href="#what-sort-of-problems-can-deep-learning-solve"></a></h3>
+<h3 id="what-sort-of-problems-can-deep-learning-solve">What sort of problems can deep learning solve?<a class="anchor" aria-label="anchor" href="#what-sort-of-problems-can-deep-learning-solve"></a></h3>
 <ul><li>Pattern/object recognition</li>
 <li>Segmenting images (or any data)</li>
 <li>Translating between one set of data and another, for example natural
@@ -694,7 +694,7 @@ data could look like.</li>
 </ul></li>
 </ul><div class="section level4">
 <h4 id="examples-of-deep-learning-in-research">Examples of Deep Learning in Research<a class="anchor" aria-label="anchor" href="#examples-of-deep-learning-in-research"></a></h4>
-<p>Here are just a few examples of how Deep Learning has been applied to
+<p>Here are just a few examples of how deep learning has been applied to
 some research problems. Note: some of these articles might be behind
 paywalls.</p>
 <ul><li><a href="https://arxiv.org/abs/2003.09871" class="external-link">Detecting COVID-19 in
@@ -710,7 +710,7 @@ to restore ancient murals</a></li>
 </ul></div>
 </div>
 <div class="section level3">
-<h3 id="what-sort-of-problems-can-deep-learning-not-solve">What sort of problems can Deep Learning not solve?<a class="anchor" aria-label="anchor" href="#what-sort-of-problems-can-deep-learning-not-solve"></a></h3>
+<h3 id="what-sort-of-problems-can-deep-learning-not-solve">What sort of problems can deep learning not solve?<a class="anchor" aria-label="anchor" href="#what-sort-of-problems-can-deep-learning-not-solve"></a></h3>
 <ul><li>Any case where only a small amount of training data is
 available.</li>
 <li>Tasks requiring an explanation of how the answer was arrived
@@ -718,18 +718,18 @@ at.</li>
 <li>Classifying things which are nothing like their training data.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="what-sort-of-problems-can-deep-learning-solve-but-should-not-be-used-for">What sort of problems can Deep Learning solve, but should not be
+<h3 id="what-sort-of-problems-can-deep-learning-solve-but-should-not-be-used-for">What sort of problems can deep learning solve, but should not be
 used for?<a class="anchor" aria-label="anchor" href="#what-sort-of-problems-can-deep-learning-solve-but-should-not-be-used-for"></a></h3>
-<p>Deep Learning needs a lot of computational power, for this reason it
+<p>Deep learning needs a lot of computational power, for this reason it
 often relies on specialised hardware like graphical processing units
 (GPUs). Many computational problems can be solved using less intensive
-techniques, but could still technically be solved with Deep
-Learning.</p>
-<p>The following could technically be achieved using Deep Learning, but
+techniques, but could still technically be solved with deep
+learning.</p>
+<p>The following could technically be achieved using deep learning, but
 it would probably be a very wasteful way to do it:</p>
 <ul><li>Logic operations, such as computing totals, averages, ranges etc.
 (see <a href="https://joelgrus.com/2016/05/23/fizz-buzz-in-tensorflow" class="external-link">this
-example</a> applying Deep Learning to solve the “FizzBuzz” problem often
+example</a> applying deep learning to solve the “FizzBuzz” problem often
 used for programming interviews)</li>
 <li>Modelling well defined systems, where the equations governing them
 are known and understood.</li>
@@ -743,7 +743,7 @@ colour depth or blurring an image.</li>
 <h3 class="callout-title">Deep Learning Problems Exercise<a class="anchor" aria-label="anchor" href="#deep-learning-problems-exercise"></a>
 </h3>
 <div class="callout-content">
-<p>Which of the following would you apply Deep Learning to?</p>
+<p>Which of the following would you apply deep learning to?</p>
 <ol style="list-style-type: decimal"><li>Recognising whether or not a picture contains a bird.</li>
 <li>Calculating the median and interquartile range of a dataset.</li>
 <li>Identifying MRI images of a rare disease when only one or two
@@ -761,12 +761,12 @@ dogs.</li>
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
-<ol style="list-style-type: decimal"><li>and 5 are the sort of tasks often solved with Deep Learning.</li>
-<li>is technically possible but solving this with Deep Learning would be
+<ol style="list-style-type: decimal"><li>and 5 are the sort of tasks often solved with deep learning.</li>
+<li>is technically possible but solving this with deep learning would be
 extremely wasteful, you could do the same with much less computing power
 using traditional techniques.</li>
 <li>will probably fail because there is not enough training data.</li>
-<li>will fail because the Deep Learning system only knows what cats and
+<li>will fail because the deep learning system only knows what cats and
 dogs look like, it might accidentally classify the people as cats or
 dogs.</li>
 </ol></div>
@@ -774,11 +774,11 @@ dogs.</li>
 </div>
 </div>
 </div>
-</section><section id="how-much-data-do-you-need-for-deep-learning"><h2 class="section-heading">How much data do you need for Deep Learning?<a class="anchor" aria-label="anchor" href="#how-much-data-do-you-need-for-deep-learning"></a>
+</section><section id="how-much-data-do-you-need-for-deep-learning"><h2 class="section-heading">How much data do you need for deep learning?<a class="anchor" aria-label="anchor" href="#how-much-data-do-you-need-for-deep-learning"></a>
 </h2>
-<hr class="half-width"><p>The rise of Deep Learning is partially due to the increased
+<hr class="half-width"><p>The rise of deep learning is partially due to the increased
 availability of very large datasets. But how much data do you actually
-need to train a Deep Learning model? Unfortunately, this question is not
+need to train a deep learning model? Unfortunately, this question is not
 easy to answer. It depends, among other things, on the complexity of the
 task (which you often do not know beforehand), the quality of the
 available dataset and the complexity of the network. For complex tasks
@@ -804,13 +804,13 @@ exposes a different view.</p>
 </div>
 </div>
 </div>
-</section><section id="deep-learning-workflow"><h2 class="section-heading">Deep Learning workflow<a class="anchor" aria-label="anchor" href="#deep-learning-workflow"></a>
+</section><section id="deep-learning-workflow"><h2 class="section-heading">Deep learning workflow<a class="anchor" aria-label="anchor" href="#deep-learning-workflow"></a>
 </h2>
-<hr class="half-width"><p>To apply Deep Learning to a problem there are several steps we need
+<hr class="half-width"><p>To apply deep learning to a problem there are several steps we need
 to go through:</p>
 <div class="section level3">
 <h3 id="formulate-outline-the-problem">1. Formulate/ Outline the problem<a class="anchor" aria-label="anchor" href="#formulate-outline-the-problem"></a></h3>
-<p>Firstly we must decide what it is we want our Deep Learning system to
+<p>Firstly we must decide what it is we want our deep learning system to
 do. Is it going to classify some data into one of a few categories? For
 example if we have an image of some hand written characters, the neural
 network could classify which character it is being shown. Or is it going
@@ -918,12 +918,12 @@ to (mostly) reproduce our result.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="deep-learning-workflow-exercise" class="callout-inner">
-<h3 class="callout-title">Deep Learning workflow exercise<a class="anchor" aria-label="anchor" href="#deep-learning-workflow-exercise"></a>
+<h3 class="callout-title">Deep learning workflow exercise<a class="anchor" aria-label="anchor" href="#deep-learning-workflow-exercise"></a>
 </h3>
 <div class="callout-content">
-<p>Think about a problem you would like to use Deep Learning to
+<p>Think about a problem you would like to use deep learning to
 solve.</p>
-<ol style="list-style-type: decimal"><li>What do you want a Deep Learning system to be able to tell you?</li>
+<ol style="list-style-type: decimal"><li>What do you want a deep learning system to be able to tell you?</li>
 <li>What data inputs and outputs will you have?</li>
 <li>Do you think you will need to train the network or will a
 pre-trained network be suitable?</li>
@@ -948,15 +948,15 @@ the data you will use to train the network.</li>
 </div>
 </section><section id="deep-learning-libraries"><h2 class="section-heading">Deep Learning Libraries<a class="anchor" aria-label="anchor" href="#deep-learning-libraries"></a>
 </h2>
-<hr class="half-width"><p>There are many software libraries available for Deep Learning
+<hr class="half-width"><p>There are many software libraries available for deep learning
 including:</p>
 <div class="section level3">
 <h3 id="tensorflow">TensorFlow<a class="anchor" aria-label="anchor" href="#tensorflow"></a></h3>
 <p><a href="https://www.tensorflow.org/" class="external-link">TensorFlow</a> was developed by
-Google and is one of the older Deep Learning libraries, ported across
+Google and is one of the older deep learning libraries, ported across
 many languages since it was first released to the public in 2015. It is
-very versatile and capable of much more than Deep Learning but as a
-result it often takes a lot more lines of code to write Deep Learning
+very versatile and capable of much more than deep learning but as a
+result it often takes a lot more lines of code to write deep learning
 operations in TensorFlow than in other libraries. It offers (almost)
 seamless integration with GPU accelerators and Google’s own TPU (Tensor
 Processing Unit) chips that are built specially for machine
@@ -965,10 +965,10 @@ learning.</p>
 <div class="section level3">
 <h3 id="pytorch">PyTorch<a class="anchor" aria-label="anchor" href="#pytorch"></a></h3>
 <p><a href="https://pytorch.org/" class="external-link">PyTorch</a> was developed by Facebook
-in 2016 and is a popular choice for Deep Learning applications. It was
+in 2016 and is a popular choice for deep learning applications. It was
 developed for Python from the start and feels a lot more “pythonic” than
-TensorFlow. Like TensorFlow it was designed to do more than just Deep
-Learning and offers some very low level interfaces. <a href="https://www.pytorchlightning.ai/" class="external-link">PyTorch Lightning</a> offers a
+TensorFlow. Like TensorFlow it was designed to do more than just deep
+learning and offers some very low level interfaces. <a href="https://www.pytorchlightning.ai/" class="external-link">PyTorch Lightning</a> offers a
 higher level interface to PyTorch to set up experiments. Like TensorFlow
 it is also very easy to integrate PyTorch with a GPU. In many benchmarks
 it outperforms the other libraries.</p>
@@ -1065,17 +1065,17 @@ patterns of data.</li>
 <li>Artificial neural networks are a machine learning technique based on
 a model inspired by groups of neurons in the brain.</li>
 <li>Artificial neural networks can be trained on example data.</li>
-<li>Deep Learning is a machine learning technique based on using many
+<li>Deep learning is a machine learning technique based on using many
 artificial neurons arranged in layers.</li>
 <li>Neural networks learn by minimizing a loss function.</li>
-<li>Deep Learning is well suited to classification and prediction
+<li>Deep learning is well suited to classification and prediction
 problems such as image recognition.</li>
-<li>To use Deep Learning effectively we need to go through a workflow
+<li>To use deep learning effectively we need to go through a workflow
 of: defining the problem, identifying inputs and outputs, preparing
 data, choosing the type of network, choosing a loss function, training
 the model, refine the model, measuring performance before we can
 classify data.</li>
-<li>Keras is a Deep Learning library that is easier to use than many of
+<li>Keras is a deep learning library that is easier to use than many of
 the alternatives such as TensorFlow and PyTorch.</li>
 </ul></div>
 </div>
