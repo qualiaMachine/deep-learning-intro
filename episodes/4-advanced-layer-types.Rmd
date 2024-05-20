@@ -9,12 +9,14 @@ exercises: 70
 - What are good network designs for image data?
 - What is a convolutional layer?
 - How can we use different types of layers to prevent overfitting?
+- What is hyperparameter tuning?
 :::
 
 ::: objectives
 - Understand why convolutional and pooling layers are useful for image data
 - Implement a convolutional neural network on an image dataset
 - Use a drop-out layer to prevent overfitting
+- Be able to tune the hyperparameters of a Keras model
 :::
 
 
@@ -110,7 +112,7 @@ How many features does one image in the dollar-street-10 dataset have?
 
 
 :::: solution
-The correct solution is C: 12288 
+The correct solution is C: 12288
 
 There are 4096 pixels in one image (64 * 64), each pixel has 3 channels (RGB). So 4096 * 3 = 12288.
 ::::
@@ -195,12 +197,12 @@ model.summary()
 ```output
 Model: "model"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_1 (InputLayer)        [(None, 12288)]           0         
-                                                                 
- dense (Dense)               (None, 100)               1228900   
-                                                                 
+ input_1 (InputLayer)        [(None, 12288)]           0
+
+ dense (Dense)               (None, 100)               1228900
+
 =================================================================
 Total params: 1228900 (4.69 MB)
 Trainable params: 1228900 (4.69 MB)
@@ -286,18 +288,18 @@ model.summary()
 ```output
 Model: "dollar_street_model_small"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_8 (InputLayer)        [(None, 64, 64, 3)]       0         
-                                                                 
- conv2d_10 (Conv2D)          (None, 62, 62, 50)        1400      
-                                                                 
- conv2d_11 (Conv2D)          (None, 60, 60, 50)        22550     
-                                                                 
- flatten_6 (Flatten)         (None, 180000)            0         
-                                                                 
- dense_14 (Dense)            (None, 10)                1800010   
-                                                                 
+ input_8 (InputLayer)        [(None, 64, 64, 3)]       0
+
+ conv2d_10 (Conv2D)          (None, 62, 62, 50)        1400
+
+ conv2d_11 (Conv2D)          (None, 60, 60, 50)        22550
+
+ flatten_6 (Flatten)         (None, 180000)            0
+
+ dense_14 (Dense)            (None, 10)                1800010
+
 =================================================================
 Total params: 1823960 (6.96 MB)
 Trainable params: 1823960 (6.96 MB)
@@ -313,7 +315,7 @@ Inspect the network above:
 
 * What do you think is the function of the `Flatten` layer?
 * Which layer has the most parameters? Do you find this intuitive?
-* (optional) This dataset is similar to the often used CIFAR-10 dataset. 
+* (optional) This dataset is similar to the often used CIFAR-10 dataset.
 We can get inspiration for neural network architectures that could work on our dataset here: https://paperswithcode.com/sota/image-classification-on-cifar-10 . Pick a model and try to understand how it works.
 
 :::: solution
@@ -374,26 +376,26 @@ model.summary()
 ```output
 Model: "dollar_street_model"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_3 (InputLayer)        [(None, 64, 64, 3)]       0         
-                                                                 
- conv2d_2 (Conv2D)           (None, 62, 62, 50)        1400      
-                                                                 
- max_pooling2d (MaxPooling2  (None, 31, 31, 50)        0         
- D)                                                              
-                                                                 
- conv2d_3 (Conv2D)           (None, 29, 29, 50)        22550     
-                                                                 
- max_pooling2d_1 (MaxPoolin  (None, 14, 14, 50)        0         
- g2D)                                                            
-                                                                 
- flatten_1 (Flatten)         (None, 9800)              0         
-                                                                 
- dense_2 (Dense)             (None, 50)                490050    
-                                                                 
- dense_3 (Dense)             (None, 10)                510       
-                                                                 
+ input_3 (InputLayer)        [(None, 64, 64, 3)]       0
+
+ conv2d_2 (Conv2D)           (None, 62, 62, 50)        1400
+
+ max_pooling2d (MaxPooling2  (None, 31, 31, 50)        0
+ D)
+
+ conv2d_3 (Conv2D)           (None, 29, 29, 50)        22550
+
+ max_pooling2d_1 (MaxPoolin  (None, 14, 14, 50)        0
+ g2D)
+
+ flatten_1 (Flatten)         (None, 9800)              0
+
+ dense_2 (Dense)             (None, 50)                490050
+
+ dense_3 (Dense)             (None, 10)                510
+
 =================================================================
 Total params: 514510 (1.96 MB)
 Trainable params: 514510 (1.96 MB)
@@ -509,18 +511,18 @@ dense_model.summary()
 ```output
 Model: "dense_model"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_7 (InputLayer)        [(None, 64, 64, 3)]       0         
-                                                                 
- flatten_5 (Flatten)         (None, 12288)             0         
-                                                                 
- dense_11 (Dense)            (None, 50)                614450    
-                                                                 
- dense_12 (Dense)            (None, 50)                2550      
-                                                                 
- dense_13 (Dense)            (None, 10)                510       
-                                                                 
+ input_7 (InputLayer)        [(None, 64, 64, 3)]       0
+
+ flatten_5 (Flatten)         (None, 12288)             0
+
+ dense_11 (Dense)            (None, 50)                614450
+
+ dense_12 (Dense)            (None, 50)                2550
+
+ dense_13 (Dense)            (None, 10)                510
+
 =================================================================
 Total params: 617510 (2.36 MB)
 Trainable params: 617510 (2.36 MB)
@@ -592,31 +594,31 @@ model.summary()
 ```output
 Model: "dollar_street_model"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_4 (InputLayer)        [(None, 64, 64, 3)]       0         
-                                                                 
- conv2d_4 (Conv2D)           (None, 62, 62, 50)        1400      
-                                                                 
- max_pooling2d_2 (MaxPoolin  (None, 31, 31, 50)        0         
- g2D)                                                            
-                                                                 
- conv2d_5 (Conv2D)           (None, 29, 29, 50)        22550     
-                                                                 
- max_pooling2d_3 (MaxPoolin  (None, 14, 14, 50)        0         
- g2D)                                                            
-                                                                 
- conv2d_6 (Conv2D)           (None, 12, 12, 50)        22550     
-                                                                 
- max_pooling2d_4 (MaxPoolin  (None, 6, 6, 50)          0         
- g2D)                                                            
-                                                                 
- flatten_2 (Flatten)         (None, 1800)              0         
-                                                                 
- dense_4 (Dense)             (None, 50)                90050     
-                                                                 
- dense_5 (Dense)             (None, 10)                510       
-                                                                 
+ input_4 (InputLayer)        [(None, 64, 64, 3)]       0
+
+ conv2d_4 (Conv2D)           (None, 62, 62, 50)        1400
+
+ max_pooling2d_2 (MaxPoolin  (None, 31, 31, 50)        0
+ g2D)
+
+ conv2d_5 (Conv2D)           (None, 29, 29, 50)        22550
+
+ max_pooling2d_3 (MaxPoolin  (None, 14, 14, 50)        0
+ g2D)
+
+ conv2d_6 (Conv2D)           (None, 12, 12, 50)        22550
+
+ max_pooling2d_4 (MaxPoolin  (None, 6, 6, 50)          0
+ g2D)
+
+ flatten_2 (Flatten)         (None, 1800)              0
+
+ dense_4 (Dense)             (None, 50)                90050
+
+ dense_5 (Dense)             (None, 10)                510
+
 =================================================================
 Total params: 137060 (535.39 KB)
 Trainable params: 137060 (535.39 KB)
@@ -699,7 +701,7 @@ def create_nn_with_dropout():
 
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
     x = keras.layers.MaxPooling2D((2, 2))(x)
-    
+
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
     x = keras.layers.MaxPooling2D((2, 2))(x)
     x = keras.layers.Dropout(0.8)(x) # This is new!
@@ -716,33 +718,33 @@ model_dropout.summary()
 ```output
 Model: "dropout_model"
 _________________________________________________________________
- Layer (type)                Output Shape              Param #   
+ Layer (type)                Output Shape              Param #
 =================================================================
- input_5 (InputLayer)        [(None, 64, 64, 3)]       0         
-                                                                 
- conv2d_7 (Conv2D)           (None, 62, 62, 50)        1400      
-                                                                 
- max_pooling2d_5 (MaxPoolin  (None, 31, 31, 50)        0         
- g2D)                                                            
-                                                                 
- conv2d_8 (Conv2D)           (None, 29, 29, 50)        22550     
-                                                                 
- max_pooling2d_6 (MaxPoolin  (None, 14, 14, 50)        0         
- g2D)                                                            
-                                                                 
- conv2d_9 (Conv2D)           (None, 12, 12, 50)        22550     
-                                                                 
- max_pooling2d_7 (MaxPoolin  (None, 6, 6, 50)          0         
- g2D)                                                            
-                                                                 
- dropout (Dropout)           (None, 6, 6, 50)          0         
-                                                                 
- flatten_3 (Flatten)         (None, 1800)              0         
-                                                                 
- dense_6 (Dense)             (None, 50)                90050     
-                                                                 
- dense_7 (Dense)             (None, 10)                510       
-                                                                 
+ input_5 (InputLayer)        [(None, 64, 64, 3)]       0
+
+ conv2d_7 (Conv2D)           (None, 62, 62, 50)        1400
+
+ max_pooling2d_5 (MaxPoolin  (None, 31, 31, 50)        0
+ g2D)
+
+ conv2d_8 (Conv2D)           (None, 29, 29, 50)        22550
+
+ max_pooling2d_6 (MaxPoolin  (None, 14, 14, 50)        0
+ g2D)
+
+ conv2d_9 (Conv2D)           (None, 12, 12, 50)        22550
+
+ max_pooling2d_7 (MaxPoolin  (None, 6, 6, 50)          0
+ g2D)
+
+ dropout (Dropout)           (None, 6, 6, 50)          0
+
+ flatten_3 (Flatten)         (None, 1800)              0
+
+ dense_6 (Dense)             (None, 50)                90050
+
+ dense_7 (Dense)             (None, 10)                510
+
 =================================================================
 Total params: 137060 (535.39 KB)
 Trainable params: 137060 (535.39 KB)
@@ -796,7 +798,7 @@ def create_nn_with_dropout(dropout_rate):
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
     x = keras.layers.MaxPooling2D((2, 2))(x)
     x = keras.layers.Dropout(dropout_rate)(x)
-    
+
     x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
     x = keras.layers.Dropout(dropout_rate)(x)
     x = keras.layers.Flatten()(x)
@@ -806,7 +808,7 @@ def create_nn_with_dropout(dropout_rate):
     return model
 
 early_stopper = keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
-                                         
+
 dropout_rates = [0.2, 0.4, 0.6, 0.8, 0.9, 0.95]
 val_losses = []
 for dropout_rate in dropout_rates:
@@ -834,6 +836,227 @@ This is called hyperparameter tuning.
 ::::
 :::
 
+## Hyperparameter tuning
+::: instructor
+## Do a live demo instead of live coding
+You might want to demonstrate this section on hyperparameter tuning instead of doing live coding.
+The goal is to show that hyperparameter tuning can be done easily with `keras_tuner`, not to memorize all the exact syntax of how to do it. This will probably save you half an hour of participants typing over code that they already know from before. In addition, on really slow machines running the grid search could possibly take more than 10 minutes.
+:::
+
+Recall that hyperparameters are model configuration settings that are chosen before the training process and affect the model's learning behavior and performance, for example the dropout rate. In general, if you are varying hyperparameters to find the combination of hyperparameters with the best model performance this is called hyperparameter tuning. A naive way to do this is to write a for-loop and train a slightly different model in every cycle.
+However, it is better to use the `keras_tuner` package for this.
+
+Let's first define a function that creates a neuronal network given 2 hyperparameters, namely the dropout rate and the number of layers:
+```python
+def create_nn_with_hp(dropout_rate, n_layers):
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = inputs
+    for layer in range(n_layers):
+        x = keras.layers.Conv2D(50, (3, 3), activation='relu')(x)
+        x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Dropout(dropout_rate)(x)
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(50, activation='relu')(x)
+    outputs = keras.layers.Dense(10)(x)
+    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    return model
+```
+
+Now, let's find the best combination of hyperparameters using grid search.
+Grid search is the simplest hyperparameter tuning strategy,
+you test all the combinations of predefined values for the hyperparameters that you want to vary.
+
+For this we will make use of the package `keras_tuner`, we can install it by typing in the command line:
+```bash
+pip install keras_tuner
+```
+
+Note that this can take some time to train (around 5 minutes or longer).
+
+```python
+import keras_tuner
+
+hp = keras_tuner.HyperParameters()
+
+def build_model(hp):
+    # Define values for hyperparameters to try out:
+    n_layers = hp.Int("n_layers", min_value=1, max_value=2, step=1)
+    dropout_rate = hp.Float("dropout_rate", min_value=0.2, max_value=0.8, step=0.3)
+
+    model = create_nn_with_hp(dropout_rate, n_layers)
+    compile_model(model)
+    return model
+
+tuner = keras_tuner.GridSearch(build_model, objective='val_loss')
+
+tuner.search(train_images, train_labels, epochs=20,
+             validation_data=(val_images, val_labels))
+```
+```output
+Trial 6 Complete [00h 00m 19s]
+val_loss: 2.086069345474243
+
+Best val_loss So Far: 2.086069345474243
+Total elapsed time: 00h 01m 28s
+```
+Let's have a look at the results:
+
+```python
+tuner.results_summary()
+```
+```output
+Results summary
+Results in ./untitled_project
+Showing 10 best trials
+Objective(name="val_loss", direction="min")
+
+Trial 0005 summary
+Hyperparameters:
+n_layers: 2
+dropout_rate: 0.8
+Score: 2.086069345474243
+
+Trial 0000 summary
+Hyperparameters:
+n_layers: 1
+dropout_rate: 0.2
+Score: 2.101102352142334
+
+Trial 0001 summary
+Hyperparameters:
+n_layers: 1
+dropout_rate: 0.5
+Score: 2.1184325218200684
+
+Trial 0003 summary
+Hyperparameters:
+n_layers: 2
+dropout_rate: 0.2
+Score: 2.1233835220336914
+
+Trial 0002 summary
+Hyperparameters:
+n_layers: 1
+dropout_rate: 0.8
+Score: 2.1370232105255127
+
+Trial 0004 summary
+Hyperparameters:
+n_layers: 2
+dropout_rate: 0.5
+Score: 2.143627882003784
+```
+
+::: challenge
+
+## Hyperparameter tuning
+
+1: Looking at the grid search results, select all correct statements:
+
+- A. 6 different models were trained in this grid search run, because there are 6 possible combinations for the defined hyperparameter values
+- B. 2 different models were trained, 1 for each hyperparameter that we want to change
+- C. 1 model is trained with 6 different hyperparameter combinations
+- D. The model with 2 layer and a dropout rate of 0.5 is the best model with a validation loss of 2.144
+- E. The model with 2 layers and a dropout rate of 0.8 is the best model with a validation loss of 2.086
+- F. We found the model with the best possible combination of dropout rate and number of layers
+
+2 (Optional): Perform a grid search finding the best combination of the following hyperparameters: 2 different activation functions: 'relu', and 'tanh', and 2 different values for the kernel size: 3 and 4. Which combination works best?
+
+**Hint**: Instead of `hp.Int` you should now use `hp.Choice("name", ["value1", "value2"])` to use hyperparameters from a predefined set of possible values.
+
+:::: solution
+## Solution
+
+1:
+
+- A: Correct, 2 values for number of layers (1 and 2) are combined with 3 values for the dropout rate (0.2, 0.5, 0.8). 2 * 3 = 6 combinations
+- B: Incorrect, a model is trained for each combination of defined hyperparameter values
+- C: Incorrect, it is important to note that you actually train and test different models for each run of the grid search
+- D: Incorrect, this is the worst model since the validation loss is highest
+- E: Correct, this is the best model with the lowest loss
+- F: Incorrect, it could be that a different number of layers in combination with a dropout rate that we did not test (for example 3 layers and a dropout rate of 0.6) could be the best model.
+
+2 (Optional):
+
+You need to adapt the code as follows:
+```python
+def create_nn_with_hp(activation_function, kernel_size):
+    inputs = keras.Input(shape=train_images.shape[1:])
+    x = inputs
+    for layer in range(3):
+        x = keras.layers.Conv2D(50, (kernel_size, kernel_size), activation=activation_function)(x)
+        x = keras.layers.MaxPooling2D((2, 2))(x)
+    x = keras.layers.Dropout(0.2)(x)
+    x = keras.layers.Flatten()(x)
+    x = keras.layers.Dense(50, activation=activation_function)(x)
+    outputs = keras.layers.Dense(10)(x)
+    model = keras.Model(inputs=inputs, outputs=outputs, name="cifar_model")
+    return model
+
+hp = keras_tuner.HyperParameters()
+
+def build_model(hp):
+    kernel_size = hp.Int("kernel_size", min_value=3, max_value=4, step=1)
+    activation = hp.Choice("activation", ["relu", "tanh"])
+    model = create_nn_with_hp(activation, kernel_size)
+    compile_model(model)
+    return model
+
+tuner = keras_tuner.GridSearch(build_model, objective='val_loss', project_name='new_project')
+tuner.search(train_images, train_labels, epochs=20,
+             validation_data=(val_images, val_labels))
+```
+```output
+Trial 4 Complete [00h 00m 25s]
+val_loss: 2.0591845512390137
+
+Best val_loss So Far: 2.0277602672576904
+Total elapsed time: 00h 01m 30s
+```
+Let's look at the results:
+```python
+tuner.results_summary()
+```
+```output
+Results summary
+Results in ./new_project
+Showing 10 best trials
+Objective(name="val_loss", direction="min")
+
+Trial 0001 summary
+Hyperparameters:
+kernel_size: 3
+activation: tanh
+Score: 2.0277602672576904
+
+Trial 0003 summary
+Hyperparameters:
+kernel_size: 4
+activation: tanh
+Score: 2.0591845512390137
+
+Trial 0000 summary
+Hyperparameters:
+kernel_size: 3
+activation: relu
+Score: 2.123767614364624
+
+Trial 0002 summary
+Hyperparameters:
+kernel_size: 4
+activation: relu
+Score: 2.150160551071167
+```
+A kernel size of 3 and `tanh` as activation function is the best tested combination.
+
+::::
+:::
+
+Grid search can quickly result in a combinatorial explosion because all combinations of hyperparameters are trained and tested.
+Instead, `random search` randomly samples combinations of hyperparemeters, allowing for a much larger look through a large number of possible hyperparameter combinations.
+
+Next to grid search and random search there are many different hyperparameter tuning strategies, including [neural architecture search](https://en.wikipedia.org/wiki/Neural_architecture_search) where a separate neural network is trained to find the best architecture for a model!
+
 ## 10. Share model
 Let's save our model
 
@@ -841,12 +1064,12 @@ Let's save our model
 model.save('cnn_model')
 ```
 
-## Conclusion and Next Steps
+## Conclusion and next steps
 How successful were we with creating a model here?
 With ten image classes, and assuming that we would not ask the model to classify an image that contains none of the given classes of object, a model working on complete guesswork would be correct 10% of the time.
 Against this baseline accuracy of 10%, and considering the diversity and relatively low resolution of the example images, perhaps our last model's validation accuracy of ~30% is not too bad.
 What could be done to improve on this performance?
-We might try adjusting the number of layers and their parameters, such as the number of units in a layer, or providing more training data (we were using only a subset of the original Dollar Street dataset here). 
+We might try adjusting the number of layers and their parameters, such as the number of units in a layer, or providing more training data (we were using only a subset of the original Dollar Street dataset here).
 Or we could explore some other deep learning techniques, such as transfer learning, to create more sophisticated models.
 
 ::: keypoints
