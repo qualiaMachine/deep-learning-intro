@@ -327,7 +327,7 @@ and outputs a layer needs and therefore how many edges need to be created.
 This means we need to inform Keras how big our input is going to be. We do this by instantiating a `keras.Input` class and tell it how big our input is, thus the number of columns it contains.
 
 ```python
-inputs = keras.Input(shape=X_train.shape[1])
+inputs = keras.Input(shape=(X_train.shape[1],))
 ```
 
 We store a reference to this input class in a variable so we can pass it to the creation of
