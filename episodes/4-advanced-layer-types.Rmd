@@ -19,7 +19,7 @@ exercises: 70
 
 
 ## Different types of layers
-Networks are like onions: a typical neural network consists of many layers. In fact, the word *deep* in *Deep Learning*
+Networks are like onions: a typical neural network consists of many layers. In fact, the word *deep* in *deep learning*
 refers to the many layers that make the network deep.
 
 So far, we have seen one type of layer, namely the **fully connected**, or **dense** layer. This layer is called fully connected, because all input neurons are taken into account by each output neuron. The number of parameters that need to be learned by the network, is thus in the order of magnitude of the number of input neurons times the number of hidden neurons.
@@ -211,7 +211,7 @@ Non-trainable params: 0 (0.00 Byte)
 
 We can decrease the number of units in our hidden layer, but this also decreases the number of patterns our network can remember. Moreover, if we increase the image size, the number of weights will 'explode', even though the task of recognizing large images is not necessarily more difficult than the task of recognizing small images.
 
-The solution is that we make the network learn in a 'smart' way. The features that we learn should be similar both for small and large images, and similar features (e.g. edges, corners) can appear anywhere in the image (in mathematical terms: *translation invariant*). We do this by making use of a concept from image processing that predates Deep Learning.
+The solution is that we make the network learn in a 'smart' way. The features that we learn should be similar both for small and large images, and similar features (e.g. edges, corners) can appear anywhere in the image (in mathematical terms: *translation invariant*). We do this by making use of a concept from image processing that predates deep learning.
 
 A **convolution matrix**, or **kernel**, is a matrix transformation that we 'slide' over the image to calculate features at each position of the image. For each pixel, we calculate the matrix product between the kernel and the pixel with its surroundings. A kernel is typically small, between 3x3 and 7x7 pixels. We can for example think of the 3x3 kernel:
 

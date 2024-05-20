@@ -19,7 +19,7 @@ exercises: 80
 - Design a neural network for a regression task
 - Measure the performance of your deep neural network
 - Interpret the training plots to recognize overfitting
-- Use normalization as preparation step for Deep Learning
+- Use normalization as preparation step for deep learning
 - Implement basic strategies to prevent overfitting
 :::
 
