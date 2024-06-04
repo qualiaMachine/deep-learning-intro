@@ -439,7 +439,7 @@ So in total 8 extra parameters.
 ```python
 model = keras.Sequential(
     [
-        keras.Input(shape=X_train.shape[1]),
+        keras.Input(shape=(X_train.shape[1],)),
         keras.layers.Dense(10, activation="relu"),
         keras.layers.Dense(3, activation="softmax"),
     ]
