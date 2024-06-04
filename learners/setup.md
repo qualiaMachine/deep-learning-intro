@@ -83,29 +83,32 @@ If you run into any difficulties, please request help before the workshop begins
 
 [Conda](https://docs.conda.io/projects/conda/en/latest/) is the package management system associated with [Anaconda](https://anaconda.org) and runs on Windows, macOS and Linux.
 Conda should already be available in your system once you installed Anaconda successfully. Conda thus works regardless of the operating system.
-Make sure you have an up-to-date version of Conda running.
+
+1. Make sure you have an up-to-date version of Conda running.
 See [these instructions](https://docs.anaconda.com/anaconda/install/update-version/) for updating Conda if required.
 {: .callout}
 
-To create a conda environment called `dl_workshop` with the required packages, open a terminal (Mac/Linux) or Anaconda prompt (Windows) and type the command:
+2. To create a conda environment called `dl_workshop` with the required packages, open a terminal (Mac/Linux) or Anaconda prompt (Windows) and type the command:
 ```bash
 conda create --name dl_workshop python jupyter seaborn scikit-learn pandas
 ```
 
-Activate the newly created environment:
+3. Activate the newly created environment:
 ```
 conda activate dl_workshop
 ```
 
-Install tensorflow using pip (python's package manager):
+4. After activating your environment, install tensorflow using pip (python's package manager):
 ```bash
 pip install tensorflow
 ```
+Note that modern versions of Tensorflow make Keras available as a module. [pip](https://pip.pypa.io/en/stable/) is the package management system for Python software packages. It is integrated into your local Python installation and runs regardless of your operating system too.
 
-Note that modern versions of Tensorflow make Keras available as a module.
-
-[pip](https://pip.pypa.io/en/stable/) is the package management system for Python software packages.
-It is integrated into your local Python installation and runs regardless of your operating system too.
+5. Finally, we will update to the latest version of Matplotlib and Seaborn to ensure we are all using the same plotting library versions.
+```
+pip install seaborn --upgrade
+pip install matplotlib --upgrade
+```
 
 ::::::::::::::::::::::::::::::::::::::: discussion
 
