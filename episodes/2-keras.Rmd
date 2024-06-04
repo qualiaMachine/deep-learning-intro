@@ -673,6 +673,7 @@ confusion_df = pd.DataFrame(matrix, index=y_test.columns.values, columns=y_test.
 # Set the names of the x and y axis, this helps with the readability of the heatmap.
 confusion_df.index.name = 'True Label'
 confusion_df.columns.name = 'Predicted Label'
+confusion_df.head()
 ```
 
 We can then use the `heatmap` function from seaborn to create a nice visualization of
