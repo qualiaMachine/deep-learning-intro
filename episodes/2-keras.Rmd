@@ -464,7 +464,7 @@ Another best practice is to start with a relatively simple architecture. Once ru
 ### Choose a pretrained model
 If your data and problem is very similar to what others have done, you can often use a *pretrained network*.
 Even if your problem is different, but the data type is common (for example images), you can use a pretrained network and finetune it for your problem.
-A large number of openly available pretrained networks can be found in the [Model Zoo](https://modelzoo.co/), [pytorch hub](https://pytorch.org/hub/) or [tensorflow hub](https://www.tensorflow.org/hub/).
+A large number of openly available pretrained networks can be found on [Hugging Face](https://huggingface.co/models) (especially LLMs), [MONAI](https://monai.io/) (medical imaging), the [Model Zoo](https://modelzoo.co/), [pytorch hub](https://pytorch.org/hub/) or [tensorflow hub](https://www.tensorflow.org/hub/).
 
 
 ## 5. Choose a loss function and optimizer
