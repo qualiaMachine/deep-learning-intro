@@ -1212,7 +1212,8 @@ follows:</p>
 <span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a><span class="co"># Set the names of the x and y axis, this helps with the readability of the heatmap.</span></span>
 <span id="cb29-5"><a href="#cb29-5" tabindex="-1"></a>confusion_df.index.name <span class="op">=</span> <span class="st">'True Label'</span></span>
-<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>confusion_df.columns.name <span class="op">=</span> <span class="st">'Predicted Label'</span></span></code></pre>
+<span id="cb29-6"><a href="#cb29-6" tabindex="-1"></a>confusion_df.columns.name <span class="op">=</span> <span class="st">'Predicted Label'</span></span>
+<span id="cb29-7"><a href="#cb29-7" tabindex="-1"></a>confusion_df.head()</span></code></pre>
 </div>
 <p>We can then use the <code>heatmap</code> function from seaborn to
 create a nice visualization of the confusion matrix. The
