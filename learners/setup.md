@@ -90,7 +90,7 @@ See [these instructions](https://docs.anaconda.com/anaconda/install/update-versi
 
 2. To create a conda environment called `dl_workshop` with the required packages, open a terminal (Mac/Linux) or Anaconda prompt (Windows) and type the command:
 ```bash
-conda create --name dl_workshop python jupyter seaborn scikit-learn pandas
+conda create --name dl_workshop python jupyter 'seaborn>=13.0.0' scikit-learn pandas
 ```
 
 3. Activate the newly created environment:
