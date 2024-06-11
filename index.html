@@ -412,28 +412,28 @@ default Python).</li>
 is the package management system associated with <a href="https://anaconda.org" class="external-link">Anaconda</a> and runs on Windows, macOS and
 Linux. Conda should already be available in your system once you
 installed Anaconda successfully. Conda thus works regardless of the
-operating system. Make sure you have an up-to-date version of Conda
-running. See <a href="https://docs.anaconda.com/anaconda/install/update-version/" class="external-link">these
-instructions</a> for updating Conda if required. {: .callout}</p>
-<p>To create a conda environment called <code>dl_workshop</code> with
-the required packages, open a terminal (Mac/Linux) or Anaconda prompt
-(Windows) and type the command:</p>
-<div class="codewrapper sourceCode" id="cb2">
+operating system.</p>
+<ol style="list-style-type: decimal"><li><p>Make sure you have an up-to-date version of Conda running. See <a href="https://docs.anaconda.com/anaconda/install/update-version/" class="external-link">these
+instructions</a> for updating Conda if required. {: .callout}</p></li>
+<li><p>To create a conda environment called <code>dl_workshop</code>
+with the required packages, open a terminal (Mac/Linux) or Anaconda
+prompt (Windows) and type the command:</p></li>
+</ol><div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> dl_workshop python jupyter seaborn scikit-learn pandas</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> dl_workshop python jupyter <span class="st">'seaborn&gt;=13.0.0'</span> scikit-learn pandas</span></code></pre>
 </div>
-<p>Activate the newly created environment:</p>
-<pre><code>conda activate dl_workshop</code></pre>
-<p>Install tensorflow using pip (python’s package manager):</p>
-<div class="codewrapper sourceCode" id="cb4">
+<ol start="3" style="list-style-type: decimal"><li>Activate the newly created environment:</li>
+</ol><pre><code>conda activate dl_workshop</code></pre>
+<ol start="4" style="list-style-type: decimal"><li>After activating your environment, install tensorflow using pip
+(python’s package manager):</li>
+</ol><div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">pip</span> install tensorflow</span></code></pre>
 </div>
 <p>Note that modern versions of Tensorflow make Keras available as a
-module.</p>
-<p><a href="https://pip.pypa.io/en/stable/" class="external-link">pip</a> is the package
+module. <a href="https://pip.pypa.io/en/stable/" class="external-link">pip</a> is the package
 management system for Python software packages. It is integrated into
 your local Python installation and runs regardless of your operating
 system too.</p>
