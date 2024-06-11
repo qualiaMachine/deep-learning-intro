@@ -104,12 +104,6 @@ pip install tensorflow
 ```
 Note that modern versions of Tensorflow make Keras available as a module. [pip](https://pip.pypa.io/en/stable/) is the package management system for Python software packages. It is integrated into your local Python installation and runs regardless of your operating system too.
 
-5. Finally, we will update to the latest version of Matplotlib and Seaborn to ensure we are all using the same plotting library versions.
-```
-pip install seaborn --upgrade
-pip install matplotlib --upgrade
-```
-
 ::::::::::::::::::::::::::::::::::::::: discussion
 
 ### Python package installation troubleshooting
